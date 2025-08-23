@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3Leathers - Catalogue</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
+    header { background: #333; color: white; padding: 20px; text-align: center; }
+    nav a { color: white; margin: 0 15px; text-decoration: none; }
+    section { padding: 20px; }
+    footer { background: #333; color: white; text-align: center; padding: 10px; margin-top: 20px; }
+    .catalogue { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; }
+    .item { border: 2px solid #333; padding: 15px; width: 250px; border-radius: 8px; text-align: center; }
+    .item img { width: 200px; height: auto; border-radius: 6px; }
+    form { max-width: 500px; margin: 30px auto; border: 2px solid #333; padding: 20px; border-radius: 8px; }
+    form input, form textarea { width: 100%; padding: 10px; margin: 10px 0; }
+    form button { padding: 10px 20px; background: #333; color: white; border: none; cursor: pointer; }
+    form button:hover { background: #555; }
+    .notice { font-weight: bold; color: red; margin-top: 15px; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>3Leathers</h1>
+    <p>Custom Leather by Walter Lewis III</p>
+    <p>📍 Bridgeport, WV | 📞 +1 (304) 669-1412 | ✉️ wwl3leathers@outlook.com</p>
+    <nav>
+      <a href="index.html">About</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="catalogue.html">Catalogue</a>
+      <a href="payments.html">Payments</a>
+      <a href="comments.html">Comments</a>
+    </nav>
+  </header>
+
+  <section>
+    <h2>Catalogue</h2>
+    <p>Browse available items below. For custom requests, please use the form at the bottom.</p>
+    <div class="catalogue">
+      <div class="item">
+        <img src="catalogue-placeholder1.jpg" alt="Leather Wallet">
+        <h3>Leather Wallet</h3>
+        <p>$45</p>
+      </div>
+      <div class="item">
+        <img src="catalogue-placeholder2.jpg" alt="Leather Belt">
+        <h3>Leather Belt</h3>
+        <p>$60</p>
+      </div>
+      <div class="item">
+        <img src="catalogue-placeholder3.jpg" alt="Leather Journal">
+        <h3>Leather Journal</h3>
+        <p>$75</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Special Requests</h2>
+    <p>Submit your custom request here. <span class="notice">⚠️ Please note: special requests require half payment upfront.</span></p>
+    <form>
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="request">Describe your request:</label>
+      <textarea id="request" name="request" rows="4" required></textarea>
+
+      <button type="submit">Submit Request</button>
+    </form>
+  </section>
+
+  <footer>
+    <p>© 2025 3Leathers - Custom Leather by Walter Lewis III</p>
+  </footer>
+
+</body>
+</html>
