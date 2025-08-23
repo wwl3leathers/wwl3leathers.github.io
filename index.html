@@ -3,8 +3,64 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>3Leathers - Custom Leather by Walter Lewis III</title>
-  <link rel="stylesheet" href="css/style.css">
+  <title>3Leathers - About</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+      color: #333;
+    }
+    header {
+      background-color: #4b2e2e;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+    }
+    nav {
+      background-color: #333;
+      padding: 0.5rem;
+      text-align: center;
+    }
+    nav a {
+      color: white;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+    main {
+      padding: 20px;
+      max-width: 900px;
+      margin: auto;
+    }
+    h1, h2 {
+      color: #4b2e2e;
+    }
+    .photo-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 15px;
+      margin-top: 20px;
+    }
+    .photo-gallery img {
+      width: 100%;
+      border-radius: 8px;
+    }
+    .comments {
+      margin-top: 40px;
+    }
+    footer {
+      text-align: center;
+      padding: 15px;
+      margin-top: 40px;
+      background-color: #333;
+      color: white;
+    }
+  </style>
 </head>
 <body>
   <header>
@@ -13,56 +69,41 @@
   </header>
 
   <nav>
-    <a href="#about">About</a>
-    <a href="#gallery">Gallery</a>
-    <a href="#donations">Donations</a>
-    <a href="#payments">Payments</a>
-    <a href="#comments">Comments</a>
+    <a href="index.html">About</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="donations.html">Donations</a>
+    <a href="payments.html">Payments</a>
+    <a href="comments.html">Comments</a>
   </nav>
 
-  <section id="about">
-    <h2>About</h2>
-    <p>Welcome to 3Leathers, a custom leatherworking business based in Bridgeport, WV. 
-       Every piece is handcrafted with care by Walter Lewis III.</p>
-    <p><strong>Contact:</strong> +1 (304) 669-1412 | wwl3leathers@outlook.com</p>
-  </section>
+  <main>
+    <h2>About 3Leathers</h2>
+    <p>
+      Welcome to 3Leathers! My name is Walter Lewis III, and I create handcrafted leather goods
+      from my workshop in Bridgeport, WV. Every item is made with care, precision, and passion
+      for the craft.
+    </p>
+    <p>
+      Whether you’re looking for a one-of-a-kind journal, belt, wallet, or something completely custom,
+      I take pride in making pieces that will last for generations.
+    </p>
 
-  <section id="gallery">
-    <h2>Gallery</h2>
-    <div class="gallery">
-      <img src="images/placeholder1.jpg" alt="Leatherwork sample 1">
-      <img src="images/placeholder2.jpg" alt="Leatherwork sample 2">
-      <img src="images/placeholder3.jpg" alt="Leatherwork sample 3">
+    <h2>Random Photos</h2>
+    <div class="photo-gallery">
+      <img src="photo1.jpg" alt="Leatherwork sample">
+      <img src="photo2.jpg" alt="Leatherwork sample">
+      <img src="photo3.jpg" alt="Leatherwork sample">
     </div>
-  </section>
 
-  <section id="donations">
-    <h2>Donations</h2>
-    <p>If you’d like to support, you can donate via PayPal or Cash App:</p>
-    <div class="donations">
-      <img src="images/paypal-qr.png" alt="PayPal QR Code">
-      <img src="images/cashapp-qr.png" alt="Cash App QR Code">
+    <div class="comments">
+      <h2>Comments</h2>
+      <p>Leave your feedback and stories on the Comments page!</p>
     </div>
-  </section>
-
-  <section id="payments">
-    <h2>Payments</h2>
-    <p>Cash App: <strong>$unclebutch3</strong></p>
-  </section>
-
-  <section id="comments">
-    <h2>Comments</h2>
-    <form id="commentForm">
-      <textarea id="commentInput" placeholder="Leave a comment..."></textarea>
-      <button type="submit">Post Comment</button>
-    </form>
-    <div id="commentSection"></div>
-  </section>
+  </main>
 
   <footer>
-    <p>&copy; 2025 3Leathers - Custom Leather by Walter Lewis III</p>
+    <p>Contact: +1 (304) 669-1412 | wwl3leathers@outlook.com</p>
+    <p>Cash App: $unclebutch3</p>
   </footer>
-
-  <script src="js/script.js"></script>
 </body>
 </html>
