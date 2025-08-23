@@ -5,105 +5,77 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>3Leathers - About</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #f4f4f4;
-      color: #333;
-    }
-    header {
-      background-color: #4b2e2e;
-      color: white;
-      padding: 1rem;
-      text-align: center;
-    }
-    nav {
-      background-color: #333;
-      padding: 0.5rem;
-      text-align: center;
-    }
-    nav a {
-      color: white;
-      margin: 0 15px;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    nav a:hover {
-      text-decoration: underline;
-    }
-    main {
-      padding: 20px;
-      max-width: 900px;
-      margin: auto;
-    }
-    h1, h2 {
-      color: #4b2e2e;
-    }
-    .photo-gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-      gap: 15px;
-      margin-top: 20px;
-    }
-    .photo-gallery img {
-      width: 100%;
-      border-radius: 8px;
-    }
-    .comments {
-      margin-top: 40px;
-    }
-    footer {
-      text-align: center;
-      padding: 15px;
-      margin-top: 40px;
-      background-color: #333;
-      color: white;
-    }
+    body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
+    header { background: #333; color: white; padding: 20px; text-align: center; }
+    nav a { color: white; margin: 0 15px; text-decoration: none; }
+    section { padding: 20px; }
+    footer { background: #333; color: white; text-align: center; padding: 10px; margin-top: 20px; }
+    img { max-width: 200px; display: block; margin: 10px auto; }
+    textarea { width: 100%; height: 100px; margin-top: 10px; }
+    .comments-box { margin-top: 20px; }
+    .donations img { max-width: 150px; }
   </style>
 </head>
 <body>
+
   <header>
     <h1>3Leathers</h1>
     <p>Custom Leather by Walter Lewis III</p>
+    <p>📍 Bridgeport, WV | 📞 +1 (304) 669-1412 | ✉️ wwl3leathers@outlook.com</p>
+    <nav>
+      <a href="index.html">About</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="catalogue.html">Catalogue</a>
+      <a href="payments.html">Payments</a>
+      <a href="comments.html">Comments</a>
+    </nav>
   </header>
 
-  <nav>
-    <a href="index.html">About</a>
-    <a href="gallery.html">Gallery</a>
-    <a href="donations.html">Donations</a>
-    <a href="payments.html">Payments</a>
-    <a href="comments.html">Comments</a>
-  </nav>
-
-  <main>
+  <section>
     <h2>About 3Leathers</h2>
-    <p>
-      Welcome to 3Leathers! My name is Walter Lewis III, and I create handcrafted leather goods
-      from my workshop in Bridgeport, WV. Every item is made with care, precision, and passion
-      for the craft.
-    </p>
-    <p>
-      Whether you’re looking for a one-of-a-kind journal, belt, wallet, or something completely custom,
-      I take pride in making pieces that will last for generations.
-    </p>
+    <p>At 3Leathers, we specialize in custom leather creations, handmade with care and precision. From journals to dog collars, each piece is crafted with dedication and attention to detail.</p>
+    <img src="about-placeholder.jpg" alt="Leatherwork Example">
+  </section>
 
-    <h2>Random Photos</h2>
-    <div class="photo-gallery">
-      <img src="photo1.jpg" alt="Leatherwork sample">
-      <img src="photo2.jpg" alt="Leatherwork sample">
-      <img src="photo3.jpg" alt="Leatherwork sample">
-    </div>
+  <section class="comments-box">
+    <h2>Comments & Requests</h2>
+    <form id="commentForm">
+      <textarea id="commentInput" placeholder="Leave a comment or request..."></textarea><br>
+      <button type="submit">Submit</button>
+    </form>
+    <div id="commentSection"></div>
+  </section>
 
-    <div class="comments">
-      <h2>Comments</h2>
-      <p>Leave your feedback and stories on the Comments page!</p>
+  <section class="donations">
+    <h2>Support 3Leathers</h2>
+    <p>If you’d like to support my leatherwork, you can donate via CashApp or PayPal below:</p>
+    <div>
+      <p>CashApp</p>
+      <img src="cashapp-placeholder.png" alt="CashApp QR">
     </div>
-  </main>
+    <div>
+      <p>PayPal</p>
+      <img src="paypal-placeholder.png" alt="PayPal QR">
+    </div>
+  </section>
 
   <footer>
-    <p>Contact: +1 (304) 669-1412 | wwl3leathers@outlook.com</p>
-    <p>Cash App: $unclebutch3</p>
+    <p>© 2025 3Leathers - Custom Leather by Walter Lewis III</p>
   </footer>
+
+  <script>
+    const commentForm = document.getElementById("commentForm");
+    const commentInput = document.getElementById("commentInput");
+    const commentSection = document.getElementById("commentSection");
+
+    commentForm.addEventListener("submit", function(event) {
+      event.preventDefault();
+      const newComment = document.createElement("p");
+      newComment.textContent = commentInput.value;
+      commentSection.appendChild(newComment);
+      commentInput.value = "";
+    });
+  </script>
+
 </body>
 </html>
