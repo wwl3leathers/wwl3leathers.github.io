@@ -5,85 +5,43 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>3Leathers - Gallery</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #f4f4f4;
-      color: #333;
-    }
-    header {
-      background-color: #4b2e2e;
-      color: white;
-      padding: 1rem;
-      text-align: center;
-    }
-    nav {
-      background-color: #333;
-      padding: 0.5rem;
-      text-align: center;
-    }
-    nav a {
-      color: white;
-      margin: 0 15px;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    nav a:hover {
-      text-decoration: underline;
-    }
-    main {
-      padding: 20px;
-      max-width: 1000px;
-      margin: auto;
-    }
-    h1 {
-      color: #4b2e2e;
-    }
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-      gap: 15px;
-      margin-top: 20px;
-    }
-    .gallery img {
-      width: 100%;
-      border-radius: 8px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-    }
+    body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
+    header { background: #333; color: white; padding: 20px; text-align: center; }
+    nav a { color: white; margin: 0 15px; text-decoration: none; }
+    section { padding: 20px; }
+    footer { background: #333; color: white; text-align: center; padding: 10px; margin-top: 20px; }
+    .gallery { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; }
+    .gallery img { width: 250px; height: auto; border: 2px solid #333; border-radius: 8px; }
   </style>
 </head>
 <body>
+
   <header>
     <h1>3Leathers</h1>
     <p>Custom Leather by Walter Lewis III</p>
+    <p>📍 Bridgeport, WV | 📞 +1 (304) 669-1412 | ✉️ wwl3leathers@outlook.com</p>
+    <nav>
+      <a href="index.html">About</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="catalogue.html">Catalogue</a>
+      <a href="payments.html">Payments</a>
+      <a href="comments.html">Comments</a>
+    </nav>
   </header>
 
-  <nav>
-    <a href="index.html">About</a>
-    <a href="gallery.html">Gallery</a>
-    <a href="donations.html">Donations</a>
-    <a href="payments.html">Payments</a>
-    <a href="comments.html">Comments</a>
-  </nav>
-
-  <main>
-    <h1>Gallery</h1>
-    <p>Here are some of my leatherworking creations. More photos coming soon!</p>
-
+  <section>
+    <h2>Gallery</h2>
+    <p>Here are some examples of custom leatherwork projects. Each piece is handmade with care.</p>
     <div class="gallery">
-      <img src="gallery1.jpg" alt="Leather item">
-      <img src="gallery2.jpg" alt="Leather item">
-      <img src="gallery3.jpg" alt="Leather item">
-      <img src="gallery4.jpg" alt="Leather item">
-      <img src="gallery5.jpg" alt="Leather item">
-      <img src="gallery6.jpg" alt="Leather item">
+      <img src="gallery-placeholder1.jpg" alt="Leather Project 1">
+      <img src="gallery-placeholder2.jpg" alt="Leather Project 2">
+      <img src="gallery-placeholder3.jpg" alt="Leather Project 3">
     </div>
-  </main>
+  </section>
 
   <footer>
-    <p>Contact: +1 (304) 669-1412 | wwl3leathers@outlook.com</p>
-    <p>Cash App: $unclebutch3</p>
+    <p>© 2025 3Leathers - Custom Leather by Walter Lewis III</p>
   </footer>
+
 </body>
 </html>
