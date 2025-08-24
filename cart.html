@@ -4,81 +4,50 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cart - 3Leathers</title>
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-  <!-- Header with logo and navigation -->
   <header>
-    <img src="images/logo.png" alt="3Leathers Logo" style="height:60px;">
-    <h1>3Leathers - Cart</h1>
+    <img src="images/logo.png" alt="3Leathers Logo" class="logo">
+    <h1>3Leathers - Custom Leather by Walter Lewis III</h1>
+    <p>Bridgeport, WV | +1 (304) 669-1412 | <a href="mailto:wwl3leathers@outlook.com">wwl3leathers@outlook.com</a></p>
     <nav>
-      <a href="index.html">About</a> |
-      <a href="gallery.html">Gallery</a> |
-      <a href="catalogue.html">Catalogue</a> |
-      <a href="cart.html">Cart</a> |
+      <a href="index.html">About</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="catalogue.html">Catalogue</a>
+      <a href="cart.html" class="active">Cart</a>
       <a href="contact.html">Contact</a>
     </nav>
   </header>
 
   <main>
-    <h2>Your Cart</h2>
-    <p>Below are the items you have selected. Special requests will appear here as well.</p>
+    <section>
+      <h2>Your Cart</h2>
+      <p>Items you add will show up here. (For now, this is a placeholder section where we’ll later add interactive cart features.)</p>
+    </section>
 
-    <!-- Cart Table -->
-    <table border="1" cellpadding="8" cellspacing="0" width="100%">
-      <thead>
-        <tr>
-          <th>Item</th>
-          <th>Quantity</th>
-          <th>Price</th>
-          <th>Total</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Sample Leather Wallet</td>
-          <td>1</td>
-          <td>$50</td>
-          <td>$50</td>
-        </tr>
-        <tr>
-          <td>Custom Journal (special request)</td>
-          <td>1</td>
-          <td>$100</td>
-          <td>$100</td>
-        </tr>
-      </tbody>
-      <tfoot>
-        <tr>
-          <td colspan="3"><strong>Grand Total</strong></td>
-          <td><strong>$150</strong></td>
-        </tr>
-      </tfoot>
-    </table>
-
-    <!-- Payment Section -->
-    <section id="payment" style="margin-top:30px;">
-      <h2>Complete Your Payment</h2>
-      <p>You may pay using PayPal or Cash App below.</p>
-
-      <div style="display:flex; gap:40px; flex-wrap:wrap;">
-        <div>
-          <h3>PayPal</h3>
-          <p>Scan the QR code below to pay with PayPal.</p>
-          <img src="images/paypal-qr.png" alt="PayPal QR Code Placeholder" style="width:150px;height:150px;">
-        </div>
-        <div>
-          <h3>Cash App</h3>
-          <p>Scan the QR code below to pay with Cash App.</p>
-          <img src="images/cashapp-qr.png" alt="Cash App QR Code Placeholder" style="width:150px;height:150px;">
+    <section>
+      <h2>Checkout</h2>
+      <p>When you’re ready to purchase, use one of the payment options below.</p>
+      <div class="donations">
+        <h3>Payment Options</h3>
+        <p>Scan the QR codes below to send payment:</p>
+        <div class="qr-codes">
+          <div>
+            <p>PayPal</p>
+            <img src="images/paypal-placeholder.png" alt="PayPal QR Code" class="qr">
+          </div>
+          <div>
+            <p>Cash App ($unclebutch3)</p>
+            <img src="images/cashapp-placeholder.png" alt="CashApp QR Code" class="qr">
+          </div>
         </div>
       </div>
     </section>
   </main>
 
   <footer>
-    <p>Contact: +1 (304) 669-1412 | Email: wwl3leathers@outlook.com</p>
-    <p>&copy; 2025 3Leathers - Custom Leather by Walter Lewis III</p>
+    <p>&copy; 2025 3Leathers | All Rights Reserved</p>
   </footer>
 </body>
 </html>
