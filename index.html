@@ -7,75 +7,74 @@
   <style>
     body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
     header { background: #333; color: white; padding: 20px; text-align: center; }
-    nav a { color: white; margin: 0 15px; text-decoration: none; }
-    section { padding: 20px; }
+    nav { background: #444; padding: 10px; text-align: center; }
+    nav a { color: white; margin: 0 15px; text-decoration: none; font-weight: bold; }
+    nav a:hover { text-decoration: underline; }
+    main { padding: 20px; }
+    h1, h2 { color: #333; }
+    .donations { margin-top: 30px; }
+    .qr-placeholder {
+      width: 150px; height: 150px;
+      background: #eee; border: 2px dashed #aaa;
+      display: inline-block; margin: 10px;
+      line-height: 150px; text-align: center; color: #666;
+    }
     footer { background: #333; color: white; text-align: center; padding: 10px; margin-top: 20px; }
-    img { max-width: 200px; display: block; margin: 10px auto; }
-    textarea { width: 100%; height: 100px; margin-top: 10px; }
-    .comments-box { margin-top: 20px; }
-    .donations img { max-width: 150px; }
+    textarea { width: 100%; height: 100px; margin: 10px 0; }
   </style>
 </head>
 <body>
-
   <header>
     <h1>3Leathers</h1>
     <p>Custom Leather by Walter Lewis III</p>
     <p>📍 Bridgeport, WV | 📞 +1 (304) 669-1412 | ✉️ wwl3leathers@outlook.com</p>
-    <nav>
-      <a href="index.html">About</a>
-      <a href="gallery.html">Gallery</a>
-      <a href="catalogue.html">Catalogue</a>
-      <a href="payments.html">Payments</a>
-      <a href="comments.html">Comments</a>
-    </nav>
   </header>
 
-  <section>
+  <nav>
+    <a href="index.html">About</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="catalogue.html">Catalogue</a>
+    <a href="cart.html">Cart</a>
+    <a href="comments.html">Comments</a>
+  </nav>
+
+  <main>
     <h2>About 3Leathers</h2>
-    <p>At 3Leathers, we specialize in custom leather creations, handmade with care and precision. From journals to dog collars, each piece is crafted with dedication and attention to detail.</p>
-    <img src="about-placeholder.jpg" alt="Leatherwork Example">
-  </section>
+    <p>
+      At 3Leathers, we specialize in custom leather creations, handmade with care and precision. 
+      From journals to dog collars, each piece is crafted with dedication and attention to detail.
+    </p>
 
-  <section class="comments-box">
     <h2>Comments & Requests</h2>
-    <form id="commentForm">
-      <textarea id="commentInput" placeholder="Leave a comment or request..."></textarea><br>
-      <button type="submit">Submit</button>
-    </form>
-    <div id="commentSection"></div>
-  </section>
+    <textarea placeholder="Leave a comment or request..."></textarea>
+    <button onclick="saveComment()">Submit</button>
 
-  <section class="donations">
-    <h2>Support 3Leathers</h2>
-    <p>If you’d like to support my leatherwork, you can donate via CashApp or PayPal below:</p>
-    <div>
-      <p>CashApp</p>
-      <img src="cashapp-placeholder.png" alt="CashApp QR">
+    <div id="comments-section"></div>
+
+    <div class="donations">
+      <h2>Support 3Leathers</h2>
+      <p>You can support our work through PayPal or Cash App:</p>
+      <div class="qr-placeholder">PayPal QR</div>
+      <div class="qr-placeholder">CashApp QR</div>
     </div>
-    <div>
-      <p>PayPal</p>
-      <img src="paypal-placeholder.png" alt="PayPal QR">
-    </div>
-  </section>
+  </main>
 
   <footer>
-    <p>© 2025 3Leathers - Custom Leather by Walter Lewis III</p>
+    <p>&copy; 2025 3Leathers. All rights reserved.</p>
   </footer>
 
   <script>
-    const commentForm = document.getElementById("commentForm");
-    const commentInput = document.getElementById("commentInput");
-    const commentSection = document.getElementById("commentSection");
-
-    commentForm.addEventListener("submit", function(event) {
-      event.preventDefault();
-      const newComment = document.createElement("p");
-      newComment.textContent = commentInput.value;
-      commentSection.appendChild(newComment);
-      commentInput.value = "";
-    });
+    function saveComment() {
+      const textarea = document.querySelector("textarea");
+      const comment = textarea.value.trim();
+      if (comment) {
+        const commentsSection = document.getElementById("comments-section");
+        const newComment = document.createElement("p");
+        newComment.textContent = comment;
+        commentsSection.appendChild(newComment);
+        textarea.value = "";
+      }
+    }
   </script>
-
 </body>
 </html>
