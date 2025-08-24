@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cart - 3Leathers</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- Header with logo and navigation -->
+  <header>
+    <img src="images/logo.png" alt="3Leathers Logo" style="height:60px;">
+    <h1>3Leathers - Cart</h1>
+    <nav>
+      <a href="index.html">About</a> |
+      <a href="gallery.html">Gallery</a> |
+      <a href="catalogue.html">Catalogue</a> |
+      <a href="cart.html">Cart</a> |
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <h2>Your Cart</h2>
+    <p>Below are the items you have selected. Special requests will appear here as well.</p>
+
+    <!-- Cart Table -->
+    <table border="1" cellpadding="8" cellspacing="0" width="100%">
+      <thead>
+        <tr>
+          <th>Item</th>
+          <th>Quantity</th>
+          <th>Price</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Sample Leather Wallet</td>
+          <td>1</td>
+          <td>$50</td>
+          <td>$50</td>
+        </tr>
+        <tr>
+          <td>Custom Journal (special request)</td>
+          <td>1</td>
+          <td>$100</td>
+          <td>$100</td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="3"><strong>Grand Total</strong></td>
+          <td><strong>$150</strong></td>
+        </tr>
+      </tfoot>
+    </table>
+
+    <!-- Payment Section -->
+    <section id="payment" style="margin-top:30px;">
+      <h2>Complete Your Payment</h2>
+      <p>You may pay using PayPal or Cash App below.</p>
+
+      <div style="display:flex; gap:40px; flex-wrap:wrap;">
+        <div>
+          <h3>PayPal</h3>
+          <p>Scan the QR code below to pay with PayPal.</p>
+          <img src="images/paypal-qr.png" alt="PayPal QR Code Placeholder" style="width:150px;height:150px;">
+        </div>
+        <div>
+          <h3>Cash App</h3>
+          <p>Scan the QR code below to pay with Cash App.</p>
+          <img src="images/cashapp-qr.png" alt="Cash App QR Code Placeholder" style="width:150px;height:150px;">
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Contact: +1 (304) 669-1412 | Email: wwl3leathers@outlook.com</p>
+    <p>&copy; 2025 3Leathers - Custom Leather by Walter Lewis III</p>
+  </footer>
+</body>
+</html>
