@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3Leathers - Home</title>
+    <style>
+        :root {
+            --primary-color: #8B4513; /* Leather brown */
+            --secondary-color: rgba(245, 245, 220, 0.9); /* Beige */
+            --font-family: Arial, sans-serif;
+        }
+
+        body {
+            margin: 0;
+            font-family: var(--font-family);
+            background: url('backdrop.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #333;
+        }
+
+        /* Personal Contact Section */
+        #contact {
+            background-color: var(--secondary-color);
+            padding: 10px;
+            text-align: center;
+        }
+
+        #contact p {
+            margin: 4px 0;
+        }
+
+        /* Navigation Bar */
+        nav {
+            background-color: rgba(139, 69, 19, 0.95);
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 14px 20px;
+            display: block;
+        }
+
+        nav a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Sections */
+        section {
+            background-color: rgba(245, 245, 220, 0.85);
+            margin: 20px auto;
+            padding: 20px;
+            max-width: 1000px;
+            border-radius: 10px;
+        }
+
+        /* Gallery Layout */
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .gallery img {
+            width: 200px;
+            height: auto;
+            border-radius: 5px;
+        }
+
+        /* Donations Section */
+        .donations {
+            text-align: center;
+        }
+
+        .donations img {
+            width: 120px;
+            margin: 10px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            .gallery img {
+                width: 100%;
+            }
+
+            nav {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Personal Contact Section -->
+    <div id="contact">
+        <p><strong>Name:</strong> Walter Lewis III</p>
+        <p><strong>City:</strong> Bridgeport</p>
+        <p><strong>State:</strong> WV</p>
+        <p><strong>Phone:</strong> (304) 669-1412</p>
+        <p><strong>Email:</strong> wwl3leathers@outlook.com</p>
+    </div>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="faq.html">FAQ</a>
+    </nav>
+
+    <!-- About Section -->
+    <section id="about">
+        <h2>About 3Leathers</h2>
+        <p>Welcome to 3Leathers, where we craft custom leather goods with passion and care. Each piece is handmade using high-quality vegetable-tanned leather.</p>
+        <!-- Add more about text here -->
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery">
+        <h2>Gallery</h2>
+        <div class="gallery">
+            <!-- Replace placeholder images with your own -->
+            <img src="placeholder1.jpg" alt="Leather Bag Example">
+            <img src="placeholder2.jpg" alt="Leather Belt Example">
+            <img src="placeholder3.jpg" alt="Leather Wallet Example">
+            <img src="placeholder4.jpg" alt="Leather Holster Example">
+        </div>
+    </section>
+
+    <!-- Donations Section -->
+    <section id="donations">
+        <h2>Support Us</h2>
+        <div class="donations">
+            <p>Scan QR codes to donate via PayPal or Cash App:</p>
+            <img src="paypal-qr-placeholder.png" alt="PayPal QR Code">
+            <img src="cashapp-qr-placeholder.png" alt="Cash App QR Code">
+        </div>
+    </section>
+
+</body>
+</html>
