@@ -1,0 +1,57 @@
+backend:
+  name: github
+  repo: wwl3leathers/wwl3leathers.github.io
+  branch: main
+
+media_folder: "assets/uploads"
+public_folder: "/assets/uploads"
+
+site_url: "https://wwl3leathers.github.io"
+
+collections:
+  - name: "pages"
+    label: "Pages"
+    files:
+      - file: "index.html"
+        label: "Home"
+        name: "home"
+        fields:
+          - { label: "Page Content", name: "body", widget: "markdown" }
+      - file: "about.html"
+        label: "About"
+        name: "about"
+        fields:
+          - { label: "Body", name: "body", widget: "markdown" }
+      - file: "gallery.html"
+        label: "Gallery"
+        name: "gallery"
+        fields:
+          - { label: "Intro Text", name: "body", widget: "markdown", required: false }
+          - label: "Items"
+            name: "items"
+            widget: "list"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Image", name: "image", widget: "image" }
+              - { label: "Alt Text", name: "alt", widget: "string" }
+              - { label: "Description", name: "desc", widget: "text", required: false }
+      - file: "donations.html"
+        label: "Donations"
+        name: "donations"
+        fields:
+          - { label: "Body", name: "body", widget: "markdown" }
+      - file: "payments.html"
+        label: "Payments"
+        name: "payments"
+        fields:
+          - { label: "Body", name: "body", widget: "markdown" }
+
+  - name: "updates"
+    label: "Updates"
+    folder: "updates"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "Body", name: "body", widget: "markdown" }
