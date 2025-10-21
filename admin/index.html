@@ -8,7 +8,13 @@
   </head>
   <body>
     <div id="nc-root"></div>
-    <script src="https://unpkg.com/decap-cms@3.0.13/dist/decap-cms.js"></script>
-    <script>CMS.init({ config: { backend: { name: "github", repo: "wwl3leathers/wwl3leathers.github.io", branch: "main" } } });</script>
+
+    <!-- Use a fixed stable Decap CMS build -->
+    <script src="https://unpkg.com/decap-cms@3.0.10/dist/decap-cms.js"></script>
+
+    <!-- Force explicit CMS.init call to avoid React node error -->
+    <script>
+      CMS.init();
+    </script>
   </body>
 </html>
