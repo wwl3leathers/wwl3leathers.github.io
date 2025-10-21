@@ -2,8 +2,8 @@ backend:
   name: github
   repo: wwl3leathers/wwl3leathers.github.io
   branch: main
-  auth_type: implicit
-  app_id: 0
+  base_url: "https://verdant-lollipop-83c8c6.netlify.app"
+  auth_endpoint: "/api/auth"
 
 media_folder: "assets/uploads"
 public_folder: "/assets/uploads"
