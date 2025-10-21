@@ -9,23 +9,17 @@ backend:
   gateway_url: https://gateway.decapbridge.com
 
 media_library:
-  name: "simple"
+  name: simple
 
-media_folder: "assets/uploads"
-public_folder: "/assets/uploads"
-
-site_url: "https://wwl3leathers.github.io"
+media_folder: assets/uploads
+public_folder: /assets/uploads
 
 collections:
-  - name: "pages"
-    label: "Pages"
-    folder: "content/pages"
+  - name: pages
+    label: Pages
+    folder: content/pages
     create: true
     slug: "{{slug}}"
     fields:
-      - label: "Title"
-        name: "title"
-        widget: "string"
-      - label: "Body"
-        name: "body"
-        widget: "markdown"
+      - { label: Title, name: title, widget: string }
+      - { label: Body, name: body, widget: markdown }
