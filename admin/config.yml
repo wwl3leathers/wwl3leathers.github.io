@@ -2,7 +2,7 @@ backend:
   name: github
   repo: wwl3leathers/wwl3leathers.github.io
   branch: main
-
+  auth_type: implicit
 
 media_folder: "assets/uploads"
 public_folder: "/assets/uploads"
