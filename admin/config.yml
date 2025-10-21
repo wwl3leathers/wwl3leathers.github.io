@@ -9,7 +9,7 @@ backend:
   gateway_url: https://gateway.decapbridge.com
 
 media_library:
-  name: simple
+  name: uploadcare
 
 media_folder: assets/uploads
 public_folder: /assets/uploads
