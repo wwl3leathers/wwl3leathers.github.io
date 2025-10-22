@@ -3,37 +3,33 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>3Leathers - Maintenance Mode</title>
-
+  <title>3Leathers – Maintenance Mode</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #1b1b1b;
-      color: #eee;
-      text-align: center;
-      padding-top: 100px;
-    }
+    body { font-family: Arial, sans-serif; background:#1b1b1b; color:#eee; text-align:center; padding-top:100px; }
+    input { padding:8px; font-size:16px; border:none; border-radius:4px; }
+    button { padding:8px 16px; font-size:16px; margin-left:5px; border:none; border-radius:4px; background:#503CEB; color:white; cursor:pointer; }
+    .box { background:#2c2c2c; padding:40px; width:300px; margin:auto; border-radius:10px; box-shadow:0 0 10px rgba(0,0,0,0.5); }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h2>3Leathers – Under Construction</h2>
+    <p>Enter password to view site:</p>
+    <input type="password" id="pass" placeholder="Password">
+    <button onclick="checkPass()">Enter</button>
+    <p style="font-size:12px; color:#aaa;">Authorized personnel only 🛠️</p>
+  </div>
 
-    input {
-      padding: 8px;
-      font-size: 16px;
-      border: none;
-      border-radius: 4px;
+  <script>
+    function checkPass() {
+      const allowed = "devonly"; // ← change this to any password you like
+      const input = document.getElementById("pass").value;
+      if (input === allowed) {
+        window.location.href = "app.html";
+      } else {
+        alert("Incorrect password. Try again.");
+      }
     }
-
-    button {
-      padding: 8px 16px;
-      font-size: 16px;
-      margin-left: 5px;
-      border: none;
-      border-radius: 4px;
-      background: #593ceb;
-      color: white;
-      cursor: pointer;
-    }
-
-    .box {
-      background: #2c2c2c;
-      padding: 40px;
-      width: 300px;
-      margin: auto;
+  </script>
+</body>
+</html>
