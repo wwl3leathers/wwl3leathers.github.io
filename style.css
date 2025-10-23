@@ -1,9 +1,22 @@
-body {
-  background-image: url("images/workshop-background.jpg");
+/* TEMP: remove this red frame once we confirm */
+body { outline: 5px solid red !important; margin: 0; padding: 0; }
+
+/* Put the background on the root element so nothing sits behind it */
+html {
+  min-height: 100%;
+  background-image: url("/images/workshop-background.jpg"); /* absolute path */
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center center;
-  margin: 0;
-  padding: 0;
+}
+
+/* Make the page take full height */
+body, #app, .container, .wrapper, .content, main {
+  min-height: 100%;
+}
+
+/* Force any big wrappers to be transparent in case one was white */
+#app, .container, .wrapper, .content, main {
+  background: transparent !important;
 }
