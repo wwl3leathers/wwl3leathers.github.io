@@ -1,86 +1,141 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>3Leathers — Custom Leather by Walter Lewis III</title>
-    <meta name="description" content="3Leathers — handmade leather goods and custom creations by Walter Lewis III in Bridgeport, West Virginia. Belts, wallets, holsters, and unique leather gifts built to last.">
-<meta name="keywords" content="WV leather, West Virginia crafts, Bridgeport leatherwork, custom leather goods, handmade leather, WV artisan, WV custom creations, 3Leathers, Walter Lewis III, local craftsman, leather belts, leather wallets, leather holsters, leather gifts, made in WV">
-<meta name="author" content="Walter Lewis III">
-<meta name="robots" content="index, follow">
-<meta property="og:title" content="3Leathers — Handmade Leather Goods in West Virginia">
-<meta property="og:description" content="Handmade leather goods and custom creations by Walter Lewis III — Bridgeport WV. Quality leatherwork built to last.">
-<meta property="og:url" content="https://3leathers.com">
-<meta property="og:type" content="website">
-<meta property="og:locale" content="en_US">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="3Leathers — WV Handmade Leather Goods">
-<meta name="twitter:description" content="Custom leather creations and artisan crafts made in Bridgeport, WV.">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>3Leathers - Custom Leather by Walter Lewis III</title>
 
-    <link rel="stylesheet" href="style.css?v=3">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #f5e8a3; /* pastel yellow */
+      background: url('workshop-background.jpg') no-repeat center center fixed;
+      background-size: cover;
+      text-align: center;
+      overflow-x: hidden;
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      box-sizing: border-box;
+      z-index: 1000;
+    }
+
+    #logo {
+      height: 60px;
+      border-radius: 6px;
+    }
+
+    /* Hamburger Menu */
+    .menu-icon {
+      cursor: pointer;
+      width: 30px;
+      height: 22px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .bar {
+      height: 4px;
+      width: 100%;
+      background-color: #f5e8a3;
+      border-radius: 4px;
+    }
+
+    nav {
+      position: fixed;
+      left: -250px;
+      top: 0;
+      height: 100%;
+      width: 250px;
+      background: rgba(0, 0, 0, 0.9);
+      padding-top: 60px;
+      transition: left 0.3s ease;
+      box-shadow: 2px 0 5px rgba(0,0,0,0.5);
+    }
+    nav a {
+      display: block;
+      color: #f5e8a3;
+      text-decoration: none;
+      padding: 15px 25px;
+      font-size: 18px;
+      text-align: left;
+    }
+    nav a:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+    .open { left: 0; }
+
+    main {
+      margin-top: 120px;
+      padding: 0 20px 80px;
+    }
+
+    h1 {
+      font-size: 36px;
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      font-size: 28px;
+      margin-top: 40px;
+    }
+
+    .about {
+      max-width: 800px;
+      margin: 0 auto 50px;
+      font-size: 20px;
+      line-height: 1.6;
+    }
+
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 30px;
+    }
+    .gallery img {
+      width: 200px;
+      height: 200px;
+      object-fit: cover;
+      border: 2px solid #f5e8a3;
+      border-radius: 8px;
+    }
+
+    footer {
+      position: relative;
+      bottom: 0;
+      width: 100%;
+      background: rgba(0,0,0,0.6);
+      padding: 20px 0;
+      text-align: right;
+      font-size: 14px;
+      color: #f5e8a3;
+      box-sizing: border-box;
+    }
+  </style>
 </head>
 <body>
-<!-- Site Header -->
-<header class="site-header">
-  <div class="header-inner">
-    <a class="brand" href="app.html">3Leathers</a>
-    <nav class="nav">
-      <a href="app.html">Home</a>
-      <a href="gallery.html">Gallery</a>
-      <a href="donations.html">Donations</a>
-      <a href="payments.html">Payments</a>
-      <a href="comments.html">Comments</a>
-    </nav>
-  </div>
-</header>
-
-    <!-- Personal Contact Section -->
-    <div id="contact">
-        <p><strong>Name:</strong> Walter Lewis III</p>
-        <p><strong>City:</strong> Bridgeport</p>
-        <p><strong>State:</strong> WV</p>
-        <p><strong>Phone:</strong> (304) 669-1412</p>
-        <p><strong>Email:</strong> wwl3leathers@outlook.com</p>
+  <header>
+    <div class="menu-icon" onclick="toggleMenu()">
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
     </div>
+    <img id="logo" src="logo-min.jpg" alt="3Leathers Logo">
+  </header>
 
-    <!-- Navigation Bar -->
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="shop.html">Shop</a>
-        <a href="faq.html">FAQ</a>
-    </nav>
-    <h1 style="text-align:center; color:#2c1b0e; background-color:rgba(255,255,255,0.8); padding:20px; border-radius:8px; margin:20px auto; max-width:1000px; font-weight:bold;">
-  Handmade Leather Goods — Built to Last
-</h1>
-
-    <!-- About Section -->
-    <section id="about">
-        <h2>About 3Leathers</h2>
-        <p>
-  No machines. No shortcuts.<br>
-  Every product at 3Leathers is made entirely by hand — from cutting and skiving to stitching and finishing. Just traditional tools, skilled hands, and a deep respect for the craft. It takes longer, but it’s worth it.
-</p>
-        <!-- Add more about text here -->
-    </section>
-
-    <!-- Gallery Section -->
-    <section id="gallery">
-  <h2>Gallery</h2>
-  <div class="gallery">
-    <img src="images/phone-case-min.jpeg" alt="Handmade Leather Phone Case" style="width:200px; height:auto; border: 1px solid red;">
-
-  </div>
-</section>
-
-    <!-- Donations Section -->
-    <section id="donations">
-        <h2>Support Us</h2>
-        <div class="donations">
-            <p>Scan QR codes to donate via PayPal or Cash App:</p>
-            <img src="paypal-qr-placeholder.png" alt="PayPal QR Code">
-            <img src="cashapp-qr-placeholder.png" alt="Cash App QR Code">
-        </div>
-    </section>
-
-</body>
-</html>
+  <nav id="sideMenu">
+    <a href="#home">Home</a>
+    <a href="#shop">Shop</a>
+    <a href="#custom">Custom Requests</a>
+    <a href="#cart">
