@@ -20,3 +20,10 @@ body, #app, .container, .wrapper, .content, main {
 #app, .container, .wrapper, .content, main {
   background: transparent !important;
 }
+/* Text color adjustments */
+body, h1, h2, h3, h4, h5, h6, p, a, label, span, li {
+  color: #f5f5dc; /* soft pastel yellow-beige */
+}
+
+/* Optional alternate look (comment out the line above and use this if you prefer grey) */
+/* color: #d0d0d0;  light grey option */
