@@ -38,6 +38,28 @@
         Bridgeport, West Virginia · <a href="tel:+13046691412"> (304) 669-1412</a> ·
         <a href="mailto:wwl3leathers@outlook.com">wwl3leathers@outlook.com</a>
       </div>
+<script>
+  (function () {
+    const menu  = document.getElementById('sideMenu');
+    const btn   = document.getElementById('menuButton');
+    const links = document.querySelectorAll('#sideMenu .navlink');
+
+    function toggle(open){
+      const willOpen = (open!==undefined) ? open : !menu.classList.contains('open');
+      menu.classList.toggle('open', willOpen);
+      btn.setAttribute('aria-expanded', String(willOpen));
+    }
+
+    btn.addEventListener('click', ()=>toggle());
+    btn.addEventListener('keydown', e=>{
+      if(e.key==='Enter' || e.key===' '){ e.preventDefault(); toggle(); }
+    });
+    links.forEach(a=>a.addEventListener('click', ()=>toggle(false)));
+    document.addEventListener('click', e=>{
+      if(!menu.contains(e.target) && !btn.contains(e.target)) toggle(false);
+    });
+  }());
+</script>
 
 </body>
 </html>
