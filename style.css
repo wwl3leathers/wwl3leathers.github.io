@@ -24,3 +24,38 @@ a {
 a:hover {
   text-decoration: underline;
 }
+/* Header and Navigation */
+.site-header {
+  position: sticky;
+  top: 0;
+  backdrop-filter: blur(4px);
+  background: rgba(0, 0, 0, 0.35);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  z-index: 1000;
+}
+.header-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.brand {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-decoration: none;
+  color: #f4e9b4;
+}
+.nav a {
+  color: #f4e9b4;
+  margin-left: 16px;
+  font-size: 16px;
+  text-decoration: none;
+  opacity: 0.9;
+}
+.nav a:hover {
+  opacity: 1;
+  text-decoration: underline;
+}
