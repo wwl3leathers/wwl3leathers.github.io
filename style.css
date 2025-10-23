@@ -131,3 +131,23 @@ p, a, li, small, strong, em { color:#f4e9b4; }
   border-radius:10px; padding:10px 12px; font-size:13px;
   backdrop-filter: blur(3px);
 }
+/* Size/shape the logo (top-right) */
+#logo{
+  height: 64px;          /* adjust if you want it smaller/larger */
+  max-width: 25vw;
+  border-radius: 6px;
+  object-fit: contain;
+  display: block;
+  z-index: 1100;
+}
+
+/* Hide the menu’s shadow when closed so no left strip shows */
+#sideMenu{
+  /* existing properties stay; just ensure these two are set */
+  left: -260px;
+  box-shadow: none;
+}
+#sideMenu.open{
+  left: 0;
+  box-shadow: 2px 0 10px rgba(0,0,0,.45);
+}
