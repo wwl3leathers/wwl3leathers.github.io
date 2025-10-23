@@ -1,4 +1,4 @@
-body {
+body { outline: 5px solid red !important; }
   background-image: url("images/background-workshop.jpg");
   background-size: cover;
   background-repeat: no-repeat;
