@@ -3,28 +3,36 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>3Leathers - Custom Leather by Walter Lewis III</title>
+  <title>3Leathers · Custom Leather by Walter Lewis III</title>
 
   <!-- External stylesheet -->
   <link rel="stylesheet" href="style.css?v=6" />
 </head>
 
-<body>
-  <!-- Header with hamburger + logo -->
-   <div class="menu-icon" id="menuButton" aria-label="Open menu" role="button" tabindex="0" aria-controls="sideMenu" aria-expanded="false">
-      <div></div><div></div><div></div>
-    </div>
+<body id="top">
+
+  <!-- Hamburger (pinned; no CSS file edit needed) -->
+  <div class="menu-icon" id="menuButton"
+       aria-label="Open menu" role="button" tabindex="0"
+       aria-controls="sideMenu" aria-expanded="false"
+       style="position:fixed; top:14px; left:14px; z-index:2000;">
+    <div></div><div></div><div></div>
+  </div>
+
+  <!-- Header with logo only (logo is already positioned by #logo rules in style.css) -->
   <header>
     <img id="logo" src="/images/Logo-min.jpg?v=6" alt="3Leathers Logo" />
   </header>
 
   <!-- Slide-out menu -->
   <nav id="sideMenu" aria-label="Site navigation">
-    <a href="#home" class="navlink">Home</a>
-    <a href="#shop" class="navlink">Shop</a>
-    <a href="#custom" class="navlink">Custom Requests</a>
-    <a href="#cart" class="navlink">Cart</a>
-    <a href="#faq" class="navlink">FAQ</a>
+    <a href="#top"   class="navlink">Home</a>
+    <a href="#support" class="navlink">Support the Craft</a>
+    <!-- These go to separate pages we’ll create next -->
+    <a href="shop.html"    class="navlink">Shop</a>
+    <a href="custom.html"  class="navlink">Custom Requests</a>
+    <a href="cart.html"    class="navlink">Cart</a>
+    <a href="faq.html"     class="navlink">FAQ</a>
   </nav>
 
   <!-- Main content -->
@@ -33,69 +41,63 @@
       <h1>3Leathers</h1>
       <h2>Custom Leather by Walter Lewis III</h2>
 
-      <!-- Top-right contact block (inside content, aligned right) -->
+      <!-- Top-right contact block -->
       <div class="contact-top">
-        Bridgeport, West Virginia · <a href="tel:+13046691412"> (304) 669-1412</a> ·
+        Bridgeport, West Virginia ·
+        <a href="tel:+13046691412">(304) 669-1412</a> ·
         <a href="mailto:wwl3leathers@outlook.com">wwl3leathers@outlook.com</a>
       </div>
+
       <p class="lead" style="margin-top:12px;">
-  No machines. No shortcuts. Just handmade craftsmanship built to last.
-  Every item is cut, stitched, and finished by hand. Rugged. Refined. Personal.
-</p>
+        No machines. No shortcuts. Just handmade craftsmanship built to last.
+        Every item is cut, stitched, and finished by hand. Rugged. Refined. Personal.
+      </p>
 
-<!-- Featured pieces (cards now; swap to photos later) -->
-<div class="gallery" aria-label="Featured pieces">
-  <div class="card">Belt — oil-tanned, custom size</div>
-  <div class="card">Phone case — hand-stitched</div>
-  <div class="card">Wallet — veg-tan, burnished edges</div>
-  <div class="card">Holster — wet-formed, dyed</div>
-</div>
+      <!-- Featured pieces (placeholder cards for now) -->
+      <div class="gallery" aria-label="Featured pieces">
+        <div class="card">Belt — oil-tanned, custom size</div>
+        <div class="card">Phone case — hand-stitched</div>
+        <div class="card">Wallet — veg-tan, burnished edges</div>
+        <div class="card">Holster — wet-formed, dyed</div>
+      </div>
 
-<section id="support" style="margin-top:18px; margin-bottom:40px;">
-  <h2>Support the Craft</h2>
-  <p class="lead">If you want to help keep traditional craftsmanship alive:</p>
-  <p><strong>Cash App:</strong> $unclebutch3 &nbsp;&nbsp; <strong>PayPal:</strong> paypal.me/3Leathers</p>
-</section>
+      <!-- Support the Craft (moved to the bottom of Home) -->
+      <section id="support" style="margin-top:24px; margin-bottom:40px;">
+        <h2>Support the Craft</h2>
+        <p class="lead">If you want to help keep traditional craftsmanship alive:</p>
+        <p><strong>Cash App:</strong> $unclebutch3 &nbsp;&nbsp; <strong>PayPal:</strong> paypal.me/3Leathers</p>
+      </section>
+    </div>
+  </main>
 
-<section id="shop" style="margin-top:28px">
-  <h2>Shop</h2>
-  <p class="lead">Catalog coming online soon. Belts, wallets, holsters, cases, and custom pieces.</p>
-</section>
-<section id="custom" style="margin-top:18px">
-  <h2>Custom Requests</h2>
-  <p class="lead">Have an idea? Describe it and we’ll build it. Fit, leather, dye, hardware — your call.</p>
-</section>
-<section id="cart" style="margin-top:18px">
-  <h2>Cart</h2>
-  <p class="lead">Checkout will appear here when the shop goes live.</p>
-</section>
-<section id="faq" style="margin-top:18px; margin-bottom:40px">
-  <h2>FAQ</h2>
-  <p class="lead">Care, sizing, lead times, and shipping info will be posted here.</p>
-</section>
-
-<script>
+  <!-- Script: hamburger toggle (fixed logic) -->
+  <script>
   (function () {
-    const menu  = document.getElementById('sideMenu');
-    const btn   = document.getElementById('menuButton');
+    const menu = document.getElementById('sideMenu');
+    const btn  = document.getElementById('menuButton');
     const links = document.querySelectorAll('#sideMenu .navlink');
 
-    function toggle(open){
-      const willOpen = (open!==undefined) ? open : !menu.classList.contains('open');
+    function toggle(force) {
+      const willOpen = (typeof force === 'boolean') ? force : !menu.classList.contains('open');
       menu.classList.toggle('open', willOpen);
       btn.setAttribute('aria-expanded', String(willOpen));
     }
 
-    btn.addEventListener('click', ()=>toggle());
-    btn.addEventListener('keydown', e=>{
-      if(e.key==='Enter' || e.key===' '){ e.preventDefault(); toggle(); }
+    // open/close via click and keyboard
+    btn.addEventListener('click', () => toggle());
+    btn.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); }
     });
-    links.forEach(a=>a.addEventListener('click', ()=>toggle(false)));
-    document.addEventListener('click', e=>{
-      if(!menu.contains(e.target) && !btn.contains(e.target)) toggle(false);
+
+    // close when a menu link is clicked
+    links.forEach(a => a.addEventListener('click', () => toggle(false)));
+
+    // click outside to close
+    document.addEventListener('click', (e) => {
+      if (!menu.contains(e.target) && !btn.contains(e.target)) toggle(false);
     });
-  }());
-</script>
+  })();
+  </script>
 
 </body>
 </html>
