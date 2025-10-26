@@ -1,182 +1,133 @@
 /* Background */
 html {
-  min-height: 100%;
-  background-image: url("/images/workshop-background.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-position: center center;
+  height: 100%;
 }
-
-/* Base */
-body, #app, .container, .wrapper, .content, main {
-  min-height: 100%;
-  background: transparent;
+body {
   margin: 0;
   padding: 0;
-  color: #f4e9b4;
   font-family: 'Georgia', serif;
 }
 
 /* Links */
 a {
-  color: #fff3b0;
+  color: #FFFAF0;
   text-decoration: none;
 }
+
 a:hover {
   text-decoration: underline;
 }
 
-/* Header */
 header {
+  color: #FFFAF0;
+  background: #444;
+  padding: 10px 20px;
+  text-align: center;
   position: fixed;
+  width: 100%;
   top: 0;
   left: 0;
-  right: 0;
-  background: rgba(0, 0, 0, 0.60);
-  padding: 10px 16px;
-  display: flex;
-  align-items: center;
-  justify-content: center; /* Center the logo */
   z-index: 1000;
-  backdrop-filter: blur(4px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }
 
-/* Increase logo size by 20% */
-#logo {
-  max-height: 76px; /* 20% larger */
-  height: auto;
-  width: auto;
-  object-fit: contain;
-  display: block;
-  border-radius: 6px;
-  margin-left: 4px;
+header h1 {
+  margin: 0;
+  font-size: 2em;
 }
 
-/* Hamburger icon */
-.menu-icon {
-  width: 32px;
-  height: 24px;
-  display: grid;
-  gap: 5px;
+/* Hamburger Icon */
+#menuButton {
+  position: fixed;
+  top: 10px;
+  right: 10px; /* Move to the upper right */
+  z-index: 2000;
   cursor: pointer;
+  font-size: 2em;
+  padding: 10px;
+}
+
+#menuButton:hover {
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 5px;
 }
 
 /* Slide-out menu */
 #sideMenu {
+  display: block;
   position: fixed;
   top: 0;
-  left: -260px;
+  left: -200px; /* Initially hidden */
+  width: 200px;
   height: 100%;
-  width: 260px;
-  background: rgba(0, 0, 0, 0.92);
-  padding: 70px 16px 24px;
+  background: rgba(0, 0, 0, 0.8);
   transition: left 0.25s ease;
-  z-index: 1200;
-  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.45);
 }
 
 #sideMenu.open {
-  left: 0;
+  left: 0; /* Show when open */
 }
 
 #sideMenu a {
+  color: #FFFAF0;
+  padding: 14px;
   display: block;
-  padding: 12px 10px;
-  font-size: 18px;
-  border-radius: 8px;
-  color: #f4e9b4;
-  text-decoration: none;
+  text-align: center;
 }
 
 #sideMenu a:hover {
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.1);
 }
 
-/* Main & centered content panel */
+/* Main Content */
 main {
-  padding: 120px 16px 120px;
+  padding: 120px 20px 20px;
 }
 
 .content {
   max-width: 900px;
   margin: 0 auto;
   text-align: center;
-  background: rgba(0, 0, 0, 0.45);
-  border: 1px solid rgba(255, 255, 255, 0.10);
-  border-radius: 14px;
-  padding: 24px 18px;
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
-}
-
-h1 {
-  font-size: clamp(28px, 4vw, 40px);
-  margin: 0 0 6px;
-  color: #f4e9b4;
 }
 
 h2 {
-  font-size: clamp(20px, 3vw, 28px);
-  margin: 8px 0 12px;
-  color: #f4e9b4;
+  font-size: 2.5em;
 }
 
-p, a, li, small, strong, em {
-  color: #f4e9b4;
+p {
+  font-size: 1.2em;
 }
 
 /* Gallery */
 .gallery {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-  gap: 12px;
-  margin-top: 16px;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 15px;
+  margin-top: 15px;
 }
 
 .gallery img {
   width: 100%;
-  height: auto; /* Maintain aspect ratio */
-  max-width: 100%; /* Prevent images from growing too large */
-  object-fit: cover;
-  border-radius: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
+  max-width: 500px; /* Prevent images from being too large */
+  object-fit: contain;
+  border-radius: 6px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
 }
 
-.gallery .card {
+.gallery-card {
   background: rgba(0, 0, 0, 0.55);
   border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 10px;
+  border-radius: 6px;
   padding: 14px;
   text-align: center;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
 }
 
-/* Optional: Limit the gallery width */
-.gallery-grid {
-  max-width: 1200px;  /* Set a max width for the gallery */
-  margin: 0 auto;  /* Center the gallery */
-  padding: 20px;
-}
-
-/* Contact badges */
-.contact-top {
-  text-align: right;
-  margin-top: 6px;
-  font-size: 14px;
-  opacity: 0.95;
+.gallery-card:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.35);
 }
 
 .contact-bottom {
-  position: fixed;
-  right: 12px;
-  bottom: 10px;
-  z-index: 900;
-  background: rgba(0, 0, 0, 0.55);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 10px;
-  padding: 10px 12px;
-  font-size: 13px;
-  backdrop-filter: blur(3px);
+  margin-top: 50px;
+  text-align: center;
+  color: #FFFAF0;
 }
