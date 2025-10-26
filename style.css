@@ -5,12 +5,12 @@ html {
 body {
   margin: 0;
   padding: 0;
-  background-image: url('/images/workshop-background.jpg'); /* Restoring your background image */
+  background-image: url('/images/workshop-background.jpg'); /* Your original background */
   background-size: cover;
   background-attachment: fixed;
   background-position: center center;
   font-family: 'Georgia', serif;
-  color: #FFFAF0; /* Restoring your color scheme */
+  color: #FFFAF0; /* Your color scheme */
 }
 
 /* Links */
@@ -44,7 +44,7 @@ header h1 {
 #menuButton {
   position: fixed;
   top: 10px;
-  right: 10px; /* Upper right */
+  right: 10px; /* Hamburger moved to upper right */
   z-index: 2000;
   cursor: pointer;
   font-size: 2em;
@@ -112,7 +112,7 @@ p {
 
 .gallery img {
   width: 100%;
-  max-width: 500px; /* Restrict max width of images */
+  max-width: 500px; /* Ensure images are manageable */
   object-fit: contain;
   border-radius: 6px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
