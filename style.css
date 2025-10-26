@@ -136,7 +136,8 @@ p, a, li, small, strong, em {
 
 .gallery img {
   width: 100%;
-  height: 150px;
+  height: auto; /* Maintain aspect ratio */
+  max-width: 100%; /* Prevent images from growing too large */
   object-fit: cover;
   border-radius: 10px;
   border: 1px solid rgba(255, 255, 255, 0.12);
@@ -150,6 +151,13 @@ p, a, li, small, strong, em {
   padding: 14px;
   text-align: center;
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
+}
+
+/* Optional: Limit the gallery width */
+.gallery-grid {
+  max-width: 1200px;  /* Set a max width for the gallery */
+  margin: 0 auto;  /* Center the gallery */
+  padding: 20px;
 }
 
 /* Contact badges */
