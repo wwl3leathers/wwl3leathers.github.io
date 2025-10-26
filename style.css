@@ -2,15 +2,12 @@
 html {
   height: 100%;
 }
-body {
-  margin: 0;
+
+body, .body, .container, .wrapper, .content, main {
+  min-height: 100vh;
+  background: transparent;
   padding: 0;
-  background-image: url('/images/workshop-background.jpg'); /* Your original background */
-  background-size: cover;
-  background-attachment: fixed;
-  background-position: center center;
   font-family: 'Georgia', serif;
-  color: #FFFAF0; /* Your color scheme */
 }
 
 /* Links */
@@ -26,80 +23,38 @@ a:hover {
 header {
   color: #FFFAF0;
   background: #444;
-  padding: 10px 20px;
+  padding: 10px;
   text-align: center;
   position: fixed;
-  width: 100%;
-  top: 0;
   left: 0;
+  top: 0;
+  width: 100%;
   z-index: 1000;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.80);
 }
 
-header h1 {
-  margin: 0;
-  font-size: 2em;
+/* Increase logo size by 20% */
+#logo {
+  max-height: 70px;
+  width: auto;
+  object-fit: contain;
+  display: block;
+  border-radius: 6px;
+  margin-left: 4px;
 }
 
-/* Hamburger Icon */
+/* Hamburger icon */
 #menuButton {
   position: fixed;
   top: 10px;
-  right: 10px; /* Hamburger moved to upper right */
+  left: 10px;
   z-index: 2000;
   cursor: pointer;
-  font-size: 2em;
-  padding: 10px;
 }
 
-#menuButton:hover {
-  background-color: rgba(255, 255, 255, 0.8);
-  border-radius: 5px;
-}
-
-/* Slide-out menu */
-#sideMenu {
-  display: block;
-  position: fixed;
-  top: 0;
-  left: -200px; /* Initially hidden */
-  width: 200px;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.8);
-  transition: left 0.25s ease;
-}
-
-#sideMenu.open {
-  left: 0; /* Show when open */
-}
-
-#sideMenu a {
-  color: #FFFAF0;
-  padding: 14px;
-  display: block;
-  text-align: center;
-}
-
-#sideMenu a:hover {
-  background: rgba(255, 255, 255, 0.1);
-}
-
-/* Main Content */
+/* Main content panel */
 main {
-  padding: 120px 20px 20px;
-}
-
-.content {
-  max-width: 900px;
-  margin: 0 auto;
-  text-align: center;
-}
-
-h2 {
-  font-size: 2.5em;
-}
-
-p {
-  font-size: 1.2em;
+  padding: 120px 15px;
 }
 
 /* Gallery */
@@ -112,8 +67,9 @@ p {
 
 .gallery img {
   width: 100%;
-  max-width: 500px; /* Ensure images are manageable */
+  height: 100%;
   object-fit: contain;
+  max-width: 100%;
   border-radius: 6px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
 }
@@ -131,7 +87,6 @@ p {
   border-color: rgba(255, 255, 255, 0.35);
 }
 
-/* Support Section */
 .contact-bottom {
   margin-top: 50px;
   text-align: center;
