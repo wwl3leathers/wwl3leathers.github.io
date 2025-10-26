@@ -1,28 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>3Leathers – Custom Leather by Walter Lewis III</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
 </head>
-
 <body>
-  <!-- Hamburger (top-right only) -->
-  <div class="menu-icon" id="menuButton"
-       aria-label="open menu" role="button" tabindex="0" aria-expanded="false"
-       style="position:fixed;top:10px; right:10px; z-index:2000;">
-    <div></div><div></div><div></div>
-  </div>
 
-  <!-- Header with logo (left) -->
+  <!-- Header: logo left, hamburger right (both INSIDE header) -->
   <header>
     <a href="index.html#top" aria-label="Back to Home">
-      <img id="logo" src="/images/Logo-min.jpg?v=6" alt="3Leathers Logo" />
+      <img id="logo" src="images/Logo-min.jpg?v=6" alt="3Leathers Logo" />
     </a>
+
+    <div class="menu-icon" id="menuButton"
+         aria-label="open menu" role="button" tabindex="0" aria-expanded="false">
+      <div></div><div></div><div></div>
+    </div>
   </header>
 
-  <!-- Slide-out menu -->
+  <!-- Slide-out menu (support removed) -->
   <nav id="sideMenu" aria-label="site navigation">
     <a href="index.html#top" class="navlink">Home</a>
     <a href="shop.html" class="navlink">Shop</a>
@@ -35,98 +33,16 @@
     <div class="content">
       <h1>3Leathers</h1>
       <p class="lead">Custom Leather by Walter Lewis III</p>
-      <p>
-        No machines. No shortcuts. Just handmade craftsmanship built to last.
-        Every item is cut, stitched, and finished by hand. Rugged. Refined. Personal.
-      </p>
+      <p>No machines. No shortcuts. Just handmade craftsmanship built to last.
+         Every item is cut, stitched, and finished by hand. Rugged. Refined. Personal.</p>
     </div>
 
-    <!-- Unified gallery (no subheadings, all products) -->
+    <!-- Unified gallery -->
     <section class="gallery-grid" aria-label="Gallery">
       <figure class="gallery-item">
-        <img src="/images/Repair-work1-min.jpg" alt="Repair work 1">
-        <figcaption>Repair Work</figcaption>
+        <img src="images/Repair-work1-min.jpg" alt="Repair work 1" loading="lazy" />
+        <figcaption class="caption">Repair Work</figcaption>
       </figure>
 
       <figure class="gallery-item">
-        <img src="/images/Repair-work2-min.jpg" alt="Repair work 2">
-        <figcaption>Repair Work</figcaption>
-      </figure>
-
-      <figure class="gallery-item">
-        <img src="/images/Wallet1-min.jpg" alt="Wallet - Trifold A">
-        <figcaption>Wallet - Trifold</figcaption>
-      </figure>
-
-      <figure class="gallery-item">
-        <img src="/images/Women-wallet1-min.jpg" alt="Women's Wallet 1">
-        <figcaption>Women’s Wallet</figcaption>
-      </figure>
-
-      <figure class="gallery-item">
-        <img src="/images/Custom-wallet-min.jpg" alt="Custom Wallet">
-        <figcaption>Wallet - Custom</figcaption>
-      </figure>
-
-      <figure class="gallery-item">
-        <img src="/images/Purse1-min.jpg" alt="Purse Style 1">
-        <figcaption>Purse Style</figcaption>
-      </figure>
-
-      <figure class="gallery-item">
-        <img src="/images/Holster-min.jpg" alt="Holster">
-        <figcaption>Holster</figcaption>
-      </figure>
-
-      <figure class="gallery-item">
-        <img src="/images/Phone-case-min.jpg" alt="Phone Case">
-        <figcaption>Phone Case</figcaption>
-      </figure>
-
-      <figure class="gallery-item">
-        <img src="/images/Tobacco-Pouch-min.jpg" alt="Tobacco Pouch">
-        <figcaption>Tobacco Pouch</figcaption>
-      </figure>
-
-      <figure class="gallery-item">
-        <img src="/images/Travel-Chess-min.jpeg" alt="Travel Chess">
-        <figcaption>Travel Chess</figcaption>
-      </figure>
-    </section>
-  </main>
-
-  <!-- Footer note -->
-  <footer style="text-align:center; padding:20px; font-size:14px; color:#f4e9b4;">
-    © 3Leathers – Handmade by Walter Lewis III
-  </footer>
-
-  <!-- Script: toggle side menu -->
-  <script>
-    (function () {
-      const menu = document.getElementById('sideMenu');
-      const btn = document.getElementById('menuButton');
-
-      function toggleMenu() {
-        const open = menu.classList.contains('open');
-        menu.classList.toggle('open', !open);
-        btn.setAttribute('aria-expanded', !open);
-      }
-
-      btn.addEventListener('click', toggleMenu);
-      btn.addEventListener('keydown', e => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          toggleMenu();
-        }
-      });
-
-      document.addEventListener('click', e => {
-        if (!menu.contains(e.target) && !btn.contains(e.target)) {
-          menu.classList.remove('open');
-          btn.setAttribute('aria-expanded', false);
-        }
-      });
-    })();
-  </script>
-</body>
-</html>
+        <img src="image
