@@ -3,133 +3,85 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>3Leathers · Custom Leather by Walter Lewis III</title>
-  <link rel="stylesheet" href="style.css?v=6" />
+  <title>3Leathers — Custom Leather by Walter Lewis III</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
-
 <body id="top">
-
-  <!-- Hamburger (pinned; no CSS file edit needed) -->
-  <div class="menu-icon" id="menuButton"
-       aria-label="Open menu" role="button" tabindex="0"
-       aria-controls="sideMenu" aria-expanded="false"
-       style="position:fixed; top:14px; left:14px; z-index:2000;">
-    <div></div><div></div><div></div>
+  <!-- Hamburger Menu Button -->
+  <div id="menuButton" aria-label="Open menu" tabindex="0">
+    <span class="menu-icon">☰</span> <!-- Hamburger Icon -->
   </div>
 
-  <!-- Header with logo centered and 20% larger -->
-  <header>
-    <img id="logo" src="/images/Logo-min.jpg?v=6" alt="3Leathers Logo" />
-  </header>
-
-  <!-- Slide-out menu -->
+  <!-- Main Navigation -->
   <nav id="sideMenu" aria-label="Site navigation">
-    <a href="#top"   class="navlink">Home</a>
-    <a href="shop.html"    class="navlink">Shop</a>
-    <a href="custom.html"  class="navlink">Custom Requests</a>
-    <a href="cart.html"    class="navlink">Cart</a>
-    <a href="faq.html"     class="navlink">FAQ</a>
+    <a href="home.html" class="navLink">Home</a>
+    <a href="shop.html" class="navLink">Shop</a>
+    <a href="contact.html" class="navLink">Contact</a>
+    <a href="faq.html" class="navLink">FAQ</a>
   </nav>
 
-  <!-- Main content -->
-  <main id="home">
-    <div class="content">
-      <h1>3Leathers</h1>
-      <h2>Custom Leather by Walter Lewis III</h2>
+  <!-- Header with Logo and Navigation -->
+  <header>
+    <img src="images/logo-img.png" alt="3Leathers logo" />
+  </header>
 
+  <!-- Main Content -->
+  <main>
+    <div class="content">
+      <h2>Custom Leather by Walter Lewis III</h2>
       <div class="contact-top">
-        Bridgeport, West Virginia ·
-        <a href="tel:+13046691412">(304) 669-1412</a> ·
-        <a href="mailto:wwl3leathers@outlook.com">wwl3leathers@outlook.com</a>
+        <p>Bridgeport, West Virginia - (304) 669-1412.</p>
+        <p><a href="mailto:wwl3leathers@outlook.com">Email</a></p>
       </div>
 
-      <p class="lead" style="margin-top:12px;">
-        No machines. No shortcuts. Just handmade craftsmanship built to last.
-        Every item is cut, stitched, and finished by hand. Rugged. Refined. Personal.
-      </p>
-
-      <!-- Unified Gallery with only selected images -->
-      <section id="gallery" aria-label="Gallery">
-        <div class="gallery-grid">
-          <!-- First 4 photos -->
-          <figure class="gallery-item">
-            <img src="/images/Repair-min.jpeg" alt="Repair work 1">
-            <figcaption class="caption"></figcaption>
-          </figure>
-          <figure class="gallery-item">
-            <img src="/images/Repair1-min.jpeg" alt="Repair work 2">
-            <figcaption class="caption"></figcaption>
-          </figure>
-          <figure class="gallery-item">
-            <img src="/images/Repair2-min.jpeg" alt="Repair work 3">
-            <figcaption class="caption"></figcaption>
-          </figure>
-          <figure class="gallery-item">
-            <img src="/images/Repair3-min.jpeg" alt="Repair work 4">
-            <figcaption class="caption"></figcaption>
-          </figure>
-
-          <!-- Last 5 photos -->
-          <figure class="gallery-item">
-            <img src="/images/Quick-Draw-min.jpeg" alt="Quick Draw holster">
-            <figcaption class="caption"></figcaption>
-          </figure>
-          <figure class="gallery-item">
-            <img src="/images/OWB-min.jpeg" alt="OWB holster">
-            <figcaption class="caption"></figcaption>
-          </figure>
-          <figure class="gallery-item">
-            <img src="/images/Holster-OWB-min.jpeg" alt="Holster OWB">
-            <figcaption class="caption"></figcaption>
-          </figure>
-          <figure class="gallery-item">
-            <img src="/images/Custom2-min.jpeg" alt="Holster — custom 2">
-            <figcaption class="caption"></figcaption>
-          </figure>
-          <figure class="gallery-item">
-            <img src="/images/Gun-Belt1-min.jpeg" alt="Gun belt 1">
-            <figcaption class="caption"></figcaption>
-          </figure>
+      <div class="gallery">
+        <h3>Gallery</h3>
+        <!-- First 4 images -->
+        <div class="gallery-item">
+          <img src="images/Repair1-min.jpeg" alt="Repair work 1" />
         </div>
-      </section>
+        <div class="gallery-item">
+          <img src="images/Repair2-min.jpeg" alt="Repair work 2" />
+        </div>
+        <div class="gallery-item">
+          <img src="images/Repair3-min.jpeg" alt="Repair work 3" />
+        </div>
+        <div class="gallery-item">
+          <img src="images/Repair4-min.jpeg" alt="Repair work 4" />
+        </div>
 
-      <!-- Support the Craft section (remains on the home page) -->
-      <section id="support" style="margin-top:24px; margin-bottom:40px;">
-        <h2>Support the Craft</h2>
-        <p class="lead">If you want to help keep traditional craftsmanship alive:</p>
-        <p><strong>Cash App:</strong> $unclebutch3 &nbsp;&nbsp; <strong>PayPal:</strong> paypal.me/3Leathers</p>
-      </section>
+        <!-- Last 5 images -->
+        <div class="gallery-item">
+          <img src="images/QuickDraw-min.jpeg" alt="Quick (new holster)" />
+        </div>
+        <div class="gallery-item">
+          <img src="images/OWB-min.jpeg" alt="OWB holster" />
+        </div>
+        <div class="gallery-item">
+          <img src="images/Holster-OWB-min.jpeg" alt="Holster OWB" />
+        </div>
+        <div class="gallery-item">
+          <img src="images/Custom-min.jpeg" alt="Holster - custom 2" />
+        </div>
+        <div class="gallery-item">
+          <img src="images/GunBelt-min.jpeg" alt="Gun belt 1" />
+        </div>
+      </div>
     </div>
   </main>
 
-  <!-- Script: hamburger toggle -->
+  <div class="contact-bottom">
+    <p>Support the Craft:</p>
+    <p>Cash App: <strong>$unclebutch3</strong> | PayPal: <strong>paypal.me/3Leathers</strong></p>
+  </div>
+
   <script>
-  (function () {
-    const menu = document.getElementById('sideMenu');
-    const btn  = document.getElementById('menuButton');
-    const links = document.querySelectorAll('#sideMenu .navlink');
+    const menuButton = document.getElementById('menuButton');
+    const sideMenu = document.getElementById('sideMenu');
 
-    function toggle(force) {
-      const willOpen = (typeof force === 'boolean') ? force : !menu.classList.contains('open');
-      menu.classList.toggle('open', willOpen);
-      btn.setAttribute('aria-expanded', String(willOpen));
-    }
-
-    // open/close via click and keyboard
-    btn.addEventListener('click', () => toggle());
-    btn.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); }
+    menuButton.addEventListener('click', () => {
+      sideMenu.classList.toggle('open');
     });
-
-    // close when a menu link is clicked
-    links.forEach(a => a.addEventListener('click', () => toggle(false)));
-
-    // click outside to close
-    document.addEventListener('click', (e) => {
-      if (!menu.contains(e.target) && !btn.contains(e.target)) toggle(false);
-    });
-  })();
   </script>
-
 </body>
 </html>
