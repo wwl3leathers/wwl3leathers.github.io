@@ -3,87 +3,228 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>3Leathers – Custom Leather by Walter Lewis III</title>
-  <link rel="stylesheet" href="style.css" />
+  <title>3Leathers · Custom Leather by Walter Lewis III</title>
+
+  <!-- External stylesheet -->
+  <link rel="stylesheet" href="style.css?v=6" />
 </head>
-<body>
 
-  <!-- Header -->
+<body id="top">
+
+  <!-- Hamburger (pinned; no CSS file edit needed) -->
+  <div class="menu-icon" id="menuButton"
+       aria-label="Open menu" role="button" tabindex="0"
+       aria-controls="sideMenu" aria-expanded="false"
+       style="position:fixed; top:14px; left:14px; z-index:2000;">
+    <div></div><div></div><div></div>
+  </div>
+
+  <!-- Header with logo only (logo is already positioned by #logo rules in style.css) -->
   <header>
-    <a href="index.html#top" aria-label="Back to Home">
-      <img id="logo" src="images/Logo-min.jpg?v=6" alt="3Leathers Logo" />
-    </a>
-
-    <div class="menu-icon" id="menuButton"
-         aria-label="open menu" role="button" tabindex="0" aria-expanded="false">
-      <div></div><div></div><div></div>
-    </div>
+    <img id="logo" src="/images/Logo-min.jpg?v=6" alt="3Leathers Logo" />
   </header>
 
   <!-- Slide-out menu -->
-  <nav id="sideMenu" aria-label="site navigation">
-    <a href="index.html#top" class="navlink">Home</a>
-    <a href="shop.html" class="navlink">Shop</a>
-    <a href="shop.html#custom" class="navlink">Custom Requests</a>
-    <a href="faq.html" class="navlink">FAQ</a>
+  <nav id="sideMenu" aria-label="Site navigation">
+    <a href="#top"   class="navlink">Home</a>
+    <a href="#support" class="navlink">Support the Craft</a>
+    <!-- These go to separate pages we’ll create next -->
+    <a href="shop.html"    class="navlink">Shop</a>
+    <a href="custom.html"  class="navlink">Custom Requests</a>
+    <a href="cart.html"    class="navlink">Cart</a>
+    <a href="faq.html"     class="navlink">FAQ</a>
   </nav>
 
   <!-- Main content -->
-  <main id="top">
+  <main id="home">
     <div class="content">
       <h1>3Leathers</h1>
-      <p class="lead">Custom Leather by Walter Lewis III</p>
-      <p>No machines. No shortcuts. Just handmade craftsmanship built to last.
-         Every item is cut, stitched, and finished by hand. Rugged. Refined. Personal.</p>
-    </div>
+      <h2>Custom Leather by Walter Lewis III</h2>
 
-    <!-- Unified gallery -->
-    <section class="gallery-grid">
-      <!-- Example gallery items (replace with your own images) -->
-      <figure class="gallery-item">
-        <img src="images/Tobacco-Pouch-min.jpeg" alt="Tobacco Pouch" />
-        <figcaption class="caption">Tobacco Pouch</figcaption>
-      </figure>
-      <figure class="gallery-item">
-        <img src="images/Travel-Chess-min.jpeg" alt="Travel Chess" />
-        <figcaption class="caption">Travel Chess</figcaption>
-      </figure>
-    </section>
+      <!-- Top-right contact block -->
+      <div class="contact-top">
+        Bridgeport, West Virginia ·
+        <a href="tel:+13046691412">(304) 669-1412</a> ·
+        <a href="mailto:wwl3leathers@outlook.com">wwl3leathers@outlook.com</a>
+      </div>
+
+      <p class="lead" style="margin-top:12px;">
+        No machines. No shortcuts. Just handmade craftsmanship built to last.
+        Every item is cut, stitched, and finished by hand. Rugged. Refined. Personal.
+      </p>
+
+      <!-- Featured pieces (placeholder cards for now) -->
+     <!-- Unified Gallery with per-image text area at the bottom -->
+<section id="gallery" aria-label="Gallery">
+  <div class="gallery-grid">
+
+    <!-- Repairs -->
+    <figure class="gallery-item">
+      <img src="/images/Repair-min.jpeg" alt="Repair work 1">
+      <figcaption class="caption"></figcaption>
+    </figure>
+    <figure class="gallery-item">
+      <img src="/images/Repair1-min.jpeg" alt="Repair work 2">
+      <figcaption class="caption"></figcaption>
+    </figure>
+    <figure class="gallery-item">
+      <img src="/images/Repair2-min.jpeg" alt="Repair work 3">
+      <figcaption class="caption"></figcaption>
+    </figure>
+    <figure class="gallery-item">
+      <img src="/images/Repair3-min.jpeg" alt="Repair work 4">
+      <figcaption class="caption"></figcaption>
+    </figure>
+
+    <!-- Wallets -->
+    <figure class="gallery-item">
+      <img src="/images/Trifold-min.jpeg" alt="Wallet — Trifold A">
+      <figcaption class="caption"></figcaption>
+    </figure>
+    <figure class="gallery-item">
+      <img src="/images/Trifold1-min.jpeg" alt="Wallet — Trifold B">
+      <figcaption class="caption"></figcaption>
+    </figure>
+    <figure class="gallery-item">
+      <img src="/images/Purse3-min.jpeg" alt="Women’s wallet A">
+      <figcaption class="caption"></figcaption>
+    </figure>
+    <figure class="gallery-item">
+      <img src="/images/Purse4-min.jpeg" alt="Women’s wallet B">
+      <figcaption class="caption"></figcaption>
+    </figure>
+    <figure class="gallery-item">
+      <img src="/images/Custom6-min.jpeg" alt="Wallet — custom">
+      <figcaption class="caption"></figcaption>
+    </figure>
+
+    <!-- Purses -->
+    <figure class="gallery-item">
+      <img src="/images/Custom3-min.jpeg" alt="Purse style A">
+      <figcaption class="caption"></figcaption>
+    </figure>
+    <figure class="gallery-item">
+      <img src="/images/Custom4-min.jpeg" alt="Purse style B">
+      <figcaption class="caption"></figcaption>
+    </figure>
+    <figure class="gallery-item">
+      <img src="/images/Purse-min.jpeg" alt="Purse">
+      <figcaption class="caption"></figcaption>
+    </figure>
+    <figure class="gallery-item">
+      <img src="/images/Purse04-min.jpg" alt="Purse 04">
+      <figcaption class="caption"></figcaption>
+    </figure>
+    <figure class="gallery-item">
+      <img src="/images/Purse2-min.jpeg" alt="Purse 2">
+      <figcaption class="caption"></figcaption>
+    </figure>
+
+    <!-- Holsters -->
+    <figure class="gallery-item">
+      <img src="/images/Custom2-min.jpeg" alt="Holster — custom 2">
+      <figcaption class="caption"></figcaption>
+    </figure>
+    <figure class="gallery-item">
+      <img src="/images/Gun-Belt-min.jpeg" alt="Gun belt">
+      <figcaption class="caption"></figcaption>
+    </figure>
+    <figure class="gallery-item">
+      <img src="/images/Gun-Belt1-min.jpeg" alt="Gun belt 1">
+      <figcaption class="caption"></figcaption>
+    </figure>
+    <figure class="gallery-item">
+      <img src="/images/Holster-BF-min.jpeg" alt="Holster BF">
+      <figcaption class="caption"></figcaption>
+    </figure>
+    <figure class="gallery-item">
+      <img src="/images/Holster-OWB-min.jpeg" alt="Holster OWB">
+      <figcaption class="caption"></figcaption>
+    </figure>
+    <figure class="gallery-item">
+      <img src="/images/OWB-min.jpeg" alt="OWB holster">
+      <figcaption class="caption"></figcaption>
+    </figure>
+    <figure class="gallery-item">
+      <img src="/images/Quick-Draw-min.jpeg" alt="Quick Draw holster">
+      <figcaption class="caption"></figcaption>
+    </figure>
+
+    <!-- Phone cases -->
+    <figure class="gallery-item">
+      <img src="/images/phone-case-1-min.JPEG" alt="Phone case 1">
+      <figcaption class="caption"></figcaption>
+    </figure>
+    <figure class="gallery-item">
+      <img src="/images/phone-case-min.jpeg" alt="Phone case 2">
+      <figcaption class="caption"></figcaption>
+    </figure>
+
+    <!-- Tobacco pouch -->
+    <figure class="gallery-item">
+      <img src="/images/Tobacco-Pouch-min.jpeg" alt="Tobacco pouch">
+      <figcaption class="caption"></figcaption>
+    </figure>
+    <figure class="gallery-item">
+      <img src="/images/Tobacco-Pouch1-min.jpeg" alt="Tobacco pouch 1">
+      <figcaption class="caption"></figcaption>
+    </figure>
+    <figure class="gallery-item">
+      <img src="/images/Tobacco-Pouch2-min.jpg" alt="Tobacco pouch 2">
+      <figcaption class="caption"></figcaption>
+    </figure>
+
+    <!-- Travel chess -->
+    <figure class="gallery-item">
+      <img src="/images/Travel-Chess-1-min.jpeg" alt="Travel chess 1">
+      <figcaption class="caption"></figcaption>
+    </figure>
+    <figure class="gallery-item">
+      <img src="/images/Travel-Chess-min.jpeg" alt="Travel chess 2">
+      <figcaption class="caption"></figcaption>
+    </figure>
+
+  </div>
+</section>
+
+
+      <!-- Support the Craft (moved to the bottom of Home) -->
+      <section id="support" style="margin-top:24px; margin-bottom:40px;">
+        <h2>Support the Craft</h2>
+        <p class="lead">If you want to help keep traditional craftsmanship alive:</p>
+        <p><strong>Cash App:</strong> $unclebutch3 &nbsp;&nbsp; <strong>PayPal:</strong> paypal.me/3Leathers</p>
+      </section>
+    </div>
   </main>
 
-  <!-- Support Section -->
-  <section class="support">
-    <h2>Support This Craft</h2>
-    <p>If you’d like to support or tip the shop directly:</p>
-    <p><strong>PayPal:</strong> <a href="https://www.paypal.me/3Leathers" target="_blank">paypal.me/3Leathers</a></p>
-    <p><strong>Cash App:</strong> <a href="https://cash.app/$unclebutch3" target="_blank">$unclebutch3</a></p>
-  </section>
-
-  <footer>© 2025 3Leathers — Handmade, No Machines, Built to Last.</footer>
-
-  <!-- Menu toggle script -->
+  <!-- Script: hamburger toggle (fixed logic) -->
   <script>
-    (function () {
-      const menu = document.getElementById('sideMenu');
-      const btn  = document.getElementById('menuButton');
+  (function () {
+    const menu = document.getElementById('sideMenu');
+    const btn  = document.getElementById('menuButton');
+    const links = document.querySelectorAll('#sideMenu .navlink');
 
-      function toggle(open) {
-        const willOpen = (open !== undefined) ? open : !menu.classList.contains('open');
-        menu.classList.toggle('open', willOpen);
-        btn.setAttribute('aria-expanded', String(willOpen));
-      }
+    function toggle(force) {
+      const willOpen = (typeof force === 'boolean') ? force : !menu.classList.contains('open');
+      menu.classList.toggle('open', willOpen);
+      btn.setAttribute('aria-expanded', String(willOpen));
+    }
 
-      btn.addEventListener('click', () => toggle());
-      btn.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); }});
+    // open/close via click and keyboard
+    btn.addEventListener('click', () => toggle());
+    btn.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); }
+    });
 
-      window.addEventListener('keydown', (e) => { if (e.key === 'Escape') toggle(false); });
-      document.addEventListener('click', (e) => {
-        if (menu.classList.contains('open')) {
-          const inside = menu.contains(e.target) || btn.contains(e.target);
-          if (!inside) toggle(false);
-        }
-      });
-    })();
+    // close when a menu link is clicked
+    links.forEach(a => a.addEventListener('click', () => toggle(false)));
+
+    // click outside to close
+    document.addEventListener('click', (e) => {
+      if (!menu.contains(e.target) && !btn.contains(e.target)) toggle(false);
+    });
+  })();
   </script>
+
 </body>
 </html>
