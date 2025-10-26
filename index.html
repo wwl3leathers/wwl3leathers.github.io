@@ -19,7 +19,7 @@
     <div></div><div></div><div></div>
   </div>
 
-  <!-- Header with logo only (logo is already positioned by #logo rules in style.css) -->
+  <!-- Header with logo centered and 20% larger -->
   <header>
     <img id="logo" src="/images/Logo-min.jpg?v=6" alt="3Leathers Logo" />
   </header>
@@ -27,8 +27,7 @@
   <!-- Slide-out menu -->
   <nav id="sideMenu" aria-label="Site navigation">
     <a href="#top"   class="navlink">Home</a>
-    <a href="#support" class="navlink">Support the Craft</a>
-    <!-- These go to separate pages we’ll create next -->
+    <!-- Removed Support the Craft from here -->
     <a href="shop.html"    class="navlink">Shop</a>
     <a href="custom.html"  class="navlink">Custom Requests</a>
     <a href="cart.html"    class="navlink">Cart</a>
@@ -53,142 +52,52 @@
         Every item is cut, stitched, and finished by hand. Rugged. Refined. Personal.
       </p>
 
-      <!-- Featured pieces (placeholder cards for now) -->
-     <!-- Unified Gallery with per-image text area at the bottom -->
-<section id="gallery" aria-label="Gallery">
-  <div class="gallery-grid">
+      <!-- Unified Gallery with only selected images (first 4 and last 5) -->
+      <section id="gallery" aria-label="Gallery">
+        <div class="gallery-grid">
+          <!-- First 4 photos -->
+          <figure class="gallery-item">
+            <img src="/images/Repair-min.jpeg" alt="Repair work 1">
+            <figcaption class="caption"></figcaption>
+          </figure>
+          <figure class="gallery-item">
+            <img src="/images/Repair1-min.jpeg" alt="Repair work 2">
+            <figcaption class="caption"></figcaption>
+          </figure>
+          <figure class="gallery-item">
+            <img src="/images/Repair2-min.jpeg" alt="Repair work 3">
+            <figcaption class="caption"></figcaption>
+          </figure>
+          <figure class="gallery-item">
+            <img src="/images/Repair3-min.jpeg" alt="Repair work 4">
+            <figcaption class="caption"></figcaption>
+          </figure>
 
-    <!-- Repairs -->
-    <figure class="gallery-item">
-      <img src="/images/Repair-min.jpeg" alt="Repair work 1">
-      <figcaption class="caption"></figcaption>
-    </figure>
-    <figure class="gallery-item">
-      <img src="/images/Repair1-min.jpeg" alt="Repair work 2">
-      <figcaption class="caption"></figcaption>
-    </figure>
-    <figure class="gallery-item">
-      <img src="/images/Repair2-min.jpeg" alt="Repair work 3">
-      <figcaption class="caption"></figcaption>
-    </figure>
-    <figure class="gallery-item">
-      <img src="/images/Repair3-min.jpeg" alt="Repair work 4">
-      <figcaption class="caption"></figcaption>
-    </figure>
+          <!-- Last 5 photos -->
+          <figure class="gallery-item">
+            <img src="/images/Quick-Draw-min.jpeg" alt="Quick Draw holster">
+            <figcaption class="caption"></figcaption>
+          </figure>
+          <figure class="gallery-item">
+            <img src="/images/OWB-min.jpeg" alt="OWB holster">
+            <figcaption class="caption"></figcaption>
+          </figure>
+          <figure class="gallery-item">
+            <img src="/images/Holster-OWB-min.jpeg" alt="Holster OWB">
+            <figcaption class="caption"></figcaption>
+          </figure>
+          <figure class="gallery-item">
+            <img src="/images/Custom2-min.jpeg" alt="Holster — custom 2">
+            <figcaption class="caption"></figcaption>
+          </figure>
+          <figure class="gallery-item">
+            <img src="/images/Gun-Belt1-min.jpeg" alt="Gun belt 1">
+            <figcaption class="caption"></figcaption>
+          </figure>
+        </div>
+      </section>
 
-    <!-- Wallets -->
-    <figure class="gallery-item">
-      <img src="/images/Trifold-min.jpeg" alt="Wallet — Trifold A">
-      <figcaption class="caption"></figcaption>
-    </figure>
-    <figure class="gallery-item">
-      <img src="/images/Trifold1-min.jpeg" alt="Wallet — Trifold B">
-      <figcaption class="caption"></figcaption>
-    </figure>
-    <figure class="gallery-item">
-      <img src="/images/Purse3-min.jpeg" alt="Women’s wallet A">
-      <figcaption class="caption"></figcaption>
-    </figure>
-    <figure class="gallery-item">
-      <img src="/images/Purse4-min.jpeg" alt="Women’s wallet B">
-      <figcaption class="caption"></figcaption>
-    </figure>
-    <figure class="gallery-item">
-      <img src="/images/Custom6-min.jpeg" alt="Wallet — custom">
-      <figcaption class="caption"></figcaption>
-    </figure>
-
-    <!-- Purses -->
-    <figure class="gallery-item">
-      <img src="/images/Custom3-min.jpeg" alt="Purse style A">
-      <figcaption class="caption"></figcaption>
-    </figure>
-    <figure class="gallery-item">
-      <img src="/images/Custom4-min.jpeg" alt="Purse style B">
-      <figcaption class="caption"></figcaption>
-    </figure>
-    <figure class="gallery-item">
-      <img src="/images/Purse-min.jpeg" alt="Purse">
-      <figcaption class="caption"></figcaption>
-    </figure>
-    <figure class="gallery-item">
-      <img src="/images/Purse04-min.jpg" alt="Purse 04">
-      <figcaption class="caption"></figcaption>
-    </figure>
-    <figure class="gallery-item">
-      <img src="/images/Purse2-min.jpeg" alt="Purse 2">
-      <figcaption class="caption"></figcaption>
-    </figure>
-
-    <!-- Holsters -->
-    <figure class="gallery-item">
-      <img src="/images/Custom2-min.jpeg" alt="Holster — custom 2">
-      <figcaption class="caption"></figcaption>
-    </figure>
-    <figure class="gallery-item">
-      <img src="/images/Gun-Belt-min.jpeg" alt="Gun belt">
-      <figcaption class="caption"></figcaption>
-    </figure>
-    <figure class="gallery-item">
-      <img src="/images/Gun-Belt1-min.jpeg" alt="Gun belt 1">
-      <figcaption class="caption"></figcaption>
-    </figure>
-    <figure class="gallery-item">
-      <img src="/images/Holster-BF-min.jpeg" alt="Holster BF">
-      <figcaption class="caption"></figcaption>
-    </figure>
-    <figure class="gallery-item">
-      <img src="/images/Holster-OWB-min.jpeg" alt="Holster OWB">
-      <figcaption class="caption"></figcaption>
-    </figure>
-    <figure class="gallery-item">
-      <img src="/images/OWB-min.jpeg" alt="OWB holster">
-      <figcaption class="caption"></figcaption>
-    </figure>
-    <figure class="gallery-item">
-      <img src="/images/Quick-Draw-min.jpeg" alt="Quick Draw holster">
-      <figcaption class="caption"></figcaption>
-    </figure>
-
-    <!-- Phone cases -->
-    <figure class="gallery-item">
-      <img src="/images/phone-case-1-min.JPEG" alt="Phone case 1">
-      <figcaption class="caption"></figcaption>
-    </figure>
-    <figure class="gallery-item">
-      <img src="/images/phone-case-min.jpeg" alt="Phone case 2">
-      <figcaption class="caption"></figcaption>
-    </figure>
-
-    <!-- Tobacco pouch -->
-    <figure class="gallery-item">
-      <img src="/images/Tobacco-Pouch-min.jpeg" alt="Tobacco pouch">
-      <figcaption class="caption"></figcaption>
-    </figure>
-    <figure class="gallery-item">
-      <img src="/images/Tobacco-Pouch1-min.jpeg" alt="Tobacco pouch 1">
-      <figcaption class="caption"></figcaption>
-    </figure>
-    <figure class="gallery-item">
-      <img src="/images/Tobacco-Pouch2-min.jpg" alt="Tobacco pouch 2">
-      <figcaption class="caption"></figcaption>
-    </figure>
-
-    <!-- Travel chess -->
-    <figure class="gallery-item">
-      <img src="/images/Travel-Chess-1-min.jpeg" alt="Travel chess 1">
-      <figcaption class="caption"></figcaption>
-    </figure>
-    <figure class="gallery-item">
-      <img src="/images/Travel-Chess-min.jpeg" alt="Travel chess 2">
-      <figcaption class="caption"></figcaption>
-    </figure>
-
-  </div>
-</section>
-
-
-      <!-- Support the Craft (moved to the bottom of Home) -->
+      <!-- Support the Craft section (remains on the home page) -->
       <section id="support" style="margin-top:24px; margin-bottom:40px;">
         <h2>Support the Craft</h2>
         <p class="lead">If you want to help keep traditional craftsmanship alive:</p>
