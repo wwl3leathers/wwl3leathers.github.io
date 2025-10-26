@@ -5,7 +5,12 @@ html {
 body {
   margin: 0;
   padding: 0;
+  background-image: url('/images/workshop-background.jpg'); /* Restoring your background image */
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center center;
   font-family: 'Georgia', serif;
+  color: #FFFAF0; /* Restoring your color scheme */
 }
 
 /* Links */
@@ -39,7 +44,7 @@ header h1 {
 #menuButton {
   position: fixed;
   top: 10px;
-  right: 10px; /* Move to the upper right */
+  right: 10px; /* Upper right */
   z-index: 2000;
   cursor: pointer;
   font-size: 2em;
@@ -107,7 +112,7 @@ p {
 
 .gallery img {
   width: 100%;
-  max-width: 500px; /* Prevent images from being too large */
+  max-width: 500px; /* Restrict max width of images */
   object-fit: contain;
   border-radius: 6px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
@@ -126,6 +131,7 @@ p {
   border-color: rgba(255, 255, 255, 0.35);
 }
 
+/* Support Section */
 .contact-bottom {
   margin-top: 50px;
   text-align: center;
