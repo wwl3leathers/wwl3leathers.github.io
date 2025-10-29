@@ -110,3 +110,49 @@ main {
   border-radius: 6px;
   text-align: center;
 }
+/* --- Slide-in menu (hidden by default) --- */
+#sideMenu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 260px;
+  padding: 16px;
+  box-sizing: border-box;
+
+  /* look & layering */
+  background: rgba(0, 0, 0, 0.85);
+  border-right: 1px solid rgba(255,255,255,0.15);
+  z-index: 9000;               /* below the hamburger (9999), above content */
+
+  /* hidden by default */
+  transform: translateX(-110%);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+
+  /* animation */
+  transition: transform 220ms ease, opacity 220ms ease, visibility 0s linear 220ms;
+}
+
+#sideMenu.open {
+  transform: translateX(0);
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transition: transform 220ms ease, opacity 220ms ease, visibility 0s;
+}
+
+/* Menu links */
+#sideMenu .navLink {
+  display: block;
+  color: #FFFAF0;
+  text-decoration: none;
+  padding: 10px 8px;
+  border-radius: 6px;
+  margin-bottom: 6px;
+}
+
+#sideMenu .navLink:hover {
+  background: rgba(255,255,255,0.08);
+}
