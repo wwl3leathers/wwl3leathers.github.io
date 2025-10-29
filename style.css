@@ -156,3 +156,11 @@ main {
 #sideMenu .navLink:hover {
   background: rgba(255,255,255,0.08);
 }
+/* Mobile-friendly hit area for hamburger */
+#menuButton.menu-icon {
+  font-size: 28px;        /* bigger "☰" */
+  padding: 6px 10px;      /* enlarges tap target */
+  line-height: 1;
+  border: none;
+  background: transparent;
+}
