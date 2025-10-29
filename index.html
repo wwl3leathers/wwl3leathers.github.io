@@ -12,9 +12,15 @@
 </head>
 <body id="top">
   <!-- Hamburger Menu Button -->
-  <div id="menuButton" aria-label="Open menu" tabindex="0">
-    <span class="menu-icon">☰</span> <!-- Hamburger Icon -->
-  </div>
+ <button id="menuButton"
+        class="menu-icon"
+        aria-label="Menu"
+        aria-controls="sideMenu"
+        aria-expanded="false"
+        type="button"
+        style="position:fixed; top:10px; left:10px; z-index:99999; cursor:pointer;">
+  ☰
+</button>
 
   <!-- Main Navigation -->
   <nav id="sideMenu" aria-label="Site navigation">
@@ -88,12 +94,22 @@
   </footer>
 
   <script>
-    const menuButton = document.getElementById('menuButton');
-    const sideMenu = document.getElementById('sideMenu');
+  const menuButton = document.getElementById('menuButton');
+  const sideMenu   = document.getElementById('sideMenu');
 
-    menuButton.addEventListener('click', () => {
-      sideMenu.classList.toggle('open');
-    });
-  </script>
+  function toggleMenu() {
+    const isOpen = sideMenu.classList.toggle('open');
+    menuButton.setAttribute('aria-expanded', String(isOpen));
+  }
+
+  menuButton.addEventListener('click', toggleMenu);
+  menuButton.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      toggleMenu();
+    }
+  });
+</script>
+
 </body>
 </html>
