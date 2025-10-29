@@ -50,13 +50,13 @@ header {
   margin: 0 auto; /* Center the logo */
 }
 
-/* Hamburger icon */
+/* Hamburger icon — unified and forced to top layer */
 #menuButton,
 .menu-icon {
   position: fixed;
   top: 10px;
   left: 10px;
-  z-index: 9999;   /* always above everything */
+  z-index: 9999 !important;  /* ensure always above all elements */
   cursor: pointer;
 }
 
@@ -95,13 +95,7 @@ main {
   border-color: rgba(255, 255, 255, 0.35);
 }
 
-.contact-bottom {
-  margin-top: 50px;
-  text-align: center;
-  color: #FFFAF0;
-}
-
-/* Style for the Support Section at the bottom of the page */
+/* Support Section */
 .contact-bottom {
   margin-top: 50px;
   text-align: center;
