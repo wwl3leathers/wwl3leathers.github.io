@@ -55,7 +55,19 @@
         - Grey Scale 0–100 • Archive of Whispers • Address as “Agent”
       </div>
     </div>
-
+    <div class="panel" id="hamburgerPanel">
+      <strong>Hamburger Health Check</strong>
+      <div class="small" style="margin:6px 0 10px;">
+        Loads your home page in a preview and tests if the hamburger exists, is clickable,
+        and actually opens a menu.
+      </div>
+      <button id="loadPreview">Load Home Preview</button>
+      <button id="runHamburgerCheck" disabled>Run Check</button>
+      <div id="hamburgerResults" class="small" style="margin-top:10px;"></div>
+      <div style="margin-top:10px;border:1px solid #eee;border-radius:12px;overflow:hidden">
+        <iframe id="sitePreview" src="" style="width:100%;height:700px;border:0;background:#fafafa"></iframe>
+      </div>
+    </div>
     <div class="hr"></div>
     <div class="small">Version: Builder Panel v1.0 • safe to edit anytime.</div>
   </div>
@@ -128,6 +140,46 @@ Notes: (e.g., started after commit abc123)`;
         document.getElementById('results').innerHTML = '<span class="warn">Could not copy automatically. Select and copy manually:</span><pre class="mono small">'+template+'</pre>';
       }
     });
+        // --- Hamburger Health Check ---
+    const previewBtn = document.getElementById('loadPreview');
+    const checkBtn   = document.getElementById('runHamburgerCheck');
+    const iframe     = document.getElementById('sitePreview');
+    const out        = document.getElementById('hamburgerResults');
+
+    function logLine(level, text) {
+      out.innerHTML += `<div class="${level}">${text}</div>`;
+    }
+
+    previewBtn?.addEventListener('click', () => {
+      out.innerHTML = '';
+      iframe.src = '/';
+      checkBtn.disabled = true;
+      logLine('small', 'Loading home page preview…');
+      iframe.onload = () => {
+        logLine('ok', 'Home preview loaded.');
+        checkBtn.disabled = false;
+      };
+    });
+
+    checkBtn?.addEventListener('click', () => {
+      out.innerHTML = '';
+      const doc = iframe.contentDocument || iframe.contentWindow?.document;
+      if (!doc) { logLine('bad', 'Could not access preview document.'); return; }
+
+      // 1) Find a likely hamburger button
+      const hamburger = doc.querySelector(
+        '.menu-icon, .hamburger, button[aria-label="Menu"], #hamburger, .menu-toggle, .nav-toggle'
+      );
+      if (!hamburger) {
+        logLine('bad', 'No hamburger element found (looked for .menu-icon, .hamburger, #hamburger…).');
+        return;
+      }
+      logLine('ok', `Found hamburger: <span class="mono">${hamburger.className || hamburger.id || hamburger.tagName}</span>`);
+
+      // 2) Find a likely menu panel
+      const menuPanel = doc.querySelector('#sideMenu, nav .menu, nav[role="navigation"], .mobile-menu, .drawer, .nav-menu, #menu');
+      if (!menuPanel
+
   </script>
 </body>
 </html>
