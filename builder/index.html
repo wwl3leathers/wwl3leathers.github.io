@@ -140,28 +140,33 @@ Notes: (e.g., started after commit abc123)`;
         document.getElementById('results').innerHTML = '<span class="warn">Could not copy automatically. Select and copy manually:</span><pre class="mono small">'+template+'</pre>';
       }
     });
-        // --- Hamburger Health Check ---
+       // --- Hamburger Health Check (robust bind + fallback) ---
+(function () {
+  const bind = () => {
     const previewBtn = document.getElementById('loadPreview');
     const checkBtn   = document.getElementById('runHamburgerCheck');
     const iframe     = document.getElementById('sitePreview');
     const out        = document.getElementById('hamburgerResults');
 
+    if (!previewBtn || !checkBtn || !iframe || !out) return;
+
     function logLine(level, text) {
       out.innerHTML += `<div class="${level}">${text}</div>`;
     }
 
-    previewBtn?.addEventListener('click', () => {
+    function doPreview() {
       out.innerHTML = '';
-      iframe.src = '/';
+      // cache-bust so GH Pages doesn’t serve an old copy
+      iframe.src = '/?_=' + Date.now();
       checkBtn.disabled = true;
       logLine('small', 'Loading home page preview…');
       iframe.onload = () => {
         logLine('ok', 'Home preview loaded.');
         checkBtn.disabled = false;
       };
-    });
+    }
 
-    checkBtn?.addEventListener('click', () => {
+    function doCheck() {
       out.innerHTML = '';
       const doc = iframe.contentDocument || iframe.contentWindow?.document;
       if (!doc) { logLine('bad', 'Could not access preview document.'); return; }
@@ -178,7 +183,56 @@ Notes: (e.g., started after commit abc123)`;
 
       // 2) Find a likely menu panel
       const menuPanel = doc.querySelector('#sideMenu, nav .menu, nav[role="navigation"], .mobile-menu, .drawer, .nav-menu, #menu');
-      if (!menuPanel
+      if (!menuPanel) {
+        logLine('warn', 'No obvious menu panel yet (looked for #sideMenu, .mobile-menu, .drawer, nav…). It may be injected later.');
+      } else {
+        const visible = !!(menuPanel.offsetParent || getComputedStyle(menuPanel).display !== 'none' && getComputedStyle(menuPanel).visibility !== 'hidden');
+        logLine(visible ? 'warn' : 'small', `Menu panel detected but currently ${visible ? 'visible' : 'hidden'}.`);
+      }
+
+      // 3) Try clicking the hamburger
+      try {
+        hamburger.click();
+        setTimeout(() => {
+          const menuAfter = doc.querySelector('#sideMenu, .mobile-menu, .drawer, .nav-menu, #menu, nav .menu');
+          if (!menuAfter) {
+            logLine('warn', 'Clicked hamburger, but still no menu panel found. Check JS wiring / selectors.');
+          } else {
+            const style = getComputedStyle(menuAfter);
+            const nowVisible = !!(menuAfter.offsetParent || (style.display !== 'none' && style.visibility !== 'hidden' && style.opacity !== '0'));
+            logLine(nowVisible ? 'ok' : 'warn', `After click, menu panel is ${nowVisible ? 'VISIBLE' : 'still hidden'}.`);
+          }
+
+          // 4) z-index sanity check
+          const hamStyle = getComputedStyle(hamburger);
+          const z = parseInt(hamStyle.zIndex || '0', 10);
+          if (isNaN(z) || z < 10) {
+            logLine('warn', `Hamburger z-index looks low (${hamStyle.zIndex || 'auto'}). It might be under other elements.`);
+          } else {
+            logLine('small', `Hamburger z-index = ${hamStyle.zIndex}.`);
+          }
+        }, 150);
+      } catch (e) {
+        logLine('bad', 'Error clicking hamburger: ' + (e?.message || e));
+      }
+    }
+
+    // Attach listeners
+    previewBtn.addEventListener('click', doPreview);
+    checkBtn.addEventListener('click', doCheck);
+
+    // Fallback: expose globals in case listeners don’t bind
+    window.__loadPreview = doPreview;
+    window.__runHamburgerCheck = doCheck;
+  };
+
+  // Bind now if DOM is ready; otherwise wait
+  if (document.readyState === 'loading') {
+    window.addEventListener('DOMContentLoaded', bind);
+  } else {
+    bind();
+  }
+})();
 
   </script>
 </body>
