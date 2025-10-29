@@ -164,3 +164,13 @@ main {
   border: none;
   background: transparent;
 }
+/* Pastel-yellow hamburger, bigger tap target */
+#menuButton.menu-icon {
+  color: #f4e9b4;          /* pastel yellow */
+  font-size: 28px;         /* bigger ☰ */
+  line-height: 1;
+  padding: 6px 10px;       /* easier to tap on mobile */
+  background: transparent;
+  border: none;
+}
+#menuButton.menu-icon:hover { opacity: 0.85; }
