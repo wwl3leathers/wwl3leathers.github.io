@@ -51,11 +51,12 @@ header {
 }
 
 /* Hamburger icon */
-#menuButton {
+#menuButton,
+.menu-icon {
   position: fixed;
   top: 10px;
   left: 10px;
-  z-index: 2000;
+  z-index: 9999;   /* always above everything */
   cursor: pointer;
 }
 
