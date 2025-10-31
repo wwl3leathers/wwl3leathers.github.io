@@ -1,0 +1,60 @@
+name: Site Audit
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Largest files (top 50)
+        run: |
+          echo "## Largest files (top 50)" > audit.md
+          echo "" >> audit.md
+          find . -type f ! -path "./.git/*" -printf "%s\t%p\n" \
+            | sort -nr | head -50 \
+            | awk '{printf "%8.2f MB  %s\n", $1/1024/1024, $2}' >> audit.md
+
+      - name: Image inventory (counts & totals)
+        run: |
+          echo "" >> audit.md
+          echo "## Image inventory" >> audit.md
+          echo "" >> audit.md
+          for ext in jpg jpeg png webp avif gif svg; do
+            COUNT=$(find . -type f -iname "*.$ext" | wc -l || true)
+            BYTES=$(find . -type f -iname "*.$ext" -printf "%s\n" 2>/dev/null | awk '{s+=$1} END {print s+0}')
+            MB=$(awk -v b="$BYTES" 'BEGIN {printf "%.2f", b/1024/1024}')
+            echo "- **.$ext**: $COUNT files, ~${MB} MB" >> audit.md
+          done
+
+      - name: HTML/CSS quick checks
+        run: |
+          echo "" >> audit.md
+          echo "## HTML/CSS quick checks" >> audit.md
+          echo "" >> audit.md
+          MISS_ALT=$(grep -RIn --include="*.html" "<img " . | grep -v "alt=" | wc -l || true)
+          echo "- Images missing \`alt\`: $MISS_ALT" >> audit.md
+          CSS_BYTES=$(find . -type f -name "*.css" -printf "%s\n" 2>/dev/null | awk '{s+=$1} END {print s+0}')
+          CSS_MB=$(awk -v b="$CSS_BYTES" 'BEGIN {printf "%.2f", b/1024/1024}')
+          echo "- Total CSS size (raw): ${CSS_MB} MB" >> audit.md
+
+      - name: Lighthouse (deployed site)
+        uses: treosh/lighthouse-ci-action@v10
+        with:
+          urls: |
+            https://wwl3leathers.github.io/
+          uploadArtifacts: true
+          temporaryPublicStorage: true
+        continue-on-error: true
+
+      - name: Upload audit report
+        uses: actions/upload-artifact@v4
+        with:
+          name: site-audit
+          path: audit.md
