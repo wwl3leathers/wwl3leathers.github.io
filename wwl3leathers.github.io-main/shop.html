@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shop · 3Leathers</title>
+  <link rel="stylesheet" href="style.css?v=6" />
+</head>
+<body>
+
+  <!-- Hamburger -->
+  <div class="menu-icon" id="menuButton"
+       aria-label="Open menu" role="button" tabindex="0"
+       aria-controls="sideMenu" aria-expanded="false"
+       style="position:fixed; top:14px; left:14px; z-index:2000;">
+    <div></div><div></div><div></div>
+  </div>
+
+  <!-- Header / Logo -->
+  <header>
+    <a href="index.html#top" aria-label="Back to Home">
+      <img id="logo" src="/images/Logo-min.jpg?v=6" alt="3Leathers Logo" />
+    </a>
+  </header>
+
+  <!-- Slide-out menu -->
+  <nav id="sideMenu" aria-label="Site navigation">
+    <a href="index.html#top" class="navlink">Home</a>
+    <a href="index.html#support" class="navlink">Support the Craft</a>
+    <a href="shop.html"   class="navlink">Shop</a>
+    <a href="custom.html" class="navlink">Custom Requests</a>
+    <a href="cart.html"   class="navlink">Cart</a>
+    <a href="faq.html"    class="navlink">FAQ</a>
+  </nav>
+
+  <main>
+    <div class="content">
+      <h1>Shop</h1>
+      <p class="lead">Handmade leather goods. Built to last.</p>
+
+      <!-- Wallets (4 styles, ≤2 images each) -->
+      <section>
+        <h2>Wallets</h2>
+
+        <div class="gallery" aria-label="Wallet styles">
+          <!-- Style 1 -->
+          <figure class="card">
+            <div class="pair">
+              <img src="/images/products/wallets/style1-a.jpg" alt="Wallet Style 1 — photo A">
+              <img src="/images/products/wallets/style1-b.jpg" alt="Wallet Style 1 — photo B">
+            </div>
+            <figcaption>Style 1</figcaption>
+          </figure>
+
+          <!-- Style 2 -->
+          <figure class="card">
+            <div class="pair">
+              <img src="/images/products/wallets/style2-a.jpg" alt="Wallet Style 2 — photo A">
+              <img src="/images/products/wallets/style2-b.jpg" alt="Wallet Style 2 — photo B">
+            </div>
+            <figcaption>Style 2</figcaption>
+          </figure>
+
+          <!-- Style 3 -->
+          <figure class="card">
+            <div class="pair">
+              <img src="/images/products/wallets/style3-a.jpg" alt="Wallet Style 3 — photo A">
+              <img src="/images/products/wallets/style3-b.jpg" alt="Wallet Style 3 — photo B">
+            </div>
+            <figcaption>Style 3</figcaption>
+          </figure>
+
+          <!-- Style 4 -->
+          <figure class="card">
+            <div class="pair">
+              <img src="/images/products/wallets/style4-a.jpg" alt="Wallet Style 4 — photo A">
+              <img src="/images/products/wallets/style4-b.jpg" alt="Wallet Style 4 — photo B">
+            </div>
+            <figcaption>Style 4</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <!-- Purses (2 styles) -->
+      <section>
+        <h2>Purses</h2>
+        <div class="gallery" aria-label="Purse styles">
+          <figure class="card">
+            <div class="pair">
+              <img src="/images/products/purses/style1-a.jpg" alt="Purse Style 1 — photo A">
+              <img src="/images/products/purses/style1-b.jpg" alt="Purse Style 1 — photo B">
+            </div>
+            <figcaption>Style 1</figcaption>
+          </figure>
+
+          <figure class="card">
+            <div class="pair">
+              <img src="/images/products/purses/style2-a.jpg" alt="Purse Style 2 — photo A">
+              <img src="/images/products/purses/style2-b.jpg" alt="Purse Style 2 — photo B">
+            </div>
+            <figcaption>Style 2</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <!-- Gun Holsters (3 styles) -->
+      <section>
+        <h2>Gun Holsters</h2>
+        <div class="gallery" aria-label="Holster styles">
+          <figure class="card">
+            <div class="pair">
+              <img src="/images/products/holsters/style1-a.jpg" alt="Holster Style 1 — photo A">
+              <img src="/images/products/holsters/style1-b.jpg" alt="Holster Style 1 — photo B">
+            </div>
+            <figcaption>Style 1</figcaption>
+          </figure>
+
+          <figure class="card">
+            <div class="pair">
+              <img src="/images/products/holsters/style2-a.jpg" alt="Holster Style 2 — photo A">
+              <img src="/images/products/holsters/style2-b.jpg" alt="Holster Style 2 — photo B">
+            </div>
+            <figcaption>Style 2</figcaption>
+          </figure>
+
+          <figure class="card">
+            <div class="pair">
+              <img src="/images/products/holsters/style3-a.jpg" alt="Holster Style 3 — photo A">
+              <img src="/images/products/holsters/style3-b.jpg" alt="Holster Style 3 — photo B">
+            </div>
+            <figcaption>Style 3</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <!-- Phone Case (1 style) -->
+      <section>
+        <h2>Phone Case</h2>
+        <div class="gallery" aria-label="Phone case style">
+          <figure class="card">
+            <div class="pair">
+              <img src="/images/products/phone/style1-a.jpg" alt="Phone Case Style 1 — photo A">
+              <img src="/images/products/phone/style1-b.jpg" alt="Phone Case Style 1 — photo B">
+            </div>
+            <figcaption>Style 1</figcaption>
+          </figure>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- Toggle script -->
+  <script>
+  (function () {
+    const menu = document.getElementById('sideMenu');
+    const btn  = document.getElementById('menuButton');
+    const links = document.querySelectorAll('#sideMenu .navlink');
+    function toggle(force) {
+      const willOpen = (typeof force === 'boolean') ? force : !menu.classList.contains('open');
+      menu.classList.toggle('open', willOpen);
+      btn.setAttribute('aria-expanded', String(willOpen));
+    }
+    btn.addEventListener('click', () => toggle());
+    btn.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); }
+    });
+    links?.forEach(a => a.addEventListener('click', () => toggle(false)));
+    document.addEventListener('click', (e) => {
+      if (!menu.contains(e.target) && !btn.contains(e.target)) toggle(false);
+    });
+  })();
+  </script>
+
+</body>
+</html>

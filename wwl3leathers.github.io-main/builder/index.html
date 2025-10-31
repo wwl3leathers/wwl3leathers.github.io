@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="robots" content="noindex,nofollow" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>3Leathers • Builder Panel</title>
+  <style>
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; margin: 24px; line-height: 1.45; }
+    .wrap { max-width: 900px; margin: 0 auto; }
+    h1 { margin: 0 0 8px; }
+    .note { background: #fff8dc; border: 1px solid #e7d99c; padding: 12px; border-radius: 10px; }
+    button { padding: 8px 12px; border-radius: 10px; border: 1px solid #ddd; cursor: pointer; }
+    button + button { margin-left: 8px; }
+    .panel { margin-top: 16px; padding: 12px; border: 1px solid #eee; border-radius: 12px; }
+    .ok { color: #0a7a0a; }
+    .warn { color: #b45f06; }
+    .bad { color: #b00020; }
+    .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+    .small { font-size: 0.92rem; opacity: 0.9; }
+    .hr { height: 1px; background: #eee; margin: 16px 0; }
+    .grid-outline * { outline: 1px dashed rgba(0,0,0,.15); outline-offset: -1px; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Builder Panel</h1>
+    <div class="note small">Private workspace for Walter only. Not linked in nav. If anything feels off, say: <span class="mono">Restore Agent Protocol 2025</span>.</div>
+
+    <div class="panel">
+      <strong>Quick Actions</strong><br><br>
+      <button id="toggleGrid">Toggle grid outlines</button>
+      <button id="scanImages">Scan images for issues</button>
+      <button id="listImages">List all images found</button>
+      <button id="copyBug">Copy bug-report template</button>
+      <div id="results" class="small" style="margin-top:10px;"></div>
+    </div>
+
+    <div class="panel">
+      <strong>Build Checklist</strong>
+      <ul class="small">
+        <li>Header: logo centered, hamburger visible and clickable</li>
+        <li>Background: <span class="mono">workshop-background.jpg</span> loads and scales on mobile</li>
+        <li>Gallery: only top 4 + final 5 images on home</li>
+        <li>“Support the Craft” lives on main page only (not in nav)</li>
+        <li>All images compressed; no single asset > 500 KB if possible</li>
+        <li>No duplicate <code>&lt;head&gt;</code>/<code>&lt;body&gt;</code> tags</li>
+      </ul>
+    </div>
+
+    <div class="panel">
+      <strong>Agent Protocol 2025 (key points)</strong>
+      <div class="small">
+        - Empathy before judgment • candid, no cheerleader • step-by-step “next”<br>
+        - Grey Scale 0–100 • Archive of Whispers • Address as “Agent”
+      </div>
+    </div>
+    <div class="panel" id="hamburgerPanel">
+      <strong>Hamburger Health Check</strong>
+      <div class="small" style="margin:6px 0 10px;">
+        Loads your home page in a preview and tests if the hamburger exists, is clickable,
+        and actually opens a menu.
+      </div>
+      <button id="loadPreview">Load Home Preview</button>
+      <button id="runHamburgerCheck" disabled>Run Check</button>
+      <div id="hamburgerResults" class="small" style="margin-top:10px;"></div>
+      <div style="margin-top:10px;border:1px solid #eee;border-radius:12px;overflow:hidden">
+        <iframe id="sitePreview" src="" style="width:100%;height:700px;border:0;background:#fafafa"></iframe>
+      </div>
+    </div>
+    <div class="hr"></div>
+    <div class="small">Version: Builder Panel v1.0 • safe to edit anytime.</div>
+  </div>
+
+  <script>
+    // Toggle outlines to visualize layout boxes
+    document.getElementById('toggleGrid').addEventListener('click', () => {
+      document.body.classList.toggle('grid-outline');
+    });
+
+    // Scan IMG tags for common issues
+    document.getElementById('scanImages').addEventListener('click', () => {
+      const imgs = Array.from(document.images);
+      const problems = [];
+      imgs.forEach(img => {
+        const info = {
+          src: img.currentSrc || img.src,
+          natural: img.naturalWidth + 'x' + img.naturalHeight,
+          displayed: Math.round(img.clientWidth) + 'x' + Math.round(img.clientHeight),
+          alt: img.getAttribute('alt')
+        };
+        if (!img.complete || img.naturalWidth === 0) {
+          problems.push({ level: 'bad', msg: 'Broken/missing image', info });
+        } else {
+          if (img.naturalWidth > 2500 || img.naturalHeight > 2500) {
+            problems.push({ level: 'warn', msg: 'Huge source image (consider compressing/resizing)', info });
+          }
+          if (!info.alt || info.alt.trim() === '') {
+            problems.push({ level: 'warn', msg: 'Missing alt text (SEO/accessibility)', info });
+          }
+        }
+      });
+      const box = document.getElementById('results');
+      if (!imgs.length) {
+        box.innerHTML = '<span class="warn">No &lt;img&gt; tags found on this page.</span>';
+        return;
+      }
+      if (!problems.length) {
+        box.innerHTML = '<span class="ok">Images look good. No obvious issues detected.</span>';
+      } else {
+        box.innerHTML = problems.map(p => {
+          return `<div class="${p.level}">${p.msg} — <span class="mono">${p.info.src}</span> ` +
+                 `<span class="small">[natural ${p.info.natural}, shown ${p.info.displayed}, alt="${(p.info.alt||'').replace(/"/g,'&quot;')}"]</span></div>`;
+        }).join('');
+      }
+    });
+
+    // List all IMG sources for quick copy/paste
+    document.getElementById('listImages').addEventListener('click', () => {
+      const list = Array.from(document.images).map(i => i.currentSrc || i.src);
+      const box = document.getElementById('results');
+      if (!list.length) { box.innerHTML = '<span class="warn">No images found.</span>'; return; }
+      box.innerHTML = '<div class="mono small">' + list.join('<br>') + '</div>';
+    });
+
+    // Copy a ready-to-fill bug template to clipboard
+    document.getElementById('copyBug').addEventListener('click', async () => {
+      const template = `Bug Report — 3Leathers
+Page/URL: (paste)
+Issue: (e.g., hamburger not opening)
+Expected: 
+Actual: 
+Steps to Reproduce: 
+Screenshot/Snippet: 
+Notes: (e.g., started after commit abc123)`;
+      try {
+        await navigator.clipboard.writeText(template);
+        document.getElementById('results').innerHTML = '<span class="ok">Bug template copied. Paste anywhere (Ctrl/Cmd+V).</span>';
+      } catch {
+        document.getElementById('results').innerHTML = '<span class="warn">Could not copy automatically. Select and copy manually:</span><pre class="mono small">'+template+'</pre>';
+      }
+    });
+       // --- Hamburger Health Check (robust bind + fallback) ---
+(function () {
+  const bind = () => {
+    const previewBtn = document.getElementById('loadPreview');
+    const checkBtn   = document.getElementById('runHamburgerCheck');
+    const iframe     = document.getElementById('sitePreview');
+    const out        = document.getElementById('hamburgerResults');
+
+    if (!previewBtn || !checkBtn || !iframe || !out) return;
+
+    function logLine(level, text) {
+      out.innerHTML += `<div class="${level}">${text}</div>`;
+    }
+
+    function doPreview() {
+      out.innerHTML = '';
+      // cache-bust so GH Pages doesn’t serve an old copy
+      iframe.src = '/?_=' + Date.now();
+      checkBtn.disabled = true;
+      logLine('small', 'Loading home page preview…');
+      iframe.onload = () => {
+        logLine('ok', 'Home preview loaded.');
+        checkBtn.disabled = false;
+      };
+    }
+
+    function doCheck() {
+      out.innerHTML = '';
+      const doc = iframe.contentDocument || iframe.contentWindow?.document;
+      if (!doc) { logLine('bad', 'Could not access preview document.'); return; }
+
+      // 1) Find a likely hamburger button
+      const hamburger = doc.querySelector(
+        '.menu-icon, .hamburger, button[aria-label="Menu"], #hamburger, .menu-toggle, .nav-toggle'
+      );
+      if (!hamburger) {
+        logLine('bad', 'No hamburger element found (looked for .menu-icon, .hamburger, #hamburger…).');
+        return;
+      }
+      logLine('ok', `Found hamburger: <span class="mono">${hamburger.className || hamburger.id || hamburger.tagName}</span>`);
+
+      // 2) Find a likely menu panel
+      const menuPanel = doc.querySelector('#sideMenu, nav .menu, nav[role="navigation"], .mobile-menu, .drawer, .nav-menu, #menu');
+      if (!menuPanel) {
+        logLine('warn', 'No obvious menu panel yet (looked for #sideMenu, .mobile-menu, .drawer, nav…). It may be injected later.');
+      } else {
+        const visible = !!(menuPanel.offsetParent || getComputedStyle(menuPanel).display !== 'none' && getComputedStyle(menuPanel).visibility !== 'hidden');
+        logLine(visible ? 'warn' : 'small', `Menu panel detected but currently ${visible ? 'visible' : 'hidden'}.`);
+      }
+
+      // 3) Try clicking the hamburger
+      try {
+        hamburger.click();
+        setTimeout(() => {
+          const menuAfter = doc.querySelector('#sideMenu, .mobile-menu, .drawer, .nav-menu, #menu, nav .menu');
+          if (!menuAfter) {
+            logLine('warn', 'Clicked hamburger, but still no menu panel found. Check JS wiring / selectors.');
+          } else {
+            const style = getComputedStyle(menuAfter);
+            const nowVisible = !!(menuAfter.offsetParent || (style.display !== 'none' && style.visibility !== 'hidden' && style.opacity !== '0'));
+            logLine(nowVisible ? 'ok' : 'warn', `After click, menu panel is ${nowVisible ? 'VISIBLE' : 'still hidden'}.`);
+          }
+
+          // 4) z-index sanity check
+          const hamStyle = getComputedStyle(hamburger);
+          const z = parseInt(hamStyle.zIndex || '0', 10);
+          if (isNaN(z) || z < 10) {
+            logLine('warn', `Hamburger z-index looks low (${hamStyle.zIndex || 'auto'}). It might be under other elements.`);
+          } else {
+            logLine('small', `Hamburger z-index = ${hamStyle.zIndex}.`);
+          }
+        }, 150);
+      } catch (e) {
+        logLine('bad', 'Error clicking hamburger: ' + (e?.message || e));
+      }
+    }
+
+    // Attach listeners
+    previewBtn.addEventListener('click', doPreview);
+    checkBtn.addEventListener('click', doCheck);
+
+    // Fallback: expose globals in case listeners don’t bind
+    window.__loadPreview = doPreview;
+    window.__runHamburgerCheck = doCheck;
+  };
+
+  // Bind now if DOM is ready; otherwise wait
+  if (document.readyState === 'loading') {
+    window.addEventListener('DOMContentLoaded', bind);
+  } else {
+    bind();
+  }
+})();
+
+  </script>
+</body>
+</html>
