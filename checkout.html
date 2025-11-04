@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>3Leathers — Checkout</title>
+  <meta name="description" content="Finalize your handmade leather order from 3Leathers." />
+  <style>
+    :root{
+      --bg:#0b0b0b; --ink:#f8f5e3; --accent:#d6b14a; --muted:rgba(255,255,255,.08);
+      --ok:#3ddc84; --err:#ff6b6b;
+    }
+    html,body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial}
+    a{color:var(--accent)}
+    header{position:sticky;top:0;z-index:10;background:rgba(0,0,0,.6);backdrop-filter:saturate(140%) blur(6px);border-bottom:1px solid var(--muted)}
+    .wrap{max-width:980px;margin:auto;padding:16px}
+    .row{display:flex;align-items:center;gap:12px;justify-content:space-between}
+    .brand{display:flex;align-items:center;gap:10px}
+    .brand img{height:40px;border-radius:4px}
+    nav a{margin-left:10px}
+    .hero{padding:36px 16px;border-bottom:1px solid var(--muted);background:linear-gradient(180deg, rgba(0,0,0,.55), rgba(0,0,0,.7)), url("images/Backdrop2-min.jpeg") center/cover}
+    .hero h1{margin:0 0 6px 0}
+    .muted{opacity:.85}
+    .grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    @media (max-width:860px){.grid{grid-template-columns:1fr}}
+    .card{background:rgba(0,0,0,.55);border:1px solid var(--muted);border-radius:14px;padding:16px}
+    table{width:100%;border-collapse:collapse}
+    th,td{padding:10px;border-bottom:1px solid var(--muted);text-align:left;vertical-align:top}
+    .pill{padding:10px 14px;border-radius:999px;background:var(--accent);color:#000;font-weight:700;text-decoration:none;border:none;cursor:pointer}
+    .pill.secondary{background:#2a2a2a;color:var(--ink);border:1px solid var(--muted)}
+    input[type=text],input[type=email],input[type=tel],textarea,select{
+      width:100%;margin-top:6px;padding:10px 12px;border-radius:10px;border:1px solid var(--muted);background:#0f0f0f;color:var(--ink)
+    }
+    textarea{min-height:110px;resize:vertical}
+    .status{margin-top:12px;font-weight:700}
+    .ok{color:var(--ok)} .err{color:var(--err)}
+    footer{padding:24px 16px;border-top:1px solid var(--muted);text-align:center;color:#cfc8a8}
+    .btns{display:flex;gap:10px;flex-wrap:wrap}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap row">
+      <div class="brand">
+        <img src="images/Logo-min.jpg" alt="3Leathers logo">
+        <strong>3Leathers</strong>
+      </div>
+      <nav>
+        <a href="index.html">Home</a> •
+        <a href="shop.html">Shop</a> •
+        <a href="custom.html">Custom</a> •
+        <a href="checkout.html"><strong>Checkout</strong></a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="wrap">
+      <h1>Checkout</h1>
+      <p class="muted">Review your order, add your contact details, and send. I’ll confirm timelines and any deposit before work begins.</p>
+      <div class="btns" style="margin-top:10px">
+        <a class="pill" href="shop.html">Back to Shop</a>
+        <button class="pill secondary" id="clearCart">Clear Order</button>
+      </div>
+    </div>
+  </section>
+
+  <main class="wrap grid">
+    <!-- Order summary -->
+    <section class="card">
+      <h2>Your Order</h2>
+      <table id="orderTable" aria-live="polite">
+        <thead>
+          <tr><th>Item</th><th>Options / Notes</th><th>Qty</th><th>Remove</th></tr>
+        </thead>
+        <tbody id="orderBody"><tr><td colspan="4" class="muted">Loading…</td></tr></tbody>
+      </table>
+      <p class="muted" id="emptyMsg" style="display:none">Your order is empty. Add items on the <a href="shop.html">Shop</a> page.</p>
+    </section>
+
+    <!-- Customer details + submit -->
+    <section class="card">
+      <h2>Contact & Submit</h2>
+      <form id="checkoutForm" action="https://formspree.io/f/xvgvjnbe" method="POST" novalidate>
+        <label for="name">Name *</label>
+        <input id="name" name="name" type="text" required>
+
+        <label for="email" style="margin-top:10px">Email *</label>
+        <input id="email" name="email" type="email" required>
+
+        <label for="phone" style="margin-top:10px">Phone (optional)</label>
+        <input id="phone" name="phone" type="tel">
+
+        <label for="preferred" style="margin-top:10px">Preferred Payment</label>
+        <select id="preferred" name="preferred">
+          <option>PayPal</option>
+          <option>Cash App</option>
+          <option>Discuss / Invoice</option>
+        </select>
+
+        <label for="notes" style="margin-top:10px">Notes (optional)</label>
+        <textarea id="notes" name="notes" placeholder="Anything else I should know?"></textarea>
+
+        <!-- Hidden fields -->
+        <textarea id="orderJson" name="orderJson" hidden></textarea>
+        <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
+
+        <div class="btns" style="margin-top:12px">
+          <button class="pill" type="submit">Send Order</button>
+          <button class="pill secondary" type="reset">Reset</button>
+        </div>
+
+        <div id="status" class="status" role="status" aria-live="polite"></div>
+
+        <hr style="margin:16px 0;border:0;border-top:1px solid var(--muted)">
+        <p class="muted">After submitting, you can complete payment here:</p>
+        <div class="btns">
+          <a class="pill" target="_blank" href="https://www.paypal.me/WalterLewis675">PayPal</a>
+          <a class="pill" target="_blank" href="https://cash.app/$UncleButch3">Cash App</a>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <small>&copy; 3Leathers — No machines. Made by hand.</small>
+    </div>
+  </footer>
+
+  <script>
+    // Simple cart helpers (mirror of shop.html)
+    const KEY='orderItems';
+    function getCart(){ try{ return JSON.parse(localStorage.getItem(KEY))||[] }catch(e){ return [] } }
+    function saveCart(items){ localStorage.setItem(KEY, JSON.stringify(items)) }
+
+    // Render order table
+    function render(){
+      const items = getCart();
+      const body = document.getElementById('orderBody');
+      const empty = document.getElementById('emptyMsg');
+      body.innerHTML='';
+      if(!items.length){
+        empty.style.display='block';
+        body.innerHTML = '<tr><td colspan="4" class="muted">No items.</td></tr>';
+        return;
+      }
+      empty.style.display='none';
+      items.forEach((it,idx)=>{
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td><strong>${it.item||''}</strong></td>
+          <td>
+            ${it.color?`<div>Color: ${it.color}</div>`:''}
+            ${it.notes?`<div>Notes: ${it.notes}</div>`:''}
+          </td>
+          <td>${it.qty||1}</td>
+          <td><button class="pill secondary" data-remove="${idx}" type="button">Remove</button></td>
+        `;
+        body.appendChild(tr);
+      });
+      body.querySelectorAll('[data-remove]').forEach(btn=>{
+        btn.addEventListener('click', ()=>{
+          const i = parseInt(btn.getAttribute('data-remove'),10);
+          const cart = getCart(); cart.splice(i,1); saveCart(cart); render();
+        });
+      });
+    }
+
+    // Build JSON for submission
+    function buildOrderJson(){
+      const items = getCart();
+      document.getElementById('orderJson').value = JSON.stringify(items, null, 2);
+    }
+
+    // Clear cart
+    document.getElementById('clearCart').addEventListener('click', ()=>{
+      localStorage.removeItem(KEY); render();
+    });
+
+    // Handle submit via AJAX to Formspree
+    const form = document.getElementById('checkoutForm');
+    const status = document.getElementById('status');
+    form.addEventListener('submit', async (e)=>{
+      e.preventDefault();
+      buildOrderJson();
+      status.textContent='Sending…'; status.className='status';
+      const data = new FormData(form);
+      try{
+        const resp = await fetch(form.action, { method:'POST', body:data, headers:{'Accept':'application/json'} });
+        if(resp.ok){
+          status.textContent='Thanks! Your order was sent. I will confirm details and timing shortly.';
+          status.classList.add('ok');
+          localStorage.removeItem(KEY);
+          render();
+          form.reset();
+        } else {
+          const j = await resp.json().catch(()=>({}));
+          status.textContent=(j.errors&&j.errors.length?j.errors.map(e=>e.message).join(', '):'Submission failed.')+' Please try again.';
+          status.classList.add('err');
+        }
+      }catch(err){
+        status.textContent='Network error — please try again.'; status.classList.add('err');
+      }
+    });
+
+    render();
+  </script>
+</body>
+</html>
