@@ -28,12 +28,66 @@
     .pill{padding:10px 16px;border-radius:999px;background:var(--accent);color:#000;font-weight:700}
     .pill.secondary{background:#2a2a2a;color:var(--ink);border:1px solid var(--muted)}
     h2{margin:20px 0 10px}
+
+    /* ===== Featured Gallery (3-up carousel) ===== */
+    .featured-gallery{
+      position:relative;border:1px solid var(--muted);border-radius:14px;overflow:hidden;background:rgba(0,0,0,.55);
+      padding:12px 44px; /* leave room for arrows */
+    }
+    .fg-viewport{
+      overflow:hidden;
+    }
+    .fg-track{
+      display:flex;gap:12px;will-change:transform;transition:transform .35s ease;
+    }
+    .fg-item{
+      flex:0 0 calc((100% - 24px)/3); /* 3-up with 12px gaps */
+      border-radius:10px;overflow:hidden;background:#111;border:1px solid var(--muted);
+      position:relative;
+    }
+    .fg-item img{
+      display:block;width:100%;height:100%;object-fit:cover;aspect-ratio:4/3;
+    }
+    .fg-prev,.fg-next{
+      position:absolute;top:50%;transform:translateY(-50%);
+      width:36px;height:36px;border-radius:999px;border:1px solid var(--muted);
+      background:#1a1a1a;color:var(--ink);font-size:20px;line-height:34px;text-align:center;cursor:pointer;
+    }
+    .fg-prev{left:8px}
+    .fg-next{right:8px}
+    .fg-prev[disabled], .fg-next[disabled]{opacity:.4;cursor:not-allowed}
+
+    /* Zoom overlay */
+    .zoom-overlay{
+      position:fixed;inset:0;background:rgba(0,0,0,.8);
+      display:none;align-items:center;justify-content:center;z-index:50;
+      padding:20px;
+    }
+    .zoom-overlay.open{display:flex}
+    .zoom-overlay img{
+      max-width:90vw;max-height:90vh;object-fit:contain;border-radius:12px;border:1px solid var(--muted);
+    }
+    .zoom-close{
+      position:fixed;top:14px;right:14px;background:#1a1a1a;border:1px solid var(--muted);color:var(--ink);
+      border-radius:999px;padding:8px 12px;cursor:pointer;font-weight:700;
+    }
+
+    @media (max-width:900px){
+      .fg-item{flex-basis:calc((100% - 12px)/2);} /* 2-up */
+    }
+    @media (max-width:640px){
+      .fg-item{flex-basis:100%;} /* 1-up */
+      .featured-gallery{padding:12px 44px}
+    }
+
+    /* ===== Cards (legacy, retained for other sections if any) ===== */
     .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
     @media (max-width:900px){.grid{grid-template-columns:1fr 1fr}}
     @media (max-width:640px){.grid{grid-template-columns:1fr}}
     .card{background:rgba(0,0,0,.55);border:1px solid var(--muted);border-radius:14px;overflow:hidden}
     .card img{width:100%;height:220px;object-fit:cover;background:#111;display:block}
     .pad{padding:14px}
+
     footer{margin-top:20px;border-top:1px solid var(--muted);background:rgba(0,0,0,.6)}
     .donos{padding:20px 16px;border-top:1px solid var(--muted)}
     .donos h3{text-align:center;margin:0 0 8px 0}
@@ -72,33 +126,98 @@
 
   <main class="wrap">
     <h2>Featured Work</h2>
-    <div class="grid">
-      <article class="card">
-        <img src="images/Purse04-min.jpg" alt="Handmade purse">
-        <div class="pad">
-          <strong>Purses</strong>
-          <p>Classic shapes, burnished edges, built to last.</p>
-          <a class="pill" href="shop.html">See More</a>
-        </div>
-      </article>
-      <article class="card">
-        <img src="images/Holster-BF-min.jpeg" alt="Custom belt-fit holster">
-        <div class="pad">
-          <strong>Holsters</strong>
-          <p>Custom-fit belt holsters, molded and finished by hand.</p>
-          <a class="pill" href="shop.html">See More</a>
-        </div>
-      </article>
-      <article class="card">
-        <img src="images/Quick-Draw-min.jpeg" alt="Quick-draw holster">
-        <div class="pad">
-          <strong>Quick-Draw</strong>
-          <p>Fast-access profiles with tuned retention.</p>
-          <a class="pill" href="shop.html">See More</a>
-        </div>
-      </article>
+
+    <!-- Featured Gallery (3-up, arrows, click-to-zoom) -->
+    <div class="featured-gallery" aria-label="Featured Work gallery">
+      <button class="fg-prev" aria-label="Previous">‹</button>
+
+      <div class="fg-viewport" role="region" aria-roledescription="carousel" aria-label="Featured Work" aria-live="polite">
+        <ul class="fg-track">
+          <!-- Shuffled order as requested -->
+          <li class="fg-item">
+            <img src="images/Travel-Chess-1-min.jpeg"
+                 alt="Travel chess set in hand-stitched leather — Appalachian craft from North-Central West Virginia."
+                 loading="lazy" decoding="async">
+          </li>
+          <li class="fg-item">
+            <img src="images/Purse3-min.jpeg"
+                 alt="Small handmade leather purse with burnished edges — Bridgeport WV Mid-Atlantic everyday carry."
+                 loading="lazy" decoding="async">
+          </li>
+          <li class="fg-item">
+            <img src="images/Tobacco-Pouch2-min.jpg"
+                 alt="Leather tobacco pouch with secure wrap — crafted in the Allegheny region of West Virginia."
+                 loading="lazy" decoding="async">
+          </li>
+          <li class="fg-item">
+            <img src="images/UH4.jpg"
+                 alt="Hand-tooled leather piece with rustic finish — built in North-Central WV."
+                 loading="lazy" decoding="async">
+          </li>
+          <li class="fg-item">
+            <img src="images/Trifold-min.jpeg"
+                 alt="Trifold wallet, hand-cut and saddle-stitched — built to last in Bridgeport WV."
+                 loading="lazy" decoding="async">
+          </li>
+          <li class="fg-item">
+            <img src="images/Purse05-min.jpg"
+                 alt="Leather purse with classic Mid-Atlantic styling — Appalachian-made."
+                 loading="lazy" decoding="async">
+          </li>
+          <li class="fg-item">
+            <img src="images/Scroll-min.jpeg"
+                 alt="Leather scroll case — custom project from the Appalachian Highlands."
+                 loading="lazy" decoding="async">
+          </li>
+          <li class="fg-item">
+            <img src="images/phone-case-1-min.JPEG"
+                 alt="Sturdy leather phone case — everyday carry built in West Virginia."
+                 loading="lazy" decoding="async">
+          </li>
+          <li class="fg-item">
+            <img src="images/Purse4-min.jpeg"
+                 alt="Compact shoulder purse — hand-stitched in Bridgeport, WV."
+                 loading="lazy" decoding="async">
+          </li>
+          <li class="fg-item">
+            <img src="images/UOED7230.JPEG"
+                 alt="Custom leather piece with local dye blend — Mid-Atlantic craft tradition."
+                 loading="lazy" decoding="async">
+          </li>
+          <li class="fg-item">
+            <img src="images/Hunting-Kit-min.jpeg"
+                 alt="Field kit pouch set in rugged leather — made for Eastern U.S. woodsmen."
+                 loading="lazy" decoding="async">
+          </li>
+          <li class="fg-item">
+            <img src="images/Purse-min.jpeg"
+                 alt="Everyday leather handbag — Appalachian durability with a clean silhouette."
+                 loading="lazy" decoding="async">
+          </li>
+          <li class="fg-item">
+            <img src="images/Purse2-min.jpeg"
+                 alt="Minimal purse with hand-rubbed finish — crafted in North-Central West Virginia."
+                 loading="lazy" decoding="async">
+          </li>
+          <li class="fg-item">
+            <img src="images/Purse03-min.jpg"
+                 alt="Classic leather purse with stitched strap — made by 3Leathers in Bridgeport WV."
+                 loading="lazy" decoding="async">
+          </li>
+        </ul>
+      </div>
+
+      <button class="fg-next" aria-label="Next">›</button>
     </div>
+    <!-- /Featured Gallery -->
+
   </main>
+
+  <!-- Zoom overlay -->
+  <div class="zoom-overlay" id="zoomOverlay" aria-hidden="true" role="dialog" aria-label="Image zoom">
+    <button class="zoom-close" id="zoomClose" aria-label="Close zoom">Close ✕</button>
+    <img id="zoomImg" alt="">
+  </div>
 
   <!-- Donations (both PayPal and Cash App) -->
   <footer>
@@ -123,5 +242,77 @@
       <small>&copy; 3Leathers — Handmade by Walter Lewis III</small>
     </div>
   </footer>
+
+  <script>
+    (function(){
+      const track = document.querySelector('.fg-track');
+      const items = Array.from(document.querySelectorAll('.fg-item'));
+      const prev = document.querySelector('.fg-prev');
+      const next = document.querySelector('.fg-next');
+
+      let index = 0;
+
+      function getStepWidth(){
+        // Width to move by exactly one item (including gap)
+        const first = items[0];
+        if(!first) return 0;
+        const rect = first.getBoundingClientRect();
+        // Add gap (12px) by reading computed gap from track
+        const gap = parseFloat(getComputedStyle(track).gap || '12');
+        return rect.width + gap;
+      }
+
+      function maxIndex(){
+        // Number of fully scrollable positions based on visible columns
+        const viewport = document.querySelector('.fg-viewport');
+        const vw = viewport.getBoundingClientRect().width;
+        const itemW = items[0].getBoundingClientRect().width;
+        const gap = parseFloat(getComputedStyle(track).gap || '12');
+        const visible = Math.max(1, Math.round((vw + gap) / (itemW + gap)));
+        return Math.max(0, items.length - visible);
+      }
+
+      function update(){
+        const step = getStepWidth();
+        track.style.transform = `translateX(${-index * step}px)`;
+        const max = maxIndex();
+        prev.disabled = index <= 0;
+        next.disabled = index >= max;
+      }
+
+      prev.addEventListener('click', ()=>{ index = Math.max(0, index - 1); update(); });
+      next.addEventListener('click', ()=>{ index = Math.min(maxIndex(), index + 1); update(); });
+
+      window.addEventListener('resize', update);
+      update();
+
+      // Light zoom (overlay)
+      const overlay = document.getElementById('zoomOverlay');
+      const zoomImg = document.getElementById('zoomImg');
+      const zoomClose = document.getElementById('zoomClose');
+
+      document.querySelectorAll('.fg-item img').forEach(img=>{
+        img.addEventListener('click', ()=>{
+          zoomImg.src = img.src;
+          zoomImg.alt = img.alt;
+          overlay.classList.add('open');
+          overlay.setAttribute('aria-hidden','false');
+        });
+      });
+
+      function closeZoom(){
+        overlay.classList.remove('open');
+        overlay.setAttribute('aria-hidden','true');
+        zoomImg.removeAttribute('src');
+      }
+      zoomClose.addEventListener('click', closeZoom);
+      overlay.addEventListener('click', (e)=>{ if(e.target===overlay) closeZoom(); });
+      document.addEventListener('keydown', (e)=>{
+        if(e.key==='Escape') closeZoom();
+        if(e.key==='ArrowLeft') prev.click();
+        if(e.key==='ArrowRight') next.click();
+      });
+    })();
+  </script>
 </body>
 </html>
