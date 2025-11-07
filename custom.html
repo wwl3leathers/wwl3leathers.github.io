@@ -156,26 +156,44 @@
     </div>
   </footer>
 
-  <script>
-    // Page context
-    document.getElementById('yr').textContent = new Date().getFullYear();
-    const form = document.getElementById('customForm');
-    form.querySelector('[name="pageURL"]').value = location.href;
+ <script>
+  // Safe year stamp (only if the element exists)
+  (function () {
+    const yrEl = document.getElementById('yr');
+    if (yrEl) yrEl.textContent = new Date().getFullYear();
+  })();
 
-    // Build conversation thread → hidden textarea
-    const threadEl = document.getElementById('thread');
-    const inputEl  = document.getElementById('commentInput');
-    const convoEl  = document.getElementById('conversation');
-    const addBtn   = document.getElementById('addMsg');
-    const clearBtn = document.getElementById('clearMsg');
+  // Grab the correct form (matches your <form id="custom-request">)
+  const form = document.getElementById('custom-request');
+  if (!form) {
+    console.warn('custom-request form not found');
+  }
 
-    function rebuildConversation(){
-      const lines = Array.from(threadEl.querySelectorAll('li .msg')).map(x=>x.textContent.trim());
-      convoEl.value = lines.map((t,i)=>`[${String(i+1).padStart(2,'0')}] ${t}`).join('\n');
-    }
+  // Optional status line (only used if you add <div id="status"></div> somewhere)
+  const status = document.getElementById('status');
+
+  // Conversation helpers (only used if these elements exist)
+  const threadEl = document.getElementById('thread');
+  const inputEl  = document.getElementById('commentInput');
+  const convoEl  = document.getElementById('conversation');
+  const addBtn   = document.getElementById('addMsg');
+  const clearBtn = document.getElementById('clearMsg');
+
+  // Keep page URL in the hidden field you already have: name="page_url"
+  const pageUrlField = form ? form.querySelector('[name="page_url"]') : null;
+  if (pageUrlField) pageUrlField.value = location.href;
+
+  // Build conversation textarea safely (only if the elements exist)
+  function rebuildConversation(){
+    if (!threadEl || !convoEl) return;
+    const lines = Array.from(threadEl.querySelectorAll('li .msg')).map(x => x.textContent.trim());
+    convoEl.value = lines.map((t,i)=>`[${String(i+1).padStart(2,'0')}] ${t}`).join('\n');
+  }
+
+  if (addBtn && inputEl && threadEl) {
     addBtn.addEventListener('click', ()=>{
       const txt = (inputEl.value || '').trim();
-      if(!txt) return;
+      if (!txt) return;
       const li = document.createElement('li');
       li.innerHTML = `<div class="msg">${txt}</div>`;
       threadEl.appendChild(li);
@@ -183,62 +201,71 @@
       rebuildConversation();
       inputEl.focus();
     });
+  }
+
+  if (clearBtn && threadEl) {
     clearBtn.addEventListener('click', ()=>{
       threadEl.innerHTML = '';
       rebuildConversation();
-      inputEl.focus();
+      if (inputEl) inputEl.focus();
     });
+  }
 
-    // URL prefill for quick quotes
-    (function prefillFromQuery(){
-      const p = new URLSearchParams(location.search);
-      const map = {
-        name: '#name',
-        email: '#email',
-        phone: '#phone',
-        product: '#product',
-        leather: '#leather',
-        sizing: '#sizing',
-        referenceUrl: '#referenceUrl'
-      };
-      Object.entries(map).forEach(([key, sel])=>{
-        if (p.has(key)) {
-          const el = document.querySelector(sel);
-          if (!el) return;
-          el.value = p.get(key);
-        }
-      });
-    })();
+  // Prefill from query (safe: only touches fields that exist)
+  (function prefillFromQuery(){
+    const p = new URLSearchParams(location.search);
+    const map = {
+      name: '#name',
+      email: '#email',
+      phone: '#phone',
+      product: '#product',
+      leather: '#leather',
+      sizing: '#sizing',
+      referenceUrl: '#referenceUrl'
+    };
+    Object.entries(map).forEach(([key, sel])=>{
+      if (!p.has(key)) return;
+      const el = document.querySelector(sel);
+      if (el) el.value = p.get(key);
+    });
+  })();
 
-    // AJAX submit to Formspree (no page change)
-    const status = document.getElementById('status');
+  // Single AJAX submit with forced redirect to your custom-thanks page
+  if (form) {
     form.addEventListener('submit', async (e)=>{
       e.preventDefault();
-      status.textContent = 'Sending…'; status.className = 'status';
+      if (status) { status.textContent = 'Sending…'; status.className = 'status'; }
       rebuildConversation();
-      const formData = new FormData(form);
-      try{
-        const resp = await fetch(form.action, { method:'POST', body: formData, headers: { 'Accept': 'application/json' }});
-        if (resp.ok) {
-  // optional: quick visual confirmation before redirect
-  status.textContent = 'Thanks! Redirecting…';
-  status.classList.add('ok');
 
-  // ensure the conversation textarea is up to date
-  // (safe to keep; Formspree already received the payload)
-  // then send the customer to your custom page
-  window.location.href = 'https://3leathers.com/custom-thanks.html';
-  return;
-}
- else {
-          const data = await resp.json().catch(()=>({}));
-          const msg = (data && data.errors && data.errors.length) ? data.errors.map(e=>e.message).join(', ') : 'Submission failed.';
-          status.textContent = msg + ' Please try again.'; status.classList.add('err');
+      try {
+        const resp = await fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { 'Accept': 'application/json' }
+        });
+
+        if (resp.ok) {
+          if (status) { status.textContent = 'Thanks! Redirecting…'; status.classList.add('ok'); }
+          window.location.href = 'https://3leathers.com/custom-thanks.html';
+          return;
         }
-      } catch(err){
-        status.textContent = 'Network error — please try again in a moment.'; status.classList.add('err');
+
+        // Non-200: read Formspree error if present
+        let msg = 'Submission failed.';
+        try {
+          const data = await resp.json();
+          if (data && data.errors && data.errors.length) {
+            msg = data.errors.map(e=>e.message).join(', ');
+          }
+        } catch (_) {}
+        if (status) { status.textContent = msg + ' Please try again.'; status.classList.add('err'); }
+
+      } catch (err) {
+        if (status) { status.textContent = 'Network error — please try again in a moment.'; status.classList.add('err'); }
       }
     }, false);
-  </script>
+  }
+</script>
+
 </body>
 </html>
