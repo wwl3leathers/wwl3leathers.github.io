@@ -1,190 +1,237 @@
-<!-- custom.html v2025-11-07-B -->
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>Custom Order Request — 3Leathers</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="robots" content="noindex">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>3Leathers — Custom Request</title>
+  <meta name="description" content="Custom leather request form — 3Leathers by Walter Lewis III" />
   <style>
     :root{
-      --bg:#0e0e0c;
-      --ink:#f4e4a1; /* pastel yellow */
-      --ink-dim:#bfb083;
-      --field:#1b1b18;
-      --border:#3a3a31;
-      --accent:#997a2e;
+      --bg:#0b0b0b; --ink:#f8f5e3; --accent:#d6b14a; --muted:rgba(255,255,255,.08);
+      --ok:#3ddc84; --err:#ff6b6b;
     }
-    html,body{margin:0;height:100%;background:var(--bg);color:var(--ink);font-family:ui-serif, Georgia, "Times New Roman", serif;}
-
-    /* ===== Header (matches site look) ===== */
-    .site-header{position:sticky;top:0;z-index:50;background:#0c0c0a;border-bottom:1px solid #3a2f1b;}
-    .site-row{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:16px;padding:10px 14px;}
-    .brand{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:.2px}
-    .brand img{width:34px;height:34px;border-radius:6px;display:block}
-    .centerline{justify-self:center;white-space:nowrap;color:var(--ink)}
-    nav{justify-self:end;display:flex;gap:16px;align-items:center}
-    nav a{color:var(--ink);text-decoration:none;font-weight:600;opacity:.9}
-    nav a:hover{opacity:1;text-decoration:underline}
-    .dot{opacity:.6}
-
-    /* ===== Page body ===== */
-    .wrap{max-width:860px;margin:0 auto;padding:32px 20px 80px;}
-    header h1{margin:18px 0 6px;font-weight:800;letter-spacing:.3px}
-    header p{margin:0;color:var(--ink-dim)}
-    form{margin-top:24px;background:#12120f;border:1px solid var(--border);border-radius:14px;padding:20px 16px 18px}
+    html,body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial}
+    a{color:var(--accent);text-decoration:none}
+    header{position:sticky;top:0;z-index:10;background:rgba(0,0,0,.6);backdrop-filter:saturate(140%) blur(6px);border-bottom:1px solid var(--muted)}
+    .wrap{max-width:980px;margin:auto;padding:16px}
+    .row{display:flex;align-items:center;gap:12px;justify-content:space-between}
+    .brand{display:flex;align-items:center;gap:10px}
+    .brand img{height:40px;border-radius:4px}
+    nav a{margin-left:10px}
+    .hero{
+      padding:40px 16px;border-bottom:1px solid var(--muted);
+      background:linear-gradient(180deg, rgba(0,0,0,.55), rgba(0,0,0,.7)), url("images/Backdrop2-min.jpeg") center/cover no-repeat;
+    }
+    .hero h1{margin:0 0 6px 0}
+    form{background:rgba(0,0,0,.55);border:1px solid var(--muted);border-radius:14px;padding:20px;margin:24px 0}
     .grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-    .full{grid-column:1 / -1}
-    label{display:block;font-size:.92rem;margin:0 0 6px;color:var(--ink)}
-    input,select,textarea{
-      width:100%;box-sizing:border-box;
-      background:var(--field);color:var(--ink);
-      border:1px solid var(--border);border-radius:10px;
-      padding:12px 12px;font-size:1rem;outline:none;
+    .grid-1{grid-template-columns:1fr}
+    label{font-weight:600;font-size:14px}
+    input[type=text],input[type=email],input[type=tel],input[type=url],select,textarea{
+      width:100%;margin-top:6px;padding:10px 12px;border-radius:10px;border:1px solid var(--muted);
+      background:#0f0f0f;color:var(--ink);outline:none;
     }
-    input:focus,select:focus,textarea:focus{border-color:var(--accent)}
-    textarea{min-height:140px;resize:vertical}
-    .hint{font-size:.82rem;color:var(--ink-dim);margin-top:6px}
-    .actions{display:flex;gap:10px;margin-top:18px}
-    .btn{
-      appearance:none;border:1px solid var(--border);border-radius:999px;
-      padding:12px 18px;background:#191915;color:var(--ink);cursor:pointer;font-weight:600;
-    }
-    .btn.primary{background:var(--accent);color:#100f0a;border-color:#7a6225}
-    .btn[disabled]{opacity:.6;cursor:not-allowed}
-    footer{margin-top:26px;color:var(--ink-dim);font-size:.88rem}
-    small.req{color:var(--ink-dim);font-style:italic}
-    @media (max-width:720px){
-      .grid{grid-template-columns:1fr}
-      .centerline{display:none} /* phone: hide center phone line for space */
-    }
+    textarea{min-height:110px;resize:vertical}
+    .hint{font-size:12px;opacity:.75}
+    .pill{padding:10px 14px;border-radius:999px;background:var(--accent);color:#000;font-weight:700;text-decoration:none;border:none;cursor:pointer}
+    .pill.secondary{background:#2a2a2a;color:var(--ink);border:1px solid var(--muted)}
+    .actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
+    ul#thread{list-style:none;margin:10px 0 0 0;padding:0}
+    ul#thread li{background:#121212;border:1px solid var(--muted);padding:10px;border-radius:10px;margin:8px 0}
+    .msg{border-left:3px solid var(--accent);padding-left:10px}
+    .req{display:flex;gap:8px;align-items:center;margin-top:10px}
+    .req input[type=checkbox]{transform:scale(1.2)}
+    .status{margin-top:14px;font-weight:700}
+    .ok{color:var(--ok)} .err{color:var(--err)}
+    footer{padding:24px 16px;border-top:1px solid var(--muted);text-align:center;color:#cfc8a8}
+    @media (max-width:720px){.grid{grid-template-columns:1fr}}
   </style>
 </head>
 <body>
-
-  <!-- ===== SITE HEADER ===== -->
-  <header class="site-header">
-    <div class="site-row">
-      <a class="brand" href="/" rel="home" aria-label="3Leathers Home">
-        <img src="/images/Logo-min.jpg" alt="3Leathers logo">
-        <span>3Leathers</span>
-      </a>
-      <div class="centerline">(304) 669-1412 • Bridgeport, WV</div>
+  <header>
+    <div class="wrap row">
+      <div class="brand">
+        <img src="images/Logo-min.jpg" alt="3Leathers logo">
+        <strong>3Leathers</strong>
+      </div>
       <nav aria-label="Primary">
-        <a href="/">Home</a><span class="dot">•</span>
-        <a href="/shop.html">Shop</a><span class="dot">•</span>
-        <a href="/custom.html" aria-current="page">Custom</a><span class="dot">•</span>
-        <a href="/checkout.html">Checkout</a>
+        <a href="index.html">Home</a> •
+        <a href="shop.html">Shop</a> •
+        <a href="custom.html" aria-current="page"><strong>Custom</strong></a> •
+        <a href="checkout.html">Checkout</a>
       </nav>
     </div>
   </header>
 
-  <!-- ===== PAGE CONTENT ===== -->
-  <div class="wrap">
-    <header>
-      <h1>Custom Order Request</h1>
-      <p>Tell me what you’re dreaming up. I’ll reply from <strong>wwl3leathers@outlook.com</strong>.</p>
-    </header>
+  <section class="hero">
+    <div class="wrap">
+      <h1>Custom Leather Request</h1>
+      <p>No machines. Made by hand. Tell me what you have in mind — I’ll take it from there.</p>
+    </div>
+  </section>
 
-    <!-- Hidden iframe target (must be BEFORE the form) -->
-    <iframe id="fs_target" name="fs_target" style="display:none"></iframe>
+  <main class="wrap">
+    <!-- 3Leathers — Custom Request Form (Formspree v2) -->
+<form id="custom-request"
+      action="https://formspree.io/f/xvgvjnbe" method="POST"
+      accept-charset="UTF-8"
+      autocomplete="on"
+      novalidate>
 
-    <!-- Formspree iframe-POST -->
-    <form id="custom-request"
-          action="https://formspree.io/f/xvgvjnbe"
-          method="POST"
-          target="fs_target"
-          accept-charset="UTF-8"
-          autocomplete="on"
-          novalidate>
+  <!-- Customer Details -->
+  <label for="name">Name *</label>
+  <input id="name" name="name" type="text" required aria-required="true" placeholder="Your full name" />
 
-      <!-- Hidden helpers -->
-      <input type="hidden" name="_subject" value="New Custom Request — 3Leathers">
-      <input type="hidden" name="page_url" id="page_url" value="">
-      <input type="hidden" name="_redirect" value="https://3leathers.com/custom-thanks.html">
-      <!-- Honeypot -->
-      <input type="text" name="_gotcha" tabindex="-1" autocomplete="off"
-             style="position:absolute;left:-9999px;opacity:0;height:0;width:0;">
+  <label for="email">Email *</label>
+  <input id="email" name="email" type="email" required aria-required="true" placeholder="you@example.com" />
 
-      <div class="grid">
-        <div>
-          <label for="name">Your name <small class="req">(required)</small></label>
-          <input id="name" name="name" type="text" required placeholder="e.g., Walter">
-        </div>
+  <label for="phone">Phone (optional)</label>
+  <input id="phone" name="phone" type="tel" inputmode="tel" placeholder="(304) 555-0199" />
 
-        <div>
-          <label for="email">Email <small class="req">(required)</small></label>
-          <input id="email" name="email" type="email" required placeholder="you@example.com">
-        </div>
+  <!-- Project -->
+  <label for="item_type">Item Type *</label>
+  <select id="item_type" name="item_type" required aria-required="true">
+    <option value="" disabled selected>Select one…</option>
+    <option>Wallet</option>
+    <option>Purse</option>
+    <option>Holster</option>
+    <option>Other</option>
+  </select>
 
-        <div>
-          <label for="phone">Phone <small class="req">(optional)</small></label>
-          <input id="phone" name="phone" type="tel" placeholder="(optional)">
-        </div>
+  <label for="color_finish">Leather Color / Finish</label>
+  <input id="color_finish" name="color_finish" type="text" placeholder="e.g., Oxblood, matte" />
 
-        <div>
-          <label for="item">What are we making?</label>
-          <select id="item" name="item">
-            <option value="">Select an option…</option>
-            <option>Wallet</option>
-            <option>Watch Strap</option>
-            <option>Holster</option>
-            <option>Satchel/Bag</option>
-            <option>Bracelet</option>
-            <option>Other</option>
-          </select>
-        </div>
+  <label for="sizing_notes">Sizing / Fit Notes</label>
+  <input id="sizing_notes" name="sizing_notes" type="text" placeholder="Measurements or fit details" />
 
-        <div>
-          <label for="timeline">Timeline / needed by</label>
-          <input id="timeline" name="timeline" type="text" placeholder="e.g., ‘By Dec 10’">
-        </div>
+  <label for="ref_link">Reference Image Link (optional)</label>
+  <input id="ref_link" name="ref_link" type="url" inputmode="url" placeholder="https://..." />
+  <small>Tip: Paste any link to a photo — I’ll open it when reviewing your request.</small>
 
-        <div>
-          <label for="budget">Budget range</label>
-          <input id="budget" name="budget" type="text" placeholder="e.g., $80–$150">
-        </div>
+  <label for="notes">Conversation / Notes</label>
+  <textarea id="notes" name="notes" rows="6" placeholder="Tell me what you have in mind…"></textarea>
 
-        <div class="full">
-          <label for="details">Describe the piece</label>
-          <textarea id="details" name="details" placeholder="Colors, dimensions, inspirations, use-case…"></textarea>
-          <div class="hint">No file uploads here — if we need photos, I’ll ask by email.</div>
-        </div>
-      </div>
+  <!-- Acknowledgment -->
+  <label class="agree">
+    <input id="ack_deposit" name="ack_deposit" type="checkbox" required aria-required="true" />
+    I agree that custom work may require a deposit and build time.
+  </label>
 
-      <div class="actions">
-        <button class="btn primary" type="submit">Send request</button>
-        <button class="btn" type="reset">Reset</button>
-      </div>
+  <!-- Hidden metadata (optional but helpful) -->
+  <input type="hidden" name="_subject" value="New Custom Request — 3Leathers" />
+  <!-- Redirect after success (optional): create /custom-thanks.html if you want -->
+  <!-- <input type="hidden" name="_redirect" value="https://3leathers.com/custom-thanks.html" /> -->
+  <input type="hidden" id="page_url" name="page_url" value="" />
+  <!-- Simple honeypot to reduce spam -->
+  <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;opacity:0;height:0;width:0;" />
 
-      <footer>
-        <span>&copy; <span id="yr">2025</span> 3Leathers</span>
-      </footer>
-    </form>
-  </div>
+  <!-- Controls -->
+  <button type="submit">Send Request</button>
+  <button type="reset">Reset</button>
+</form>
+
+<script>
+  // Attach page URL for context in your Formspree dashboard/email
+  (function () {
+    var urlField = document.getElementById('page_url');
+    if (urlField) urlField.value = window.location.href;
+    // Prevent accidental double-submits
+    var form = document.getElementById('custom-request');
+    if (!form) return;
+    form.addEventListener('submit', function (e) {
+      var btn = form.querySelector('button[type="submit"]');
+      if (btn) {
+        btn.disabled = true;
+        btn.textContent = 'Sending…';
+      }
+    });
+  })();
+</script>
+
+  </main>
+
+  <footer>
+    <div class="wrap" style="text-align:center">
+      <small>&copy; <span id="yr"></span> 3Leathers — Handmade by Walter Lewis III</small>
+    </div>
+  </footer>
 
   <script>
-    (function(){
-      var yr = document.getElementById('yr'); if (yr) yr.textContent = new Date().getFullYear();
-      var form = document.getElementById('custom-request');
-      var page = document.getElementById('page_url'); if (page) page.value = location.href;
-      var iframe = document.getElementById('fs_target');
-      var firstLoad = true;
+    // Page context
+    document.getElementById('yr').textContent = new Date().getFullYear();
+    const form = document.getElementById('customForm');
+    form.querySelector('[name="pageURL"]').value = location.href;
 
-      if (form) form.addEventListener('submit', function(){
-        var btn = form.querySelector('button[type="submit"], input[type="submit"]');
-        if (btn) {
-          btn.disabled = true;
-          if ('textContent' in btn) btn.textContent = 'Sending…';
-          if ('value' in btn) btn.value = 'Sending…';
+    // Build conversation thread → hidden textarea
+    const threadEl = document.getElementById('thread');
+    const inputEl  = document.getElementById('commentInput');
+    const convoEl  = document.getElementById('conversation');
+    const addBtn   = document.getElementById('addMsg');
+    const clearBtn = document.getElementById('clearMsg');
+
+    function rebuildConversation(){
+      const lines = Array.from(threadEl.querySelectorAll('li .msg')).map(x=>x.textContent.trim());
+      convoEl.value = lines.map((t,i)=>`[${String(i+1).padStart(2,'0')}] ${t}`).join('\n');
+    }
+    addBtn.addEventListener('click', ()=>{
+      const txt = (inputEl.value || '').trim();
+      if(!txt) return;
+      const li = document.createElement('li');
+      li.innerHTML = `<div class="msg">${txt}</div>`;
+      threadEl.appendChild(li);
+      inputEl.value = '';
+      rebuildConversation();
+      inputEl.focus();
+    });
+    clearBtn.addEventListener('click', ()=>{
+      threadEl.innerHTML = '';
+      rebuildConversation();
+      inputEl.focus();
+    });
+
+    // URL prefill for quick quotes
+    (function prefillFromQuery(){
+      const p = new URLSearchParams(location.search);
+      const map = {
+        name: '#name',
+        email: '#email',
+        phone: '#phone',
+        product: '#product',
+        leather: '#leather',
+        sizing: '#sizing',
+        referenceUrl: '#referenceUrl'
+      };
+      Object.entries(map).forEach(([key, sel])=>{
+        if (p.has(key)) {
+          const el = document.querySelector(sel);
+          if (!el) return;
+          el.value = p.get(key);
         }
       });
-
-      if (iframe) iframe.addEventListener('load', function(){
-        if (firstLoad) { firstLoad = false; return; }
-        window.location.href = 'https://3leathers.com/custom-thanks.html';
-      });
     })();
+
+    // AJAX submit to Formspree (no page change)
+    const status = document.getElementById('status');
+    form.addEventListener('submit', async (e)=>{
+      e.preventDefault();
+      status.textContent = 'Sending…'; status.className = 'status';
+      rebuildConversation();
+      const formData = new FormData(form);
+      try{
+        const resp = await fetch(form.action, { method:'POST', body: formData, headers: { 'Accept': 'application/json' }});
+        if (resp.ok) {
+          status.textContent = 'Thanks! Your custom request was received.';
+          status.classList.add('ok');
+          form.reset(); threadEl.innerHTML = ''; convoEl.value = '';
+        } else {
+          const data = await resp.json().catch(()=>({}));
+          const msg = (data && data.errors && data.errors.length) ? data.errors.map(e=>e.message).join(', ') : 'Submission failed.';
+          status.textContent = msg + ' Please try again.'; status.classList.add('err');
+        }
+      } catch(err){
+        status.textContent = 'Network error — please try again in a moment.'; status.classList.add('err');
+      }
+    }, false);
   </script>
 </body>
 </html>
