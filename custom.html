@@ -71,86 +71,83 @@
   </section>
 
   <main class="wrap">
-    <form id="customForm" action="https://formspree.io/f/xvgvjnbe" method="POST" novalidate>
-      <!-- Helpful context for Formspree inbox -->
-      <input type="hidden" name="_subject" value="New Custom Request — 3Leathers">
-      <input type="hidden" name="pageTitle" value="3Leathers — Custom Request">
-      <input type="hidden" name="pageURL" value="">
+    <!-- 3Leathers — Custom Request Form (Formspree v2) -->
+<form id="custom-request"
+      action="https://formspree.io/f/xvgvjnbe" method="POST"
+      accept-charset="UTF-8"
+      autocomplete="on"
+      novalidate>
 
-      <!-- Contact + item basics -->
-      <div class="grid">
-        <div>
-          <label for="name">Name *</label>
-          <input id="name" name="name" type="text" autocomplete="name" required />
-        </div>
-        <div>
-          <label for="email">Email *</label>
-          <input id="email" name="email" type="email" autocomplete="email" required />
-        </div>
-        <div>
-          <label for="phone">Phone (optional)</label>
-          <input id="phone" name="phone" type="tel" autocomplete="tel" />
-        </div>
-        <div>
-          <label for="product">Item Type *</label>
-          <select id="product" name="product" required>
-            <option value="" disabled selected>Select one…</option>
-            <option>Wallet</option>
-            <option>Purse</option>
-            <option>Holster</option>
-            <option>Other</option>
-          </select>
-        </div>
-      </div>
+  <!-- Customer Details -->
+  <label for="name">Name *</label>
+  <input id="name" name="name" type="text" required aria-required="true" placeholder="Your full name" />
 
-      <!-- Options -->
-      <div class="grid" style="margin-top:10px">
-        <div>
-          <label for="leather">Leather Color / Finish</label>
-          <input id="leather" name="leather" type="text" placeholder="e.g., dark brown, oil-tan" />
-        </div>
-        <div class="grid-1">
-          <label for="sizing">Sizing / Fit Notes</label>
-          <textarea id="sizing" name="sizing" placeholder="Measurements, carry style, wrist size, belt width, etc."></textarea>
-        </div>
-      </div>
+  <label for="email">Email *</label>
+  <input id="email" name="email" type="email" required aria-required="true" placeholder="you@example.com" />
 
-      <!-- Reference link -->
-      <div class="grid" style="margin-top:10px">
-        <div class="grid-1">
-          <label for="referenceUrl">Reference Image Link (optional)</label>
-          <input id="referenceUrl" name="referenceUrl" type="url" placeholder="Paste a link to a photo or sketch (Drive, iCloud, Imgur)"/>
-          <p class="hint">Tip: Paste any link to a photo — I’ll open it when reviewing your request.</p>
-        </div>
-      </div>
+  <label for="phone">Phone (optional)</label>
+  <input id="phone" name="phone" type="tel" inputmode="tel" placeholder="(304) 555-0199" />
 
-      <!-- Interactive comments thread -->
-      <section style="margin-top:14px">
-        <label for="commentInput">Conversation / Notes</label>
-        <div class="actions">
-          <input id="commentInput" type="text" placeholder="Type a message for Walter…" style="flex:1;min-width:220px" />
-          <button id="addMsg" class="pill" type="button">+ Add Message</button>
-          <button id="clearMsg" class="pill secondary" type="button">Clear</button>
-        </div>
-        <ul id="thread" aria-live="polite"></ul>
-        <textarea id="conversation" name="conversation" hidden></textarea>
-      </section>
+  <!-- Project -->
+  <label for="item_type">Item Type *</label>
+  <select id="item_type" name="item_type" required aria-required="true">
+    <option value="" disabled selected>Select one…</option>
+    <option>Wallet</option>
+    <option>Purse</option>
+    <option>Holster</option>
+    <option>Other</option>
+  </select>
 
-      <!-- Consent + honeypot -->
-      <div class="req">
-        <input id="agree" name="consent" type="checkbox" value="yes" required />
-        <label for="agree">I agree that custom work may require a deposit and build time.</label>
-      </div>
-      <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
+  <label for="color_finish">Leather Color / Finish</label>
+  <input id="color_finish" name="color_finish" type="text" placeholder="e.g., Oxblood, matte" />
 
-      <!-- Submit -->
-      <div class="actions" style="margin-top:16px">
-        <button class="pill" type="submit">Send Request</button>
-        <button class="pill secondary" type="reset">Reset</button>
-      </div>
+  <label for="sizing_notes">Sizing / Fit Notes</label>
+  <input id="sizing_notes" name="sizing_notes" type="text" placeholder="Measurements or fit details" />
 
-      <div id="status" class="status" role="status" aria-live="polite"></div>
-    </form>
+  <label for="ref_link">Reference Image Link (optional)</label>
+  <input id="ref_link" name="ref_link" type="url" inputmode="url" placeholder="https://..." />
+  <small>Tip: Paste any link to a photo — I’ll open it when reviewing your request.</small>
+
+  <label for="notes">Conversation / Notes</label>
+  <textarea id="notes" name="notes" rows="6" placeholder="Tell me what you have in mind…"></textarea>
+
+  <!-- Acknowledgment -->
+  <label class="agree">
+    <input id="ack_deposit" name="ack_deposit" type="checkbox" required aria-required="true" />
+    I agree that custom work may require a deposit and build time.
+  </label>
+
+  <!-- Hidden metadata (optional but helpful) -->
+  <input type="hidden" name="_subject" value="New Custom Request — 3Leathers" />
+  <!-- Redirect after success (optional): create /custom-thanks.html if you want -->
+  <!-- <input type="hidden" name="_redirect" value="https://3leathers.com/custom-thanks.html" /> -->
+  <input type="hidden" id="page_url" name="page_url" value="" />
+  <!-- Simple honeypot to reduce spam -->
+  <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;opacity:0;height:0;width:0;" />
+
+  <!-- Controls -->
+  <button type="submit">Send Request</button>
+  <button type="reset">Reset</button>
+</form>
+
+<script>
+  // Attach page URL for context in your Formspree dashboard/email
+  (function () {
+    var urlField = document.getElementById('page_url');
+    if (urlField) urlField.value = window.location.href;
+    // Prevent accidental double-submits
+    var form = document.getElementById('custom-request');
+    if (!form) return;
+    form.addEventListener('submit', function (e) {
+      var btn = form.querySelector('button[type="submit"]');
+      if (btn) {
+        btn.disabled = true;
+        btn.textContent = 'Sending…';
+      }
+    });
+  })();
+</script>
+
   </main>
 
   <footer>
