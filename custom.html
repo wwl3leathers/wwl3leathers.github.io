@@ -40,6 +40,8 @@
     .ok{color:var(--ok)} .err{color:var(--err)}
     footer{padding:24px 16px;border-top:1px solid var(--muted);text-align:center;color:#cfc8a8}
     @media (max-width:720px){.grid{grid-template-columns:1fr}}
+    /* Hide the iframe used for background submission */
+    iframe#fs_target{display:none;width:0;height:0;border:0}
   </style>
 </head>
 <body>
@@ -66,10 +68,14 @@
   </section>
 
   <main class="wrap">
+    <!-- Hidden iframe target: lets the form POST to Formspree without leaving this page -->
+    <iframe id="fs_target" name="fs_target" title="Form submission target"></iframe>
+
     <!-- 3Leathers — Custom Request Form -->
     <form id="custom-request"
           action="https://formspree.io/f/xvgvjnbe"
           method="POST"
+          target="fs_target"
           accept-charset="UTF-8"
           autocomplete="on"
           novalidate>
@@ -132,6 +138,7 @@
 
       <!-- Hidden helpers -->
       <input type="hidden" name="_subject" value="New Custom Request — 3Leathers" />
+      <!-- _redirect not required with iframe approach, but harmless to keep -->
       <input type="hidden" name="_redirect" value="https://3leathers.com/custom-thanks.html" />
       <input type="hidden" id="page_url" name="page_url" value="" />
       <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;opacity:0;height:0;width:0;" />
@@ -151,53 +158,36 @@
     </div>
   </footer>
 
-  <!-- Single unified script (remove any other scripts) -->
+  <!-- Single script: no CORS, no fetch; redirect when iframe finishes -->
   <script>
     (function () {
       // Footer year
       var yr = document.getElementById('yr');
       if (yr) yr.textContent = new Date().getFullYear();
 
-      // Form + status
       var form = document.getElementById('custom-request');
       var statusEl = document.getElementById('status');
-      if (!form) return;
-
-      // Keep hidden page URL in sync
-      var pageUrlField = form.querySelector('[name="page_url"]');
+      var pageUrlField = document.getElementById('page_url');
       if (pageUrlField) pageUrlField.value = location.href;
 
-      // Force redirect on success (works on Free plans)
-      form.addEventListener('submit', function (e) {
-        e.preventDefault();
+      // Button UX (optional)
+      if (form) {
+        form.addEventListener('submit', function(){
+          var btn = form.querySelector('button[type="submit"]');
+          if (btn) { btn.disabled = true; btn.textContent = 'Sending…'; }
+          if (statusEl) { statusEl.textContent = 'Sending…'; statusEl.className = 'status'; }
+        }, false);
+      }
 
-        // Button UX
-        var btn = form.querySelector('button[type="submit"]');
-        if (btn) { btn.disabled = true; btn.textContent = 'Sending…'; }
-        if (statusEl) { statusEl.textContent = 'Sending…'; statusEl.className = 'status'; }
+      // When Formspree loads its "Thanks" page into the iframe, redirect parent
+      var iframe = document.getElementById('fs_target');
+      if (!iframe) return;
 
-        fetch(form.action, {
-          method: 'POST',
-          body: new FormData(form),
-          headers: { 'Accept': 'application/json' }
-        }).then(function (resp) {
-          if (resp.ok) {
-            if (statusEl) { statusEl.textContent = 'Thanks! Redirecting…'; statusEl.classList.add('ok'); }
-            window.location.href = 'https://3leathers.com/custom-thanks.html';
-            return;
-          }
-          return resp.json().then(function (data) {
-            var msg = 'Submission failed.';
-            if (data && data.errors && data.errors.length) {
-              msg = data.errors.map(function (e) { return e.message; }).join(', ');
-            }
-            if (statusEl) { statusEl.textContent = msg + ' Please try again.'; statusEl.classList.add('err'); }
-            if (btn) { btn.disabled = false; btn.textContent = 'Send Request'; }
-          });
-        }).catch(function () {
-          if (statusEl) { statusEl.textContent = 'Network error — please try again in a moment.'; statusEl.classList.add('err'); }
-          if (btn) { btn.disabled = false; btn.textContent = 'Send Request'; }
-        });
+      var firstLoad = true; // ignore the initial about:blank load
+      iframe.addEventListener('load', function(){
+        if (firstLoad) { firstLoad = false; return; }
+        if (statusEl) { statusEl.textContent = 'Thanks! Redirecting…'; statusEl.classList.add('ok'); }
+        window.location.href = 'https://3leathers.com/custom-thanks.html';
       }, false);
     })();
   </script>
