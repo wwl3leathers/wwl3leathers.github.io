@@ -1,3 +1,4 @@
+<!-- custom.html v2025-11-07-B -->
 <!doctype html>
 <html lang="en">
 <head>
@@ -13,11 +14,23 @@
       --field:#1b1b18;
       --border:#3a3a31;
       --accent:#997a2e;
-      --red:#a84a3a;
     }
     html,body{margin:0;height:100%;background:var(--bg);color:var(--ink);font-family:ui-serif, Georgia, "Times New Roman", serif;}
+
+    /* ===== Header (matches site look) ===== */
+    .site-header{position:sticky;top:0;z-index:50;background:#0c0c0a;border-bottom:1px solid #3a2f1b;}
+    .site-row{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:16px;padding:10px 14px;}
+    .brand{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:.2px}
+    .brand img{width:34px;height:34px;border-radius:6px;display:block}
+    .centerline{justify-self:center;white-space:nowrap;color:var(--ink)}
+    nav{justify-self:end;display:flex;gap:16px;align-items:center}
+    nav a{color:var(--ink);text-decoration:none;font-weight:600;opacity:.9}
+    nav a:hover{opacity:1;text-decoration:underline}
+    .dot{opacity:.6}
+
+    /* ===== Page body ===== */
     .wrap{max-width:860px;margin:0 auto;padding:32px 20px 80px;}
-    header h1{margin:8px 0 6px;font-weight:700;letter-spacing:.3px}
+    header h1{margin:18px 0 6px;font-weight:800;letter-spacing:.3px}
     header p{margin:0;color:var(--ink-dim)}
     form{margin-top:24px;background:#12120f;border:1px solid var(--border);border-radius:14px;padding:20px 16px 18px}
     .grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
@@ -41,10 +54,32 @@
     .btn[disabled]{opacity:.6;cursor:not-allowed}
     footer{margin-top:26px;color:var(--ink-dim);font-size:.88rem}
     small.req{color:var(--ink-dim);font-style:italic}
-    @media (max-width:720px){.grid{grid-template-columns:1fr}}
+    @media (max-width:720px){
+      .grid{grid-template-columns:1fr}
+      .centerline{display:none} /* phone: hide center phone line for space */
+    }
   </style>
 </head>
 <body>
+
+  <!-- ===== SITE HEADER ===== -->
+  <header class="site-header">
+    <div class="site-row">
+      <a class="brand" href="/" rel="home" aria-label="3Leathers Home">
+        <img src="/images/Logo-min.jpg" alt="3Leathers logo">
+        <span>3Leathers</span>
+      </a>
+      <div class="centerline">(304) 669-1412 • Bridgeport, WV</div>
+      <nav aria-label="Primary">
+        <a href="/">Home</a><span class="dot">•</span>
+        <a href="/shop.html">Shop</a><span class="dot">•</span>
+        <a href="/custom.html" aria-current="page">Custom</a><span class="dot">•</span>
+        <a href="/checkout.html">Checkout</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ===== PAGE CONTENT ===== -->
   <div class="wrap">
     <header>
       <h1>Custom Order Request</h1>
@@ -72,22 +107,22 @@
              style="position:absolute;left:-9999px;opacity:0;height:0;width:0;">
 
       <div class="grid">
-        <div class="">
+        <div>
           <label for="name">Your name <small class="req">(required)</small></label>
           <input id="name" name="name" type="text" required placeholder="e.g., Walter">
         </div>
 
-        <div class="">
+        <div>
           <label for="email">Email <small class="req">(required)</small></label>
           <input id="email" name="email" type="email" required placeholder="you@example.com">
         </div>
 
-        <div class="">
+        <div>
           <label for="phone">Phone <small class="req">(optional)</small></label>
           <input id="phone" name="phone" type="tel" placeholder="(optional)">
         </div>
 
-        <div class="">
+        <div>
           <label for="item">What are we making?</label>
           <select id="item" name="item">
             <option value="">Select an option…</option>
@@ -100,12 +135,12 @@
           </select>
         </div>
 
-        <div class="">
+        <div>
           <label for="timeline">Timeline / needed by</label>
           <input id="timeline" name="timeline" type="text" placeholder="e.g., ‘By Dec 10’">
         </div>
 
-        <div class="">
+        <div>
           <label for="budget">Budget range</label>
           <input id="budget" name="budget" type="text" placeholder="e.g., $80–$150">
         </div>
