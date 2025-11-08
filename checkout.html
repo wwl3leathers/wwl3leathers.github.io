@@ -223,5 +223,30 @@
 
     render();
   </script>
+(function () {
+  // Find the Formspree form on this page
+  var form = document.querySelector('form[action^="https://formspree.io"]');
+  if (!form) return;
+
+  form.addEventListener('submit', async function (e) {
+    e.preventDefault(); // stop the default navigation to Formspree page
+    var data = new FormData(form);
+
+    try {
+      await fetch(form.action, {
+        method: 'POST',
+        body: data,
+        headers: { 'Accept': 'application/json' }
+      });
+      // On success, send visitor to your thank-you page:
+      window.location.href = '/custom-thanks.html';
+    } catch (err) {
+      // If anything hiccups, still show your thank-you so users aren't stuck
+      window.location.href = '/custom-thanks.html';
+    }
+  });
+})();
+</script>
+
 </body>
 </html>
