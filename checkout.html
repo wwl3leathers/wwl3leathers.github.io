@@ -288,5 +288,29 @@
   });
 })();
 </script>
+
+<script>
+(function () {
+  document.addEventListener('DOMContentLoaded', function () {
+    var form = document.querySelector('form[action*="formspree.io"]');
+    if (!form) return;
+    var submit = form.querySelector('button[type="submit"], input[type="submit"]');
+    if (!submit) return;
+    var btnRow = submit.closest ? (submit.closest('.actions') || submit.closest('.btns') || submit) : submit;
+
+    var box = document.createElement('div');
+    box.className = 'pre-submit-note';
+    box.setAttribute('aria-live','polite');
+    box.style.border = '1px solid #ddd';
+    box.style.padding = '12px';
+    box.style.borderRadius = '8px';
+    box.style.margin = '16px 0';
+
+    box.innerHTML = '<p style="margin:0;">Thanks for reaching out! Your custom order request has landed on my workbench. I’ll email you shortly to confirm details and timeline. If you have photos or sketches, just reply to my email — attachments are welcome there.</p><p style="margin:8px 0 0;">— Walter @ 3Leathers (just me and a lot of leather tools)</p>';
+
+    form.insertBefore(box, btnRow);
+  });
+})();
+</script>
 </body>
 </html>
