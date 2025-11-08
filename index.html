@@ -1,72 +1,335 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>3Leathers – Custom Leather by Walter Lewis III</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>3Leathers — Handmade Leather by Walter Lewis III</title>
+  <meta name="description" content="No machines. Made by hand. Wallets, purses, holsters and custom leatherwork by 3Leathers." />
+  <style>
+    :root{
+      --bg:#0b0b0b; --ink:#f8f5e3; --accent:#d6b14a; --muted:rgba(255,255,255,.08);
+    }
+    html,body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial}
+    a{color:var(--accent);text-decoration:none}
+    header{position:sticky;top:0;z-index:10;background:rgba(0,0,0,.6);backdrop-filter:saturate(140%) blur(6px);border-bottom:1px solid var(--muted)}
+    .wrap{max-width:1100px;margin:auto;padding:16px}
+    .row{display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .brand{display:flex;align-items:center;gap:10px}
+    .brand img{height:40px;border-radius:4px}
+    nav a{margin-left:10px}
+    .hero{
+      padding:48px 16px;border-bottom:1px solid var(--muted);
+      background:linear-gradient(180deg, rgba(0,0,0,.55), rgba(0,0,0,.7)), url("images/Backdrop2-min.jpeg") center/cover no-repeat;
+      text-align:center;
+    }
+    .hero h1{margin:0 0 8px 0;font-size:clamp(28px,5vw,44px)}
+    .hero p{margin:0 auto;max-width:820px;opacity:.9}
+    .cta{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:14px}
+    .pill{padding:10px 16px;border-radius:999px;background:var(--accent);color:#000;font-weight:700}
+    .pill.secondary{background:#2a2a2a;color:var(--ink);border:1px solid var(--muted)}
+    h2{margin:20px 0 10px}
 
-  <!-- SEO & Open Graph -->
-  <meta name="description" content="Hand-made leather goods by Walter Lewis III — no machines, no shortcuts, one-of-a-kind every time.">
-  <meta property="og:title" content="3Leathers – Custom Leather by Walter Lewis III">
-  <meta property="og:description" content="Every piece designed by you, crafted by hand in West Virginia.">
-  <meta property="og:image" content="https://wwl3leathers.github.io/images/workshop-background.jpg">
-  <meta property="og:url" content="https://wwl3leathers.github.io/">
-  <meta name="twitter:card" content="summary_large_image">
+    /* ===== Featured Gallery (3-up carousel) ===== */
+    .featured-gallery{
+      position:relative;border:1px solid var(--muted);border-radius:14px;overflow:hidden;background:rgba(0,0,0,.55);
+      padding:12px 44px; /* leave room for arrows */
+    }
+    .fg-viewport{
+      overflow:hidden;
+    }
+    .fg-track{
+      display:flex;gap:12px;will-change:transform;transition:transform .35s ease;
+    }
+    .fg-item{
+      flex:0 0 calc((100% - 24px)/3); /* 3-up with 12px gaps */
+      border-radius:10px;overflow:hidden;background:#111;border:1px solid var(--muted);
+      position:relative;
+    }
+    .fg-item img{
+      display:block;width:100%;height:100%;object-fit:cover;aspect-ratio:4/3;
+    }
+    .fg-prev,.fg-next{
+      position:absolute;top:50%;transform:translateY(-50%);
+      width:36px;height:36px;border-radius:999px;border:1px solid var(--muted);
+      background:#1a1a1a;color:var(--ink);font-size:20px;line-height:34px;text-align:center;cursor:pointer;
+    }
+    .fg-prev{left:8px}
+    .fg-next{right:8px}
+    .fg-prev[disabled], .fg-next[disabled]{opacity:.4;cursor:not-allowed}
 
-  <!-- Styles & Icons -->
-  <link rel="stylesheet" href="style.css">
-  <link rel="icon" href="images/favicon.ico">
+    /* Zoom overlay */
+    .zoom-overlay{
+      position:fixed;inset:0;background:rgba(0,0,0,.8);
+      display:none;align-items:center;justify-content:center;z-index:50;
+      padding:20px;
+    }
+    .zoom-overlay.open{display:flex}
+    .zoom-overlay img{
+      max-width:90vw;max-height:90vh;object-fit:contain;border-radius:12px;border:1px solid var(--muted);
+    }
+    .zoom-close{
+      position:fixed;top:14px;right:14px;background:#1a1a1a;border:1px solid var(--muted);color:var(--ink);
+      border-radius:999px;padding:8px 12px;cursor:pointer;font-weight:700;
+    }
+
+    @media (max-width:900px){
+      .fg-item{flex-basis:calc((100% - 12px)/2);} /* 2-up */
+    }
+    @media (max-width:640px){
+      .fg-item{flex-basis:100%;} /* 1-up */
+      .featured-gallery{padding:12px 44px}
+    }
+
+    /* ===== Cards (legacy, retained for other sections if any) ===== */
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    @media (max-width:900px){.grid{grid-template-columns:1fr 1fr}}
+    @media (max-width:640px){.grid{grid-template-columns:1fr}}
+    .card{background:rgba(0,0,0,.55);border:1px solid var(--muted);border-radius:14px;overflow:hidden}
+    .card img{width:100%;height:220px;object-fit:cover;background:#111;display:block}
+    .pad{padding:14px}
+
+    footer{margin-top:20px;border-top:1px solid var(--muted);background:rgba(0,0,0,.6)}
+    .donos{padding:20px 16px;border-top:1px solid var(--muted)}
+    .donos h3{text-align:center;margin:0 0 8px 0}
+    .donation-buttons{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:8px}
+    .donate-btn{background-color:#d6b14a;color:#000;padding:10px 20px;border-radius:8px;font-weight:700}
+    .donate-btn.ca{background-color:#3ddc84}
+    .fine{color:#cfc8a8;text-align:center;padding:14px 16px}
+    .contact-info {
+  margin-left: auto;
+  font-size: 0.9rem;
+  color: var(--ink);
+  white-space: nowrap;
+}
+
+@media (max-width: 700px) {
+  .contact-info {
+    display: block;
+    margin-left: 0;
+    margin-top: 4px;
+    text-align: right;
+  }
+}
+  </style>
 </head>
-
 <body>
-
-  <!-- HEADER -->
   <header>
-    <nav class="navbar">
-      <a href="index.html" class="logo">3Leathers</a>
-      <ul class="nav-links">
-        <li><a href="shop.html">Shop</a></li>
-        <li><a href="custom.html">Custom</a></li>
-        <li><a href="checkout.html">Checkout</a></li>
-        <li><a href="https://www.instagram.com/3leathers" target="_blank">Instagram</a></li>
-      </ul>
-    </nav>
+    <div class="wrap row">
+      <div class="brand">
+        <img src="images/Logo-min.jpg" alt="3Leathers logo">
+        <strong>3Leathers</strong>
+      </div>
+      <span class="contact-info">(304) 669-1412 • Bridgeport, WV</span>
+      <nav>
+        <a href="index.html"><strong>Home</strong></a> •
+        <a href="shop.html">Shop</a> •
+        <a href="custom.html">Custom</a> •
+        <a href="checkout.html">Checkout</a>
+      </nav>
+    </div>
   </header>
 
-  <!-- HERO -->
-  <section class="hero" style="background-image:url('images/workshop-background.jpg');">
-    <div class="hero-text">
-      <h1>No Machines. No Shortcuts.<br>One-of-a-Kind, Every Time.</h1>
-      <p>Every piece designed by you — shaped, stitched, stamped, stained and sealed by me.<br>
-      A craftsman’s promise — Walter.</p>
-      <a href="shop.html" class="btn">Shop Now</a>
-      <a href="custom.html" class="btn secondary">Request Custom Piece</a>
+  <section class="hero">
+    <div class="wrap">
+     <h1>No Machines. No Shortcuts. One-of-a-Kind, Every Time.</h1>
+     <p><strong>EVERY PIECE DESIGNED BY YOU —</strong> shaped, stitched, stamped, stained, and sealed by me.<br>
+      A craftsman’s promise — <em>Walter</em>.</p>
+      <div class="cta">
+        <a class="pill" href="shop.html">Shop Now</a>
+        <a class="pill secondary" href="custom.html">Request Something Custom</a>
+      </div>
     </div>
   </section>
 
-  <!-- FEATURED -->
-  <section class="featured">
+  <main class="wrap">
     <h2>Featured Work</h2>
-    <div class="gallery">
-      <img src="images/Bracelet-min.jpeg" alt="Handmade Bracelet">
-      <img src="images/Custom-Hat2-min.jpeg" alt="Custom Hat Band">
-      <img src="images/OWB-min.jpeg" alt="Leather Holster">
-      <img src="images/Purse5-min.jpeg" alt="Leather Purse">
+
+    <!-- Featured Gallery (3-up, arrows, click-to-zoom) -->
+    <div class="featured-gallery" aria-label="Featured Work gallery">
+      <button class="fg-prev" aria-label="Previous">‹</button>
+
+      <div class="fg-viewport" role="region" aria-roledescription="carousel" aria-label="Featured Work" aria-live="polite">
+        <ul class="fg-track">
+          <!-- Shuffled order as requested -->
+          <li class="fg-item">
+            <img src="images/Travel-Chess-1-min.jpeg"
+                 alt="Travel chess set in hand-stitched leather — Appalachian craft from North-Central West Virginia."
+                 loading="lazy" decoding="async">
+          </li>
+          <li class="fg-item">
+            <img src="images/Purse3-min.jpeg"
+                 alt="Small handmade leather purse with burnished edges — Bridgeport WV Mid-Atlantic everyday carry."
+                 loading="lazy" decoding="async">
+          </li>
+          <li class="fg-item">
+            <img src="images/Tobacco-Pouch2-min.jpg"
+                 alt="Leather tobacco pouch with secure wrap — crafted in the Allegheny region of West Virginia."
+                 loading="lazy" decoding="async">
+          </li>
+          <li class="fg-item">
+            <img src="images/UH4.jpg"
+                 alt="Hand-tooled leather piece with rustic finish — built in North-Central WV."
+                 loading="lazy" decoding="async">
+          </li>
+          <li class="fg-item">
+            <img src="images/Trifold-min.jpeg"
+                 alt="Trifold wallet, hand-cut and saddle-stitched — built to last in Bridgeport WV."
+                 loading="lazy" decoding="async">
+          </li>
+          <li class="fg-item">
+            <img src="images/Purse05-min.jpg"
+                 alt="Leather purse with classic Mid-Atlantic styling — Appalachian-made."
+                 loading="lazy" decoding="async">
+          </li>
+          <li class="fg-item">
+            <img src="images/Scroll-min.jpeg"
+                 alt="Leather scroll case — custom project from the Appalachian Highlands."
+                 loading="lazy" decoding="async">
+          </li>
+          <li class="fg-item">
+            <img src="images/phone-case-1-min.JPEG"
+                 alt="Sturdy leather phone case — everyday carry built in West Virginia."
+                 loading="lazy" decoding="async">
+          </li>
+          <li class="fg-item">
+            <img src="images/Purse4-min.jpeg"
+                 alt="Compact shoulder purse — hand-stitched in Bridgeport, WV."
+                 loading="lazy" decoding="async">
+          </li>
+          <li class="fg-item">
+            <img src="images/UOED7230.JPEG"
+                 alt="Custom leather piece with local dye blend — Mid-Atlantic craft tradition."
+                 loading="lazy" decoding="async">
+          </li>
+          <li class="fg-item">
+            <img src="images/Hunting-Kit-min.jpeg"
+                 alt="Field kit pouch set in rugged leather — made for Eastern U.S. woodsmen."
+                 loading="lazy" decoding="async">
+          </li>
+          <li class="fg-item">
+            <img src="images/Purse-min.jpeg"
+                 alt="Everyday leather handbag — Appalachian durability with a clean silhouette."
+                 loading="lazy" decoding="async">
+          </li>
+          <li class="fg-item">
+            <img src="images/Purse2-min.jpeg"
+                 alt="Minimal purse with hand-rubbed finish — crafted in North-Central West Virginia."
+                 loading="lazy" decoding="async">
+          </li>
+          <li class="fg-item">
+            <img src="images/Purse03-min.jpg"
+                 alt="Classic leather purse with stitched strap — made by 3Leathers in Bridgeport WV."
+                 loading="lazy" decoding="async">
+          </li>
+        </ul>
+      </div>
+
+      <button class="fg-next" aria-label="Next">›</button>
     </div>
-  </section>
+    <!-- /Featured Gallery -->
 
-  <!-- ABOUT -->
-  <section class="about">
-    <h2>About the Craft</h2>
-    <p>Each item is cut by hand, stitched by hand, and finished with tools older than most machines that try to replace them. I work from Bridgeport, West Virginia, and build each piece to last generations.</p>
-    <a href="custom.html" class="btn">Start Your Custom Order</a>
-  </section>
+  </main>
 
-  <!-- FOOTER -->
+  <!-- Zoom overlay -->
+  <div class="zoom-overlay" id="zoomOverlay" aria-hidden="true" role="dialog" aria-label="Image zoom">
+    <button class="zoom-close" id="zoomClose" aria-label="Close zoom">Close ✕</button>
+    <img id="zoomImg" alt="">
+  </div>
+
+  <!-- Donations (both PayPal and Cash App) -->
   <footer>
-    <p>© 2025 3Leathers – Custom Leather by Walter Lewis III</p>
-    <p class="privacy">We never share your information. Details you send are used only to respond to your request.</p>
+    <section class="donos">
+      <h3>Support 3Leathers — No machines. Made by hand.</h3>
+      <div class="donation-buttons">
+        <a href="https://www.paypal.me/WalterLewis675/5" target="_blank" class="donate-btn">$5</a>
+        <a href="https://www.paypal.me/WalterLewis675/10" target="_blank" class="donate-btn">$10</a>
+        <a href="https://www.paypal.me/WalterLewis675/20" target="_blank" class="donate-btn">$20</a>
+        <a href="https://www.paypal.me/WalterLewis675/50" target="_blank" class="donate-btn">$50</a>
+        <a href="https://www.paypal.me/WalterLewis675" target="_blank" class="donate-btn">Custom</a>
+      </div>
+      <div class="donation-buttons" style="margin-top:10px">
+        <a href="https://cash.app/$UncleButch3/5" target="_blank" class="donate-btn ca">$5</a>
+        <a href="https://cash.app/$UncleButch3/10" target="_blank" class="donate-btn ca">$10</a>
+        <a href="https://cash.app/$UncleButch3/20" target="_blank" class="donate-btn ca">$20</a>
+        <a href="https://cash.app/$UncleButch3/50" target="_blank" class="donate-btn ca">$50</a>
+        <a href="https://cash.app/$UncleButch3" target="_blank" class="donate-btn ca">Custom</a>
+      </div>
+    </section>
+    <div class="fine">
+      <small>&copy; 3Leathers — Handmade by Walter Lewis III</small>
+    </div>
   </footer>
 
+  <script>
+    (function(){
+      const track = document.querySelector('.fg-track');
+      const items = Array.from(document.querySelectorAll('.fg-item'));
+      const prev = document.querySelector('.fg-prev');
+      const next = document.querySelector('.fg-next');
+
+      let index = 0;
+
+      function getStepWidth(){
+        // Width to move by exactly one item (including gap)
+        const first = items[0];
+        if(!first) return 0;
+        const rect = first.getBoundingClientRect();
+        // Add gap (12px) by reading computed gap from track
+        const gap = parseFloat(getComputedStyle(track).gap || '12');
+        return rect.width + gap;
+      }
+
+      function maxIndex(){
+        // Number of fully scrollable positions based on visible columns
+        const viewport = document.querySelector('.fg-viewport');
+        const vw = viewport.getBoundingClientRect().width;
+        const itemW = items[0].getBoundingClientRect().width;
+        const gap = parseFloat(getComputedStyle(track).gap || '12');
+        const visible = Math.max(1, Math.round((vw + gap) / (itemW + gap)));
+        return Math.max(0, items.length - visible);
+      }
+
+      function update(){
+        const step = getStepWidth();
+        track.style.transform = `translateX(${-index * step}px)`;
+        const max = maxIndex();
+        prev.disabled = index <= 0;
+        next.disabled = index >= max;
+      }
+
+      prev.addEventListener('click', ()=>{ index = Math.max(0, index - 1); update(); });
+      next.addEventListener('click', ()=>{ index = Math.min(maxIndex(), index + 1); update(); });
+
+      window.addEventListener('resize', update);
+      update();
+
+      // Light zoom (overlay)
+      const overlay = document.getElementById('zoomOverlay');
+      const zoomImg = document.getElementById('zoomImg');
+      const zoomClose = document.getElementById('zoomClose');
+
+      document.querySelectorAll('.fg-item img').forEach(img=>{
+        img.addEventListener('click', ()=>{
+          zoomImg.src = img.src;
+          zoomImg.alt = img.alt;
+          overlay.classList.add('open');
+          overlay.setAttribute('aria-hidden','false');
+        });
+      });
+
+      function closeZoom(){
+        overlay.classList.remove('open');
+        overlay.setAttribute('aria-hidden','true');
+        zoomImg.removeAttribute('src');
+      }
+      zoomClose.addEventListener('click', closeZoom);
+      overlay.addEventListener('click', (e)=>{ if(e.target===overlay) closeZoom(); });
+      document.addEventListener('keydown', (e)=>{
+        if(e.key==='Escape') closeZoom();
+        if(e.key==='ArrowLeft') prev.click();
+        if(e.key==='ArrowRight') next.click();
+      });
+    })();
+  </script>
 </body>
 </html>
