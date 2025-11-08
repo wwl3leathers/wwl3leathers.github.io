@@ -248,5 +248,45 @@
 })();
 </script>
 
+
+<script>
+(function () {
+  document.addEventListener('DOMContentLoaded', function () {
+    var form = document.querySelector('form[action*="formspree.io"]');
+    if (!form) return;
+    var submit = form.querySelector('button[type="submit"], input[type="submit"]');
+    if (!submit) return;
+    var btnRow = submit.closest ? (submit.closest('.btns') || submit) : submit;
+
+    var box = document.createElement('div');
+    box.className = 'pre-submit-note';
+    box.setAttribute('aria-live','polite');
+    box.style.border = '1px solid #ddd';
+    box.style.padding = '12px';
+    box.style.borderRadius = '8px';
+    box.style.margin = '16px 0';
+
+    box.innerHTML = [
+      '<strong>Before you hit Send:</strong>',
+      '<ul style="margin:8px 0 0 18px;">',
+      '<li>Your request goes straight to my inbox (Formspree handles delivery).</li>',
+      '<li>I’ll review it and email you next steps + a ballpark quote.</li>',
+      '<li>No payment yet—just details. We only take a deposit after we both agree.</li>',
+      '</ul>',
+      '<details style="margin-top:10px;">',
+      '<summary style="cursor:pointer;">Peek at the thank-you note you’ll see after sending</summary>',
+      '<p style="margin-top:8px;">',
+      'Thanks for reaching out! Your custom order request has landed on my workbench. ',
+      'I’ll email you shortly to confirm details and timeline. If you have photos or sketches, ',
+      'just reply to my email—attachments are welcome there.',
+      '</p>',
+      '<p style="margin:8px 0 0;">— Walter @ 3Leathers (just me and a lot of leather tools)</p>',
+      '</details>'
+    ].join('');
+
+    form.insertBefore(box, btnRow);
+  });
+})();
+</script>
 </body>
 </html>
