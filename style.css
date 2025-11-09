@@ -174,3 +174,26 @@ main {
   border: none;
 }
 #menuButton.menu-icon:hover { opacity: 0.85; }
+/* Mobile-specific header adjustments */
+@media screen and (max-width: 768px) {
+    /* Stack header items vertically */
+    .header {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px; /* Adjust for spacing */
+    }
+
+    /* Reduce font size slightly on mobile */
+    .header h1, .header .phone, .header .location {
+        font-size: 16px; /* Adjust this value as needed */
+    }
+
+    /* Ensure hamburger menu is always visible on top-right */
+    .hamburger {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        z-index: 1000; /* Keeps it above other elements */
+    }
+}
