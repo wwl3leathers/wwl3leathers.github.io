@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>3Leathers — Custom Request</title>
+  <meta name="description" content="Custom leather request form — 3Leathers by Walter Lewis III" />
+  <link rel="stylesheet" href="style.css?v=1">
+</head>
+<body>
+  <header class="sticky">
+    <div class="wrap row">
+      <div class="brand"><img src="images/Logo-min.jpg" alt="3Leathers logo"><strong>3Leathers</strong></div>
+      <nav>
+        <a href="index.html">Home</a> •
+        <a href="shop.html">Shop</a> •
+        <a href="custom.html"><strong>Custom</strong></a> •
+        <a href="checkout.html">Checkout</a>
+      </nav>
+    </div>
+  </header>
+  <section class="hero">
+    <div class="wrap"><h1>Custom Leather Request</h1><p>No machines. Made by hand. Tell me what you have in mind — I’ll take it from there.</p></div>
+  </section>
+  <main class="wrap">
+    <form id="customForm" action="https://formspree.io/f/xvgvjnbe" method="POST" novalidate>
+      <div class="grid-2">
+        <div><label for="name">Name *</label><input id="name" name="name" type="text" autocomplete="name" required /></div>
+        <div><label for="email">Email *</label><input id="email" name="email" type="email" autocomplete="email" required /></div>
+        <div><label for="phone">Phone (optional)</label><input id="phone" name="phone" type="tel" autocomplete="tel" /></div>
+        <div>
+          <label for="product">Item Type *</label>
+          <select id="product" name="product" required>
+            <option value="" disabled selected>Select one…</option>
+            <option>Wallet</option><option>Purse</option><option>Holster</option><option>Other</option>
+          </select>
+        </div>
+      </div>
+      <div class="grid-2" style="margin-top:10px">
+        <div><label for="leather">Leather Color / Finish</label><input id="leather" name="leather" type="text" placeholder="e.g., dark brown, oil-tan" /></div>
+        <div class="grid-1"><label for="sizing">Sizing / Fit Notes</label><textarea id="sizing" name="sizing" placeholder="Measurements, carry style, wrist size, belt width, etc."></textarea></div>
+      </div>
+      <div class="grid-1" style="margin-top:10px">
+        <div><label for="referenceUrl">Reference Image Link (optional)</label><input id="referenceUrl" name="referenceUrl" type="url" placeholder="Link to a photo or sketch (Drive, iCloud, Imgur)"/><p class="note">Tip: Paste any link to a photo — I’ll open it when reviewing your request.</p></div>
+      </div>
+      <section style="margin-top:14px">
+        <label for="commentInput">Conversation / Notes</label>
+        <div class="row" style="gap:10px;flex-wrap:wrap">
+          <input id="commentInput" type="text" placeholder="Type a message for Walter…" style="flex:1;min-width:220px" />
+          <button id="addMsg" class="pill" type="button">+ Add Message</button>
+          <button id="clearMsg" class="pill secondary" type="button">Clear</button>
+        </div>
+        <ul id="thread" aria-live="polite" style="list-style:none;margin:10px 0 0 0;padding:0"></ul>
+        <textarea id="conversation" name="conversation" hidden></textarea>
+      </section>
+      <div class="row" style="gap:8px;align-items:center;margin-top:10px">
+        <input id="agree" type="checkbox" required /><label for="agree">I agree that custom work may require a deposit and build time.</label>
+      </div>
+      <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
+      <div class="row" style="gap:10px;margin-top:12px;flex-wrap:wrap"><button class="pill" type="submit">Send Request</button><button class="pill secondary" type="reset">Reset</button></div>
+      <div id="status" class="status" role="status" aria-live="polite"></div>
+    </form>
+  </main>
+  <footer><div class="footer-fine"><small>&copy; 3Leathers — Handmade by Walter Lewis III</small></div></footer>
+  <script>
+    const threadEl=document.getElementById('thread'),inputEl=document.getElementById('commentInput'),convoEl=document.getElementById('conversation'),addBtn=document.getElementById('addMsg'),clearBtn=document.getElementById('clearMsg');
+    function rebuildConversation(){const lines=Array.from(threadEl.querySelectorAll('li .msg')).map(x=>x.textContent.trim());convoEl.value=lines.map((t,i)=>`[${String(i+1).padStart(2,'0')}] ${t}`).join('\n');}
+    addBtn.addEventListener('click',()=>{const txt=(inputEl.value||'').trim();if(!txt)return;const li=document.createElement('li');li.innerHTML=`<div class="msg" style="border-left:3px solid var(--accent);padding-left:10px">${txt}</div>`;threadEl.appendChild(li);inputEl.value='';rebuildConversation();inputEl.focus();});
+    clearBtn.addEventListener('click',()=>{threadEl.innerHTML='';rebuildConversation();inputEl.focus();});
+    const form=document.getElementById('customForm'),status=document.getElementById('status');
+    form.addEventListener('submit',async e=>{e.preventDefault();status.textContent='Sending…';status.className='status';const formData=new FormData(form);
+      try{const resp=await fetch(form.action,{method:'POST',body:formData,headers:{'Accept':'application/json'}});
+        if(resp.ok){status.textContent='Thanks! Your custom request was received. I’ll review it shortly.';status.classList.add('ok');form.reset();threadEl.innerHTML='';convoEl.value='';}
+        else{const j=await resp.json().catch(()=>({}));status.textContent=(j.errors&&j.errors.length?j.errors.map(e=>e.message).join(', '):'Submission failed.')+' Please try again.';status.classList.add('err');}
+      }catch(err){status.textContent='Network error — please try again.';status.classList.add('err');}
+    });
+  </script>
+</body>
+</html>

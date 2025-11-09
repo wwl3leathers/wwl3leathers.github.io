@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>3Leathers — Shop</title>
+  <meta name="description" content="Wallets, Purses, and Holsters — handmade by 3Leathers." />
+  <link rel="stylesheet" href="style.css?v=1">
+</head>
+<body>
+  <header class="sticky">
+    <div class="wrap row">
+      <div class="brand"><img src="images/Logo-min.jpg" alt="3Leathers logo"><strong>3Leathers</strong></div>
+      <nav>
+        <a href="index.html">Home</a> •
+        <a href="shop.html"><strong>Shop</strong></a> •
+        <a href="custom.html">Custom</a> •
+        <a href="checkout.html">Checkout</a>
+      </nav>
+    </div>
+  </header>
+  <section class="hero">
+    <div class="wrap">
+      <h1>Shop — Wallets, Purses, Holsters</h1>
+      <p class="muted">No machines. Made by hand. Choose a base style and leave notes — I’ll confirm details before crafting.</p>
+      <div class="row" style="margin-top:10px; gap:10px">
+        <a class="pill" href="checkout.html">Go to Checkout</a>
+        <button class="pill secondary" id="clearOrder">Clear Order</button>
+      </div>
+      <p class="note" id="orderStatus"></p>
+    </div>
+  </section>
+  <main class="wrap">
+    <h2>Wallets</h2>
+    <div class="grid-3">
+      <article class="card" data-item="Wallet — Bifold">
+        <img src="images/Logo-min.jpg" alt="Wallet thumbnail">
+        <div class="pad">
+          <h3>Wallet — Bifold</h3>
+          <p class="muted">Classic bifold with hand-stitched edges. Choose leather color; internal layout adjustable on request.</p>
+          <label>Leather Color</label>
+          <input type="text" placeholder="e.g., dark brown, whiskey, black" data-field="color">
+          <label style="margin-top:10px">Notes</label>
+          <input type="text" placeholder="card slots, cash pocket, etc." data-field="notes">
+          <div class="row" style="margin-top:10px">
+            <div style="flex:1">
+              <label>Quantity</label>
+              <input type="number" min="1" value="1" data-field="qty">
+            </div>
+            <div><button class="pill addBtn" type="button">Add to Order</button></div>
+          </div>
+        </div>
+      </article>
+      <article class="card" data-item="Wallet — Minimal">
+        <img src="images/Logo-min.jpg" alt="Wallet thumbnail">
+        <div class="pad">
+          <h3>Wallet — Minimal</h3>
+          <p class="muted">Slim front-pocket carry. Holds essentials with a low profile.</p>
+          <label>Leather Color</label>
+          <input type="text" placeholder="e.g., saddle tan, charcoal" data-field="color">
+          <label style="margin-top:10px">Notes</label>
+          <input type="text" placeholder="ID window, cash slot, etc." data-field="notes">
+          <div class="row" style="margin-top:10px">
+            <div style="flex:1"><label>Quantity</label><input type="number" min="1" value="1" data-field="qty"></div>
+            <div><button class="pill addBtn" type="button">Add to Order</button></div>
+          </div>
+        </div>
+      </article>
+      <article class="card" data-item="Wallet — Long">
+        <img src="images/Logo-min.jpg" alt="Wallet thumbnail">
+        <div class="pad">
+          <h3>Wallet — Long</h3>
+          <p class="muted">Tall silhouette for bills laid flat; great for organizers.</p>
+          <label>Leather Color</label>
+          <input type="text" placeholder="e.g., oxblood, natural veg-tan" data-field="color">
+          <label style="margin-top:10px">Notes</label>
+          <input type="text" placeholder="checkbook slot, zipper, etc." data-field="notes">
+          <div class="row" style="margin-top:10px">
+            <div style="flex:1"><label>Quantity</label><input type="number" min="1" value="1" data-field="qty"></div>
+            <div><button class="pill addBtn" type="button">Add to Order</button></div>
+          </div>
+        </div>
+      </article>
+    </div>
+    <h2>Purses</h2>
+    <div class="grid-3">
+      <article class="card" data-item="Purse — Crossbody">
+        <img src="images/Purse04-min.jpg" alt="Purse">
+        <div class="pad">
+          <h3>Purse — Crossbody</h3>
+          <p class="muted">Compact crossbody with secure flap. Hand-stitched and burnished.</p>
+          <label>Leather Color</label>
+          <input type="text" placeholder="e.g., black, dark brown" data-field="color">
+          <label style="margin-top:10px">Notes</label>
+          <input type="text" placeholder="strap length, pocket layout" data-field="notes">
+          <div class="row" style="margin-top:10px">
+            <div style="flex:1"><label>Quantity</label><input type="number" min="1" value="1" data-field="qty"></div>
+            <div><button class="pill addBtn" type="button">Add to Order</button></div>
+          </div>
+        </div>
+      </article>
+      <article class="card" data-item="Purse — Tote">
+        <img src="images/Purse05-min.jpg" alt="Purse">
+        <div class="pad">
+          <h3>Purse — Tote</h3>
+          <p class="muted">Everyday carry with sturdy handles and spacious interior.</p>
+          <label>Leather Color</label>
+          <input type="text" placeholder="e.g., natural, saddle tan" data-field="color">
+          <label style="margin-top:10px">Notes</label>
+          <input type="text" placeholder="pockets, closure type" data-field="notes">
+          <div class="row" style="margin-top:10px">
+            <div style="flex:1"><label>Quantity</label><input type="number" min="1" value="1" data-field="qty"></div>
+            <div><button class="pill addBtn" type="button">Add to Order</button></div>
+          </div>
+        </div>
+      </article>
+    </div>
+    <h2>Holsters</h2>
+    <div class="grid-3">
+      <article class="card" data-item="Holster — Belt Fit">
+        <img src="images/Holster-BF-min.jpeg" alt="Holster">
+        <div class="pad">
+          <h3>Holster — Belt Fit</h3>
+          <p class="muted">Custom-fit belt holster. Specify pistol model and carry angle.</p>
+          <label>Leather Color</label>
+          <input type="text" placeholder="e.g., dark brown, black" data-field="color">
+          <label style="margin-top:10px">Notes</label>
+          <input type="text" placeholder="pistol model, cant angle, belt width" data-field="notes">
+          <div class="row" style="margin-top:10px">
+            <div style="flex:1"><label>Quantity</label><input type="number" min="1" value="1" data-field="qty"></div>
+            <div><button class="pill addBtn" type="button">Add to Order</button></div>
+          </div>
+        </div>
+      </article>
+      <article class="card" data-item="Holster — Quick Draw">
+        <img src="images/Quick-Draw-min.jpeg" alt="Holster">
+        <div class="pad">
+          <h3>Holster — Quick Draw</h3>
+          <p class="muted">Fast-access profile with retention tuned to your preference.</p>
+          <label>Leather Color</label>
+          <input type="text" placeholder="e.g., oxblood, mahogany" data-field="color">
+          <label style="margin-top:10px">Notes</label>
+          <input type="text" placeholder="pistol model, ride height" data-field="notes">
+          <div class="row" style="margin-top:10px">
+            <div style="flex:1"><label>Quantity</label><input type="number" min="1" value="1" data-field="qty"></div>
+            <div><button class="pill addBtn" type="button">Add to Order</button></div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </main>
+  <footer><div class="footer-fine"><small>&copy; 3Leathers — Handmade by Walter Lewis III</small></div></footer>
+  <script>
+    const KEY='orderItems';
+    function getCart(){ try{return JSON.parse(localStorage.getItem(KEY))||[]}catch(e){return[]} }
+    function saveCart(items){ localStorage.setItem(KEY, JSON.stringify(items)) }
+    function updateStatus(){ const items=getCart(); const total=items.reduce((n,i)=>n+Number(i.qty||0),0); document.getElementById('orderStatus').textContent= total?`Items in order: ${total}`:'Your order is empty.' }
+    document.querySelectorAll('.addBtn').forEach(btn=>{ btn.addEventListener('click',()=>{ const card=btn.closest('.card'); const entry={ item:card.dataset.item, color:card.querySelector('[data-field=color]').value.trim(), notes:card.querySelector('[data-field=notes]').value.trim(), qty:Math.max(1,parseInt(card.querySelector('[data-field=qty]').value||'1',10))}; const cart=getCart(); cart.push(entry); saveCart(cart); updateStatus(); btn.textContent='Added ✓'; setTimeout(()=>btn.textContent='Add to Order',1200); }); });
+    document.getElementById('clearOrder').addEventListener('click',()=>{ localStorage.removeItem(KEY); updateStatus(); });
+    updateStatus();
+  </script>
+</body>
+</html>

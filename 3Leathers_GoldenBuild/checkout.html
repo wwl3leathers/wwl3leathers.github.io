@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>3Leathers — Checkout</title>
+  <meta name="description" content="Finalize your handmade leather order from 3Leathers." />
+  <link rel="stylesheet" href="style.css?v=1">
+</head>
+<body>
+  <header class="sticky">
+    <div class="wrap row">
+      <div class="brand"><img src="images/Logo-min.jpg" alt="3Leathers logo"><strong>3Leathers</strong></div>
+      <nav>
+        <a href="index.html">Home</a> •
+        <a href="shop.html">Shop</a> •
+        <a href="custom.html">Custom</a> •
+        <a href="checkout.html"><strong>Checkout</strong></a>
+      </nav>
+    </div>
+  </header>
+  <section class="hero">
+    <div class="wrap">
+      <h1>Checkout</h1>
+      <p class="muted">Review your order, add your contact details, and send. I’ll confirm timelines and any deposit before work begins.</p>
+      <div class="row" style="gap:10px;flex-wrap:wrap;margin-top:10px">
+        <a class="pill" href="shop.html">Back to Shop</a>
+        <button class="pill secondary" id="clearCart">Clear Order</button>
+      </div>
+    </div>
+  </section>
+  <main class="wrap" style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+    <section class="card">
+      <h2>Your Order</h2>
+      <table id="orderTable" aria-live="polite">
+        <thead><tr><th>Item</th><th>Options / Notes</th><th>Qty</th><th>Remove</th></tr></thead>
+        <tbody id="orderBody"><tr><td colspan="4" class="muted">Loading…</td></tr></tbody>
+      </table>
+      <p class="muted" id="emptyMsg" style="display:none">Your order is empty. Add items on the <a href="shop.html">Shop</a> page.</p>
+    </section>
+    <section class="card">
+      <h2>Contact & Submit</h2>
+      <form id="checkoutForm" action="https://formspree.io/f/xvgvjnbe" method="POST" novalidate>
+        <label for="name">Name *</label><input id="name" name="name" type="text" required>
+        <label for="email" style="margin-top:10px">Email *</label><input id="email" name="email" type="email" required>
+        <label for="phone" style="margin-top:10px">Phone (optional)</label><input id="phone" name="phone" type="tel">
+        <label for="preferred" style="margin-top:10px">Preferred Payment</label>
+        <select id="preferred" name="preferred"><option>PayPal</option><option>Cash App</option><option>Discuss / Invoice</option></select>
+        <label for="notes" style="margin-top:10px">Notes (optional)</label><textarea id="notes" name="notes" placeholder="Anything else I should know?"></textarea>
+        <textarea id="orderJson" name="orderJson" hidden></textarea>
+        <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
+        <div class="row" style="gap:10px;margin-top:12px;flex-wrap:wrap"><button class="pill" type="submit">Send Order</button><button class="pill secondary" type="reset">Reset</button></div>
+        <div id="status" class="status" role="status" aria-live="polite"></div>
+      </form>
+    </section>
+  </main>
+  <footer><div class="footer-fine"><small>&copy; 3Leathers — Handmade by Walter Lewis III</small></div></footer>
+  <script>
+    const KEY='orderItems';
+    function getCart(){ try{return JSON.parse(localStorage.getItem(KEY))||[]}catch(e){return[]} }
+    function saveCart(items){ localStorage.setItem(KEY, JSON.stringify(items)) }
+    function render(){
+      const items=getCart(), body=document.getElementById('orderBody'), empty=document.getElementById('emptyMsg');
+      body.innerHTML='';
+      if(!items.length){ empty.style.display='block'; body.innerHTML='<tr><td colspan="4" class="muted">No items.</td></tr>'; return; }
+      empty.style.display='none';
+      items.forEach((it,idx)=>{
+        const tr=document.createElement('tr');
+        tr.innerHTML=`<td><strong>${it.item||''}</strong></td>
+          <td>${it.color?`<div>Color: ${it.color}</div>`:''}${it.notes?`<div>Notes: ${it.notes}</div>`:''}</td>
+          <td>${it.qty||1}</td>
+          <td><button class="pill secondary" data-remove="${idx}" type="button">Remove</button></td>`;
+        body.appendChild(tr);
+      });
+      body.querySelectorAll('[data-remove]').forEach(btn=>{
+        btn.addEventListener('click',()=>{ const i=parseInt(btn.getAttribute('data-remove'),10); const cart=getCart(); cart.splice(i,1); saveCart(cart); render(); });
+      });
+    }
+    function buildOrderJson(){ document.getElementById('orderJson').value = JSON.stringify(getCart(), null, 2); }
+    document.getElementById('clearCart').addEventListener('click',()=>{ localStorage.removeItem(KEY); render(); });
+    const form=document.getElementById('checkoutForm'), status=document.getElementById('status');
+    form.addEventListener('submit',async e=>{
+      e.preventDefault(); buildOrderJson(); status.textContent='Sending…'; status.className='status';
+      const data=new FormData(form);
+      try{ const resp=await fetch(form.action,{method:'POST',body:data,headers:{'Accept':'application/json'}});
+        if(resp.ok){ status.textContent='Thanks! Your order was sent. I will confirm details and timing shortly.'; status.classList.add('ok'); localStorage.removeItem(KEY); render(); form.reset(); }
+        else{ const j=await resp.json().catch(()=>({})); status.textContent=(j.errors&&j.errors.length?j.errors.map(e=>e.message).join(', '):'Submission failed.')+' Please try again.'; status.classList.add('err'); }
+      }catch(err){ status.textContent='Network error — please try again.'; status.classList.add('err'); }
+    });
+    render();
+  </script>
+</body>
+</html>
