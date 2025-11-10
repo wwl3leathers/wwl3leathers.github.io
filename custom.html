@@ -1,261 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>3Leathers — Custom Request</title>
-  <meta name="description" content="Custom leather request form — 3Leathers by Walter Lewis III" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Custom Creations – 3Leathers</title>
+  <meta name="description" content="Custom leather projects by Walter Lewis III – describe your idea, add reference links, and get a quick estimate with a 30% deposit to start.">
   <style>
-    :root{
-      --bg:#0b0b0b; --ink:#f8f5e3; --accent:#d6b14a; --muted:rgba(255,255,255,.08);
-      --ok:#3ddc84; --err:#ff6b6b;
-    }
-    html,body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial}
-    a{color:var(--accent);text-decoration:none}
-    header{position:sticky;top:0;z-index:10;background:rgba(0,0,0,.6);backdrop-filter:saturate(140%) blur(6px);border-bottom:1px solid var(--muted)}
-    .wrap{max-width:980px;margin:auto;padding:16px}
-    .row{display:flex;align-items:center;gap:12px;justify-content:space-between}
-    .brand{display:flex;align-items:center;gap:10px}
-    .brand img{height:40px;border-radius:4px}
-    nav a{margin-left:10px}
-    .hero{
-      padding:40px 16px;border-bottom:1px solid var(--muted);
-      background:linear-gradient(180deg, rgba(0,0,0,.55), rgba(0,0,0,.7)), url("images/Backdrop2-min.jpeg") center/cover no-repeat;
-    }
-    .hero h1{margin:0 0 6px 0}
-    form{background:rgba(0,0,0,.55);border:1px solid var(--muted);border-radius:14px;padding:20px;margin:24px 0}
-    .grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-    .grid-1{grid-template-columns:1fr}
-    label{font-weight:600;font-size:14px}
-    input[type=text],input[type=email],input[type=tel],input[type=url],select,textarea{
-      width:100%;margin-top:6px;padding:10px 12px;border-radius:10px;border:1px solid var(--muted);
-      background:#0f0f0f;color:var(--ink);outline:none;
-    }
-    textarea{min-height:110px;resize:vertical}
-    .hint{font-size:12px;opacity:.75}
-    .pill{padding:10px 14px;border-radius:999px;background:var(--accent);color:#000;font-weight:700;text-decoration:none;border:none;cursor:pointer}
-    .pill.secondary{background:#2a2a2a;color:var(--ink);border:1px solid var(--muted)}
-    .actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
-    ul#thread{list-style:none;margin:10px 0 0 0;padding:0}
-    ul#thread li{background:#121212;border:1px solid var(--muted);padding:10px;border-radius:10px;margin:8px 0}
-    .msg{border-left:3px solid var(--accent);padding-left:10px}
-    .req{display:flex;gap:8px;align-items:center;margin-top:10px}
-    .req input[type=checkbox]{transform:scale(1.2)}
-    .status{margin-top:14px;font-weight:700}
-    .ok{color:var(--ok)} .err{color:var(--err)}
-    footer{padding:24px 16px;border-top:1px solid var(--muted);text-align:center;color:#cfc8a8}
-    @media (max-width:720px){.grid{grid-template-columns:1fr}}
+    :root { --fg:#f9f5e5; --bg:#111; --muted:#c8c2ad; }
+    body { margin:0; background:#111; color:var(--fg); font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; }
+    .wrap { max-width: 960px; margin: 0 auto; padding: clamp(16px, 3vw, 32px); }
+    h1 { font-size: clamp(28px, 4vw, 44px); margin: 0 0 8px; }
+    p.lead { color: var(--muted); margin: 0 0 24px; font-size: clamp(16px, 2.1vw, 20px); }
+    .card { background: #181818; border: 1px solid #2a2a2a; border-radius: 16px; padding: 18px; box-shadow: 0 8px 24px rgba(0,0,0,.3); margin-bottom: 18px; }
+    .examples ul { margin: 0; padding-left: 20px; }
+    label { display:block; margin: 12px 0 6px; color: var(--muted); font-weight: 600; }
+    textarea, input[type="url"] { width: 100%; background: #0f0f0f; border: 1px solid #2a2a2a; color: var(--fg); padding: 12px; border-radius: 12px; }
+    textarea { min-height: 180px; resize: vertical; }
+    .btns { display:flex; gap:12px; flex-wrap:wrap; margin-top: 14px; }
+    .pill { appearance: none; border: 1px solid #e3d9b2; color:#111; background:#e3d9b2; padding: 12px 16px; border-radius: 999px; font-weight: 700; cursor: pointer; text-decoration: none; display:inline-flex; align-items:center; justify-content:center; }
+    .pill.secondary { background: transparent; color: var(--fg); border-color: #6b6655; }
+    .muted { color: var(--muted); font-size: 0.95rem; }
+    .policy h2 { margin-top: 8px; margin-bottom: 8px; }
+    .small { font-size: 0.9rem; }
   </style>
 </head>
 <body>
-  <header>
-    <div class="wrap row">
-      <div class="brand">
-        <img src="images/Logo-min.jpg" alt="3Leathers logo">
-        <strong>3Leathers</strong>
-      </div>
-      <nav aria-label="Primary">
-        <a href="index.html">Home</a> •
-        <a href="shop.html">Shop</a> •
-        <a href="custom.html" aria-current="page"><strong>Custom</strong></a> •
-        <a href="checkout.html">Checkout</a>
-      </nav>
-    </div>
-  </header>
-
-  <section class="hero">
-    <div class="wrap">
-      <h1>Custom Leather Request</h1>
-      <p>No machines. Made by hand. Tell me what you have in mind — I’ll take it from there.</p>
-    </div>
-  </section>
-
   <main class="wrap">
-    <!-- 3Leathers — Custom Request Form (Formspree v2) -->
-<form id="custom-request"
-      action="https://formspree.io/f/xvgvjnbe" method="POST"
-      accept-charset="UTF-8"
-      autocomplete="on"
-      novalidate>
+    <header class="card">
+      <h1>Custom Creations</h1>
+      <p class="lead">Your idea can be anything—if it’s not in the Shop, it lives here. Dream it up, I’ll wrangle the leather.</p>
+    </header>
 
-  <!-- Customer Details -->
-  <label for="name">Name *</label>
-  <input id="name" name="name" type="text" required aria-required="true" placeholder="Your full name" />
+    <section class="card examples">
+      <h2>Examples</h2>
+      <ul>
+        <li>A leather pouch for my fishing gear — with a secret pocket for my snacks.</li>
+        <li>A custom-bound journal cover with my initials stamped in the corner.</li>
+        <li>A leather shoulder harness for my tools (or my coffee mug — priorities).</li>
+      </ul>
+    </section>
 
-  <label for="email">Email *</label>
-  <input id="email" name="email" type="email" required aria-required="true" placeholder="you@example.com" />
+    <section class="card">
+      <h2>Notes (tell me everything)</h2>
+      <label for="notes">Describe your project (materials, size, colors, carving ideas, etc.).</label>
+      <textarea id="notes" placeholder="Example: Medium satchel in dark brown with a raven carving on the flap..."></textarea>
+      <label for="links">Paste links to reference pictures here</label>
+      <input id="links" type="url" placeholder="https://link-to-reference-image.example.com">
+      <div class="btns">
+        <a id="emailBtn" class="pill" href="mailto:wwl3leathers@outlook.com?subject=Custom%20Request%20-%203Leathers">Email Walter</a>
+        <button id="copyBtn" class="pill secondary" type="button">Copy Notes for Email</button>
+      </div>
+      <p class="muted small">Tip: Click “Copy Notes for Email,” then hit “Email Walter” and paste your notes into the message body.</p>
+    </section>
 
-  <label for="phone">Phone (optional)</label>
-  <input id="phone" name="phone" type="tel" inputmode="tel" placeholder="(304) 555-0199" />
-
-  <!-- Project -->
-  <label for="item_type">Item Type *</label>
-  <select id="item_type" name="item_type" required aria-required="true">
-    <option value="" disabled selected>Select one…</option>
-    <option>Wallet</option>
-    <option>Purse</option>
-    <option>Holster</option>
-    <option>Other</option>
-  </select>
-
-  <label for="color_finish">Leather Color / Finish</label>
-  <input id="color_finish" name="color_finish" type="text" placeholder="e.g., Oxblood, matte" />
-
-  <label for="sizing_notes">Sizing / Fit Notes</label>
-  <input id="sizing_notes" name="sizing_notes" type="text" placeholder="Measurements or fit details" />
-
-  <label for="ref_link">Reference Image Link (optional)</label>
-  <input id="ref_link" name="ref_link" type="url" inputmode="url" placeholder="https://..." />
-  <small>Tip: Paste any link to a photo — I’ll open it when reviewing your request.</small>
-
-  <label for="notes">Conversation / Notes</label>
-  <textarea id="notes" name="notes" rows="6" placeholder="Tell me what you have in mind…"></textarea>
-
-  <!-- Acknowledgment -->
-  <label class="agree">
-    <input id="ack_deposit" name="ack_deposit" type="checkbox" required aria-required="true" />
-    I agree that custom work may require a deposit and build time.
-  </label>
-
-  <!-- Hidden metadata (optional but helpful) -->
-  <input type="hidden" name="_subject" value="New Custom Request — 3Leathers" />
-  <!-- Redirect after success (optional): create /custom-thanks.html if you want -->
-  <input type="hidden" name="_redirect" value="https://wwl3leathers.github.io/custom-thanks.html" />
-  <input type="hidden" id="page_url" name="page_url" value="" />
-  <!-- Simple honeypot to reduce spam -->
-  <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;opacity:0;height:0;width:0;" />
-
-  <!-- Controls -->
-  <button type="submit">Send Request</button>
-  <button type="reset">Reset</button>
-</form>
-
-<script>
-  // Attach page URL for context in your Formspree dashboard/email
-  (function () {
-    var urlField = document.getElementById('page_url');
-    if (urlField) urlField.value = window.location.href;
-    // Prevent accidental double-submits
-    var form = document.getElementById('custom-request');
-    if (!form) return;
-    form.addEventListener('submit', function (e) {
-      var btn = form.querySelector('button[type="submit"]');
-      if (btn) {
-        btn.disabled = true;
-        btn.textContent = 'Sending…';
-      }
-    });
-  })();
-</script>
-
+    <section class="card policy">
+      <h2>What happens next</h2>
+      <ul>
+        <li><strong>Reply in 2 days:</strong> I’ll respond within two days to confirm options and pricing.</li>
+        <li><strong>Time estimate:</strong> Varies by project, but I’ll give you a realistic window once we agree (no wild guesses—just good leather sense).</li>
+        <li><strong>Deposit:</strong> Once we lock the plan, a <strong>30% non-refundable deposit</strong> starts the build.</li>
+      </ul>
+      <h2>Production & Policy</h2>
+      <p class="small"><strong>Production Time:</strong> Most projects ship in about <strong>1 week</strong> from purchase. If life—or leather—gets stubborn, I’ll email you with an update.</p>
+      <p class="small"><strong>Non-Refundable Deposits & Payments:</strong> Leather can’t be “unstained,” “unstamped,” or “un-stitched.” Once we begin, <strong>all payments and deposits are non-refundable</strong>. (And no, you can’t return a “vintage” stain either.)</p>
+    </section>
   </main>
 
-  <footer>
-    <div class="wrap" style="text-align:center">
-      <small>&copy; <span id="yr"></span> 3Leathers — Handmade by Walter Lewis III</small>
-    </div>
-  </footer>
-
   <script>
-    // Page context
-    document.getElementById('yr').textContent = new Date().getFullYear();
-    const form = document.getElementById('customForm');
-    form.querySelector('[name="pageURL"]').value = location.href;
+    const copyBtn = document.getElementById('copyBtn');
+    const emailBtn = document.getElementById('emailBtn');
 
-    // Build conversation thread → hidden textarea
-    const threadEl = document.getElementById('thread');
-    const inputEl  = document.getElementById('commentInput');
-    const convoEl  = document.getElementById('conversation');
-    const addBtn   = document.getElementById('addMsg');
-    const clearBtn = document.getElementById('clearMsg');
-
-    function rebuildConversation(){
-      const lines = Array.from(threadEl.querySelectorAll('li .msg')).map(x=>x.textContent.trim());
-      convoEl.value = lines.map((t,i)=>`[${String(i+1).padStart(2,'0')}] ${t}`).join('\n');
-    }
-    addBtn.addEventListener('click', ()=>{
-      const txt = (inputEl.value || '').trim();
-      if(!txt) return;
-      const li = document.createElement('li');
-      li.innerHTML = `<div class="msg">${txt}</div>`;
-      threadEl.appendChild(li);
-      inputEl.value = '';
-      rebuildConversation();
-      inputEl.focus();
-    });
-    clearBtn.addEventListener('click', ()=>{
-      threadEl.innerHTML = '';
-      rebuildConversation();
-      inputEl.focus();
+    copyBtn?.addEventListener('click', () => {
+      const notes = document.getElementById('notes')?.value || '';
+      const links = document.getElementById('links')?.value || '';
+      const combined = notes + (links ? "\n\nReference link(s):\n" + links : '');
+      navigator.clipboard.writeText(combined).then(() => {
+        copyBtn.textContent = 'Copied!';
+        setTimeout(() => copyBtn.textContent = 'Copy Notes for Email', 1000);
+      });
     });
 
-    // URL prefill for quick quotes
-    (function prefillFromQuery(){
-      const p = new URLSearchParams(location.search);
-      const map = {
-        name: '#name',
-        email: '#email',
-        phone: '#phone',
-        product: '#product',
-        leather: '#leather',
-        sizing: '#sizing',
-        referenceUrl: '#referenceUrl'
-      };
-      Object.entries(map).forEach(([key, sel])=>{
-        if (p.has(key)) {
-          const el = document.querySelector(sel);
-          if (!el) return;
-          el.value = p.get(key);
-        }
-      });
-    })();
-
-    // AJAX submit to Formspree (no page change)
-    const status = document.getElementById('status');
-    form.addEventListener('submit', async (e)=>{
-      e.preventDefault();
-      status.textContent = 'Sending…'; status.className = 'status';
-      rebuildConversation();
-      const formData = new FormData(form);
-      try{
-        const resp = await fetch(form.action, { method:'POST', body: formData, headers: { 'Accept': 'application/json' }});
-        if (resp.ok) {
-          status.textContent = 'Thanks! Your custom request was received.';
-          status.classList.add('ok');
-          form.reset(); threadEl.innerHTML = ''; convoEl.value = '';
-        } else {
-          const data = await resp.json().catch(()=>({}));
-          const msg = (data && data.errors && data.errors.length) ? data.errors.map(e=>e.message).join(', ') : 'Submission failed.';
-          status.textContent = msg + ' Please try again.'; status.classList.add('err');
-        }
-      } catch(err){
-        status.textContent = 'Network error — please try again in a moment.'; status.classList.add('err');
-      }
-    }, false);
-  <script>
-(function () {
-  // Find the Formspree form on this page
-  var form = document.querySelector('form[action^="https://formspree.io"]');
-  if (!form) return;
-
-  form.addEventListener('submit', async function (e) {
-    e.preventDefault(); // stop the default navigation to Formspree page
-    var data = new FormData(form);
-
-    try {
-      await fetch(form.action, {
-        method: 'POST',
-        body: data,
-        headers: { 'Accept': 'application/json' }
-      });
-      // On success, send visitor to your thank-you page:
-      window.location.href = '/custom-thanks.html';
-    } catch (err) {
-      // If anything hiccups, still show your thank-you so users aren't stuck
-      window.location.href = '/custom-thanks.html';
-    }
-  });
-})();
-</script>
+    // Prefill email body from notes/links
+    emailBtn?.addEventListener('click', (e) => {
+      const notes = document.getElementById('notes')?.value || '';
+      const links = document.getElementById('links')?.value || '';
+      const body = encodeURIComponent(notes + (links ? "\n\nReference link(s):\n" + links : ''));
+      emailBtn.href = 'mailto:wwl3leathers@outlook.com?subject=Custom%20Request%20-%203Leathers&body=' + body;
+    });
+  </script>
 </body>
 </html>
