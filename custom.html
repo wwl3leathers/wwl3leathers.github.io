@@ -1,35 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Custom Creations – 3Leathers</title>
   <meta name="description" content="Custom leather projects by Walter Lewis III – describe your idea, add reference links, and get a quick estimate with a 30% deposit to start.">
   <style>
-    :root { --fg:#f9f5e5; --bg:#111; --muted:#c8c2ad; }
-    body { margin:0; background:#111; color:var(--fg); font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; }
-    .wrap { max-width: 960px; margin: 0 auto; padding: clamp(16px, 3vw, 32px); }
-    h1 { font-size: clamp(28px, 4vw, 44px); margin: 0 0 8px; }
-    p.lead { color: var(--muted); margin: 0 0 24px; font-size: clamp(16px, 2.1vw, 20px); }
-    .card { background: #181818; border: 1px solid #2a2a2a; border-radius: 16px; padding: 18px; box-shadow: 0 8px 24px rgba(0,0,0,.3); margin-bottom: 18px; }
-    .examples ul { margin: 0; padding-left: 20px; }
-    label { display:block; margin: 12px 0 6px; color: var(--muted); font-weight: 600; }
-    textarea, input[type="url"] { width: 100%; background: #0f0f0f; border: 1px solid #2a2a2a; color: var(--fg); padding: 12px; border-radius: 12px; }
-    textarea { min-height: 180px; resize: vertical; }
-    .btns { display:flex; gap:12px; flex-wrap:wrap; margin-top: 14px; }
-    .pill { appearance: none; border: 1px solid #e3d9b2; color:#111; background:#e3d9b2; padding: 12px 16px; border-radius: 999px; font-weight: 700; cursor: pointer; text-decoration: none; display:inline-flex; align-items:center; justify-content:center; }
-    .pill.secondary { background: transparent; color: var(--fg); border-color: #6b6655; }
-    .muted { color: var(--muted); font-size: 0.95rem; }
-    .policy h2 { margin-top: 8px; margin-bottom: 8px; }
-    .small { font-size: 0.9rem; }
+    /* Match site palette (from index.html) */
+    :root{ --bg:#0b0b0b; --ink:#f8f5e3; --accent:#d6b14a; --muted:rgba(255,255,255,.08); }
+    html,body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial}
+    a{color:var(--accent);text-decoration:none}
+
+    /* Header/nav copied to visually match index.html */
+    header{position:sticky;top:0;z-index:10;background:rgba(0,0,0,.6);backdrop-filter:saturate(140%) blur(6px);border-bottom:1px solid var(--muted)}
+    .wrap{max-width:1100px;margin:auto;padding:16px}
+    .row{display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .brand{display:flex;align-items:center;gap:10px}
+    .brand img{height:40px;border-radius:4px}
+    nav a{margin-left:10px}
+    .contact-info{margin-left:auto;font-size:.9rem;color:var(--ink);white-space:nowrap}
+    @media (max-width:700px){ .contact-info{display:block;margin-left:0;margin-top:4px;text-align:right} }
+
+    /* Page content */
+    .container{max-width:960px;margin:0 auto;padding:clamp(16px,3vw,32px)}
+    .card{background:rgba(0,0,0,.55);border:1px solid var(--muted);border-radius:14px;padding:18px;box-shadow:0 8px 24px rgba(0,0,0,.3);margin-bottom:18px}
+    h1{font-size:clamp(28px,5vw,44px);margin:8px 0}
+    p.lead{color:#cfc8a8;margin:0 0 18px}
+    .examples ul{margin:0;padding-left:20px}
+    label{display:block;margin:12px 0 6px;color:#cfc8a8;font-weight:600}
+    textarea,input[type="url"]{width:100%;background:#0f0f0f;border:1px solid #2a2a2a;color:var(--ink);padding:12px;border-radius:12px}
+    textarea{min-height:180px;resize:vertical}
+    .btns{display:flex;gap:12px;flex-wrap:wrap;margin-top:14px}
+    .pill{padding:12px 16px;border-radius:999px;background:var(--accent);color:#000;font-weight:700;border:1px solid #e3d9b2}
+    .pill.secondary{background:#2a2a2a;color:var(--ink);border:1px solid var(--muted)}
+    .small{font-size:.9rem;color:#cfc8a8}
   </style>
 </head>
 <body>
-  <main class="wrap">
-    <header class="card">
+  <!-- Top navigation/header (from index.html) -->
+  <header>
+    <div class="wrap row">
+      <div class="brand">
+        <img src="images/Logo-min.jpg" alt="3Leathers logo">
+        <strong>3Leathers</strong>
+      </div>
+      <span class="contact-info">(304) 669-1412 • Bridgeport, WV</span>
+      <nav>
+        <a href="index.html"><strong>Home</strong></a> •
+        <a href="shop.html">Shop</a> •
+        <a href="custom.html">Custom</a> •
+        <a href="checkout.html">Checkout</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="card">
       <h1>Custom Creations</h1>
       <p class="lead">Your idea can be anything—if it’s not in the Shop, it lives here. Dream it up, I’ll wrangle the leather.</p>
-    </header>
+    </section>
 
     <section class="card examples">
       <h2>Examples</h2>
@@ -50,17 +79,17 @@
         <a id="emailBtn" class="pill" href="mailto:wwl3leathers@outlook.com?subject=Custom%20Request%20-%203Leathers">Email Walter</a>
         <button id="copyBtn" class="pill secondary" type="button">Copy Notes for Email</button>
       </div>
-      <p class="muted small">Tip: Click “Copy Notes for Email,” then hit “Email Walter” and paste your notes into the message body.</p>
+      <p class="small">Tip: Click “Copy Notes for Email,” then hit “Email Walter” and paste your notes into the message body.</p>
     </section>
 
-    <section class="card policy">
+    <section class="card">
       <h2>What happens next</h2>
       <ul>
         <li><strong>Reply in 2 days:</strong> I’ll respond within two days to confirm options and pricing.</li>
         <li><strong>Time estimate:</strong> Varies by project, but I’ll give you a realistic window once we agree (no wild guesses—just good leather sense).</li>
         <li><strong>Deposit:</strong> Once we lock the plan, a <strong>30% non-refundable deposit</strong> starts the build.</li>
       </ul>
-      <h2>Production & Policy</h2>
+      <h3>Production & Policy</h3>
       <p class="small"><strong>Production Time:</strong> Most projects ship in about <strong>1 week</strong> from purchase. If life—or leather—gets stubborn, I’ll email you with an update.</p>
       <p class="small"><strong>Non-Refundable Deposits & Payments:</strong> Leather can’t be “unstained,” “unstamped,” or “un-stitched.” Once we begin, <strong>all payments and deposits are non-refundable</strong>. (And no, you can’t return a “vintage” stain either.)</p>
     </section>
@@ -81,7 +110,7 @@
     });
 
     // Prefill email body from notes/links
-    emailBtn?.addEventListener('click', (e) => {
+    emailBtn?.addEventListener('click', () => {
       const notes = document.getElementById('notes')?.value || '';
       const links = document.getElementById('links')?.value || '';
       const body = encodeURIComponent(notes + (links ? "\n\nReference link(s):\n" + links : ''));
