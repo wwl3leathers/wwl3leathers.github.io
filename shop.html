@@ -3,492 +3,326 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Shop — 3Leathers | Handmade Leather in Bridgeport, WV</title>
-  <meta name="description" content="Shop handmade leather purses, holsters (universal models), and wallets by 3Leathers in Bridgeport, West Virginia. No machines. Made by hand." />
-  <link rel="canonical" href="https://3leathers.com/shop.html" />
-
-  <!-- Open Graph (share cards) -->
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="Shop — 3Leathers" />
-  <meta property="og:description" content="Handmade leather goods from Bridgeport, WV — No machines. Made by hand." />
-  <meta property="og:image" content="https://3leathers.com/images/Logo-min.jpg" />
-
-  <!-- Breadcrumb JSON-LD -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      {"@type":"ListItem","position":1,"name":"Home","item":"https://3leathers.com/"},
-      {"@type":"ListItem","position":2,"name":"Shop","item":"https://3leathers.com/shop.html"}
-    ]
-  }
-  </script>
-
+  <title>Shop – 3Leathers</title>
+  <meta name="description" content="Handmade leather goods: purses, wallets, holsters, and custom orders by 3Leathers." />
   <style>
+    /* Match site palette (from index.html) */
     :root{ --bg:#0b0b0b; --ink:#f8f5e3; --accent:#d6b14a; --muted:rgba(255,255,255,.08); }
     html,body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial}
     a{color:var(--accent);text-decoration:none}
+
+    /* Header/nav identical to index */
     header{position:sticky;top:0;z-index:10;background:rgba(0,0,0,.6);backdrop-filter:saturate(140%) blur(6px);border-bottom:1px solid var(--muted)}
     .wrap{max-width:1100px;margin:auto;padding:16px}
     .row{display:flex;align-items:center;justify-content:space-between;gap:12px}
     .brand{display:flex;align-items:center;gap:10px}
     .brand img{height:40px;border-radius:4px}
     nav a{margin-left:10px}
+    .contact-info{margin-left:auto;font-size:.9rem;color:var(--ink);white-space:nowrap}
+    @media (max-width:700px){ .contact-info{display:block;margin-left:0;margin-top:4px;text-align:right} }
 
-    h1{margin:20px 0 6px}
-    .lead{opacity:.9;margin:0 0 10px}
+    /* Page layout */
+    .container{max-width:960px;margin:0 auto;padding:clamp(16px,3vw,32px)}
+    .card{background:rgba(0,0,0,.55);border:1px solid var(--muted);border-radius:14px;overflow:hidden;margin-bottom:18px}
+    .card .pad{padding:18px}
+    .title{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:0 0 8px}
+    .imgwrap{width:100%;max-height:420px;overflow:hidden;border-bottom:1px solid var(--muted)}
+    .imgwrap img{display:block;width:100%;height:100%;object-fit:cover}
 
-    /* Product grid/cards */
-    .section{margin:24px 0}
-    .section h2{margin:12px 0 6px}
-    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-    @media (max-width:900px){.grid{grid-template-columns:1fr 1fr}}
-    @media (max-width:640px){.grid{grid-template-columns:1fr}}
-    .card{background:rgba(0,0,0,.55);border:1px solid var(--muted);border-radius:14px;overflow:hidden;display:flex;flex-direction:column}
-    .card img{width:100%;height:220px;object-fit:cover;background:#111;display:block}
-    .pad{padding:14px}
-    .title-row{display:flex;align-items:baseline;justify-content:space-between;gap:8px}
-    .price{color:#cfc8a8;font-weight:700}
-    .small{opacity:.85;font-size:.95rem}
-    .muted{opacity:.8}
-    details{border-top:1px solid var(--muted);padding-top:8px;margin-top:8px}
-    details summary{cursor:pointer}
-    .controls{display:grid;gap:10px;margin-top:10px}
-    .row2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-    label{display:block;font-weight:600;margin-bottom:4px}
-    select, input[type="text"], input[type="number"], textarea{
-      width:100%;padding:10px;border-radius:8px;border:1px solid var(--muted);background:#1a1a1a;color:var(--ink)
-    }
-    textarea{min-height:72px;resize:vertical}
-    .pill{display:inline-block;padding:10px 16px;border-radius:999px;background:var(--accent);color:#000;font-weight:700}
-    .btn{display:inline-block;padding:10px 16px;border-radius:10px;background:#2a2a2a;border:1px solid var(--muted);color:var(--ink)}
-    .actions{display:flex;gap:10px;align-items:center;margin-top:12px}
-
-    /* Modal */
-    .modal-backdrop{position:fixed;inset:0;background:rgba(0,0,0,.7);display:none;align-items:center;justify-content:center;z-index:50;padding:16px}
-    .modal{max-width:520px;width:100%;background:#111;border:1px solid var(--muted);border-radius:14px;box-shadow:0 10px 30px rgba(0,0,0,.45)}
-    .modal .hd{display:flex;justify-content:space-between;align-items:center;padding:14px;border-bottom:1px solid var(--muted)}
-    .modal .bd{padding:14px}
-    .modal .ft{padding:14px;border-top:1px solid var(--muted);display:flex;justify-content:flex-end;gap:10px}
-    .close{background:#1a1a1a;color:var(--ink);border:1px solid var(--muted);border-radius:8px;padding:8px 12px;cursor:pointer}
-
-    footer{margin-top:20px;border-top:1px solid var(--muted);background:rgba(0,0,0,.6)}
-    .donos{padding:20px 16px;border-top:1px solid var(--muted)}
-    .donos h3{text-align:center;margin:0 0 8px 0}
-    .donation-buttons{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:8px}
-    .donate-btn{background-color:#d6b14a;color:#000;padding:10px 20px;border-radius:8px;font-weight:700}
-    .donate-btn.ca{background-color:#3ddc84}
-    .fine{color:#cfc8a8;text-align:center;padding:14px 16px}
-
-    /* Focus styles for accessibility */
-    :focus{outline:2px solid var(--accent);outline-offset:2px}
+    fieldset{border:1px solid var(--muted);border-radius:12px;margin:12px 0;padding:12px}
+    legend{opacity:.9;padding:0 6px}
+    label{display:block;margin:8px 0}
+    input[type="text"], input[type="url"], textarea{width:100%;background:#0f0f0f;border:1px solid #2a2a2a;color:var(--ink);padding:12px;border-radius:12px}
+    textarea{min-height:120px;resize:vertical}
+    .row2{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+    .qty{width:96px}
+    .btns{display:flex;gap:12px;flex-wrap:wrap;margin-top:10px}
+    .pill{padding:12px 16px;border-radius:999px;background:var(--accent);color:#000;font-weight:700;border:1px solid #e3d9b2;cursor:pointer}
+    .pill.secondary{background:#2a2a2a;color:var(--ink);border:1px solid var(--muted)}
+    .muted{color:#cfc8a8}
+    .small{font-size:.9rem}
+    .policy{margin-top:8px}
+    .toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:#1a1a1a;border:1px solid var(--muted);color:var(--ink);padding:10px 14px;border-radius:999px;opacity:0;pointer-events:none;transition:opacity .2s}
+    .toast.show{opacity:1}
   </style>
-  <!-- ThreadRef: SHOP-BUILD-2025-11-06 -->
 </head>
 <body>
+  <!-- Site header -->
   <header>
     <div class="wrap row">
       <div class="brand">
         <img src="images/Logo-min.jpg" alt="3Leathers logo">
         <strong>3Leathers</strong>
       </div>
+      <span class="contact-info">(304) 669-1412 • Bridgeport, WV</span>
       <nav>
-        <a href="index.html">Home</a> •
-        <a href="shop.html"><strong>Shop</strong></a> •
+        <a href="index.html"><strong>Home</strong></a> •
+        <a href="shop.html">Shop</a> •
         <a href="custom.html">Custom</a> •
         <a href="checkout.html">Checkout</a>
       </nav>
     </div>
   </header>
 
-  <main class="wrap" id="top">
-    <h1>Shop</h1>
-    <p class="lead">Handmade leather goods from Bridgeport, West Virginia — No machines. Made by hand.</p>
-
+  <main class="container">
     <!-- Purses -->
-    <section class="section" id="purses">
-      <h2>Purses</h2>
-      <div class="grid">
-        <!-- Purse Card -->
-        <article class="card" data-item="Purse — Classic">
-          <img src="images/Purse04-min.jpg" width="1000" height="667" loading="lazy" decoding="async"
-               alt="Classic leather purse, hand-stitched in Bridgeport, WV — Appalachian everyday carry.">
-          <div class="pad">
-            <div class="title-row">
-              <strong>Purse — Classic</strong>
-              <span class="price">Starting at $___</span>
-            </div>
-            <details>
-              <summary>What’s included</summary>
-              <p class="small muted">Color of choice; soft or stiff leather; up to <strong>10″ L × 4″ W × 8″ H</strong>; strap: tote or crossbody; burnished edges, basic hardware.</p>
-            </details>
-
-            <div class="controls">
-              <div class="row2">
-                <div>
-                  <label for="color-purse">Leather color</label>
-                  <select id="color-purse" name="color">
-                    <option value="Brown">Brown</option>
-                    <option value="Black">Black</option>
-                    <option value="Tan">Tan</option>
-                    <option value="Oxblood">Oxblood</option>
-                    <option value="Other">Other…</option>
-                  </select>
-                  <input type="text" name="color_other" placeholder="If Other, describe" aria-label="Other color" style="display:none;margin-top:6px;">
-                </div>
-                <div>
-                  <label for="carving-purse">Carving / Stamping</label>
-                  <select id="carving-purse" name="carving">
-                    <option value="Plain">Plain</option>
-                    <option value="Stamped">Stamped</option>
-                    <option value="Tooled">Tooled</option>
-                  </select>
-                </div>
-              </div>
-
-              <div class="row2">
-                <div>
-                  <label for="qty-purse">Quantity</label>
-                  <input id="qty-purse" type="number" name="qty" min="1" max="5" value="1" />
-                </div>
-                <div>
-                  <label for="notes-purse">Notes</label>
-                  <input id="notes-purse" type="text" name="notes" placeholder="Pocket? Zipper? Strap length?" />
-                </div>
-              </div>
-
-              <div class="actions">
-                <button class="pill add-to-quote">Add to Quote</button>
-              </div>
-            </div>
-          </div>
-        </article>
-        <!-- /Purse Card -->
+    <section class="card" id="purses">
+      <div class="imgwrap">
+        <img src="images/Purse04-min.jpg" alt="Handmade leather purse">
       </div>
-    </section>
+      <div class="pad">
+        <h2 class="title"><span>Purses</span> <span class="muted small">Depth: 4"</span></h2>
+        <p class="muted small">Included: 1 color; soft or firm leather; tote handles or 3/4&quot; crossbody strap; hardware.</p>
 
-    <!-- Holsters (Universal models as base) -->
-    <section class="section" id="holsters">
-      <h2>Holsters</h2>
-      <div class="grid">
-        <article class="card" data-item="Holster — Universal">
-          <img src="images/Holster-BF-min.jpeg" width="1000" height="667" loading="lazy" decoding="async"
-               alt="Universal leather holster, belt-friendly, handmade in North-Central West Virginia.">
-          <div class="pad">
-            <div class="title-row">
-              <strong>Holster — Universal</strong>
-              <span class="price">Starting at $___</span>
-            </div>
-            <details>
-              <summary>What’s included</summary>
-              <p class="small muted">Universal model base; belt loop/channel for <strong>1.5″ belt</strong>; neutral cant, open-top; color of choice, burnished edges.</p>
-            </details>
+        <fieldset>
+          <legend>Size (base price)</legend>
+          <label><input type="radio" name="purse-size" value="Small" data-base="44" checked> Small — $44</label>
+          <label><input type="radio" name="purse-size" value="Medium" data-base="67"> Medium — $67</label>
+          <label><input type="radio" name="purse-size" value="Large" data-base="90"> Large — $90</label>
+        </fieldset>
 
-            <div class="controls">
-              <div class="row2">
-                <div>
-                  <label for="color-holster">Leather color</label>
-                  <select id="color-holster" name="color">
-                    <option value="Brown">Brown</option>
-                    <option value="Black">Black</option>
-                    <option value="Tan">Tan</option>
-                    <option value="Oxblood">Oxblood</option>
-                    <option value="Other">Other…</option>
-                  </select>
-                  <input type="text" name="color_other" placeholder="If Other, describe" aria-label="Other color" style="display:none;margin-top:6px;">
-                </div>
-                <div>
-                  <label for="carving-holster">Carving / Stamping</label>
-                  <select id="carving-holster" name="carving">
-                    <option value="Plain">Plain</option>
-                    <option value="Stamped">Stamped</option>
-                    <option value="Tooled">Tooled</option>
-                  </select>
-                </div>
-              </div>
+        <fieldset>
+          <legend>Customizations</legend>
+          <label><input type="checkbox" data-opt="Accent/Secondary Color" data-price="7"> Accent/Secondary Color (+$7)</label>
+          <label><input type="checkbox" data-opt="Stamping/Etching" data-price="20"> Stamping/Etching (+$20)</label>
+          <label><input type="checkbox" data-opt="Open Pocket (Inner or Outer)" data-price="8"> Open Pocket (Inner or Outer) (+$8)</label>
+          <label><input type="checkbox" data-opt="Zipper Coin Pouch (Inner only)" data-price="25"> Zipper Coin Pouch (Inner only) (+$25)</label>
+          <label><input type="checkbox" data-opt="Inner Organization/Purse Liner" data-price="30"> Inner Organization/Purse Liner (+$30)</label>
+        </fieldset>
 
-              <details>
-                <summary>Upgrades (quoted)</summary>
-                <ul class="small muted" style="margin:8px 0 0 18px">
-                  <li>Optic/light channel</li>
-                  <li>Thumb-break/retention strap</li>
-                  <li>Sweat guard (mid/high)</li>
-                  <li>Cant change (FBI/zero/forward)</li>
-                  <li>Reinforced mouth</li>
-                  <li>Exotic trim/panel</li>
-                </ul>
-              </details>
+        <fieldset>
+          <legend>Notes</legend>
+          <textarea id="purses-notes" placeholder="Tell me details (colors, strap style, pocket placement, carving ideas)…"></textarea>
+          <label class="small muted">Reference image or album link</label>
+          <input id="purses-link" type="url" placeholder="https://link-to-your-reference.example.com">
+        </fieldset>
 
-              <div class="row2" style="margin-top:8px">
-                <div>
-                  <label for="qty-holster">Quantity</label>
-                  <input id="qty-holster" type="number" name="qty" min="1" max="5" value="1" />
-                </div>
-                <div>
-                  <label for="notes-holster">Notes</label>
-                  <input id="notes-holster" type="text" name="notes" placeholder="Belt width, cant, guard height…" />
-                </div>
-              </div>
+        <div class="row2">
+          <label>Quantity <input id="purses-qty" class="qty" type="number" min="1" value="1"></label>
+          <button class="pill" onclick="addPurses()">Add to Order</button>
+        </div>
 
-              <div class="actions">
-                <button class="pill add-to-quote">Add to Quote</button>
-                <span class="small muted">For molded/firearm-specific fits, please use <a href="custom.html">Customs</a>.</span>
-              </div>
-            </div>
-          </div>
-        </article>
+        <p class="policy small muted">If your idea falls outside these options, hop to the <a href="custom.html">Custom page</a> and tell me everything.</p>
       </div>
     </section>
 
     <!-- Wallets -->
-    <section class="section" id="wallets">
-      <h2>Wallets</h2>
-      <div class="grid">
-        <article class="card" data-item="Wallet — Bi-fold">
-          <img src="images/Wallet.jpeg" width="1000" height="667" loading="lazy" decoding="async"
-               alt="Handmade leather wallet — WV-built with burnished edges and clean stitch.">
-          <div class="pad">
-            <div class="title-row">
-              <strong>Wallet — Bi-fold</strong>
-              <span class="price">Starting at $___</span>
-            </div>
-            <details>
-              <summary>What’s included</summary>
-              <p class="small muted">Color of choice; standard thickness; <strong>4 card slots</strong>; cash pocket; burnished edges.</p>
-            </details>
+    <section class="card" id="wallets">
+      <div class="imgwrap">
+        <img src="images/Wallet.jpeg" alt="Handmade leather wallet">
+      </div>
+      <div class="pad">
+        <h2 class="title"><span>Wallets</span></h2>
+        <p class="muted small">Included: burnished edges; pockets as listed. Pick your style below.</p>
 
-            <div class="controls">
-              <div class="row2">
-                <div>
-                  <label for="color-bifold">Leather color</label>
-                  <select id="color-bifold" name="color">
-                    <option value="Brown">Brown</option>
-                    <option value="Black">Black</option>
-                    <option value="Tan">Tan</option>
-                    <option value="Oxblood">Oxblood</option>
-                    <option value="Other">Other…</option>
-                  </select>
-                  <input type="text" name="color_other" placeholder="If Other, describe" aria-label="Other color" style="display:none;margin-top:6px;">
-                </div>
-                <div>
-                  <label for="carving-bifold">Carving / Stamping</label>
-                  <select id="carving-bifold" name="carving">
-                    <option value="Plain">Plain</option>
-                    <option value="Stamped">Stamped</option>
-                    <option value="Tooled">Tooled</option>
-                  </select>
-                </div>
-              </div>
+        <fieldset>
+          <legend>Style (base price)</legend>
+          <label><input type="radio" name="wallet-style" value="Bi-Fold" data-base="55" checked> Bi-Fold — $55 (4 card slots, cash pocket)</label>
+          <label><input type="radio" name="wallet-style" value="Tri-Fold" data-base="75"> Tri-Fold — $75 (6 card slots, cash pocket)</label>
+        </fieldset>
 
-              <details>
-                <summary>Upgrades (quoted)</summary>
-                <ul class="small muted" style="margin:8px 0 0 18px">
-                  <li>Extra card slots</li>
-                  <li>ID window</li>
-                  <li>Coin pocket</li>
-                  <li>Chain grommet + chain</li>
-                  <li>Contrast stitch</li>
-                  <li>Slim profile</li>
-                </ul>
-              </details>
+        <fieldset>
+          <legend>Customizations</legend>
+          <label><input type="checkbox" data-opt="Accent/Secondary Color" data-price="7"> Accent/Secondary Color (+$7)</label>
+          <label><input type="checkbox" data-opt="Stamping/Etching" data-price="20"> Stamping/Etching (+$20)</label>
+          <label><input type="checkbox" data-opt="ID Card Slot" data-price="9"> ID Card Slot (+$9)</label>
+          <label><input type="checkbox" data-opt="Additional Money Slot" data-price="5"> Additional Money Slot (+$5)</label>
+          <hr style="border: none; border-top:1px solid var(--muted); margin:10px 0">
+          <p class="small muted">Tri-Fold only:</p>
+          <label><input type="checkbox" data-opt="Snaps" data-price="2" data-trifold="true"> Snaps (+$2 each)</label>
+          <label><input type="checkbox" data-opt="Zipper Coin Pouch" data-price="25" data-trifold="true"> Zipper Coin Pouch (+$25)</label>
+          <label><input type="checkbox" data-opt="Chain & Lobster Claw" data-price="15" data-trifold="true"> Chain &amp; Lobster Claw (+$15)</label>
+        </fieldset>
 
-              <div class="row2" style="margin-top:8px">
-                <div>
-                  <label for="qty-bifold">Quantity</label>
-                  <input id="qty-bifold" type="number" name="qty" min="1" max="5" value="1" />
-                </div>
-                <div>
-                  <label for="notes-bifold">Notes</label>
-                  <input id="notes-bifold" type="text" name="notes" placeholder="Extra slots? Chain? Stitch color?" />
-                </div>
-              </div>
+        <fieldset>
+          <legend>Notes</legend>
+          <textarea id="wallets-notes" placeholder="Tell me details (color, stamping motif, snap count for Tri-Fold, etc.)…"></textarea>
+          <label class="small muted">Reference image or album link</label>
+          <input id="wallets-link" type="url" placeholder="https://link-to-your-reference.example.com">
+        </fieldset>
 
-              <div class="actions">
-                <button class="pill add-to-quote">Add to Quote</button>
-              </div>
-            </div>
-          </div>
-        </article>
+        <div class="row2">
+          <label>Quantity <input id="wallets-qty" class="qty" type="number" min="1" value="1"></label>
+          <button class="pill" onclick="addWallets()">Add to Order</button>
+        </div>
 
-        <article class="card" data-item="Wallet — Tri-fold">
-          <img src="images/Wallet.jpeg" width="1000" height="667" loading="lazy" decoding="async"
-               alt="Tri-fold style leather wallet — crafted in the Mid-Atlantic with durable finish.">
-          <div class="pad">
-            <div class="title-row">
-              <strong>Wallet — Tri-fold</strong>
-              <span class="price">Starting at $___</span>
-            </div>
-            <details>
-              <summary>What’s included</summary>
-              <p class="small muted">Color of choice; standard thickness; <strong>6 card slots</strong>; cash pocket; burnished edges.</p>
-            </details>
-
-            <div class="controls">
-              <div class="row2">
-                <div>
-                  <label for="color-trifold">Leather color</label>
-                  <select id="color-trifold" name="color">
-                    <option value="Brown">Brown</option>
-                    <option value="Black">Black</option>
-                    <option value="Tan">Tan</option>
-                    <option value="Oxblood">Oxblood</option>
-                    <option value="Other">Other…</option>
-                  </select>
-                  <input type="text" name="color_other" placeholder="If Other, describe" aria-label="Other color" style="display:none;margin-top:6px;">
-                </div>
-                <div>
-                  <label for="carving-trifold">Carving / Stamping</label>
-                  <select id="carving-trifold" name="carving">
-                    <option value="Plain">Plain</option>
-                    <option value="Stamped">Stamped</option>
-                    <option value="Tooled">Tooled</option>
-                  </select>
-                </div>
-              </div>
-
-              <details>
-                <summary>Upgrades (quoted)</summary>
-                <ul class="small muted" style="margin:8px 0 0 18px">
-                  <li>Extra card slots</li>
-                  <li>ID window</li>
-                  <li>Coin pocket</li>
-                  <li>Chain grommet + chain</li>
-                  <li>Contrast stitch</li>
-                  <li>Slim profile</li>
-                </ul>
-              </details>
-
-              <div class="row2" style="margin-top:8px">
-                <div>
-                  <label for="qty-trifold">Quantity</label>
-                  <input id="qty-trifold" type="number" name="qty" min="1" max="5" value="1" />
-                </div>
-                <div>
-                  <label for="notes-trifold">Notes</label>
-                  <input id="notes-trifold" type="text" name="notes" placeholder="Extra slots? Chain? Stitch color?" />
-                </div>
-              </div>
-
-              <div class="actions">
-                <button class="pill add-to-quote">Add to Quote</button>
-              </div>
-            </div>
-          </div>
-        </article>
+        <p class="policy small muted">Looking for something wilder? Try the <a href="custom.html">Custom page</a>.</p>
       </div>
     </section>
 
-    <!-- Customs -->
-    <section class="section" id="customs">
-      <h2>Customs</h2>
-      <div class="grid">
-        <article class="card">
-          <img src="images/Scroll-min.jpeg" width="1000" height="667" loading="lazy" decoding="async"
-               alt="Custom leather projects — scroll cases, sheaths, specialty items across Appalachia.">
-          <div class="pad">
-            <div class="title-row">
-              <strong>Request a Custom Order</strong>
-            </div>
-            <p class="small muted">Have something unique in mind? Sword sheaths, knife holders, pipe kits, repairs, and more.</p>
-            <div class="actions">
-              <a class="pill" href="custom.html">Go to Customs</a>
-            </div>
-          </div>
-        </article>
+    <!-- Holsters -->
+    <section class="card" id="holsters">
+      <div class="imgwrap">
+        <img src="images/Holster-BF-min.jpeg" alt="Handmade leather holster">
+      </div>
+      <div class="pad">
+        <h2 class="title"><span>Holsters</span></h2>
+        <p class="muted small">Universal fit with minor adjustments based on your notes. Open Carry has 1½&quot; belt loop; Concealed Carry has belt clip. Burnished edges included.</p>
+
+        <fieldset>
+          <legend>Style (base price)</legend>
+          <label><input type="radio" name="holster-style" value="Open Carry" data-base="40" checked> Open Carry — $40</label>
+          <label><input type="radio" name="holster-style" value="Concealed Carry" data-base="52"> Concealed Carry — $52</label>
+        </fieldset>
+
+        <fieldset>
+          <legend>Customizations</legend>
+          <label><input type="checkbox" data-opt="Retention Snap" data-price="9"> Retention Snap (+$9)</label>
+          <label><input type="checkbox" data-opt="Stamping/Etching" data-price="20"> Stamping/Etching (+$20)</label>
+        </fieldset>
+
+        <fieldset>
+          <legend>Notes</legend>
+          <textarea id="holsters-notes" placeholder="Tell me make/model and any fit notes (carry angle, height, etc.)…"></textarea>
+          <label class="small muted">Reference image or album link</label>
+          <input id="holsters-link" type="url" placeholder="https://link-to-your-reference.example.com">
+        </fieldset>
+
+        <div class="row2">
+          <label>Quantity <input id="holsters-qty" class="qty" type="number" min="1" value="1"></label>
+          <button class="pill" onclick="addHolsters()">Add to Order</button>
+        </div>
+
+        <p class="policy small muted">Need something very specific? Use the <a href="custom.html">Custom page</a> and we’ll tailor it.</p>
+      </div>
+    </section>
+
+    <!-- Custom Orders feature card (links to Custom page) -->
+    <section class="card" id="custom-card">
+      <div class="imgwrap">
+        <img src="images/Scroll-min.jpeg" alt="Custom leather scroll case">
+      </div>
+      <div class="pad">
+        <h2 class="title"><span>Custom Orders</span></h2>
+        <p class="muted small">If your idea doesn’t fit above, this is your playground.</p>
+        <div class="btns">
+          <a class="pill" href="custom.html">Start a Custom Project</a>
+          <a class="pill secondary" href="checkout.html">Go to Checkout</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Gentle reminder -->
+    <section class="card">
+      <div class="pad small muted">
+        <p><strong>Production Time:</strong> Most orders ship in ~1 week. If leather gets stubborn, I’ll email you.</p>
+        <p><strong>Non-Refundable:</strong> Leather can’t be “unstained,” “unstamped,” or “un-stitched.” Once we start, all payments and deposits are non-refundable.</p>
       </div>
     </section>
   </main>
 
-  <!-- Quote Modal -->
-  <div class="modal-backdrop" id="quoteModal" aria-hidden="true" role="dialog" aria-label="Quote summary">
-    <div class="modal" role="document">
-      <div class="hd">
-        <strong>Quote Summary</strong>
-        <button class="close" data-close>Close ✕</button>
-      </div>
-      <div class="bd" id="quoteBody">
-        <!-- Filled by JS -->
-      </div>
-      <div class="ft">
-        <a id="toCustoms" class="pill" href="custom.html">Continue to Customs</a>
-        <button class="btn" data-close>Cancel</button>
-      </div>
-    </div>
-  </div>
+  <div id="toast" class="toast">Added to order</div>
 
   <script>
-  (function(){
-    // reveal "Other" color text input when selected
-    document.querySelectorAll('select[name="color"]').forEach(function(sel){
-      const otherInput = sel.parentElement.querySelector('input[name="color_other"]');
-      sel.addEventListener('change', function(){
-        if(this.value === 'Other'){ otherInput.style.display='block'; otherInput.focus(); }
-        else { otherInput.style.display='none'; otherInput.value=''; }
-      });
-    });
-
-    // Modal helpers
-    const modal = document.getElementById('quoteModal');
-    const bodyEl = document.getElementById('quoteBody');
-    const toCustoms = document.getElementById('toCustoms');
-    function openModal(){ modal.style.display='flex'; modal.setAttribute('aria-hidden','false'); }
-    function closeModal(){ modal.style.display='none'; modal.setAttribute('aria-hidden','true'); bodyEl.innerHTML=''; toCustoms.href='custom.html'; }
-
-    document.querySelectorAll('[data-close]').forEach(btn=>btn.addEventListener('click', closeModal));
-    modal.addEventListener('click', (e)=>{ if(e.target===modal) closeModal(); });
-    document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeModal(); });
-
-    // Build a querystring for Customs prefill
-    function buildQuery(params){
-      const qs = Object.keys(params)
-        .filter(k => params[k] !== undefined && params[k] !== null && params[k] !== '')
-        .map(k => encodeURIComponent(k) + '=' + encodeURIComponent(params[k]))
-        .join('&');
-      return qs ? ('?' + qs) : '';
+    // --- minimal cart util using localStorage ---
+    const CART_KEY = 'cart';
+    function getCart(){ try{ return JSON.parse(localStorage.getItem(CART_KEY)) || []; }catch{ return []; } }
+    function setCart(items){ localStorage.setItem(CART_KEY, JSON.stringify(items)); }
+    function addItem(item){
+      const cart = getCart();
+      cart.push(item);
+      setCart(cart);
+      showToast('Added to order');
+    }
+    function showToast(msg){
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(()=>t.classList.remove('show'), 1100);
     }
 
-    // Handle Add to Quote
-    document.querySelectorAll('.add-to-quote').forEach(function(btn){
-      btn.addEventListener('click', function(){
-        const card = btn.closest('.card');
-        const item = card.getAttribute('data-item') || 'Item';
-        const selects = card.querySelectorAll('select, input, textarea');
-        const formData = {};
-        selects.forEach(function(el){
-          if(el.name){
-            if(el.type === 'number'){ formData[el.name] = el.value; }
-            else if(el.type === 'text' || el.tagName === 'TEXTAREA'){ formData[el.name] = el.value.trim(); }
-            else { formData[el.name] = el.value; }
-          }
-        });
-
-        const params = {
-          item: item,
-          color: formData.color || '',
-          color_other: formData.color === 'Other' ? (formData.color_other || '') : '',
-          carving: formData.carving || 'Plain',
-          qty: formData.qty || '1',
-          notes: formData.notes || ''
-        };
-
-        // Summary HTML (safe + simple)
-        bodyEl.innerHTML = `
-          <p><strong>Item:</strong> ${item}</p>
-          <p><strong>Leather color:</strong> ${params.color}${params.color==='Other' && params.color_other ? ' — ' + params.color_other : ''}</p>
-          <p><strong>Carving/Stamping:</strong> ${params.carving}</p>
-          <p><strong>Quantity:</strong> ${params.qty}</p>
-          ${params.notes ? `<p><strong>Notes:</strong> ${params.notes.replace(/</g,'&lt;')}</p>` : ''}
-          <p class="small muted">You’ll finalize details and get a quote on the Customs page.</p>
-        `;
-
-        // Link to Customs with prefill
-        toCustoms.href = 'custom.html' + buildQuery(params);
-
-        openModal();
+    // enable/disable Tri-Fold-only options based on current selection
+    function updateWalletToggles(){
+      const tri = document.querySelector('input[name="wallet-style"][value="Tri-Fold"]').checked;
+      document.querySelectorAll('#wallets [data-trifold="true"]').forEach(cb=>{
+        cb.disabled = !tri;
+        if(!tri) cb.checked = false;
       });
-    });
-  })();
+    }
+    document.querySelectorAll('input[name="wallet-style"]').forEach(r=>r.addEventListener('change', updateWalletToggles));
+    updateWalletToggles();
+
+    // Helpers to read selected options
+    function selectedOptions(scope){
+      const opts = [];
+      scope.querySelectorAll('input[type="checkbox"]:checked').forEach(cb=>{
+        const name = cb.getAttribute('data-opt');
+        const price = Number(cb.getAttribute('data-price')||0);
+        opts.push({ name, price });
+      });
+      return opts;
+    }
+
+    // --- Adders per section ---
+    function addPurses(){
+      const section = document.getElementById('purses');
+      const size = section.querySelector('input[name="purse-size"]:checked');
+      const base = Number(size.getAttribute('data-base'));
+      const options = selectedOptions(section);
+      const qty = Math.max(1, Number(document.getElementById('purses-qty').value||1));
+      const notes = document.getElementById('purses-notes').value.trim();
+      const link = document.getElementById('purses-link').value.trim();
+
+      const optTotal = options.reduce((s,o)=>s+o.price,0);
+      const unitPrice = base + optTotal;
+      addItem({
+        category: 'Purses',
+        variant: size.value,
+        basePrice: base,
+        options,
+        unitPrice,
+        quantity: qty,
+        notes, link,
+        image: 'images/Purse04-min.jpg'
+      });
+    }
+
+    function addWallets(){
+      const section = document.getElementById('wallets');
+      const style = section.querySelector('input[name="wallet-style"]:checked');
+      const base = Number(style.getAttribute('data-base'));
+      const options = selectedOptions(section);
+      const qty = Math.max(1, Number(document.getElementById('wallets-qty').value||1));
+      const notes = document.getElementById('wallets-notes').value.trim();
+      const link = document.getElementById('wallets-link').value.trim();
+
+      // If "Snaps" for Tri-Fold, treat as a single +$2 add (user can clarify count in notes)
+      const optTotal = options.reduce((s,o)=>s+o.price,0);
+      const unitPrice = base + optTotal;
+      addItem({
+        category: 'Wallets',
+        variant: style.value,
+        basePrice: base,
+        options,
+        unitPrice,
+        quantity: qty,
+        notes, link,
+        image: 'images/Wallet.jpeg'
+      });
+    }
+
+    function addHolsters(){
+      const section = document.getElementById('holsters');
+      const style = section.querySelector('input[name="holster-style"]:checked');
+      const base = Number(style.getAttribute('data-base'));
+      const options = selectedOptions(section);
+      const qty = Math.max(1, Number(document.getElementById('holsters-qty').value||1));
+      const notes = document.getElementById('holsters-notes').value.trim();
+      const link = document.getElementById('holsters-link').value.trim();
+
+      const optTotal = options.reduce((s,o)=>s+o.price,0);
+      const unitPrice = base + optTotal;
+      addItem({
+        category: 'Holsters',
+        variant: style.value,
+        basePrice: base,
+        options,
+        unitPrice,
+        quantity: qty,
+        notes, link,
+        image: 'images/Holster-BF-min.jpeg'
+      });
+    }
   </script>
 </body>
 </html>
