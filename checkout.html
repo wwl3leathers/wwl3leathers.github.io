@@ -3,245 +3,214 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>3Leathers — Checkout</title>
-  <meta name="description" content="Finalize your handmade leather order from 3Leathers." />
-
-  <!-- Favicon + Social preview metadata (no visible social links added) -->
-  <link rel="icon" type="image/png" href="/images/favicon.png">
-  <meta property="og:title" content="3Leathers — Custom Leather by Walter Lewis III">
-  <meta property="og:description" content="Hand-made custom leather goods from a one-man workshop. Wallets, bracelets, holsters, watch straps, and one-off commissions—no machines, just craft.">
-  <meta property="og:image" content="https://wwl3leathers.github.io/images/workshop-background.jpg">
-  <meta property="og:url" content="https://wwl3leathers.github.io/checkout.html">
-  <meta name="twitter:card" content="summary_large_image">
-
+  <title>Checkout – 3Leathers</title>
+  <meta name="description" content="Review your handmade leather order from 3Leathers and pay securely.">
   <style>
-    :root{
-      --bg:#0b0b0b; --ink:#f8f5e3; --accent:#d6b14a; --muted:rgba(255,255,255,.08);
-      --ok:#3ddc84; --err:#ff6b6b;
-    }
+    /* Match site palette (from index.html) */
+    :root{ --bg:#0b0b0b; --ink:#f8f5e3; --accent:#d6b14a; --muted:rgba(255,255,255,.08); }
     html,body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial}
-    a{color:var(--accent)}
+    a{color:var(--accent);text-decoration:none}
+
+    /* Header/nav identical to index */
     header{position:sticky;top:0;z-index:10;background:rgba(0,0,0,.6);backdrop-filter:saturate(140%) blur(6px);border-bottom:1px solid var(--muted)}
-    .wrap{max-width:980px;margin:auto;padding:16px}
-    .row{display:flex;align-items:center;gap:12px;justify-content:space-between}
+    .wrap{max-width:1100px;margin:auto;padding:16px}
+    .row{display:flex;align-items:center;justify-content:space-between;gap:12px}
     .brand{display:flex;align-items:center;gap:10px}
     .brand img{height:40px;border-radius:4px}
     nav a{margin-left:10px}
-    .hero{padding:36px 16px;border-bottom:1px solid var(--muted);background:linear-gradient(180deg, rgba(0,0,0,.55), rgba(0,0,0,.7)), url("images/Backdrop2-min.jpeg") center/cover}
-    .hero h1{margin:0 0 6px 0}
-    .muted{opacity:.85}
-    .grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-    @media (max-width:860px){.grid{grid-template-columns:1fr}}
-    .card{background:rgba(0,0,0,.55);border:1px solid var(--muted);border-radius:14px;padding:16px}
-    table{width:100%;border-collapse:collapse}
-    th,td{padding:10px;border-bottom:1px solid var(--muted);text-align:left;vertical-align:top}
-    .pill{padding:10px 14px;border-radius:999px;background:var(--accent);color:#000;font-weight:700;text-decoration:none;border:none;cursor:pointer}
+    .contact-info{margin-left:auto;font-size:.9rem;color:var(--ink);white-space:nowrap}
+    @media (max-width:700px){ .contact-info{display:block;margin-left:0;margin-top:4px;text-align:right} }
+
+    /* Page layout */
+    .container{max-width:960px;margin:0 auto;padding:clamp(16px,3vw,32px)}
+    .card{background:rgba(0,0,0,.55);border:1px solid var(--muted);border-radius:14px;overflow:hidden;margin-bottom:18px}
+    .pad{padding:18px}
+    .title{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:0 0 6px}
+    .muted{color:#cfc8a8}
+    .small{font-size:.9rem}
+    .pill{padding:12px 16px;border-radius:999px;background:var(--accent);color:#000;font-weight:700;border:1px solid #e3d9b2;cursor:pointer}
     .pill.secondary{background:#2a2a2a;color:var(--ink);border:1px solid var(--muted)}
-    input[type=text],input[type=email],input[type=tel],textarea,select{
-      width:100%;margin-top:6px;padding:10px 12px;border-radius:10px;border:1px solid var(--muted);background:#0f0f0f;color:var(--ink)
-    }
-    textarea{min-height:110px;resize:vertical}
-    .status{margin-top:12px;font-weight:700}
-    .ok{color:var(--ok)} .err{color:var(--err)}
-    footer{padding:24px 16px;border-top:1px solid var(--muted);text-align:center;color:#cfc8a8}
-    .btns{display:flex;gap:10px;flex-wrap:wrap}
-    /* icons row */
-    .card-icons{display:flex;gap:.75rem;align-items:center;flex-wrap:wrap;margin:.5rem 0 1rem}
-    .pre-submit-note{border:1px solid #ddd;padding:12px;border-radius:8px;margin:16px 0}
+    .btns{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+    .line{display:flex;gap:14px;align-items:flex-start;justify-content:space-between;border-top:1px solid var(--muted);padding:12px 0}
+    .left{display:flex;gap:12px;align-items:flex-start}
+    .thumb{width:110px;height:82px;flex:0 0 110px;border:1px solid var(--muted);border-radius:10px;overflow:hidden;background:#111}
+    .thumb img{width:100%;height:100%;object-fit:cover}
+    .meta h3{margin:0 0 6px 0}
+    .opt{margin:0 0 4px 0}
+    .qtybox{display:flex;gap:8px;align-items:center}
+    .qtybox input{width:72px;background:#0f0f0f;border:1px solid #2a2a2a;color:var(--ink);padding:8px;border-radius:8px}
+    .price{white-space:nowrap}
+    .right{text-align:right}
+
+    .totals{display:flex;justify-content:flex-end;padding:12px 0;border-top:1px solid var(--muted);margin-top:6px}
+    .totals table{border-collapse:collapse}
+    .totals td{padding:6px 0 6px 24px}
+    .totals .num{text-align:right;min-width:120px}
+
+    .center{text-align:center}
+    .empty{padding:40px 18px}
+    .icons{opacity:.9;font-size:.9rem}
   </style>
 </head>
 <body>
+  <!-- Site header -->
   <header>
     <div class="wrap row">
       <div class="brand">
         <img src="images/Logo-min.jpg" alt="3Leathers logo">
         <strong>3Leathers</strong>
       </div>
+      <span class="contact-info">(304) 669-1412 • Bridgeport, WV</span>
       <nav>
-        <a href="index.html">Home</a> •
+        <a href="index.html"><strong>Home</strong></a> •
         <a href="shop.html">Shop</a> •
         <a href="custom.html">Custom</a> •
-        <a href="checkout.html"><strong>Checkout</strong></a>
+        <a href="checkout.html">Checkout</a>
       </nav>
     </div>
   </header>
 
- <section class="hero">
-  <div class="wrap">
-    <h1 id="thanks-title">Submit your order — I will clamp it under a piece of tooling leather so it doesn’t wander off.</h1>
-    <p>Let's take a sip of coffee, brush off the leather shavings, and give your idea a look.</p>
-    <p>If you don’t hear from me soon, assume I’m elbow-deep in dye — not ignoring you.</p>
-    <div class="btns" style="margin-top:10px">
-      <a class="pill" href="shop.html">Back to Shop</a>
-      <button class="pill secondary" id="clearCart" type="button">Clear Order</button>
-    </div>
-  </div>
-</section>
-
-  <main class="wrap grid">
-    <!-- Order summary -->
+  <main class="container">
     <section class="card">
-      <h2>Your Order</h2>
-      <table id="orderTable" aria-live="polite">
-        <thead>
-          <tr><th>Item</th><th>Options / Notes</th><th>Qty</th><th>Remove</th></tr>
-        </thead>
-        <tbody id="orderBody"><tr><td colspan="4" class="muted">Loading…</td></tr></tbody>
-      </table>
-      <p class="muted" id="emptyMsg" style="display:none">Your order is empty. Add items on the <a href="shop.html">Shop</a> page.</p>
+      <div class="pad">
+        <h1 class="title"><span>Checkout</span></h1>
+        <p class="small muted">Review your order below. You can update quantities or remove items before paying.</p>
+      </div>
     </section>
 
-    <!-- Customer details + submit -->
+    <!-- Cart items -->
+    <section class="card" id="cartCard">
+      <div class="pad" id="cartBody">
+        <!-- JS will render items here -->
+      </div>
+    </section>
+
+    <!-- Totals + actions -->
     <section class="card">
-      <h2>Contact & Submit</h2>
-      <form id="checkoutForm" action="https://formspree.io/f/xvgvjnbe" method="POST" novalidate>
-        <label for="name">Name *</label>
-        <input id="name" name="name" type="text" required>
-
-        <label for="email" style="margin-top:10px">Email *</label>
-        <input id="email" name="email" type="email" required>
-
-        <label for="phone" style="margin-top:10px">Phone (optional)</label>
-        <input id="phone" name="phone" type="tel">
-
-        <label for="preferred" style="margin-top:10px">Preferred Payment</label>
-        <select id="preferred" name="preferred">
-          <option>PayPal</option>
-          <option>Cash App</option>
-          <option>Discuss / Invoice</option>
-        </select>
-
-        <label for="notes" style="margin-top:10px">Notes (optional)</label>
-        <textarea id="notes" name="notes" placeholder="Anything else I should know?"></textarea>
-
-        <!-- Hidden fields -->
-        <textarea id="orderJson" name="orderJson" hidden></textarea>
-        <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
-
-        <!-- Pre-submit note (single, simple) -->
-        <div class="pre-submit-note" aria-live="polite">
-          <strong>Before you hit Send:</strong>
-          <ul style="margin:8px 0 0 18px;">
-            <li>Your request goes straight to my inbox (Formspree handles delivery).</li>
-            <li>I’ll review it and email you next steps + a ballpark quote.</li>
-            <li>No payment yet—just details. We only take a deposit after we both agree.</li>
-          </ul>
+      <div class="pad">
+        <div class="totals" id="totalsWrap">
+          <!-- JS totals -->
         </div>
 
-        <!-- Card Icons Strip (icons-only, visual) -->
-        <!-- Card Icons Strip (real logos) -->
-<div class="card-logos" style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap; margin-top: 8px; padding: 6px 12px; background-color: #d2b48c; border-radius: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-  <img src="/images/visa.svg" alt="Visa" style="height: 24px;" />
-  <img src="/images/mastercard.svg" alt="Mastercard" style="height: 24px;" />
-  <img src="/images/americanexpress.svg" alt="American Express" style="height: 20px;" />
-  <img src="/images/discover.svg" alt="Discover" style="height: 32px;" />
-</div>
-
-        <div class="btns" style="margin-top:12px">
-          <button class="pill" type="submit">Send Order</button>
-          <button class="pill secondary" type="reset">Reset</button>
-        </div>
-
-        <div id="status" class="status" role="status" aria-live="polite"></div>
-
-        <hr style="margin:16px 0;border:0;border-top:1px solid var(--muted)">
-        <p class="muted">After submitting, you can complete payment here:</p>
         <div class="btns">
-          <a class="pill" target="_blank" href="https://www.paypal.me/WalterLewis675">PayPal</a>
-          <a class="pill" target="_blank" href="https://cash.app/$UncleButch3">Cash App</a>
+          <a class="pill secondary" href="shop.html">Back to Shop</a>
+          <!-- Generic pay button; swap href for Square later -->
+          <a id="payBtn" class="pill" href="#">
+            Pay Securely
+          </a>
+          <span class="icons muted small">We accept all major credit cards.</span>
+          <button class="pill secondary" type="button" onclick="clearOrder()">Clear Order</button>
         </div>
-      </form>
+
+        <div class="small muted" style="margin-top:14px">
+          <p><strong>Production Time:</strong> Most orders ship in about <strong>1 week</strong>. If leather gets stubborn, I’ll email you with an update.</p>
+          <p><strong>Non-Refundable Deposits & Payments:</strong> Leather can’t be “unstained,” “unstamped,” or “un-stitched.” Once we begin, <strong>all payments and deposits are non-refundable</strong>.</p>
+        </div>
+      </div>
     </section>
   </main>
 
-  <footer>
-  
-      <div style="color:#cfc8a8;margin-top:10px">
-        <small>&copy; 3Leathers — Handmade by Walter Lewis III</small>
-      </div>
-    </section>
-  </footer>
-
   <script>
-    // ----- Cart helpers -----
-    const KEY='orderItems';
-    const orderBody = document.getElementById('orderBody');
-    const emptyMsg = document.getElementById('emptyMsg');
-    function getCart(){ try{ return JSON.parse(localStorage.getItem(KEY))||[] }catch(e){ return [] } }
-    function saveCart(items){ localStorage.setItem(KEY, JSON.stringify(items)) }
+    const CART_KEY = 'cart';
 
-    function render(){
-      const items = getCart();
-      orderBody.innerHTML='';
-      if(!items.length){
-        emptyMsg.style.display='block';
-        orderBody.innerHTML = '<tr><td colspan="4" class="muted">No items.</td></tr>';
+    function getCart(){ try { return JSON.parse(localStorage.getItem(CART_KEY)) || []; } catch { return []; } }
+    function setCart(items){ localStorage.setItem(CART_KEY, JSON.stringify(items)); }
+
+    function money(n){ return '$' + (Math.round(n * 100) / 100).toFixed(2); }
+
+    function lineTotal(item){ return Number(item.unitPrice || 0) * Number(item.quantity || 1); }
+
+    function renderCart(){
+      const body = document.getElementById('cartBody');
+      const totalsWrap = document.getElementById('totalsWrap');
+      const cart = getCart();
+
+      if(!cart.length){
+        body.innerHTML = `
+          <div class="empty center">
+            <p class="muted">Your order is empty.</p>
+            <p><a class="pill" href="shop.html">Browse the Shop</a></p>
+          </div>`;
+        totalsWrap.innerHTML = '';
         return;
       }
-      emptyMsg.style.display='none';
-      items.forEach((it,idx)=>{
-        const tr = document.createElement('tr');
-        tr.innerHTML = `
-          <td><strong>${it.item||''}</strong></td>
-          <td>
-            ${it.color?`<div>Color: ${it.color}</div>`:''}
-            ${it.notes?`<div>Notes: ${it.notes}</div>`:''}
-          </td>
-          <td>${it.qty||1}</td>
-          <td><button class="pill secondary" data-remove="${idx}" type="button">Remove</button></td>
+
+      // Items
+      body.innerHTML = cart.map((item, idx) => {
+        const opts = (item.options || []).map(o => `<div class="opt small muted">+ ${o.name} (${money(o.price)})</div>`).join('') || '<div class="opt small muted">No customizations</div>';
+        const notes = item.notes ? `<div class="small muted">Notes: ${escapeHtml(item.notes)}</div>` : '';
+        const link = item.link ? `<div class="small"><a href="${escapeAttr(item.link)}" target="_blank" rel="noopener">Reference link</a></div>` : '';
+        const unit = Number(item.unitPrice || 0);
+
+        return `
+          <div class="line">
+            <div class="left">
+              <div class="thumb">${item.image ? `<img src="${escapeAttr(item.image)}" alt="Item image">` : ''}</div>
+              <div class="meta">
+                <h3>${escapeHtml(item.category || 'Item')}${item.variant ? ` — ${escapeHtml(item.variant)}` : ''}</h3>
+                <div class="small muted">Unit: ${money(unit)}</div>
+                ${opts}
+                ${notes}
+                ${link}
+              </div>
+            </div>
+
+            <div class="right">
+              <div class="qtybox">
+                <label class="small muted">Qty</label>
+                <input type="number" min="1" value="${Number(item.quantity||1)}" onchange="updateQty(${idx}, this.value)">
+                <button class="pill secondary" type="button" onclick="removeItem(${idx})">Remove</button>
+              </div>
+              <div class="price small" style="margin-top:8px"><strong>${money(lineTotal(item))}</strong></div>
+            </div>
+          </div>
         `;
-        orderBody.appendChild(tr);
-      });
-      orderBody.querySelectorAll('[data-remove]').forEach(btn=>{
-        btn.addEventListener('click', ()=>{
-          const i = parseInt(btn.getAttribute('data-remove'),10);
-          const cart = getCart(); cart.splice(i,1); saveCart(cart); render();
-        });
-      });
+      }).join('');
+
+      // Totals
+      const subtotal = cart.reduce((s, it) => s + lineTotal(it), 0);
+      totalsWrap.innerHTML = `
+        <table>
+          <tr><td class="small muted">Subtotal</td><td class="num"><strong>${money(subtotal)}</strong></td></tr>
+          <tr><td class="small muted">Shipping</td><td class="num small muted">Calculated later</td></tr>
+          <tr><td class="small muted">Tax</td><td class="num small muted">None (for now)</td></tr>
+        </table>
+      `;
     }
 
-    // Build JSON for submission
-    function buildOrderJson(){
-      const items = getCart();
-      document.getElementById('orderJson').value = JSON.stringify(items, null, 2);
-    }
-
-    // Clear cart
-    document.getElementById('clearCart').addEventListener('click', ()=>{
-      localStorage.removeItem(KEY); render();
-    });
-
-    // ----- Single, clean AJAX handler w/ redirect -----
-    const form = document.getElementById('checkoutForm');
-    const statusEl = document.getElementById('status');
-    form.addEventListener('submit', async (e)=>{
-      e.preventDefault();
-      buildOrderJson();
-      statusEl.textContent='Sending…';
-      statusEl.className='status';
-      const data = new FormData(form);
-      try{
-        const resp = await fetch(form.action, {
-          method:'POST',
-          body:data,
-          headers:{'Accept':'application/json'}
-        });
-        if(resp.ok){
-          // success → clear cart then redirect
-          localStorage.removeItem(KEY);
-          window.location.href = '/custom-thanks.html';
-          return;
-        }
-        // not OK → still redirect so users aren't stuck
-        window.location.href = '/custom-thanks.html';
-      }catch(err){
-        // network hiccup → still redirect
-        window.location.href = '/custom-thanks.html';
+    function updateQty(index, val){
+      const qty = Math.max(1, Number(val||1));
+      const cart = getCart();
+      if(cart[index]){
+        cart[index].quantity = qty;
+        setCart(cart);
+        renderCart();
       }
-    });
+    }
 
-    // initial render
-    render();
+    function removeItem(index){
+      const cart = getCart();
+      cart.splice(index, 1);
+      setCart(cart);
+      renderCart();
+    }
+
+    function clearOrder(){
+      if(confirm('Clear your entire order?')){
+        setCart([]);
+        renderCart();
+      }
+    }
+
+    // Simple HTML escape for notes display
+    function escapeHtml(s){ return String(s).replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m])); }
+    function escapeAttr(s){ return String(s).replace(/"/g, '&quot;'); }
+
+    // TODO: When Square is ready, set your real payment link here:
+    // document.getElementById('payBtn').href = 'https://square.link/u/your-payment-link';
+    // Or replace the button entirely with Square’s embedded checkout.
+
+    renderCart();
   </script>
 </body>
 </html>
