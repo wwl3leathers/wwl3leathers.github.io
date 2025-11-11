@@ -4,14 +4,13 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Checkout – 3Leathers</title>
-  <meta name="description" content="Review your handmade leather order from 3Leathers and pay securely.">
+  <meta name="description" content="Review your 3Leathers order, add shipping, and pay securely.">
   <style>
-    /* Match site palette (from index.html) */
     :root{ --bg:#0b0b0b; --ink:#f8f5e3; --accent:#d6b14a; --muted:rgba(255,255,255,.08); }
     html,body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial}
     a{color:var(--accent);text-decoration:none}
 
-    /* Header/nav identical to index */
+    /* Header/nav */
     header{position:sticky;top:0;z-index:10;background:rgba(0,0,0,.6);backdrop-filter:saturate(140%) blur(6px);border-bottom:1px solid var(--muted)}
     .wrap{max-width:1100px;margin:auto;padding:16px}
     .row{display:flex;align-items:center;justify-content:space-between;gap:12px}
@@ -49,7 +48,20 @@
 
     .center{text-align:center}
     .empty{padding:40px 18px}
-    .icons{opacity:.9;font-size:.9rem}
+
+    /* Shipping form */
+    .grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    @media (max-width:720px){ .grid{grid-template-columns:1fr} }
+    input, textarea{
+      width:100%;background:#0f0f0f;border:1px solid #2a2a2a;color:var(--ink);
+      padding:12px;border-radius:12px
+    }
+    textarea{min-height:110px;resize:vertical}
+    label{display:block}
+    .hint{font-size:.85rem;color:#cfc8a8;margin-top:6px}
+
+    .icons-link{display:block;margin-top:8px}
+    .icons-link img{max-width:320px;width:100%;height:auto;display:block;border-radius:10px;border:1px solid var(--muted);background:#111}
   </style>
 </head>
 <body>
@@ -71,14 +83,17 @@
   </header>
 
   <main class="container">
-   <p class="small muted">
-  Review your order below. You can update quantities or remove items before paying.
-</p>
-<p class="small muted" style="font-weight:600; margin-top:6px;">
-  Your order will be clamped under a piece of tooling leather, so it doesn’t wander off.<br>
-  I’ll take a sip of coffee, brush off the leather shavings, and give your idea a look.<br>
-  If you don’t hear from me soon, assume I’m elbow-deep in dye — not ignoring you.
-</p>
+    <section class="card">
+      <div class="pad">
+        <h1 class="title"><span>Checkout</span></h1>
+        <p class="small muted">Review your order below. You can update quantities or remove items before paying.</p>
+        <p class="small muted" style="font-weight:600; margin-top:6px;">
+          Your order will be clamped under a piece of tooling leather, so it doesn’t wander off.<br>
+          I’ll take a sip of coffee, brush off the leather shavings, and give your idea a look.<br>
+          If you don’t hear from me soon, assume I’m elbow-deep in dye — not ignoring you.
+        </p>
+      </div>
+    </section>
 
     <!-- Cart items -->
     <section class="card" id="cartCard">
@@ -87,25 +102,56 @@
       </div>
     </section>
 
+    <!-- Shipping & Contact -->
+    <section class="card" id="shippingCard">
+      <div class="pad">
+        <h2 class="title"><span>Shipping & Contact</span></h2>
+        <div class="grid">
+          <label>Full Name<br><input id="ship-name" type="text" autocomplete="name" required></label>
+          <label>Email<br><input id="ship-email" type="email" autocomplete="email" required></label>
+          <label>Phone<br><input id="ship-phone" type="tel" autocomplete="tel"></label>
+          <label>Address Line 1<br><input id="ship-addr1" type="text" autocomplete="address-line1" required></label>
+          <label>Address Line 2 (optional)<br><input id="ship-addr2" type="text" autocomplete="address-line2"></label>
+          <label>City<br><input id="ship-city" type="text" autocomplete="address-level2" required></label>
+          <label>State<br><input id="ship-state" type="text" autocomplete="address-level1" required></label>
+          <label>ZIP<br><input id="ship-zip" type="text" autocomplete="postal-code" required></label>
+        </div>
+        <label style="display:block;margin-top:10px">Delivery Instructions (optional)
+          <textarea id="ship-notes" class="small" placeholder="Gate code, safe drop spot, special handling, favorite coffee…"></textarea>
+        </label>
+        <p class="hint">We’ll use this to ship your order and to confirm details if needed.</p>
+      </div>
+    </section>
+
     <!-- Totals + actions -->
     <section class="card">
       <div class="pad">
-        <div class="totals" id="totalsWrap">
-          <!-- JS totals -->
-        </div>
+        <div class="totals" id="totalsWrap"><!-- JS totals --></div>
 
         <div class="btns">
           <a class="pill secondary" href="shop.html">Back to Shop</a>
-          <!-- Generic pay button; swap href for Square later -->
-          <a id="payBtn" class="pill" href="#">
-            Pay Securely
-          </a>
-          <span class="icons muted small">We accept all major credit cards.</span>
-          <button class="pill secondary" type="button" onclick="clearOrder()">Clear Order</button>
+          <a id="payBtn" class="pill" href="#">Pay Securely</a>
+          <!-- Payment icons section -->
+<div style="text-align:center; margin-top:12px;">
+  <a href="https://square.link/u/vrAPnrrI" target="_blank" rel="noopener">
+    <img src="images/payment-icons.jpeg" alt="Accepted Payment Methods" 
+         style="max-width:240px; width:90%; border-radius:8px; opacity:0.9;">
+  </a>
+  <p style="color:#d6b14a; font-size:0.9rem; margin-top:6px;">
+    “Yes, I take plastic, magic, and Square—just not Monopoly money.”
+  </p>
+</div>
+
+          <span class="small muted">We accept all major credit cards.</span>
         </div>
 
+        <!-- Clickable payment icons just under the button -->
+        <a class="icons-link" href="images/payment-icons.jpeg" target="_blank" rel="noopener">
+          <img src="images/payment-icons.jpeg" alt="Accepted payments: major credit cards">
+        </a>
+
         <div class="small muted" style="margin-top:14px">
-          <p><strong>Production Time:</strong> Most orders ship in about <strong>1 week</strong>. If leather gets stubborn, I’ll email you with an update.</p>
+          <p><strong>Production Time:</strong> Most orders ship in about <strong>1 week</strong>. If leather gets stubborn, I’ll email you.</p>
           <p><strong>Non-Refundable Deposits & Payments:</strong> Leather can’t be “unstained,” “unstamped,” or “un-stitched.” Once we begin, <strong>all payments and deposits are non-refundable</strong>.</p>
         </div>
       </div>
@@ -114,12 +160,11 @@
 
   <script>
     const CART_KEY = 'cart';
+    const SQUARE_LINK = 'https://square.link/u/YOUR_SQUARE_LINK_HERE'; // TODO: paste your real Square link
 
     function getCart(){ try { return JSON.parse(localStorage.getItem(CART_KEY)) || []; } catch { return []; } }
     function setCart(items){ localStorage.setItem(CART_KEY, JSON.stringify(items)); }
-
     function money(n){ return '$' + (Math.round(n * 100) / 100).toFixed(2); }
-
     function lineTotal(item){ return Number(item.unitPrice || 0) * Number(item.quantity || 1); }
 
     function renderCart(){
@@ -137,7 +182,6 @@
         return;
       }
 
-      // Items
       body.innerHTML = cart.map((item, idx) => {
         const opts = (item.options || []).map(o => `<div class="opt small muted">+ ${o.name} (${money(o.price)})</div>`).join('') || '<div class="opt small muted">No customizations</div>';
         const notes = item.notes ? `<div class="small muted">Notes: ${escapeHtml(item.notes)}</div>` : '';
@@ -169,12 +213,11 @@
         `;
       }).join('');
 
-      // Totals
       const subtotal = cart.reduce((s, it) => s + lineTotal(it), 0);
       totalsWrap.innerHTML = `
         <table>
           <tr><td class="small muted">Subtotal</td><td class="num"><strong>${money(subtotal)}</strong></td></tr>
-          <tr><td class="small muted">Shipping</td><td class="num small muted">Calculated later</td></tr>
+          <tr><td class="small muted">Shipping</td><td class="num small muted">Calculated at payment</td></tr>
           <tr><td class="small muted">Tax</td><td class="num small muted">None (for now)</td></tr>
         </table>
       `;
@@ -197,20 +240,56 @@
       renderCart();
     }
 
-    function clearOrder(){
-      if(confirm('Clear your entire order?')){
-        setCart([]);
-        renderCart();
-      }
+    // Save shipping locally (so you can view/recover if needed)
+    function getShipping() {
+      return {
+        name:  document.getElementById('ship-name')?.value.trim(),
+        email: document.getElementById('ship-email')?.value.trim(),
+        phone: document.getElementById('ship-phone')?.value.trim(),
+        addr1: document.getElementById('ship-addr1')?.value.trim(),
+        addr2: document.getElementById('ship-addr2')?.value.trim(),
+        city:  document.getElementById('ship-city')?.value.trim(),
+        state: document.getElementById('ship-state')?.value.trim(),
+        zip:   document.getElementById('ship-zip')?.value.trim(),
+        notes: document.getElementById('ship-notes')?.value.trim(),
+      };
     }
 
-    // Simple HTML escape for notes display
+    function validateShipping(s) {
+      return !!(s.name && s.email && s.addr1 && s.city && s.state && s.zip);
+    }
+
+    (function initPay(){
+      const btn = document.getElementById('payBtn');
+      if(!btn) return;
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+
+        const cart = getCart();
+        if(!cart.length){ alert('Your order is empty.'); return; }
+
+        const ship = getShipping();
+        if(!validateShipping(ship)){
+          alert('Please fill in Name, Email, Address, City, State, and ZIP.');
+          return;
+        }
+
+        // Save a lightweight snapshot locally (for your records if needed)
+        try { localStorage.setItem('shipping', JSON.stringify(ship)); } catch {}
+// 3Leathers Square payment link
+const SQUARE_LINK = 'https://square.link/u/vrAPnrrI';
+
+        // Open Square in a new tab for secure payment
+        if(SQUARE_LINK && SQUARE_LINK.startsWith('http')){
+          window.open(SQUARE_LINK, '_blank', 'noopener');
+        } else {
+          alert('Payment link not set yet. Please contact Walter.');
+        }
+      });
+    })();
+
     function escapeHtml(s){ return String(s).replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m])); }
     function escapeAttr(s){ return String(s).replace(/"/g, '&quot;'); }
-
-    // TODO: When Square is ready, set your real payment link here:
-    // document.getElementById('payBtn').href = 'https://square.link/u/your-payment-link';
-    // Or replace the button entirely with Square’s embedded checkout.
 
     renderCart();
   </script>
