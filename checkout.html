@@ -276,17 +276,70 @@
           return;
         }
 
-        // Save a lightweight snapshot locally (for your records if needed)
+              // Save a lightweight snapshot locally (for your records if needed)
         try { localStorage.setItem('shipping', JSON.stringify(ship)); } catch {}
-// 3Leathers Square payment link
-const SQUARE_LINK = 'https://square.link/u/vrAPnrrI';
 
-        // Open Square in a new tab for secure payment
-        if(SQUARE_LINK && SQUARE_LINK.startsWith('http')){
-          window.open(SQUARE_LINK, '_blank', 'noopener');
-        } else {
-          alert('Payment link not set yet. Please contact Walter.');
+        // Build plain-text order summary for Walter's email
+        const subtotal = cart.reduce((sum, it) => sum + lineTotal(it), 0);
+        const lines = [];
+
+        lines.push('New 3Leathers order request');
+        lines.push('');
+        lines.push('Customer info:');
+        lines.push(`Name: ${ship.name}`);
+        lines.push(`Email: ${ship.email}`);
+        if (ship.phone) lines.push(`Phone: ${ship.phone}`);
+        lines.push(`Address: ${ship.addr1}`);
+        if (ship.addr2) lines.push(`Address 2: ${ship.addr2}`);
+        lines.push(`City/State/ZIP: ${ship.city}, ${ship.state} ${ship.zip}`);
+        lines.push('');
+
+        if (ship.notes) {
+          lines.push('Delivery instructions:');
+          lines.push(ship.notes);
+          lines.push('');
         }
+
+        lines.push('Items:');
+
+        cart.forEach((item, idx) => {
+          lines.push('');
+          lines.push(`Item ${idx + 1}: ${item.category} – ${item.variant}`);
+          lines.push(`  Quantity: ${item.quantity}`);
+          lines.push(`  Unit price: ${money(item.unitPrice || 0)}`);
+
+          const opts = Array.isArray(item.options) ? item.options : [];
+          if (opts.length) {
+            lines.push('  Options:');
+            opts.forEach(o => {
+              const price = typeof o.price === 'number' ? money(o.price) : String(o.price);
+              lines.push(`    - ${o.label}: ${price}`);
+            });
+          } else {
+            lines.push('  Options: none');
+          }
+
+          if (item.notes) {
+            lines.push(`  Notes: ${item.notes}`);
+          }
+          if (item.link) {
+            lines.push(`  Reference link: ${item.link}`);
+          }
+
+          lines.push(`  Line total: ${money(lineTotal(item))}`);
+        });
+
+        lines.push('');
+        lines.push(`Subtotal (before shipping/tax): ${money(subtotal)}`);
+        lines.push('');
+        lines.push('Shipping and any tax will be added to the Square invoice.');
+
+        const subject = encodeURIComponent('3Leathers Order Request');
+        const body = encodeURIComponent(lines.join('\n'));
+
+        const mailto = `mailto:wwl3leathers@outlook.com?subject=${subject}&body=${body}`;
+        window.location.href = mailto;
+
       });
     })();
 
