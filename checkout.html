@@ -94,6 +94,22 @@
           I’ll take a sip of coffee, brush off the leather shavings, and give your idea a look.<br>
           If you don’t hear from me soon, assume I’m elbow-deep in dye — not ignoring you.
         </p>
+
+        <!-- ADDED: Simple explanation of how this checkout works -->
+        <div class="small muted" style="margin-top:10px;">
+          <h2 style="margin:0 0 6px 0;font-size:1rem;">How this checkout works</h2>
+          <p style="margin:0 0 4px 0;">
+            This is not an instant “pay now” button. When you click <strong>Send invoice to 3Leathers</strong>,
+            it builds an email with your cart and shipping info and sends it to me.
+          </p>
+          <ul style="margin:4px 0 0 18px;padding:0;">
+            <li>Fill in your contact and shipping details below.</li>
+            <li>Review the items in your cart — adjust quantities or use the <strong>Remove</strong> button for anything you don’t want.</li>
+            <li>Click <strong>Send invoice to 3Leathers</strong> and send the email that pops up.</li>
+            <li>I’ll reply with a Square invoice and final total, then start your order once it’s paid.</li>
+          </ul>
+        </div>
+        <!-- END ADDED -->
       </div>
     </section>
 
@@ -133,11 +149,18 @@
         <div class="btns">
           <a class="pill secondary" href="shop.html">Back to Shop</a>
           <a id="payBtn" class="pill" href="#">Send invoice to 3Leathers</a>
+
+          <!-- ADDED: Small note directly under the button -->
+          <p class="small muted" style="font-style:italic;margin:4px 0 0 0;">
+            This doesn’t charge your card — it sends your request to Walter so he can review it and email your invoice.
+          </p>
+          <!-- END ADDED -->
+
           <!-- Payment icons section -->
 <div style="text-align:center; margin-top:12px;">
   <a href="https://square.link/u/vrAPnrrI" target="_blank" rel="noopener">
     <img src="images/payment-icons.jpeg" alt="Accepted Payment Methods" 
-         style="max-width:240px; width:90%; border-radius:8px; opacity:0.9;">
+         style="max-width:240px; width:90%; border-radius:8px; opacity:0.9%;">
   </a>
   <p style="color:#d6b14a; font-size:0.9rem; margin-top:6px;">
     “Yes, I take plastic, magic, and Square—just not Monopoly money.”
