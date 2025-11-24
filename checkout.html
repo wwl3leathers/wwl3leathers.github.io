@@ -38,12 +38,12 @@
     .thumb img{width:100%;height:100%;object-fit:cover}
     .meta h3{margin:0 0 6px 0}
     .opt{margin:0 0 4px 0}
-    ..qtybox{
-  display:flex;
-  gap:8px;
-  align-items:center;
-  flex-wrap:wrap;
-}
+    .qtybox{
+      display:flex;
+      gap:8px;
+      align-items:center;
+      flex-wrap:wrap;
+    }
     .qtybox input{width:72px;background:#0f0f0f;border:1px solid #2a2a2a;color:var(--ink);padding:8px;border-radius:8px}
     .price{white-space:nowrap}
     .right{text-align:right}
@@ -100,21 +100,20 @@
           If you don’t hear from me soon, assume I’m elbow-deep in dye — not ignoring you.
         </p>
 
-        <!-- ADDED: Simple explanation of how this checkout works -->
+        <!-- Explainer -->
         <div class="small muted" style="margin-top:10px;">
           <h2 style="margin:0 0 6px 0;font-size:1rem;">How this checkout works</h2>
           <p style="margin:0 0 4px 0;">
             This is not an instant “pay now” button. When you click <strong>Send invoice to 3Leathers</strong>,
-            it builds an email with your cart and shipping info and sends it to me.
+            it sends your order details straight to me.
           </p>
           <ul style="margin:4px 0 0 18px;padding:0;">
             <li>Fill in your contact and shipping details below.</li>
             <li>Review the items in your cart — adjust quantities or use the <strong>Remove</strong> button for anything you don’t want.</li>
-            <li>Click <strong>Send invoice to 3Leathers</strong> and send the email that pops up.</li>
+            <li>Click <strong>Send invoice to 3Leathers</strong> to submit your request.</li>
             <li>I’ll reply with a Square invoice and final total, then start your order once it’s paid.</li>
           </ul>
         </div>
-        <!-- END ADDED -->
       </div>
     </section>
 
@@ -155,11 +154,9 @@
           <a class="pill secondary" href="shop.html">Back to Shop</a>
           <a id="payBtn" class="pill" href="#">Send invoice to 3Leathers</a>
 
-          <!-- ADDED: Small note directly under the button -->
           <p class="small muted" style="font-style:italic;margin:4px 0 0 0;">
-            This doesn’t charge your card — it sends your request to Walter so he can review it and email your invoice.
+            This doesn’t charge your card — it sends your request to Walter so he can review it and email your Square invoice.
           </p>
-          <!-- END ADDED -->
 
           <!-- Payment icons section -->
 <div style="text-align:center; margin-top:12px;">
@@ -186,11 +183,19 @@
         </div>
       </div>
     </section>
+
+    <!-- Hidden form that actually sends to you via Formspree -->
+    <form id="checkoutForm" method="POST" action="https://formspree.io/f/xvgvjnbe" style="display:none;">
+      <input type="email" name="email" id="fs-email">
+      <input type="text" name="name" id="fs-name">
+      <textarea name="orderDetails" id="fs-order"></textarea>
+      <input type="hidden" name="_redirect" value="https://wwl3leathers.github.io/custom-thanks.html">
+    </form>
   </main>
 
   <script>
     const CART_KEY = 'cart';
-    const SQUARE_LINK = 'https://square.link/u/YOUR_SQUARE_LINK_HERE'; // TODO: paste your real Square link
+    const SQUARE_LINK = 'https://square.link/u/YOUR_SQUARE_LINK_HERE'; // still here, unused but harmless
 
     function getCart(){ try { return JSON.parse(localStorage.getItem(CART_KEY)) || []; } catch { return []; } }
     function setCart(items){ localStorage.setItem(CART_KEY, JSON.stringify(items)); }
@@ -304,7 +309,7 @@
           return;
         }
 
-              // Save a lightweight snapshot locally (for your records if needed)
+        // Save a lightweight snapshot locally (for your records if needed)
         try { localStorage.setItem('shipping', JSON.stringify(ship)); } catch {}
 
         // Build plain-text order summary for Walter's email
@@ -362,11 +367,24 @@
         lines.push('');
         lines.push('Shipping and any tax will be added to the Square invoice.');
 
-        const subject = encodeURIComponent('3Leathers Order Request');
-        const body = encodeURIComponent(lines.join('\n'));
+        const form = document.getElementById('checkoutForm');
+        const emailField = document.getElementById('fs-email');
+        const nameField  = document.getElementById('fs-name');
+        const orderField = document.getElementById('fs-order');
 
-        const mailto = `mailto:wwl3leathers@outlook.com?subject=${subject}&body=${body}`;
-        window.location.href = mailto;
+        if (!form || !emailField || !nameField || !orderField) {
+          alert('Sorry, something went wrong preparing your request. Please try again.');
+          return;
+        }
+
+        emailField.value = ship.email;
+        nameField.value  = ship.name;
+        orderField.value = lines.join('\n');
+
+        // Clear cart after sending
+        try { localStorage.removeItem(CART_KEY); } catch {}
+
+        form.submit();
 
       });
     })();
