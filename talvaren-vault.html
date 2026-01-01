@@ -43,7 +43,330 @@ It serves as a read-only canonical reference source.
 <!-- ===================== -->
 <section id="module-1a">
   <h2>Module 1A — Player Core Systems</h2>
-  <p></p>
+  MODULE 1A — Player Core Systems
+
+Purpose
+
+Rules that apply to all players, regardless of class.
+
+⸻
+
+1. Player Resources
+	•	Health (HP) is not a spendable resource.
+	•	Mana and Stamina are the only spendable resources.
+	•	A character’s Primary Class determines which resource all abilities use.
+	•	Movement actions may consume the primary resource.
+
+⸻
+
+2. Resource Bar Structure
+
+Each spendable resource uses a Two-Bar System:
+	•	Active Resource Bar
+	•	Reserve Resource Bar (33% of maximum)
+
+Rules:
+	•	Resource expenditure draws from Reserve first
+	•	No passive regeneration of Active or Reserve Bars
+	•	Magical healing cannot restore the Reserve Bar
+	•	Reserve refills only via:
+	•	Consumables
+	•	Safe Zones
+
+When Reserve is empty → Cracked State
+	•	Cracked resources cannot refill until Safe Zone access or consumable use.
+
+⸻
+
+3. Casting & Movement
+	•	Cast Time = 0 → Instant Cast
+	•	All Instant Cast abilities may be used while moving
+	•	Any Cast Time greater than 0 requires stationary casting
+	•	Cast time reduction cannot reduce below 0
+	•	Instant cast status is binary (no partial movement)
+
+Status: STRUCTURAL — Pending Final Reconfirmation
+
+⸻
+
+4. Universal Buff Rules
+	•	Weak Buff → +15%
+	•	Strong Buff → +45%
+
+Rules:
+	•	Buffs are category-based
+	•	Buffs of the same category do not stack
+	•	Reapplying a buff refreshes duration only
+	•	Weak never upgrades to Strong
+	•	Strong never downgrades to Weak
+
+⸻
+
+5. Mechanical Damage Types
+
+Talvaren uses exactly four (4) mechanical damage types:
+	•	Physical
+	•	Magic
+	•	Arcane
+	•	Mental
+
+All Mandala / elemental terms (Light, Fire, Ice, etc.) are flavor only and have no mechanical damage, resistance, or weakness math.
+
+⸻
+
+6. Damage Magnitude Placeholders
+
+Each mechanical damage type uses four magnitude tiers:
+	•	Weak
+	•	Standard
+	•	Strong
+	•	Major
+
+Rules:
+	•	These are relative tiers, not numbers
+	•	Numeric tuning is deferred to tables
+	•	No stacking magnitude math
+	•	No sub-tiers
+	•	Same magnitude = same budget everywhere
+
+⸻
+
+7. Mental Damage Special Rule
+
+Mental damage is effect-first, not damage-first.
+	•	Deals minimal or zero HP damage
+	•	Magnitudes define duration and severity, not damage
+
+Tier meaning:
+	•	Weak → very short, minor disruption
+	•	Standard → short, meaningful disruption
+	•	Strong → long, high-impact disruption
+	•	Major → very long or encounter-defining effect
+
+Mental effects still obey:
+	•	No immunity rules
+	•	CC-break rules
+	•	Refresh-not-stack rules
+
+⸻
+
+8. Primary Resource Regeneration
+
+Primary resources (Mana, Stamina) do not regenerate naturally.
+
+There is:
+	•	No passive regeneration
+	•	No out-of-combat regeneration
+	•	No stat-based regeneration
+	•	No class-based regeneration
+
+Resources are restored only via:
+	•	Consumables
+	•	Safe Zones
+
+Status: ACTIVE — Unlocked for evaluation
+
+⸻
+
+9. Reserve Bar Regeneration
+
+Status: OPEN DESIGN NOTE
+	•	A very slow Reserve regeneration may be allowed in the future
+	•	Not decided
+	•	Not implemented
+	•	Not implied
+
+If allowed:
+	•	Would be extremely slow
+	•	Would never replace consumables
+	•	Would never operate in combat
+	•	Exists only to reduce hard-dead expedition states
+
+⸻
+
+10. Sprint & Movement Authority
+	•	Sprint available at Level 1
+	•	Sprint is an exertive action
+	•	Sprint drains Active Stamina
+	•	Sprint may drain Reserve
+	•	Sprint never restores resources
+	•	Sprint disabled if Stamina is Cracked
+	•	Walking and normal movement remain free
+	•	Encumbrance modifies stamina efficiency
+
+No other module may redefine sprint behavior.
+
+Status: STRUCTURAL — Pending Stress Testing
+
+⸻
+
+11. Dual-Class Rules
+	•	Maximum of two classes per character
+	•	Primary Class:
+	•	Defines resource type
+	•	Defines scaling model
+	•	Secondary Class:
+	•	Grants abilities only
+
+All abilities use the Primary Resource.
+
+⸻
+
+12. Primary Resource Law
+	•	HP is a life resource only
+	•	No ability ever costs HP
+	•	HP loss occurs only through damage or world consequences
+
+There are:
+	•	No mixed-cost abilities
+	•	No dual-resource abilities
+	•	No exceptions
+
+⸻
+
+13. Primary Resource Class Split (LOCKED)
+
+Mana-Primary Classes (8):
+	•	Wizard
+	•	Necromancer
+	•	Druid
+	•	Priest
+	•	Jeweler
+	•	Alchemist
+	•	Tailor
+	•	Scribe
+
+Stamina-Primary Classes (8):
+	•	Warrior
+	•	Paladin
+	•	Executioner
+	•	Rogue
+	•	Smith
+	•	Cook
+	•	Laborer
+	•	Tamer
+
+All abilities — combat, utility, profession, and dual-class — consume the primary resource.
+
+⸻
+
+14. Core Stats & Progression Rules
+	•	Six primary stats: STR, CON, DEX, INT, WIS, ART
+	•	Beginning stats depend on size; “Average” begins at 8
+	•	Level 1:
+	•	+20 stat points
+	•	Size-based min/max apply (Level 1 only)
+	•	Post-Level 1:
+	•	+2 stat points per level
+	•	Max +1 per stat per level
+	•	No stat caps
+
+Attribute effects are per-point, not per-level.
+
+⸻
+
+15. Attribute Effects (Per Point)
+	•	STR → Stamina Max
+	•	WIS → Mana Max
+	•	ART → Stamina efficiency + Stamina Max
+	•	CON → HP per point (retroactive)
+	•	DEX → Physical mitigation
+	•	INT → Spell interaction logic
+
+⸻
+
+16. Safe Zones
+	•	Allow recovery and logistical action
+	•	Do not prevent consequences
+
+Aggro rules:
+	•	A mob pulled into a Safe Zone remains aggroed only to:
+	•	The pulling player
+	•	Any players who attack it or heal attackers
+
+⸻
+
+17. Literacy & UI Gates
+	•	INT ≤ 10 → Cannot read
+	•	INT ≥ 11 → Literacy enabled
+	•	WIS < 11 → Compass disabled
+	•	Symbol-based signage still functions
+
+⸻
+
+18. Scrolls & Writs
+
+Scrolls
+	•	Spell-adjacent, single-use items
+	•	Instant cast
+	•	Consume mana
+	•	Reference base spell only unless class-unlocked
+	•	Blocked while:
+	•	Silenced
+	•	Underwater
+	•	In storm biomes
+
+Writs
+	•	Non-magical systemic documents
+	•	Do not consume mana
+
+Rules:
+	•	Scrolls and writs are categorically distinct
+	•	No item may function as both
+	•	Scrolls and writs cannot be chained
+
+⸻
+
+19. Death & Soul Logic
+	•	Spirit Wells:
+	•	Resurrection
+	•	Identification access
+	•	Map study
+	•	Graveyards
+	•	Two bindable respawn locations (primary + secondary)
+
+⸻
+
+20. Field Kit (Universal Slot)
+	•	All characters possess one Field Kit slot
+	•	Universal, class-agnostic
+	•	Not gear, inventory, or weapon
+	•	World-interaction utility only
+
+Field Pull System
+	•	Once per 3-hour in-game day:
+	•	Grants one random utility consumable
+	•	Low quality
+	•	Single-use
+	•	Non-scaling
+	•	Non-sellable
+	•	Non-damaging
+	•	No combat debuffs
+	•	May stack naturally
+
+Constraints:
+	•	No stat bonuses
+	•	No durability repair
+	•	Does not replace Smith repairs or towns
+	•	Professions may unlock interactions through it
+
+Fishing Pole is the only equip-required tool unless patched.
+
+⸻
+
+21. Encumbrance Authority Clarification
+	•	Equipment defines weight
+	•	Player systems define consequences
+	•	No equipment module may define stamina regeneration or sprint rules
+
+⸻
+
+Status Summary
+	•	Locked: Primary Resource Class Split
+	•	Active (Unlocked): Resource Regeneration Rule
+	•	Open: Reserve Bar Regen
+	•	Structural / Pending: Casting & Sprint Interaction
+
 </section>
 
 <section id="module-1b">
