@@ -371,57 +371,867 @@ Status Summary
 
 <section id="module-1b">
   <h2>Module 1B — Equipment & Gear Systems</h2>
-  <p></p>
+  MODULE-1B —Equipment & Gear Systems
+
+•	Equipment Weight System
+	•	Weapon and armor behavior governed exclusively by weight class.
+	•	No damage-type math, mitigation curves, or stat scaling exists in equipment.
+	•	Weight determines stamina friction, encumbrance expectations, and interaction limits.
+	•	No armor “types” (plate/leather/etc.) exist in the engine.
+	•	All meshes must conform to defined weight envelopes.
+	•	Equipment Slot Framework (priority clause)
+	•	Primary gear slots:
+	•	Head
+	•	Chest
+	•	Legs
+	•	Boots
+	•	Shoulders / Back (shared)
+	•	Arms
+	•	Belt
+	•	Main Hand
+	•	Off-Hand (Shield or Light Weapon)
+	•	Ranged
+	•	Jewelry slots:
+	•	Ring ×4
+	•	Neck
+	•	Jewelry Rules
+	•	4 rings + 1 necklace.
+	•	Jewelry never scales with tier, rarity, enchantment, or effect.
+	•	Jewelry never meaningfully affects encumbrance.
+	•	Jewelry never grants combat-defining bonuses.
+	•	Slot Identities & Bonus Locks
+	•	Each equipment slot has exclusive allowed bonus categories.
+	•	Slot-identity bonuses never roll randomly.
+	•	Primary stats are belt-exclusive.
+	•	Healing and magic amplification bonuses restricted by slot.
+	•	No profession bonuses may appear on equipment.
+	•	Dual-wield access excluded from Module 1B.
+	•	Stamina & Auto-Attack Interaction
+	•	Ability stamina cost modified by weapon weight and armor weight.
+	•	Auto-attacks:
+	•	cost 0 stamina,
+	•	animation-timed,
+	•	fixed swing times,
+	•	no per-frame stamina math.
+	•	Weapon & Armor Category Profiles
+	•	Light / Medium / Heavy categories are permanent, global, uniform.
+	•	Include stagger behavior, encumbrance expectations, stamina friction.
+	•	Cannot be overridden without explicit patch.
+	•	Artifact Item Categories (equipment context)
+	•	Artifacts are:
+	•	non-equippable,
+	•	non-functional,
+	•	display-only,
+	•	economy-safe.
+	•	Never grant stats, slots, affixes.
+	•	Equipment ↔ Player Boundary
+	•	Equipment defines mass and friction only.
+	•	Player thresholds, sprint logic, stamina regen rules, reserves, cracked state = Module 1A.
+	•	Module 1B applies stamina costs to Active Stamina only.
+	•	Tools & World Interaction
+	•	Field Kit: no weight, no stats, no combat use.
+	•	Professional tools abstracted into Field Kit.
+	•	Weapons may level; armor never levels.
+	•	No future system may require tool-equipping unless patched.
+	•	Mount Acquisition & Authority
+	•	Tamer is the only class with persistent mounts.
+	•	Paladin mounts are conjured and exempt.
+	•	All tamer mounts are killable; death is permanent.
+	•	Mounted combat does not exist.
+	•	Dismounted mounts travel to nearest stables.
+	•	All tames share a global cooldown.
+	•	Caravan Ox — Command Rules
+	•	Commands may be issued while the Ox is dismounted.
+	•	Commands affect only the Ox owned by the issuing Tamer.
+	•	“Go Home” sends the Ox to the nearest valid stables.
+	•	While active, the Ox serves as a mobile stable anchor for the owner’s party.
 </section>
 
 <section id="module-2">
   <h2>Module 2 — World Engine & Global Systems</h2>
-  <p></p>
+  MODULE-2 — World Engine & Global Systems
+
+	•	Living World / Access Law
+	•	No invisible walls; access blocked only by natural world conditions (patrol density, ambiance-weather, megafauna, fey activity, flood rivers, migration hazards).
+	•	Conditions shift dynamically.
+	•	Soft-Lock World Progression (server-driven)
+	•	No level gates; no patch unlocks.
+	•	World evolution driven by server behavior.
+	•	Population thresholds unlock routes & tunnels.
+	•	Economic engine thresholds unlock regions.
+	•	Specific zone-cluster player-driven actions may unlock content.
+	•	Servers diverge uniquely.
+	•	Moving Zones
+	•	Drifting regions (e.g., Floating Castle, Fey Rings) shift every 8 real days.
+	•	Occupants relocate with the zone.
+	•	Travel Engine (system layer)
+	•	Travel methods include: wagons, ferries, ships, skyships, VB Trolley System, VB Deep Suspension Lift.
+	•	All routes run on 3-hour real-time cycles.
+	•	Signed logout → appear at destination.
+	•	Unsigned logout → wake where logged out.
+	•	Ensorcelling Zones
+	•	Overlapping unlocks stabilized by in-game hazards.
 </section>
 
 <section id="module-3">
   <h2>Module 3 — Guild Infrastructure, Maps, Travel, Identification & Hub Logic</h2>
-  <p></p>
+  MODULE 3 — Guild Infrastructure, Maps, Travel, Identification & Hub Logic
+	•	Universal Settlement Infrastructure
+	•	Every major settlement contains:
+	•	Adventurer’s Guild
+	•	Caravaner’s Guild
+	•	Merchant Market / Trade Pavilion
+	•	Profession trainer/vendor infrastructure (market-stall based only)
+	•	Map-Study Terminal (Adventurer’s Guild component)
+	•	Physical terminal (not UI abstraction).
+	•	Unlocks zone clusters.
+	•	Requires 10 minutes cumulative study.
+	•	Player may move inside guild only; leaving pauses progress.
+	•	At 10 total minutes → cluster permanently unlocked.
+	•	Prevents AFK abuse; encourages guild usage.
+	•	Outpost Boards (Travel Intelligence)
+	•	Physical boards at caravan hubs and outposts.
+	•	Display: departures, arrivals, weather hazards, travel dangers, monster activity.
+	•	Diegetic intelligence; does not guarantee safety or accuracy.
+	•	Travel Network (hub layer)
+	•	Travel modes include:
+	•	wagon caravans,
+	•	river ferries,
+	•	ocean ships,
+	•	sky-ships,
+	•	VB trolleys,
+	•	VB great lift.
+	•	All NPC routes run on a fixed 3-hour global cycle.
+	•	Access governed by terrain, storms, monsters, world state.
+	•	Caravan Master (hub role)
+	•	Adventurer-only license.
+	•	Appears only at dangerous shortcut hubs.
+	•	Operates from external caravan yards.
+	•	Not a marketplace vendor.
+	•	Item Identification System (service + safeguards)
+	•	Identification is a world service, not a player ability.
+	•	Identification services provided exclusively by NPC Identifiers / Artifact Specialists (single global identifier type).
+	•	No portable, craftable, magical, or alternate identification.
+	•	Identification reveals: full stats, tier, enchantment school, all special effects, unknown-effect flag if present.
+	•	Unknown effects never appear before identification.
+	•	Unknown effect tables are server-unique.
+	•	Graveyards and Spirit Wells function as loot-sorting hubs.
+	•	Deep Delver Markets function as identification hubs and black-market infrastructure.
+	•	System safeguard: Module 3 overrides contradictions for identification, hub logic, and access control.
+	•	Identifier Locations (service availability)
+	•	Major cities
+	•	Deep Delver Markets
+	•	Spirit Wells / Graveyards (as loot-sorting hubs; service adjacency noted)
+
 </section>
 
 <section id="module-4">
   <h2>Module 4 — World Geography & Biomes</h2>
-  <p></p>
+  MODULE 4 — World Geography & Biomes
+
+(AUTHORITATIVE SUPPORTING RECORD — NON-GAMEPLAY)
+
+Purpose
+
+Identify all assumptions, dependencies, exclusions, and “silent rules” that affect Module 4 — World Geography & Biomes, but are defined elsewhere.
+
+This document:
+	•	Introduces no mechanics
+	•	Defines no systems
+	•	Exists to prevent accidental rule injection, duplication, or contradiction
+
+⸻
+
+1. GLOBAL RULE DEPENDENCIES (ASSUMED, NOT DEFINED HERE)
+
+Module 4 assumes the following global laws exist without redefining them.
+
+1.1 Caravan Route Immutability
+	•	Caravan routes:
+	•	Are never delayed, damaged, destroyed, or blocked
+	•	Dynamically route around hazards
+	•	Module 4 relies on caravan rhythm and compatibility
+	•	The immutability rule lives in global travel canon
+	•	❗ If omitted elsewhere, travel logic breaks
+
+⸻
+
+1.2 No PvP Rule
+	•	Module 4 geography, safe zones, and camps assume:
+	•	Zero PvP
+	•	No territorial grief mechanics
+	•	This rule is not declared in Module 4
+	•	It lives in global combat law
+
+⸻
+
+1.3 Player Death & Resurrection Rules
+	•	Module 4 defines environmental hazards (e.g., polar cold)
+	•	It does not define:
+	•	Death consequences
+	•	Resurrection timing
+	•	Corpse recovery
+	•	Assumes Adventurer’s Guild systems elsewhere
+
+⸻
+
+2. SYSTEMS INTENTIONALLY EXCLUDED FROM MODULE 4
+
+These systems are commonly mistaken as geography but are explicitly excluded.
+
+2.1 True Unique Utilization Rule
+	•	Underground black market access references True Uniques
+	•	Utilization / neglect timer (10-day rule) is not here
+	•	Lives in global item governance
+	•	Module 4 references access only, not enforcement
+
+⸻
+
+2.2 Structural World State System
+	•	Bridges, towers, roads degrading over time:
+	•	Not defined here
+	•	Geography assumes structures exist
+	•	Structural durability tiers live in infrastructure canon
+	•	❗ Do not merge into Module 4
+
+⸻
+
+2.3 Laborer Repair & Inspection Timers
+	•	Campfires reference profession gating
+	•	Actual labor time (≈3 real hours) lives elsewhere
+	•	Module 4 only acknowledges interaction exists
+
+⸻
+
+3. VISUAL VS MECHANICAL EDGE CASES
+
+3.1 Weather Is Visual Except One Case
+	•	Rain, storms, sandstorms:
+	•	No stat damage
+	•	No survival drain
+	•	Only exception: polar tundra cold
+	•	❗ No other weather system may introduce mechanics
+
+⸻
+
+3.2 Sandstorms
+	•	Reduce vision only
+	•	Do not:
+	•	Drain stamina
+	•	Affect accuracy
+	•	Cause damage
+	•	Common future-dev mistake — flag explicitly
+
+⸻
+
+4. CAMPFIRE EDGE CASES
+
+4.1 Campfire Priority Rules
+	•	Campfires:
+	•	Override polar cold only
+	•	Do not override any other hazard
+	•	No stacking immunities
+	•	No weather immunity beyond cold
+
+⸻
+
+4.2 Duration vs Radius
+	•	Duration applies to buffs
+	•	Radius applies to cold negation
+	•	Campfire extinguish ≠ instant cold if within residual comfort window
+(Implied tolerance; implementation defined later)
+
+⸻
+
+5. SAFE ZONE EDGE CASES
+
+5.1 Safe Zones Are Invisible
+	•	Mobs:
+	•	Cannot see
+	•	Cannot path into
+	•	Players:
+	•	Can leave instantly
+	•	No visual “bubble” required
+
+⸻
+
+5.2 Safe Zone Distance Rule
+	•	Minimum 60m from:
+	•	Named NPCs
+	•	Bosses
+	•	Prevents:
+	•	Kiting exploits
+	•	AFK boss farming
+	•	Applies to fixed safe zones only
+	•	Campfires do not count as safe zones
+
+⸻
+
+6. BIOME & MOB EDGE CASES
+
+6.1 Ultra-Rare Stat Granting
+	•	One stat per biome, not per world
+	•	Player may gain multiple permanent stats across world
+	•	Party roll determines recipient
+	•	❗ Location randomization must not cluster
+
+⸻
+
+6.2 Chaos Factor Independence
+	•	Elite roll:
+	•	Can apply to fauna, humanoids, apexes
+	•	Chaos Factor:
+	•	Does not replace ultra-rare spawn
+	•	Is orthogonal to tier
+	•	Avoid accidental mutual exclusion in code
+
+⸻
+
+7. UNDERGROUND (VAST BELOW) EDGE CASES
+
+7.1 Sound Bleed
+	•	Hearing combat across layers:
+	•	Is intentional
+	•	Is non-informational
+	•	Must never reveal:
+	•	Exact mob count
+	•	Player identities
+	•	Atmosphere only
+
+⸻
+
+7.2 Key Ring Law Scope
+	•	Keys:
+	•	Grant access only
+	•	Do not convey ownership
+	•	Losing access does not delete progress
+	•	Key ring is:
+	•	Non-droppable
+	•	Non-tradeable
+	•	Non-destroyable
+
+⸻
+
+8. OCEAN & UNDERWATER EDGE CASES
+
+8.1 No Stamina Drain
+	•	Applies to:
+	•	Swimming
+	•	Underwater combat
+	•	Hard rule
+	•	Prevents “breath + stamina double tax”
+
+⸻
+
+8.2 Ghost Ship Audio Cues
+	•	Heavy audio is:
+	•	Warning
+	•	Atmosphere
+	•	Not intended as:
+	•	Precision locator
+	•	Timer replacement
+
+⸻
+
+9. WORLD SCALE & PROGRESSION EDGE CASES
+
+9.1 No Endgame Zone
+	•	Polar regions:
+	•	Exceed cap
+	•	Are not “endgame”
+	•	No funnel
+	•	No final raid continent
+	•	Affects:
+	•	Loot expectation
+	•	Player psychology
+	•	Content pacing
+
+⸻
+
+9.2 Underground-Only Viability
+	•	Entire game can be played underground
+	•	Surface is not mandatory
+	•	Progression balance assumes this
+
+⸻
+
+10. WORLD EVENT EDGE CASES
+
+10.1 Silent Mutation
+	•	World changes may occur:
+	•	Without patch notes
+	•	Without announcements
+	•	Discovery is:
+	•	Player-driven
+	•	NPC rumor-based
+	•	Logging exists for developers only
+
+⸻
+
+11. MIGRATION SAFETY NOTES (CRITICAL)
+
+When moving or editing Module 4:
+	•	Do not merge governance text into it
+	•	Do not inject combat or economy rules
+	•	Do not “clarify” visual vs mechanical unless restating exact canon
+	•	Do not relocate polar cold rules — Module 4 owns them
+
+⸻
+
+Status
+	•	Authoritative supporting record
+	•	Non-player-facing
+	•	Non-gameplay
+	•	Dependency & exclusion ledger only
+
+	•	Biome Structure (global)
+	•	Every biome contains:
+	•	1 harmless animal set
+	•	2–5 basic enemies
+	•	1 apex predator
+	•	1 ultra-rare spawn
+	•	1–2 biome-specific resources
+	•	1 Soulforge enchantment affinity (Mandala-aligned)
+	•	Mandala Affinity Rules (biomes)
+	•	Affinity pairs:
+	•	Light ↔ Death
+	•	Air ↔ Earth
+	•	Life ↔ Dark
+	•	Fire ↔ Ice
+	•	Each biome favors one affinity and weakens its opposite.
+	•	Ultra-Rare Biome Stat Rule
+	•	Exactly one stat-granting ultra-rare encounter per biome.
+	•	Grants one permanent stat of player’s choice.
+	•	One use per player per biome.
+	•	Party roll determines recipient.
+	•	Location random within biome.
+	•	Chaos Factor (spawn variance)
+	•	Any spawn may randomly roll:
+	•	Elite status
+	•	bonus mechanics
+	•	enhanced stats
+	•	Independent of normal tier rules.
+	•	Weather & Environmental Hazards
+	•	Weather is visual only, except:
+	•	Polar tundra: HP drain outside protection.
+	•	Desert sandstorms: visibility reduction only.
+	•	No other weather immunity exists.
+	•	World Layout & Access Rules (geography constraints)
+	•	Single surface supercontinent.
+	•	Five outer surface megaregions.
+	•	Two polar tundra continents.
+	•	One massive underground world (The Vast Below).
+	•	Placement obeys:
+	•	Caravaner 3-hour rhythm
+	•	“Adventure ≤ 20 minutes away” rule
 </section>
 
 <section id="module-5">
   <h2>Module 5 — Mandala Damage, Divine Systems & Probability</h2>
-  <p></p>
+  MODULE 5 — Mandala Damage, Divine Systems & Probability
+	•	Divine RNG & Probability (global)
+	•	Probability flows only through:
+	•	Global Divine RNG
+	•	Chaos Factor
+	•	Professions (Art)
+	•	Lesser Immortals never affect probabilities.
+	•	Shrine & Divine Buff System
+	•	Exactly 8 shrine buffs.
+	•	One active at a time.
+	•	Gold donation activation.
+	•	Governed by Global Divine RNG.
+	•	No permanent stats.
+	•	No stacking.
+	•	No god-specific mechanical variants.
+	•	Damage Type Assignment (enemy rule)
+	•	Each enemy has 1 primary + 1 secondary damage type.
+	•	Resistance categories and assignments exist (details deferred).
 </section>
 
 <section id="module-6">
   <h2>Module 6 — Professional Classes, Crafting & Shared Systems</h2>
-  <p></p>
+  MODULE 6 — Professional Classes, Crafting & Shared Systems
+
+1️⃣ PURPOSE
+
+Module 6 defines:
+	•	Class identity
+	•	Ability structure
+	•	Level-based ability acquisition
+	•	Dual-class rules
+	•	Professional class progression and effectiveness
+
+This module governs how abilities are earned and structured, not numeric balance.
+
+⸻
+
+2️⃣ ABILITY DEFINITIONS (GLOBAL)
+	•	“Ability” is a universal term covering:
+	•	Spells
+	•	Skills
+	•	Activated abilities
+	•	Passive abilities
+	•	All abilities are trainer-granted
+	•	No inventory-based learning
+	•	Players may hotbar any number of abilities
+
+⸻
+
+3️⃣ CORE COMBAT ROTATION (HARD STRUCTURE)
+
+Every class has exactly four Combat Rotation abilities:
+	1.	Basic Attack (CR-1)
+	2.	Builder / Setup A (CR-2)
+	3.	Builder / Setup B (CR-3)
+	4.	Maintenance (CR-4)
+
+Rules:
+	•	All four are obtained by Level 3
+	•	No secondary resource systems
+	•	No rage, combo meters, buildup counters, or hidden states
+
+⸻
+
+4️⃣ ABILITY TOTALS (LOCKED)
+	•	46 abilities by Level 60
+	•	+2 abilities at Level 61
+	•	48 total possible abilities per class (hard cap)
+
+⸻
+
+5️⃣ LEVEL 1–10 ABILITY ACQUISITION
+
+(12 abilities accessible by reaching Level 10)
+
+Level 1
+	•	3 abilities:
+	•	CR-1 Basic Attack
+	•	CR-2 Builder / Setup A
+	•	1 non-rotation ability
+(Free, pre-learned, journal-locked)
+
+Level 2
+	•	+1 ability:
+	•	CR-3 Builder / Setup B
+
+Level 3
+	•	+1 ability:
+	•	CR-4 Maintenance
+(Combat rotation complete)
+
+Level 4
+	•	+1 ability
+
+Level 5
+	•	+1 ability:
+	•	Epic Ability #1 (1-hour cooldown)
+
+Level 6
+	•	No ability
+
+Level 7
+	•	+1 ability:
+	•	Epic Ability #2 (1-hour cooldown)
+
+Level 8
+	•	No ability
+
+Level 9
+	•	+2 abilities:
+	•	Epic Ability #3 (1-hour cooldown)
+	•	+1 additional ability
+
+Level 10
+	•	+1 ability:
+	•	Ultra Montage Ability (3-hour cooldown)
+
+⸻
+
+6️⃣ EPIC & ULTRA ABILITIES
+
+Epic Abilities
+	•	Class-defining
+	•	1-hour cooldown
+	•	Total by Level 9: 3
+
+Ultra Abilities
+	•	Class-defining
+	•	3-hour cooldown
+	•	First Ultra gained at Level 10
+	•	Ultra abilities are Montage abilities
+
+⸻
+
+7️⃣ MONTAGE (DECADE) ABILITIES
+
+Each class has exactly six Montage abilities:
+	•	Level 10 (Ultra)
+	•	Level 20
+	•	Level 30
+	•	Level 40
+	•	Level 50
+	•	Level 60
+
+Rules:
+	•	Require 5–10 minutes of trainer-based training
+	•	Only one Montage ability may be gained per decade
+	•	Montage choice applies during dual-classing
+
+⸻
+
+8️⃣ LEVEL 11–60 ABILITY DISTRIBUTION
+
+Milestone Grants (10 total)
+	•	Level 11: +2
+	•	Level 21: +2
+	•	Level 31: +2
+	•	Level 41: +2
+	•	Level 51: +2
+
+Assigned Single-Ability Levels (19 total)
+	•	13, 15, 18
+	•	23, 25, 26, 28
+	•	32, 34, 37, 39
+	•	42, 45, 47, 48
+	•	54, 55, 56, 58
+
+Montage Abilities
+	•	Level 20, 30, 40, 50, 60
+
+Total abilities gained from 11–60: 34
+Total by Level 60: 46
+
+⸻
+
+9️⃣ LEVEL 61 — FINAL CAPSTONE
+	•	Level 61:
+	•	+2 abilities (“good ones”)
+
+Final total: 48 abilities
+
+⸻
+
+🔟 DUAL-CLASSING RULES
+	•	First chosen class is Primary Class forever
+	•	Players may have at most two classes
+	•	Class advancement occurs in 10-level blocks
+	•	No fractional splits
+
+Dual-Class Choice
+	•	Every 10 levels, player chooses which class advances next
+	•	Choice window does not expire
+
+Montage Choice
+	•	At each decade, player chooses which class receives the Montage ability
+	•	Dual-classing grants options, not additional power
+
+⸻
+
+1️⃣1️⃣ EFFECTIVE LEVEL RULE
+	•	A player with 10 / 10 class levels is treated as Level 20
+	•	Dual-classing auto-skips a level in progression math
+	•	Ability milestones occur at effective levels:
+	•	11, 21, 31, 41, 51, 61
+
+⸻
+
+1️⃣2️⃣ PROFESSIONAL CLASSES — GLOBAL RULES
+
+Professional Class Set
+	•	Smith
+	•	Tailor
+	•	Jeweler
+	•	Alchemist
+	•	Cook
+	•	Scribe
+	•	Laborer
+	•	Tamer
+
+Professional Ability Progression
+	•	Professionals receive all 12 of their abilities by Level 10
+	•	They do not follow Adventurer ability pacing
+	•	Ability access never changes after Level 10
+
+⸻
+
+1️⃣3️⃣ PROFESSIONAL EFFECTIVENESS (LEVEL 10 HARD CHOICE)
+
+Professionals begin with:
+	•	Crafting effectiveness: 0.7
+	•	Combat effectiveness: 0.7
+
+At Level 10, progression halts until a permanent choice is made:
+
+ARTISAN
+	•	Crafting → 1.0
+	•	Combat → 0.7
+
+DUNGEONEER
+	•	Crafting → 0.7
+	•	Combat → 1.0
+
+Rules:
+	•	Ability access does not change
+	•	Only effectiveness scaling changes
+	•	Enables viable combat professionals
+
+⸻
+
+1️⃣4️⃣ GLOBAL PROFESSION SYSTEM RULES
+	•	No permanent profession guild halls (mechanically)
+	•	Professions operate via marketplace stalls
+	•	Player-owned deed shops are mechanically active
+	•	Legacy buildings may exist visually only
+	•	Visual placements despawn after:
+	•	2 minutes or
+	•	6 items removed
+	•	Max 2 identical crafted items per player
+	•	Ingredient awareness is profession-specific
+	•	Five-tier ingredient system (T1–T5 / Common–Rare)
+	•	Resources sourced from:
+	•	Mobs
+	•	Chests
+	•	Expeditions
+	•	World logic
+	•	Group XP bonus:
+	•	+5% per professional
+	•	Max +30%
+
+⸻
+
+1️⃣5️⃣ STATUS
+	•	All rules above are LOCKED
 </section>
 
 <section id="module-7">
   <h2>Module 7 — Non-Magic Abilities & Skills</h2>
-  <p><em>Reserved — not yet populated.</em></p>
+  MODULE 7 — Non-Magic Abilities & Skills
+
+(Structural rules only; no class-specific lists yet)
+
+ABILITY PROGRESSION — GLOBAL RULES
+	•	Each class has up to 48 total abilities by Level 61.
+	•	Ability totals and grant pacing are defined in Module 6.
+	•	Abilities are intentionally divisible by 8, reinforcing Talvaren’s core cosmology.
+	•	Ability categories are universal:
+	•	Spells
+	•	Activated Abilities
+	•	Skills
+	•	Passives
+	•	Players may hotbar as many abilities as they want.
+	•	The system does not protect players from complexity; choice is celebrated.
+
+⸻
+
+DESTINATION: Module 7 — Non-Magic Abilities & Skills
+
+CORE ROTATION RULE (KISS — HARD)
+
+Each class has exactly 4 core rotational actions:
+	1.	1 Basic action (always usable)
+	2.	2 Setup / Builder actions
+	3.	1 Maintenance action
+
+Rules:
+	•	No secondary resource systems exist.
+	•	No rage bars, fury meters, elemental buildup, counters, or stacks.
+	•	Only primary resources exist (stamina, mana, health).
+	•	Core rotation is intentionally simple; depth comes from situational and optional abilities.
+
+⸻
+
+NO RETROACTIVE ACCESS RULE — ADVENTURERS
+	•	Dual-classing never grants access to levels 1–10 abilities of the second class.
+	•	Example:
+	•	A Level 10 Rogue who dual-classes into Warrior:
+	•	Keeps Rogue 1–10 abilities
+	•	Gains Warrior abilities only from levels 11–60
+	•	A Warrior who started as Warrior has access to Warrior abilities from levels 1–60.
+	•	These characters are intentionally asymmetric.
+
 </section>
 
 <section id="module-8">
   <h2>Module 8 — Damage Types & Mandala Integration</h2>
-  <p><em>Superseded by Module 5. Retained for indexing.</em></p>
+  MODULE 8 — Damage Types & Mandala Integration (superseded by Module 5, retained for indexing)
+	•	Retained index marker only.
+	•	Mandala/Damage authoritative rules reside in Module 5 (mechanics) and World-lore-bible (deities/lore).
 </section>
 
 <section id="module-9">
   <h2>Module 9 — NPC & AI Behavior</h2>
-  <p></p>
+  MODULE 9 — NPC & AI Behavior
+	•	Aggro & Targeting (baseline)
+	•	Aggro is biological (visibility, noise, exposure).
+	•	Territory + line-of-sight leash.
+	•	Non-Apex speed reduced.
+	•	Enemy tiers: Common, Elite, Apex, Boss.
+	•	Chaos-roll for Elite status or special mechanics.
+	•	Mob aggro targeting priority: DPS → healers → others.
+	•	Professional non-dungeoneer aggro modifier.
+	•	Mob Taxonomy
+	•	Fauna: passive; tiered meat drops (T1–T5).
+	•	Humanoids: aggressive; drop coins, weapons, gear, rare profession resources.
+	•	Apex / Lieutenants: high-difficulty, unique drops, long respawns.
+	•	Boss / Apex / Lieutenant Rule References
+	•	Bosses: scripted Apex encounters; multi-phase; short CC only; environmental mechanics; drops include high-tier crafting materials and Mandala reagents.
+	•	Lieutenants: persistent route patrol threats; death temporarily weakens patrols; respawn via world pressure logic.
+	•	Chaos-Touched: random corruption of Common/Elite only; gains 1 mechanic, stat delta, behavior mutation; visual corruption; used to break farming patterns.
+	•	Vast Below Enemy Structure (behavioral tier relation)
+	•	VB Common = Surface Elite.
+	•	VB Elite = Surface Mini-Boss.
+	•	VB Apex = world-altering threat.
+	•	Overfarming increases patrols, elite spawn, Chaos-Touched probability.
 </section>
 
 <section id="module-10">
   <h2>Module 10 — Professions (Merged)</h2>
-  <p><em>Merged into Module 6. Retained for archival reference.</em></p>
+  MODULE 10 — Professions (Scribe, Crafting) (merged into Module 6; retained for archival reference)
+	•	Scribe: Scrolls & Writs (creation rules)
+	•	Scribe authors scrolls and writs; scribes do not need to be casters.
+	•	Spell scroll crafting requires Scribe skill.
+	•	Scroll creation requires a spell matrix component.
+	•	Spell matrices are created by casting the spell.
+	•	Matrix shards are vendor-purchased blanks.
+	•	Spell must be successfully cast to imprint matrix.
+	•	Matrix shards are consumed on scroll creation.
+	•	Scroll creation level requirement = spell level +1.
+	•	Scroll material costs exist (TBD).
+	•	Writs are profession-gated systems.
+	•	Faction Appeal / Petition system exists as a writ:
+	•	appeals require scribe-written document, caravan delivery, and follow-through,
+	•	no grind-based reputation repair,
+	•	repeated offenses require new appeals.
+	•	Scribe: Cartography Rules
+	•	Scribe owns all cartographic mechanics.
+	•	“Cartographer” is descriptive only.
+	•	Exactly 3 POI interactions per zone required for discovery.
+	•	Fragments created only after zone discovery.
+	•	Scribes may sell maps to players, guilds, merchant markets.
+	•	Guild purchase → server-wide unlock.
+	•	Wayfinder’s Beacon (Scribe ultimate)
+	•	One-way teleport bridge.
+	•	Requires flat destination surface.
+	•	Not global.
+	•	Laborer Trusted / Untrusted (system pointer)
+	•	Party vote mechanic exists; untrusted penalty exists (details in Module 6 systems and tables).
+	•	Tamer: Moderate Mode Research — Lore Book Rule
+	•	Each Moderate Mode mount has an associated Tamer Lore Book.
+	•	Lore Books exist at fixed locations within specific cities and biomes.
+	•	Reading the correct Lore Book once permanently unlocks full understanding:
+	•	unread: Moderate Mode tame success chance reduced,
+	•	read: Moderate Mode tame success guaranteed.
+	•	Learned knowledge remains learned.
 </section>
 
 <section id="module-11">
   <h2>Module 11 — Economy & Vendors (Merged)</h2>
-  <p><em>Merged into Module 6. Retained for archival reference.</em></p>
+  MODULE 11 — Economy & Vendors (merged into Module 6; retained for archival reference)
+	•	Economy Baseline (targets, sinks, session definition) (values in tables)
+	•	Vendor consumables pricing (values in tables)
+	•	Repairs and repair kits pricing (values in tables)
+	•	Auction and mail delivery tied to physical caravan travel (timing tied to travel engine)
+
 </section>
 
 <section id="module-12">
