@@ -1225,78 +1225,521 @@ SECTION 20 — ENCUMBRANCE AUTHORITY CLARIFICATION
   <h2>Module 1B — Equipment & Gear Systems</h2>
   MODULE-1B —Equipment & Gear Systems
 
-•	Equipment Weight System
-	•	Weapon and armor behavior governed exclusively by weight class.
-	•	No damage-type math, mitigation curves, or stat scaling exists in equipment.
-	•	Weight determines stamina friction, encumbrance expectations, and interaction limits.
-	•	No armor “types” (plate/leather/etc.) exist in the engine.
-	•	All meshes must conform to defined weight envelopes.
-	•	Equipment Slot Framework (priority clause)
-	•	Primary gear slots:
-	•	Head
-	•	Chest
-	•	Legs
-	•	Boots
-	•	Shoulders / Back (shared)
-	•	Arms
-	•	Belt
-	•	Main Hand
-	•	Off-Hand (Shield or Light Weapon)
-	•	Ranged
-	•	Jewelry slots:
-	•	Ring ×4
-	•	Neck
-	•	Jewelry Rules
-	•	4 rings + 1 necklace.
-	•	Jewelry never scales with tier, rarity, enchantment, or effect.
-	•	Jewelry never meaningfully affects encumbrance.
-	•	Jewelry never grants combat-defining bonuses.
-	•	Slot Identities & Bonus Locks
-	•	Each equipment slot has exclusive allowed bonus categories.
-	•	Slot-identity bonuses never roll randomly.
-	•	Primary stats are belt-exclusive.
-	•	Healing and magic amplification bonuses restricted by slot.
-	•	No profession bonuses may appear on equipment.
-	•	Dual-wield access excluded from Module 1B.
-	•	Stamina & Auto-Attack Interaction
-	•	Ability stamina cost modified by weapon weight and armor weight.
-	•	Auto-attacks:
-	•	cost 0 stamina,
-	•	animation-timed,
-	•	fixed swing times,
-	•	no per-frame stamina math.
-	•	Weapon & Armor Category Profiles
-	•	Light / Medium / Heavy categories are permanent, global, uniform.
-	•	Include stagger behavior, encumbrance expectations, stamina friction.
-	•	Cannot be overridden without explicit patch.
-	•	Artifact Item Categories (equipment context)
-	•	Artifacts are:
-	•	non-equippable,
-	•	non-functional,
-	•	display-only,
-	•	economy-safe.
-	•	Never grant stats, slots, affixes.
-	•	Equipment ↔ Player Boundary
-	•	Equipment defines mass and friction only.
-	•	Player thresholds, sprint logic, stamina regen rules, reserves, cracked state = Module 1A.
-	•	Module 1B applies stamina costs to Active Stamina only.
-	•	Tools & World Interaction
-	•	Field Kit: no weight, no stats, no combat use.
-	•	Professional tools abstracted into Field Kit.
-	•	Weapons may level; armor never levels.
-	•	No future system may require tool-equipping unless patched.
-	•	Mount Acquisition & Authority
-	•	Tamer is the only class with persistent mounts.
-	•	Paladin mounts are conjured and exempt.
-	•	All tamer mounts are killable; death is permanent.
-	•	Mounted combat does not exist.
-	•	Dismounted mounts travel to nearest stables.
-	•	All tames share a global cooldown.
-	•	Caravan Ox — Command Rules
-	•	Commands may be issued while the Ox is dismounted.
-	•	Commands affect only the Ox owned by the issuing Tamer.
-	•	“Go Home” sends the Ox to the nearest valid stables.
-	•	While active, the Ox serves as a mobile stable anchor for the owner’s party.
+📜 MODULE 1B — EQUIPMENT & GEAR SYSTEMS (CANON)
+
+Status: Active Canon Module
+Companion Module: Module 1A — Player Core Systems
+
+⸻
+
+MODULE-1B — EQUIPMENT & GEAR SYSTEMS (SCOPE)
+
+• Equipment Weight System
+• Weapon and armor behavior governed exclusively by weight class
+• No damage-type math, mitigation curves, or stat scaling exists in equipment
+• Weight determines stamina friction, encumbrance expectations, and interaction limits
+• No armor “types” (plate/leather/etc.) exist in the engine
+• All meshes must conform to defined weight envelopes
+
+• Equipment Slot Framework (priority clause)
+
+Primary gear slots:
+• Head
+• Chest
+• Legs
+• Boots
+• Shoulders / Back (shared)
+• Arms
+• Belt
+• Main Hand
+• Off-Hand (Shield or Light Weapon)
+• Ranged
+
+Jewelry slots:
+• Ring ×4
+• Neck
+
+• Jewelry Rules
+• 4 rings + 1 necklace
+• Jewelry never scales with tier, rarity, enchantment, or effect
+• Jewelry never meaningfully affects encumbrance
+• Jewelry never grants combat-defining bonuses
+
+• Slot Identities & Bonus Locks
+• Each equipment slot has exclusive allowed bonus categories
+• Slot-identity bonuses never roll randomly
+• Primary stats are belt-exclusive
+• Healing and magic amplification bonuses restricted by slot
+• No profession bonuses may appear on equipment
+
+• Stamina & Auto-Attack Interaction
+• Ability stamina cost modified by weapon weight
+• Auto-attacks:
+• cost 0 stamina
+• animation-timed
+• fixed swing times
+• no per-frame stamina math
+
+• Weapon & Armor Category Profiles
+• Light / Medium / Heavy categories are permanent, global, uniform
+• Cannot be overridden without explicit patch
+
+• Artifact Item Categories (equipment context)
+• Artifacts are:
+• non-equippable
+• non-functional
+• display-only
+• economy-safe
+• Never grant stats, slots, affixes
+
+• Equipment ↔ Player Boundary
+• Equipment defines mass and friction only
+• Player thresholds, sprint logic, stamina regen rules, reserves, cracked state = Module 1A
+
+• Tools & World Interaction
+• Field Kit: no weight, no stats, no combat use
+• Professional tools abstracted into Field Kit
+• Weapons may level; armor never levels
+• No future system may require tool-equipping unless patched
+
+• Mount Acquisition & Authority
+• Tamer is the only class with persistent mounts
+• Paladin mounts are conjured and exempt
+• All tamer mounts are killable; death is permanent
+• Mounted combat does not exist
+• Dismounted mounts travel to nearest stables
+• All tames share a global cooldown
+
+• Caravan Ox — Command Rules
+• Commands may be issued while the Ox is dismounted
+• Commands affect only the Ox owned by the issuing Tamer
+• “Go Home” sends the Ox to the nearest valid stables
+• While active, the Ox serves as a mobile stable anchor for the owner’s party
+
+⸻
+
+PURPOSE
+
+Centralize all mechanical rules for:
+• Weapons
+• Armor
+• Equipment slots
+• Weight rules
+• Stamina interaction
+• Slot identities
+• Affix and secondary bonus restrictions
+• Artifact item categories
+• Equipment–world interaction boundaries
+• Mount acquisition, taming tiers, and advanced travel authority
+
+⸻
+
+LEGAL / INTEGRATION NOTES
+	1.	Module 1B defines all equipment-based systems, including:
+• Weapons
+• Armor
+• Equipment slots
+• Weight rules
+• Stamina interaction
+• Affix and secondary bonus restrictions
+• Artifact item categories
+• Equipment–world interaction boundaries
+	2.	Module 1A governs all player-side physics (stats, stamina pools, sprint logic, encumbrance thresholds, dual-class fundamentals).
+	3.	When an interaction concerns both player physics and equipment stats:
+• Module 1A takes priority unless Module 1B explicitly overrides for gear-specific logic.
+	4.	Locked sections of Module 1B override all other modules unless explicitly patched.
+	5.	Additive sections do not override locked canon unless stated.
+	6.	Module 6 governs Field Kit mechanics; Module 1B governs how they interact with equipment systems.
+
+⸻
+
+⭐ SECTION 1 — WEIGHT RULES (LOCKED CANON)
+
+1. WEAPON WEIGHT CLASSES
+
+Light Weapons
+• 1–4 kg
+
+Medium Weapons
+• 5–10 kg
+
+Heavy Weapons
+• 12–26 kg
+• 11 kg is reserved as a neutral design buffer for exotic items.
+
+⸻
+
+2. ARMOR WEIGHT CLASSES (FULL SET TOTALS)
+
+Light Armor: 8–14 kg
+Medium Armor: 15–24 kg
+Heavy Armor: 25–40 kg
+
+⸻
+
+3. ARMOR PIECE WEIGHT GUIDELINES
+
+(Universal anchors — do not imply armor type)
+
+• Helm: 0.5–3 kg
+• Shoulders / Back: 1–3 kg
+• Chest: 3–14 kg
+• Arms: 1–3 kg
+• Legs: 2–8 kg
+• Boots: 1–4 kg
+• Cape / Backpiece (if used): 1–3 kg
+
+All pieces must fit inside full-set ranges.
+
+⸻
+
+4. BELT + JEWELRY WEIGHT RULE
+
+• Belt always counts as 1 kg
+• All jewelry combined (4 rings + 1 neck) counts as 1 kg total
+• Jewelry and belts never meaningfully affect encumbrance
+
+⸻
+
+5. SYSTEM NOTES
+
+• Weight is suggested to govern equipment-based penalties and bonuses; final implementation not yet resolved.
+• No armor “types” are tied to damage math
+• All future meshes must fit these ranges
+
+⸻
+
+⭐ SECTION 2 — EQUIPMENT SLOT FRAMEWORK (HARD CANON)
+
+1. PRIMARY GEAR SLOTS
+
+• Head
+• Chest
+• Legs
+• Boots
+• Shoulders / Back (shared)
+• Arms
+• Belt (Primary Stat Slot)
+• Main Hand
+• Off-Hand (Shield or Light Weapon)
+• Ranged (wand, orb, sling, throwing focus)
+
+⸻
+
+2. JEWELRY SLOTS
+
+• Ring 1
+• Ring 2
+• Ring 3
+• Ring 4
+• Neck
+
+Jewelry uses the flat 1 kg rule.
+
+⸻
+
+3. WEIGHT CONTRIBUTION NOTES
+
+Only these slots contribute meaningful encumbrance:
+• Chest
+• Legs
+• Boots
+• Shoulders / Back
+• Arms
+• Main Hand
+• Off-Hand
+• Ranged
+
+Head, Belt, and Jewelry are negligible or flat.
+
+⸻
+
+4. PRIORITY CLAUSE
+
+This framework overrides all conflicting systems automatically.
+
+⸻
+
+⭐ SECTION 3 — JEWELRY SLOT RULES (HARD CANON)
+
+• Players may equip:
+• 4 Rings
+• 1 Necklace
+
+• Jewelry:
+• Always counts as 1 kg total
+• Never scales with rarity, tier, enchantment, or effect
+• Never meaningfully affects encumbrance
+
+⸻
+
+⭐ SECTION 4 — EQUIPMENT SLOT IDENTITIES & SECONDARY BONUS LOCKS (HARD CANON)
+
+4.1 — Allowed Slot Bonuses
+
+Head
+• Resistances
+• Spell Mitigation %
+• Crowd Control Resistance %
+
+Chest
+• Armor (highest source)
+• % Damage Reduction
+• Max Health % (small)
+
+Legs
+• Movement Speed %
+• Dodge / Evasion %
+
+Boots
+• Movement Speed %
+• Fall Damage Reduction
+• Knockback Resistance
+
+Shoulders / Back
+• Threat Generation ±%
+• AoE Damage Resistance
+• Minor Healing Done %
+• Minor Magic Damage Done %
+
+Arms
+• Accuracy %
+• Attack Speed %
+• Cast Speed %
+
+Belt — PRIMARY STAT SLOT (HARD CANON)
+• STR, DEX, CON, INT, WIS, ART
+• Up to +5 total cumulative stat
+• can be more than one stat
+• No other slot may grant primary stats
+
+Main Hand
+• Parry %
+• Flat Damage
+• Crit Chance %
+• Crit Damage %
+
+Off-Hand (Shield)
+• Block Chance (highest)
+• Resistances
+• Damage Reduction %
+
+Off-Hand (Light Weapon)
+• Block Chance (small)
+• Attack Speed %
+
+Ranged
+• Accuracy % (highest)
+• Crit Chance %
+• Elemental / Magic Damage %
+
+Rings ×4
+• Utility / flavor only
+• No Healing Done %
+• No Magic Damage Done %
+
+Neck
+• Elemental Resistances
+• Illusion Detection
+• Major Healing Done %
+• Major Magic Damage Done %
+
+⸻
+
+4.2 — Random Affix Pool Rules
+
+• Slot-identity bonuses never roll randomly
+• Random pool includes only approved generic stats
+• Primary stats forbidden (belt only)
+• Healing/Magic bonuses restricted to cloak (minor) and neck (major)
+• No profession bonuses allowed
+
+⸻
+
+4.3 — Dual-Wield Status
+
+• Section 4.3 — Dual-Wield Reference is retired and obsolete
+
+⸻
+
+4.4 — PRIORITY CLAUSE
+
+Overrides all conflicts automatically.
+
+⸻
+
+⭐ SECTION 5 — STAMINA & AUTO-ATTACK SYSTEM (HARD CANON)
+
+1. ABILITY STAMINA FORMULA
+
+Final Cost = Base Cost × Weapon Multiplier
+
+⸻
+
+2. WEAPON STAMINA MULTIPLIERS
+
+• Light: ×0.8
+• Medium: ×1.0
+• Heavy: ×1.3
+
+⸻
+
+3. AUTO-ATTACK RULES
+
+• Cost: 0 stamina
+
+Swing Times:
+• Light: 1.2s
+• Medium: 1.6s
+• Heavy: 2.2s
+
+• Not modified unless patched
+
+⸻
+
+4. PERFORMANCE NOTES
+
+• Animation-timed
+• No per-frame math
+• Server-efficient
+
+⸻
+
+⭐ SECTION 6 — WEAPON & ARMOR CATEGORY PROFILES
+
+• Light / Medium / Heavy categories are permanent, global, uniform
+
+⸻
+
+⭐ SECTION 7 — ARTIFACT ITEM CATEGORIES (HARD CANON)
+
+Artifacts are:
+• Non-equippable
+• Non-functional
+• Display-only
+• Economy-safe
+
+Allowed Categories
+	1.	Ceremonial Weapons
+	2.	Ceremonial Armor
+	3.	Tools & Instruments
+	4.	Figurines & Idols
+	5.	Maps & Tablets
+	6.	Household Implements
+
+Forbidden
+• Jewelry
+• Combat items
+• Containers
+• Currency
+• Crafting materials
+• Functional scrolls/books
+
+Artifacts never grant stats, slots, or affixes.
+
+⸻
+
+⭐ SECTION 8 — EQUIPMENT–PLAYER BOUNDARY CLARIFICATIONS (ADDATIVE CANON)
+
+Encumbrance Language Clarification
+• Equipment weight represents item mass only
+• All encumbrance thresholds, penalties, sprint logic, and stamina efficiency are governed by Module 1A
+• Module 1B may define weight, not player behavior
+
+⸻
+
+⭐ SECTION 9 — FIELD KIT, TOOLS & WORLD INTERACTION (ADDATIVE CANON)
+
+• Field Kit exists (Module 6)
+• Field Kit:
+• No weight
+• No stats
+• No combat use
+
+• Professional tools are abstracted into the Field Kit
+• Fishing Pole is the only equip-required tool
+• Weapons may level
+• Armor never levels
+
+No future system may require tool-equipping unless explicitly patched.
+
+⸻
+
+⭐ SECTION 10 — MOUNT ACQUISITION, TAMING TIERS & ADVANCED TRAVEL (HARD CANON)
+
+GLOBAL MOUNT RULES
+
+• The Tamer is the only class capable of acquiring persistent mounts
+• Paladin mounts are class-conjured and exempt
+• All Tamer mounts are killable; death is permanent
+• Mounted combat does not exist
+• On dismount, mounts travel to nearest stables
+
+⸻
+
+MOUNT GLOBAL COOLDOWN
+
+• All mount tames share a 3-minute cooldown
+
+⸻
+
+TAMING TIERS
+
+Easy Mode
+• Horse (Lv 10)
+• Camel (Lv 14)
+
+Moderate Mode
+• Bear (Lv 20)
+• Dire Wolf (Lv 24)
+• Giant Boar (Lv 28)
+• Giant Infant Spider (Lv 32)
+• Giant Snake (Lv 35)
+
+Advanced
+• Caravan Ox (Lv 40)
+• Runic Turtle (Lv 48)
+• War Elephant / Hephalump (Lv 55)
+
+Pinnacle
+• Mimic (Lv 60)
+
+True Unique
+• Unicorn
+• World Stag
+
+⸻
+
+TIER RULES
+
+Easy Mode
+• Guaranteed success if ingredients present
+
+Moderate Mode
+• 50% base success
+• Lore book research guarantees success
+• Failure = hostile creature
+
+⸻
+
+ADVANCED MOUNT ROLES
+
+• Ox: mobile stables, caravan anchor
+• Turtle: water traversal platform
+• Elephant: heavy surface logistics
+
+⸻
+
+PINNACLE MOUNT
+
+• Mimic — multi-form, summon-capable, no combat
+
+⸻
+
+TRUE UNIQUES
+
+• Governed by Global True Unique Utilization Rule
+
 </section>
 
 <section id="module-2">
