@@ -1,65 +1,443 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <title>Talvaren Studios</title>
-    <link rel="icon" type="image/jpeg" href="images/Logo-min.jpg">
+
+    <link rel="icon" type="image/jpeg" href="images/Logo-min.jpg" />
+
     <style>
-        body {
+        * {
             margin: 0;
-            font-family: 'Times New Roman', serif;
-            color: #D9C9A6; /* beige lettering */
-            background-color: #000;
+            padding: 0;
+            box-sizing: border-box;
         }
 
-        header {
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #0b0a08;
+            color: #d8c5a2;
+            font-family: Georgia, serif;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* ---------------- HEADER ---------------- */
+
+        .hero-banner {
             position: relative;
             width: 100%;
-            height: 600px; /* adjust to taste */
-            background: url('Talvaren_Wallpaper.jpg') center center/cover no-repeat;
+            min-height: 100vh;
+            background-image: url('Talvaren_Wallpaper.jpg');
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
         }
 
-        /* Stylized site title */
-        .site-title {
+        .hero-overlay {
             position: absolute;
-            bottom: 40px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 4rem;
-            font-family: 'Cinzel', serif; /* example medieval style, adjust if desired */
-            color: #D9C9A6;
-            text-shadow: 2px 2px 5px #000;
+            inset: 0;
+            background:
+                linear-gradient(
+                    to bottom,
+                    rgba(0,0,0,0.25),
+                    rgba(0,0,0,0.55)
+                );
         }
 
-        /* Hamburger menu */
+        /* ---------------- NAVIGATION ---------------- */
+
+        .top-bar {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 24px 28px;
+            z-index: 1000;
+
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
+
         .hamburger {
-            position: absolute;
-            top: 20px;
-            right: 30px;
-            font-size: 2rem;
+            width: 40px;
+            height: 32px;
             cursor: pointer;
-            color: #D9C9A6;
-            z-index: 10;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
-        /* Responsive adjustments */
+        .hamburger span {
+            display: block;
+            width: 100%;
+            height: 4px;
+            border-radius: 3px;
+            background-color: #d8c5a2;
+            transition: 0.3s ease;
+        }
+
+        .mobile-menu {
+            position: absolute;
+            top: 90px;
+            right: 28px;
+
+            background-color: rgba(10,10,10,0.95);
+
+            border: 1px solid rgba(216,197,162,0.25);
+
+            padding: 18px 24px;
+
+            display: none;
+            flex-direction: column;
+            gap: 16px;
+
+            z-index: 1001;
+        }
+
+        .mobile-menu a {
+            font-size: 1rem;
+            letter-spacing: 1px;
+            color: #d8c5a2;
+            transition: 0.2s ease;
+        }
+
+        .mobile-menu a:hover {
+            color: #ffffff;
+        }
+
+        .mobile-menu.active {
+            display: flex;
+        }
+
+        /* ---------------- TITLE ---------------- */
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+
+            min-height: 100vh;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            text-align: center;
+
+            padding: 40px 20px;
+        }
+
+        .studio-title {
+            font-size: clamp(3rem, 8vw, 7rem);
+
+            color: #d8c5a2;
+
+            letter-spacing: 3px;
+
+            text-shadow:
+                0 0 15px rgba(0,0,0,0.7),
+                0 0 30px rgba(0,0,0,0.5);
+
+            margin-bottom: 20px;
+        }
+
+        .studio-subtitle {
+            font-size: clamp(1rem, 2vw, 1.4rem);
+
+            letter-spacing: 2px;
+
+            text-transform: uppercase;
+
+            color: #b79b6f;
+
+            margin-bottom: 24px;
+        }
+
+        .studio-description {
+            max-width: 850px;
+
+            font-size: 1.15rem;
+
+            line-height: 1.8;
+
+            background-color: rgba(0,0,0,0.45);
+
+            padding: 20px 28px;
+
+            border: 1px solid rgba(216,197,162,0.15);
+
+            backdrop-filter: blur(2px);
+        }
+
+        /* ---------------- SECTION ---------------- */
+
+        .content-section {
+            width: 100%;
+            padding: 90px 20px;
+
+            background-color: #0b0a08;
+        }
+
+        .section-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            text-align: center;
+
+            color: #d8c5a2;
+        }
+
+        .section-text {
+            font-size: 1.1rem;
+            line-height: 1.9;
+
+            color: #cdbb98;
+        }
+
+        /* ---------------- DONATIONS ---------------- */
+
+        .support-section {
+            margin-top: 70px;
+
+            padding: 35px;
+
+            border: 1px solid rgba(216,197,162,0.15);
+
+            background-color: rgba(255,255,255,0.02);
+        }
+
+        .support-title {
+            font-size: 2rem;
+            margin-bottom: 20px;
+
+            text-align: center;
+        }
+
+        .support-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 18px;
+
+            margin-top: 25px;
+        }
+
+        .support-button {
+            padding: 14px 26px;
+
+            border: 1px solid rgba(216,197,162,0.35);
+
+            color: #d8c5a2;
+
+            transition: 0.25s ease;
+
+            background-color: rgba(255,255,255,0.03);
+        }
+
+        .support-button:hover {
+            background-color: rgba(216,197,162,0.12);
+            transform: translateY(-2px);
+        }
+
+        /* ---------------- FOOTER ---------------- */
+
+        footer {
+            padding: 50px 20px;
+            text-align: center;
+
+            color: #927c57;
+
+            border-top: 1px solid rgba(216,197,162,0.08);
+        }
+
+        /* ---------------- MOBILE ---------------- */
+
         @media (max-width: 768px) {
-            .site-title {
-                font-size: 2.5rem;
+
+            .hero-banner {
+                min-height: 90vh;
             }
-            .hamburger {
-                font-size: 1.8rem;
+
+            .studio-description {
+                font-size: 1rem;
+                line-height: 1.7;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .support-links {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .support-button {
+                width: 100%;
+                max-width: 320px;
+                text-align: center;
             }
         }
+
     </style>
 </head>
+
 <body>
-    <header>
-        <div class="hamburger">&#9776;</div>
-        <h1 class="site-title">Talvaren Studios</h1>
+
+    <!-- HERO -->
+
+    <header class="hero-banner">
+
+        <div class="hero-overlay"></div>
+
+        <!-- NAVIGATION -->
+
+        <div class="top-bar">
+
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <nav class="mobile-menu" id="mobileMenu">
+
+                <!-- KEEP ROUTING PATHS -->
+                <a href="index.html">Home</a>
+                <a href="shop.html">Shop</a>
+                <a href="custom.html">Custom</a>
+                <a href="custom-thanks.html">Custom Thanks</a>
+                <a href="talvaren-vault.html">Talvaren Vault</a>
+                <a href="privacy.html">Privacy</a>
+                <a href="terms.html">Terms</a>
+
+            </nav>
+
+        </div>
+
+        <!-- HERO CONTENT -->
+
+        <div class="hero-content">
+
+            <h1 class="studio-title">
+                Talvaren Studios
+            </h1>
+
+            <div class="studio-subtitle">
+                Forging Reality, One Tool at a Time
+            </div>
+
+            <div class="studio-description">
+                Talvaren Studios is an independent Unity-focused worldbuilding
+                and development studio dedicated to creating immersive tools,
+                atmospheric worlds, scalable systems, and the foundations of
+                the Talvaren universe.
+            </div>
+
+        </div>
+
     </header>
 
-    <!-- Rest of your page content remains unchanged -->
+    <!-- CONTENT -->
+
+    <section class="content-section">
+
+        <div class="section-inner">
+
+            <h2 class="section-title">
+                Building Worlds
+            </h2>
+
+            <p class="section-text">
+                Talvaren Studios focuses on large-scale environmental design,
+                terrain workflows, procedural worldbuilding systems,
+                immersive atmosphere, and modular tool creation for Unity.
+                Every project is built around the philosophy that worlds
+                should feel lived in, explorable, and worth remembering.
+            </p>
+
+            <!-- DONATIONS -->
+            <!-- KEEP THESE LINKS EXACT -->
+
+            <div class="support-section">
+
+                <h3 class="support-title">
+                    Support Development
+                </h3>
+
+                <p class="section-text" style="text-align:center;">
+                    Contributions directly support continued development,
+                    tooling, assets, and production for Talvaren Studios.
+                </p>
+
+                <div class="support-links">
+
+                    <!-- REPLACE WITH YOUR EXACT EXISTING LINKS -->
+
+                    <a class="support-button" href="#">
+                        PayPal
+                    </a>
+
+                    <a class="support-button" href="#">
+                        Cash App
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- FOOTER -->
+
+    <footer>
+        © 2026 Talvaren Studios — All Rights Reserved
+    </footer>
+
+    <!-- SCRIPT -->
+
+    <script>
+
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        hamburger.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
+        });
+
+        document.addEventListener('click', function(event) {
+
+            const isClickInsideMenu =
+                mobileMenu.contains(event.target);
+
+            const isClickHamburger =
+                hamburger.contains(event.target);
+
+            if (!isClickInsideMenu && !isClickHamburger) {
+                mobileMenu.classList.remove('active');
+            }
+
+        });
+
+    </script>
+
 </body>
 </html>
