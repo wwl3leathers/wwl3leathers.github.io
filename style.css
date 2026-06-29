@@ -1,199 +1,100 @@
-html {
-  min-height: 100%;
-  background-image: url("/images/workshop-background.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-position: center center;
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
 }
 
-body, .body, .container, .wrapper, .content, main {
-  min-height: 100vh;
-  background: transparent;
-  margin: 0;
-  padding: 0;
-  font-family: 'Georgia', serif;
-  color: #f8f8f8;
+html,body{
+height:100%;
+font-family:Georgia,serif;
+background:#0b0a08;
+color:#d8c5a2;
 }
 
-/* Links (slightly brighter for visibility) */
-a {
-  color: #FFFAF0;
-  text-decoration: none;
+body{
+background:url('images/Talvaren_Wallpaper.jpg') center center/cover no-repeat fixed;
 }
 
-a:hover {
-  text-decoration: underline;
+.page-overlay{
+min-height:100vh;
+background:rgba(0,0,0,.55);
+display:flex;
+flex-direction:column;
 }
 
-/* Header and Navigation */
-header {
-  color: #FFFAF0;
-  background: #444;
-  padding: 10px;
-  text-align: center;
-  position: fixed;
-  left: 0;
-  top: 0;
-  width: 100%;
-  z-index: 1000;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.80);
+.site-header{
+display:flex;
+justify-content:center;
+padding:30px 20px;
 }
 
-/* Increase logo size by 20% and center it */
-#logo {
-  max-height: 84px; /* 20% larger than before (70px) */
-  width: auto;
-  object-fit: contain;
-  display: block;
-  border-radius: 6px;
-  margin: 0 auto; /* Center the logo */
+.banner{
+width:min(100%,1000px);
+height:auto;
+display:block;
 }
 
-/* Hamburger icon — unified and forced to top layer */
-#menuButton,
-.menu-icon {
-  position: fixed;
-  top: 10px;
-  left: 10px;
-  z-index: 9999 !important;  /* ensure always above all elements */
-  cursor: pointer;
+.portal-grid{
+width:min(1200px,92%);
+margin:20px auto 50px;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+gap:24px;
+flex:1;
 }
 
-/* Main content panel */
-main {
-  padding: 120px 15px;
+.portal{
+background:rgba(20,20,20,.72);
+border:2px solid rgba(216,197,162,.30);
+border-radius:14px;
+padding:55px 30px;
+text-decoration:none;
+color:#d8c5a2;
+text-align:center;
+transition:.25s;
+backdrop-filter:blur(3px);
 }
 
-/* Gallery */
-.gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 15px;
-  margin-top: 15px;
+.portal:hover{
+transform:translateY(-6px);
+border-color:#d8c5a2;
+background:rgba(55,45,28,.82);
 }
 
-.gallery img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  max-width: 100%;
-  border-radius: 6px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
+.portal h2{
+font-size:2rem;
+margin-bottom:12px;
 }
 
-.gallery-card {
-  background: rgba(0, 0, 0, 0.55);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 6px;
-  padding: 14px;
-  text-align: center;
+.portal p{
+font-size:1.05rem;
+line-height:1.6;
+color:#cbb48b;
 }
 
-.gallery-card:hover {
-  background: rgba(255, 255, 255, 0.05);
-  border-color: rgba(255, 255, 255, 0.35);
+footer{
+padding:30px;
+text-align:center;
+color:#927c57;
+border-top:1px solid rgba(216,197,162,.15);
 }
 
-/* Support Section */
-.contact-bottom {
-  margin-top: 50px;
-  text-align: center;
-  color: #FFFAF0;
+@media(max-width:768px){
+
+.site-header{
+padding:20px 10px;
 }
 
-.support-section {
-  display: block;
-  padding: 15px;
-  margin-top: 40px;
-  background: rgba(0, 0, 0, 0.55);
-  border-radius: 6px;
-  text-align: center;
-}
-/* --- Slide-in menu (hidden by default) --- */
-#sideMenu {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100vh;
-  width: 260px;
-  padding: 16px;
-  box-sizing: border-box;
-
-  /* look & layering */
-  background: rgba(0, 0, 0, 0.85);
-  border-right: 1px solid rgba(255,255,255,0.15);
-  z-index: 9000;               /* below the hamburger (9999), above content */
-
-  /* hidden by default */
-  transform: translateX(-110%);
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-
-  /* animation */
-  transition: transform 220ms ease, opacity 220ms ease, visibility 0s linear 220ms;
+.banner{
+width:96%;
 }
 
-#sideMenu.open {
-  transform: translateX(0);
-  opacity: 1;
-  visibility: visible;
-  pointer-events: auto;
-  transition: transform 220ms ease, opacity 220ms ease, visibility 0s;
+.portal{
+padding:40px 20px;
 }
 
-/* Menu links */
-#sideMenu .navLink {
-  display: block;
-  color: #FFFAF0;
-  text-decoration: none;
-  padding: 10px 8px;
-  border-radius: 6px;
-  margin-bottom: 6px;
+.portal h2{
+font-size:1.6rem;
 }
 
-#sideMenu .navLink:hover {
-  background: rgba(255,255,255,0.08);
-}
-/* Mobile-friendly hit area for hamburger */
-#menuButton.menu-icon {
-  font-size: 28px;        /* bigger "☰" */
-  padding: 6px 10px;      /* enlarges tap target */
-  line-height: 1;
-  border: none;
-  background: transparent;
-}
-/* Pastel-yellow hamburger, bigger tap target */
-#menuButton.menu-icon {
-  color: #f4e9b4;          /* pastel yellow */
-  font-size: 28px;         /* bigger ☰ */
-  line-height: 1;
-  padding: 6px 10px;       /* easier to tap on mobile */
-  background: transparent;
-  border: none;
-}
-#menuButton.menu-icon:hover { opacity: 0.85; }
-/* Mobile-specific header adjustments */
-@media screen and (max-width: 768px) {
-    /* Stack header items vertically */
-    .header {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 10px; /* Adjust for spacing */
-    }
-
-    /* Reduce font size slightly on mobile */
-    .header h1, .header .phone, .header .location {
-        font-size: 16px; /* Adjust this value as needed */
-    }
-
-    /* Ensure hamburger menu is always visible on top-right */
-    .hamburger {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        z-index: 1000; /* Keeps it above other elements */
-    }
 }
