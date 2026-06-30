@@ -16,8 +16,7 @@ body{
     background:
         url("images/Talvaren_Wallpaper.PNG")
         center center / cover
-        no-repeat
-        fixed;
+        no-repeat;
 }
 
 /* Overlay removed */
