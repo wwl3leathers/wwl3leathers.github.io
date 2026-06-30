@@ -16,10 +16,13 @@ background:url('images/Talvaren_Wallpaper.PNG') center center/cover no-repeat fi
 }
 
 .page-overlay{
-min-height:100vh;
-background:rgba(0,0,0,.55);
-display:flex;
-flex-direction:column;
+    min-height:100vh;
+    background:linear-gradient(
+        rgba(0,0,0,.20),
+        rgba(0,0,0,.35)
+    );
+    display:flex;
+    flex-direction:column;
 }
 
 .site-header{
