@@ -12,24 +12,23 @@ body{
     background:transparent;
 }
 
-body{
-    background:transparent;
-}
-
 /* ===========================
    FIXED WALLPAPER
 =========================== */
 
 .wallpaper{
     position:fixed;
-    inset:0;
+    top:0;
+    left:0;
+    width:100vw;
+    height:100vh;
 
     background-image:url("images/Talvaren_Wallpaper.PNG");
     background-size:cover;
     background-position:center center;
     background-repeat:no-repeat;
 
-    z-index:-1;
+    z-index:-100;
 }
 
 /* ===========================
