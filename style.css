@@ -12,10 +12,15 @@ body{
     background:#0b0a08;
 }
 
-/* ===== FULL SCREEN WALLPAPER ===== */
+body{
+    background:transparent;
+}
 
-body::before{
-    content:"";
+/* ===========================
+   FIXED WALLPAPER
+=========================== */
+
+.wallpaper{
     position:fixed;
     inset:0;
 
@@ -27,7 +32,9 @@ body::before{
     z-index:-1;
 }
 
-/* ===== HEADER ===== */
+/* ===========================
+   HEADER
+=========================== */
 
 .site-header{
     display:flex;
@@ -41,7 +48,9 @@ body::before{
     display:block;
 }
 
-/* ===== PORTALS ===== */
+/* ===========================
+   PORTALS
+=========================== */
 
 .portal-grid{
     width:min(1200px,92%);
@@ -63,7 +72,10 @@ body::before{
     color:#d8c5a2;
     text-align:center;
 
-    transition:.25s;
+    transition:
+        transform .25s ease,
+        border-color .25s ease,
+        background .25s ease;
 
     backdrop-filter:blur(3px);
 }
@@ -85,16 +97,21 @@ body::before{
     color:#cbb48b;
 }
 
-/* ===== FOOTER ===== */
+/* ===========================
+   FOOTER
+=========================== */
 
 footer{
     padding:30px;
     text-align:center;
     color:#927c57;
     border-top:1px solid rgba(216,197,162,.15);
+    background:transparent;
 }
 
-/* ===== MOBILE ===== */
+/* ===========================
+   MOBILE
+=========================== */
 
 @media (max-width:768px){
 
