@@ -74,4 +74,10 @@ document
 
 });
 
+image.addEventListener("click",()=>{
+
+    image.classList.toggle("zoomed");
+
+});
+
 loadImage(current);
