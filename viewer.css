@@ -70,8 +70,19 @@ body{
 
     border:2px solid rgba(230,230,230,.25);
 
-    box-shadow:
-        0 10px 40px rgba(0,0,0,.55);
+    box-shadow:0 10px 40px rgba(0,0,0,.55);
+
+    cursor:zoom-in;
+    transition:transform .25s ease;
+}
+
+#viewerImage.zoomed{
+    max-width:none;
+    max-height:none;
+    width:auto;
+    height:auto;
+
+    cursor:zoom-out;
 }
 
 .viewer-footer{
