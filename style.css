@@ -1,3 +1,12 @@
+/* ==========================================================
+   TALVAREN STUDIOS
+   MASTER STYLESHEET
+========================================================== */
+
+/* ===========================
+   GLOBAL
+=========================== */
+
 *{
     margin:0;
     padding:0;
@@ -6,29 +15,32 @@
 
 html,
 body{
+
     min-height:100%;
     font-family:Georgia,serif;
+
     color:#E6E6E6;
     background:transparent;
+
 }
 
 /* ===========================
-   FIXED WALLPAPER
+   WALLPAPER
 =========================== */
 
 .wallpaper{
+
     position:fixed;
-    top:0;
-    left:0;
-    width:100vw;
-    height:100vh;
+
+    inset:0;
 
     background-image:url("images/Talvaren_Wallpaper.PNG");
     background-size:cover;
-    background-position:center center;
+    background-position:center;
     background-repeat:no-repeat;
 
     z-index:-100;
+
 }
 
 /* ===========================
@@ -36,64 +48,142 @@ body{
 =========================== */
 
 .site-header{
+
     display:flex;
     justify-content:center;
+
     padding:30px 20px;
+
 }
 
 .banner{
+
     width:min(100%,1000px);
     height:auto;
+
     display:block;
+
 }
 
 /* ===========================
-   PORTALS
+   STANDARD PAGE
+=========================== */
+
+.page{
+
+    width:min(1100px,92%);
+    margin:auto;
+    padding:20px;
+
+}
+
+.page-title{
+
+    font-size:3rem;
+    margin-bottom:20px;
+
+}
+
+.page-intro{
+
+    font-size:1.2rem;
+    line-height:1.8;
+    margin-bottom:40px;
+
+    color:#E6E6E6;
+
+}
+
+/* ===========================
+   PORTAL GRID
 =========================== */
 
 .portal-grid{
+
     width:min(1200px,92%);
     margin:20px auto 50px;
 
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
     gap:24px;
+
 }
 
 .portal{
+
     background:rgba(20,20,20,.10);
+
     border:2px solid rgba(216,197,162,.30);
     border-radius:14px;
 
     padding:55px 30px;
 
-    text-decoration:none;
-    color:#d8c5a2;
     text-align:center;
+    text-decoration:none;
+
+    color:#d8c5a2;
+
+    backdrop-filter:blur(3px);
 
     transition:
         transform .25s ease,
         border-color .25s ease,
         background .25s ease;
 
-    backdrop-filter:blur(3px);
 }
 
 .portal:hover{
+
     transform:translateY(-6px);
+
     border-color:#d8c5a2;
+
     background:rgba(55,45,28,.35);
+
 }
 
 .portal h2{
+
     font-size:2rem;
     margin-bottom:12px;
+
 }
 
 .portal p{
+
     font-size:1.05rem;
     line-height:1.6;
+
     color:#cbb48b;
+
+}
+
+/* ===========================
+   DOCUMENT SURFACE
+=========================== */
+
+.document{
+
+    width:min(900px,72%);
+
+    margin:40px auto 80px;
+
+    padding:70px;
+
+    color:#dfe3e8;
+
+    line-height:1.9;
+
+    background:
+    linear-gradient(
+        90deg,
+        rgba(208,190,145,0.00) 0%,
+        rgba(208,190,145,.88) 10%,
+        rgba(208,190,145,.90) 50%,
+        rgba(208,190,145,.88) 90%,
+        rgba(208,190,145,0.00) 100%
+    );
+
 }
 
 /* ===========================
@@ -101,11 +191,17 @@ body{
 =========================== */
 
 footer{
+
     padding:30px;
+
     text-align:center;
+
     color:#927c57;
+
     border-top:1px solid rgba(216,197,162,.15);
+
     background:transparent;
+
 }
 
 /* ===========================
@@ -115,41 +211,41 @@ footer{
 @media (max-width:768px){
 
     .site-header{
+
         padding:20px 10px;
+
     }
 
     .banner{
+
         width:96%;
+
+    }
+
+    .page{
+
+        width:94%;
+
     }
 
     .portal{
+
         padding:40px 20px;
+
     }
 
     .portal h2{
+
         font-size:1.6rem;
+
     }
 
-}
+    .document{
 
-/* ===========================
-   DOCUMENT PAGE
-=========================== */
+        width:96%;
 
-.document{
+        padding:35px 20px;
 
-    width:min(900px,70%);
-    margin:40px auto;
-    padding:60px;
-
-    background:rgba(208,190,145,.88);
-
-    color:#e6e6e6;
-
-    line-height:1.8;
-
-    border-radius:8px;
-
-    box-shadow:0 0 35px rgba(0,0,0,.45);
+    }
 
 }
