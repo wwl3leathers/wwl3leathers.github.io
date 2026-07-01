@@ -11,6 +11,18 @@
 <link rel="icon" type="image/png" href="images/Logo-min.PNG">
 <link rel="stylesheet" href="style.css">
 
+<style>
+
+.archive-section{
+    display:none;
+}
+
+.archive-section.active{
+    display:block;
+}
+
+</style>
+
 </head>
 
 <body>
@@ -26,62 +38,140 @@
 
 <main class="page">
 
-    <h1 class="page-title">
-        Fantastical Archives
-    </h1>
+<h1 class="page-title">
+Fantastical Archives
+</h1>
 
-    <p class="page-intro">
-        The Fantastical Archives preserve the stories, creatures, research,
-        and historical inspirations that helped shape Talvaren. Some entries
-        originate entirely from imagination. Others begin with myths,
-        folklore, and forgotten traditions before becoming something new.
-    </p>
+<p class="page-intro">
+The Fantastical Archives preserve the stories, creatures, research, and historical inspirations that helped shape Talvaren.
+Select a category below to browse that portion of the archive.
+</p>
 
-    <div class="portal-grid">
+<div class="portal-grid">
 
-        <a class="portal" href="#">
-            <h2>Short Stories</h2>
-            <p>Original fiction set throughout Talvaren.</p>
-        </a>
+<div class="portal" onclick="showSection('stories')">
+<h2>Short Stories</h2>
+<p>Original fiction set throughout Talvaren.</p>
+</div>
 
-        <a class="portal" href="#">
-            <h2>Novels</h2>
-            <p>Long-form adventures and worldbuilding.</p>
-        </a>
+<div class="portal" onclick="showSection('novels')">
+<h2>Novels</h2>
+<p>Long-form adventures and worldbuilding.</p>
+</div>
 
-        <a class="portal" href="#">
-            <h2>Creature Archives</h2>
-            <p>Visual Continuity Overviews and creature lore.</p>
-        </a>
+<div class="portal" onclick="showSection('creatures')">
+<h2>Creature Archives</h2>
+<p>Visual Continuity Overviews and creature lore.</p>
+</div>
 
-        <a class="portal" href="breadcrumbs.html">
-            <h2>Historical Breadcrumbs</h2>
-            <p>Explore the folklore behind the fantasy.</p>
-        </a>
+<div class="portal" onclick="showSection('breadcrumbs')">
+<h2>Historical Breadcrumbs</h2>
+<p>Explore the folklore behind the fantasy.</p>
+</div>
 
-        <a class="portal" href="#">
-            <h2>Artwork</h2>
-            <p>Concept art and visual references.</p>
-        </a>
+<div class="portal" onclick="showSection('artwork')">
+<h2>Artwork</h2>
+<p>Concept art and visual references.</p>
+</div>
 
-        <a class="portal" href="#">
-            <h2>World Documents</h2>
-            <p>Maps, timelines, and design journals.</p>
-        </a>
+<div class="portal" onclick="showSection('documents')">
+<h2>World Documents</h2>
+<p>Maps, timelines and design journals.</p>
+</div>
 
-    </div>
+</div>
 
-    <p style="margin-top:50px;">
-        <a href="index.html" style="color:#e6e6e6;">
-            ← Return to Homepage
-        </a>
-    </p>
+<section class="document">
+
+<div id="stories" class="archive-section active">
+
+<h2>Short Stories</h2>
+
+<p>
+This section will contain original Talvaren short stories.
+</p>
+
+</div>
+
+<div id="novels" class="archive-section">
+
+<h2>Novels</h2>
+
+<p>📖 Brix Sparkspill</p>
+<p>📖 Brynnhild</p>
+
+</div>
+
+<div id="creatures" class="archive-section">
+
+<h2>Creature Archives</h2>
+
+<p>📖 Amber</p>
+<p>📖 Domovoi</p>
+<p>📖 Dryad</p>
+<p>📖 Brownie</p>
+<p>📖 Kelpie</p>
+
+</div>
+
+<div id="breadcrumbs" class="archive-section">
+
+<h2>Historical Breadcrumbs</h2>
+
+<p>📖 Elves</p>
+<p>📖 Domovoi</p>
+<p>📖 Black Dogs</p>
+<p>📖 Will-o'-the-Wisp</p>
+
+</div>
+
+<div id="artwork" class="archive-section">
+
+<h2>Artwork</h2>
+
+<p>
+Concept artwork, illustrations and visual references will appear here.
+</p>
+
+</div>
+
+<div id="documents" class="archive-section">
+
+<h2>World Documents</h2>
+
+<p>
+Maps, timelines, development journals and supporting documents.
+</p>
+
+</div>
+
+</section>
+
+<p style="margin-top:50px;text-align:center;">
+<a href="index.html" style="color:#e6e6e6;">
+← Return to Homepage
+</a>
+</p>
 
 </main>
 
 <footer>
-    © 2026 Talvaren Studios
+© 2026 Talvaren Studios
 </footer>
+
+<script>
+
+function showSection(sectionId){
+
+document.querySelectorAll(".archive-section").forEach(section=>{
+section.classList.remove("active");
+});
+
+document.getElementById(sectionId).classList.add("active");
+
+}
+
+</script>
 
 </body>
 
