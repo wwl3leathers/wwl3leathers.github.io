@@ -31,7 +31,6 @@ body{
 .wallpaper{
 
     position:fixed;
-
     inset:0;
 
     background-image:url("images/Talvaren_Wallpaper.PNG");
@@ -164,25 +163,47 @@ body{
 
 .document{
 
-    width:min(900px,72%);
+    width:min(1400px,84%);
 
-    margin:40px auto 80px;
+    margin:50px auto 90px;
 
-    padding:70px;
+    padding:80px;
 
-    color:#dfe3e8;
+    color:#3a3125;
 
-    line-height:1.9;
+    font-size:1.15rem;
+    line-height:2;
 
     background:
     linear-gradient(
         90deg,
-        rgba(208,190,145,0.00) 0%,
-        rgba(208,190,145,.88) 10%,
-        rgba(208,190,145,.90) 50%,
-        rgba(208,190,145,.88) 90%,
-        rgba(208,190,145,0.00) 100%
+        rgba(214,198,160,0.00) 0%,
+        rgba(214,198,160,.30) 5%,
+        rgba(214,198,160,.96) 12%,
+        rgba(214,198,160,.99) 50%,
+        rgba(214,198,160,.96) 88%,
+        rgba(214,198,160,.30) 95%,
+        rgba(214,198,160,0.00) 100%
     );
+
+    box-shadow:
+        0 0 45px rgba(0,0,0,.35);
+
+}
+
+.document h2{
+
+    color:#2c2419;
+
+    font-size:2.1rem;
+
+    margin-bottom:30px;
+
+}
+
+.document p{
+
+    margin-bottom:28px;
 
 }
 
@@ -245,6 +266,8 @@ footer{
         width:96%;
 
         padding:35px 20px;
+
+        font-size:1rem;
 
     }
 
