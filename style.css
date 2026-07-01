@@ -131,3 +131,25 @@ footer{
     }
 
 }
+
+/* ===========================
+   DOCUMENT PAGE
+=========================== */
+
+.document{
+
+    width:min(900px,70%);
+    margin:40px auto;
+    padding:60px;
+
+    background:rgba(208,190,145,.88);
+
+    color:#e6e6e6;
+
+    line-height:1.8;
+
+    border-radius:8px;
+
+    box-shadow:0 0 35px rgba(0,0,0,.45);
+
+}
