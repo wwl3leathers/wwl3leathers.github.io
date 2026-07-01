@@ -23,7 +23,8 @@ const imageName = params.get("image");
 
 let current = archive.findIndex(item => item.file === imageName);
 
-if (current === -1) current = 0;
+if(current === -1)
+    current = 0;
 
 const image = document.getElementById("viewerImage");
 const title = document.getElementById("imageTitle");
@@ -46,8 +47,8 @@ document
 
     current--;
 
-    if(current<0)
-        current=archive.length-1;
+    if(current < 0)
+        current = archive.length - 1;
 
     loadImage(current);
 
@@ -59,8 +60,8 @@ document
 
     current++;
 
-    if(current>=archive.length)
-        current=0;
+    if(current >= archive.length)
+        current = 0;
 
     loadImage(current);
 
@@ -70,7 +71,7 @@ document
 .getElementById("closeBtn")
 .addEventListener("click",()=>{
 
-    window.location.href="breadcrumbs.html";
+    window.location.href = "archives.html";
 
 });
 
