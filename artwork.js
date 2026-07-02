@@ -1,1 +1,34 @@
+// artwork.js
+// Talvaren Archives Artwork Collection
 
+const artwork = [
+    "images/artwork/a-amber.PNG",
+    "images/artwork/a-bard.PNG",
+    "images/artwork/a-bill-1.PNG",
+    "images/artwork/a-brin-hollow.PNG",
+    "images/artwork/a-brix.PNG",
+    "images/artwork/a-cletus.PNG",
+    "images/artwork/a-d-trio.PNG",
+    "images/artwork/a-elrono.PNG",
+    "images/artwork/a-f-jeweler.PNG",
+    "images/artwork/a-hilde-1.PNG",
+    "images/artwork/a-hilde-2.PNG",
+    "images/artwork/a-hilde-3.PNG",
+    "images/artwork/a-k-cup.PNG",
+    "images/artwork/a-k-fish.PNG",
+    "images/artwork/a-ledger.PNG",
+    "images/artwork/a-map.PNG",
+    "images/artwork/a-marra.PNG",
+    "images/artwork/a-me.PNG",
+    "images/artwork/a-sisters.PNG",
+    "images/artwork/a-story.PNG",
+    "images/artwork/a-t-child.PNG",
+    "images/artwork/a-t-desert.PNG",
+    "images/artwork/a-tailor.PNG",
+    "images/artwork/a-tgl.PNG",
+    "images/artwork/a-trio.PNG",
+    "images/artwork/a-u-clinic.PNG",
+    "images/artwork/a-u-cook.PNG",
+    "images/artwork/a-wolter.PNG",
+    "images/artwork/a-writ.PNG"
+];
