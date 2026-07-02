@@ -208,6 +208,24 @@ body{
 }
 
 /* ===========================
+   STORY TEXT
+=========================== */
+
+.story{
+
+    white-space:pre-wrap;
+
+    color:#3a3125;
+
+    font-size:1.05rem;
+
+    line-height:1.9;
+
+    text-align:left;
+
+}
+
+/* ===========================
    FOOTER
 =========================== */
 
@@ -268,6 +286,14 @@ footer{
         padding:35px 20px;
 
         font-size:1rem;
+
+    }
+
+    .story{
+
+        font-size:1rem;
+
+        line-height:1.8;
 
     }
 
