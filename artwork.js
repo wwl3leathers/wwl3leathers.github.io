@@ -1,7 +1,7 @@
 // artwork.js
 // Talvaren Archives Artwork Collection
 
-const artwork = [
+window.artwork = [
     "images/artwork/a-amber.PNG",
     "images/artwork/a-bard.PNG",
     "images/artwork/a-bill-1.PNG",
