@@ -1,4 +1,4 @@
-const archive = [
+const breadcrumbs = [
     { title:"Brownies", file:"brownies.PNG" },
     { title:"Church Grimm", file:"church-grimm.PNG" },
     { title:"Domovoi", file:"domovoi.PNG" },
@@ -18,12 +18,24 @@ const archive = [
     { title:"Tommyknockers", file:"tommyknockers.PNG" }
 ];
 
+// artwork.js must define:
+// const artwork = [
+//     { file:"a-amber.PNG" },
+//     { file:"a-brix.PNG" },
+//     ...
+// ];
+
 const params = new URLSearchParams(window.location.search);
+
 const imageName = params.get("image");
 
-let current = archive.findIndex(item => item.file === imageName);
+const isArtwork = imageName && imageName.startsWith("a-");
 
-if(current === -1)
+const collection = isArtwork ? artwork : breadcrumbs;
+
+let current = collection.findIndex(item => item.file === imageName);
+
+if (current === -1)
     current = 0;
 
 const image = document.getElementById("viewerImage");
@@ -33,43 +45,39 @@ function loadImage(index){
 
     current = index;
 
-    title.textContent = archive[current].title;
+    if(collection[current].title)
+        title.textContent = collection[current].title;
+    else
+        title.textContent = "";
 
-    image.src =
-        "images/breadcrumbs/" +
-        archive[current].file;
-
+    image.src = isArtwork
+        ? "images/artwork/" + collection[current].file
+        : "images/breadcrumbs/" + collection[current].file;
 }
 
-document
-.getElementById("prevBtn")
-.addEventListener("click",()=>{
+document.getElementById("prevBtn").addEventListener("click",()=>{
 
     current--;
 
     if(current < 0)
-        current = archive.length - 1;
+        current = collection.length - 1;
 
     loadImage(current);
 
 });
 
-document
-.getElementById("nextBtn")
-.addEventListener("click",()=>{
+document.getElementById("nextBtn").addEventListener("click",()=>{
 
     current++;
 
-    if(current >= archive.length)
+    if(current >= collection.length)
         current = 0;
 
     loadImage(current);
 
 });
 
-document
-.getElementById("closeBtn")
-.addEventListener("click",()=>{
+document.getElementById("closeBtn").addEventListener("click",()=>{
 
     window.location.href = "archives.html";
 
