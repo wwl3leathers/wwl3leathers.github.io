@@ -324,20 +324,22 @@ for(let i=0;i<3;i++){
 
 const index = (firstArtwork + i) % artwork.length;
 
-const item = artwork[index];
+const imagePath = artwork[index];
+
+const fileName = imagePath.split("/").pop();
 
 const card = document.createElement("div");
 card.className = "art-card";
 
 card.innerHTML = `
-<img src="images/artwork/${item.file}"
-alt="${item.file}">
+<img src="${imagePath}"
+alt="${fileName}">
 `;
 
 card.onclick = ()=>{
 
 window.location.href =
-"viewer.html?image=" + item.file;
+"viewer.html?image=" + fileName;
 
 };
 
