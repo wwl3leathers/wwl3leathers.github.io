@@ -10,7 +10,8 @@
 
 <link rel="icon" type="image/png" href="images/Logo-min.PNG">
 <link rel="stylesheet" href="style.css">
-
+<script src="artwork.js"></script>
+    
 <style>
 
 .archive-section{
@@ -308,6 +309,67 @@ section.classList.remove("active");
 document.getElementById(sectionId).classList.add("active");
 
 }
+
+let firstArtwork = 0;
+
+function drawArtwork(){
+
+const grid = document.getElementById("artworkGrid");
+
+if(!grid) return;
+
+grid.innerHTML = "";
+
+for(let i=0;i<3;i++){
+
+const index = (firstArtwork + i) % artwork.length;
+
+const item = artwork[index];
+
+const card = document.createElement("div");
+card.className = "art-card";
+
+card.innerHTML = `
+<img src="images/artwork/${item.file}"
+alt="${item.file}">
+`;
+
+card.onclick = ()=>{
+
+window.location.href =
+"viewer.html?image=" + item.file;
+
+};
+
+grid.appendChild(card);
+
+}
+
+}
+
+document.getElementById("artPrev").onclick = ()=>{
+
+firstArtwork--;
+
+if(firstArtwork < 0)
+firstArtwork = artwork.length-1;
+
+drawArtwork();
+
+};
+
+document.getElementById("artNext").onclick = ()=>{
+
+firstArtwork++;
+
+if(firstArtwork >= artwork.length)
+firstArtwork = 0;
+
+drawArtwork();
+
+};
+
+drawArtwork();
 
 </script>
 
