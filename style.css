@@ -208,6 +208,26 @@ body{
 }
 
 /* ===========================
+
+   DOCUMENT IMAGES
+
+=========================== */
+
+.document-image{
+
+    display:block;
+
+    width:100%;
+
+    max-width:1100px;
+
+    height:auto;
+
+    margin:0 auto;
+
+}
+   
+/* ===========================
    STORY TEXT
 =========================== */
 
