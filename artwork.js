@@ -21,6 +21,7 @@ window.artwork = [
     "images/artwork/a-marra.PNG",
     "images/artwork/a-me.PNG",
     "images/artwork/a-sisters.PNG",
+    "images/artwork/a-stitchling.PNG",
     "images/artwork/a-story.PNG",
     "images/artwork/a-t-child.PNG",
     "images/artwork/a-t-desert.PNG",
