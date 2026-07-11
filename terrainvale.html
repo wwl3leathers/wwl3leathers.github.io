@@ -1,1 +1,1082 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>TerrainVale Suite | Talvaren Studios</title>
+
+<link rel="icon" type="image/png" href="images/Logo-min.PNG">
+<link rel="stylesheet" href="style.css">
+
+<style>
+
+/* ===========================
+   TERRAINVALE PAGE
+=========================== */
+
+.terrainvale-intro{
+
+    width:min(1000px,94%);
+
+    margin:35px auto 55px;
+    padding:35px;
+
+    color:#2c2419;
+
+    background:rgba(222,207,171,.92);
+
+    border:2px solid rgba(75,58,34,.35);
+    border-radius:12px;
+
+    box-shadow:
+        0 10px 30px rgba(0,0,0,.35);
+
+}
+
+.terrainvale-intro h1{
+
+    margin-bottom:20px;
+
+    font-size:clamp(2.2rem,6vw,4.5rem);
+
+}
+
+.terrainvale-intro p{
+
+    margin-bottom:18px;
+
+    line-height:1.75;
+
+}
+
+/* ===========================
+   TOOL SECTION
+=========================== */
+
+.tool-section{
+
+    width:min(1100px,94%);
+
+    margin:0 auto 80px;
+
+}
+
+.tool-layout{
+
+    display:grid;
+    grid-template-columns:minmax(220px,330px) 1fr;
+    gap:35px;
+
+    align-items:start;
+
+}
+
+.tool-stamp-column{
+
+    position:sticky;
+    top:20px;
+
+}
+
+.tool-stamp{
+
+    display:block;
+
+    width:100%;
+    height:auto;
+
+    aspect-ratio:2 / 3;
+    object-fit:cover;
+
+    border-radius:8px;
+
+    box-shadow:
+        0 12px 32px rgba(0,0,0,.42);
+
+}
+
+.tool-save-button{
+
+    display:block;
+
+    width:100%;
+
+    margin-top:18px;
+    padding:14px 18px;
+
+    text-align:center;
+    text-decoration:none;
+
+    color:#f5ead4;
+    background:#4b3a22;
+
+    border:2px solid rgba(245,234,212,.35);
+    border-radius:8px;
+
+    font-weight:bold;
+
+    box-shadow:
+        0 8px 18px rgba(0,0,0,.30);
+
+}
+
+.tool-save-button:hover{
+
+    background:#654c2c;
+
+}
+
+.tool-document{
+
+    padding:40px;
+
+    color:#2c2419;
+
+    background:rgba(222,207,171,.94);
+
+    border:2px solid rgba(75,58,34,.35);
+    border-radius:12px;
+
+    box-shadow:
+        0 10px 30px rgba(0,0,0,.35);
+
+}
+
+.tool-document h2{
+
+    margin-bottom:22px;
+
+    font-size:clamp(2rem,4vw,3rem);
+
+}
+
+.tool-document h3{
+
+    margin:32px 0 12px;
+
+}
+
+.tool-document p{
+
+    line-height:1.75;
+
+}
+
+.tool-document ul{
+
+    margin:0 0 24px 24px;
+
+}
+
+.tool-document li{
+
+    margin-bottom:9px;
+    line-height:1.55;
+
+}
+
+.tool-note{
+
+    margin-top:35px;
+    padding-top:20px;
+
+    border-top:1px solid rgba(58,49,37,.30);
+
+    font-style:italic;
+
+}
+
+/* ===========================
+   MEDIA AREAS
+=========================== */
+
+.tool-media{
+
+    margin-top:35px;
+
+}
+
+.tool-media h3{
+
+    margin-bottom:16px;
+
+}
+
+.media-grid{
+
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:18px;
+
+}
+
+.media-placeholder{
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    min-height:180px;
+    padding:20px;
+
+    text-align:center;
+
+    color:#5a4931;
+
+    border:2px dashed rgba(75,58,34,.38);
+    border-radius:8px;
+
+    background:rgba(255,255,255,.18);
+
+}
+
+.video-placeholder{
+
+    min-height:240px;
+
+}
+
+/* ===========================
+   DIVIDER
+=========================== */
+
+.tool-divider{
+
+    width:min(850px,75%);
+
+    margin:0 auto 80px;
+
+    border:none;
+    border-top:2px solid rgba(230,210,165,.45);
+
+}
+
+/* ===========================
+   MOBILE
+=========================== */
+
+@media(max-width:768px){
+
+    .terrainvale-intro{
+
+        padding:28px 22px;
+
+    }
+
+    .tool-layout{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .tool-stamp-column{
+
+        position:static;
+
+        width:min(340px,88%);
+
+        margin:0 auto;
+
+    }
+
+    .tool-document{
+
+        padding:30px 22px;
+
+    }
+
+    .media-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="wallpaper"></div>
+
+<header class="site-header">
+
+    <img
+        src="images/TerrainVale_Banner.PNG"
+        alt="Talvaren Studios TerrainVale Suite"
+        class="banner">
+
+</header>
+
+<main class="page">
+
+<section class="terrainvale-intro">
+
+<h1>TerrainVale Suite</h1>
+
+<p>
+The TerrainVale Suite is a curated collection of six professional
+world-building tools designed to operate independently while forming
+a complete environmental workflow when used together.
+</p>
+
+<p>
+Each tool solves one specific development problem. Browse the collection,
+review its purpose and features, examine future demonstrations and
+screenshots, and save any tool directly to your Toolbox.
+</p>
+
+</section>
+
+<!-- =====================================================
+     TERRAIN AUTHORITY
+===================================================== -->
+
+<section
+    class="tool-section"
+    id="terrain-authority">
+
+<div class="tool-layout">
+
+<div class="tool-stamp-column">
+
+<img
+    src="images/terrainvale/tvs-terrain.PNG"
+    alt="Terrain Authority"
+    class="tool-stamp">
+
+<a
+    href="toolbox.html?select=terrain-authority"
+    class="tool-save-button">
+
+Save to Toolbox
+
+</a>
+
+</div>
+
+<article class="tool-document">
+
+<h2>Terrain Authority</h2>
+
+<p>
+Terrain Authority is the foundational terrain generation tool of the
+Vale Terrain Suite. Rather than attempting to simulate real-world geology,
+it creates believable environmental forms through artistic composition
+and controlled procedural generation.
+</p>
+
+<h3>Problem Solved</h3>
+
+<p>
+Many terrain generators overwhelm developers with complex simulations
+and extensive parameter systems. Terrain Authority focuses instead on
+the desired result: compelling terrain foundations created quickly while
+preserving artistic control.
+</p>
+
+<h3>Primary Features</h3>
+
+<ul>
+<li>Pressure-field based terrain generation</li>
+<li>Parent and child regional terrain inheritance</li>
+<li>Directional shelving for plateaus and stepped formations</li>
+<li>Controlled ruggedness for natural visual breakup</li>
+<li>Standardized Vale territory cadence</li>
+<li>Rapid iteration with minimal setup</li>
+</ul>
+
+<h3>Requirements</h3>
+
+<ul>
+<li>Unity Editor</li>
+<li>Unity Terrain System</li>
+</ul>
+
+<h3>Part of the VALE Workflow</h3>
+
+<p>
+Terrain Authority establishes the land upon which the remaining VALE
+tools operate.
+</p>
+
+<ul>
+<li>Territory Authority</li>
+<li>Path Authority</li>
+<li>Ribbon Authority</li>
+<li>Grade Authority</li>
+<li>Paint Authority</li>
+</ul>
+
+<div class="tool-media">
+
+<h3>Screenshots</h3>
+
+<div class="media-grid">
+
+<div class="media-placeholder">
+Terrain Authority screenshot coming soon
+</div>
+
+<div class="media-placeholder">
+Terrain Authority screenshot coming soon
+</div>
+
+</div>
+
+<h3>Demonstration Video</h3>
+
+<div class="media-placeholder video-placeholder">
+Terrain Authority demonstration video coming soon
+</div>
+
+</div>
+
+<p class="tool-note">
+Complete documentation and the Unity package become available after purchase.
+</p>
+
+</article>
+
+</div>
+
+</section>
+
+<hr class="tool-divider">
+
+<!-- =====================================================
+     TERRITORY AUTHORITY
+===================================================== -->
+
+<section
+    class="tool-section"
+    id="territory-authority">
+
+<div class="tool-layout">
+
+<div class="tool-stamp-column">
+
+<img
+    src="images/terrainvale/tvs-territory.PNG"
+    alt="Territory Authority"
+   
+    class="tool-stamp">
+
+<a
+    href="toolbox.html?select=territory-authority"
+    class="tool-save-button">
+
+Save to Toolbox
+
+</a>
+
+</div>
+
+<article class="tool-document">
+
+<h2>Territory Authority</h2>
+
+<p>
+Territory Authority transforms large Unity terrains into standardized,
+interconnected territories designed for scalable world construction.
+Rather than treating an entire landscape as a single object, it establishes
+meaningful divisions that support organization, iteration, and future expansion.
+</p>
+
+<h3>Problem Solved</h3>
+
+<p>
+Large terrains become increasingly difficult to organize and maintain.
+Territory Authority converts existing Unity terrains into standardized
+territory grids while preserving visual continuity, making worlds easier
+to understand, expand, and manage.
+</p>
+
+<h3>Primary Features</h3>
+
+<ul>
+
+<li>Converts large terrains into standardized territory grids</li>
+
+<li>Multiple territory subdivision configurations</li>
+
+<li>Preserves terrain continuity through height reconstruction</li>
+
+<li>Automatically establishes neighboring terrain relationships</li>
+
+<li>Maintains visual cohesion across territory boundaries</li>
+
+<li>Preserves the original terrain by disabling rather than destroying it</li>
+
+</ul>
+
+<h3>Requirements</h3>
+
+<ul>
+
+<li>Unity Editor</li>
+
+<li>Unity Terrain System</li>
+
+<li>Existing Unity Terrain</li>
+
+</ul>
+
+<h3>Part of the VALE Workflow</h3>
+
+<p>
+Territory Authority is the organizational foundation of the VALE workflow.
+It transforms completed terrain into structured territories that prepare the
+world for Path Authority, Ribbon Authority, Grade Authority, and Paint Authority.
+</p>
+
+<div class="tool-media">
+
+<h3>Screenshots</h3>
+
+<div class="media-grid">
+
+<div class="media-placeholder">
+Territory Authority screenshot coming soon
+</div>
+
+<div class="media-placeholder">
+Territory Authority screenshot coming soon
+</div>
+
+</div>
+
+<h3>Demonstration Video</h3>
+
+<div class="media-placeholder video-placeholder">
+Territory Authority demonstration video coming soon
+</div>
+
+</div>
+
+<p class="tool-note">
+Complete documentation and the Unity package become available after purchase.
+</p>
+
+</article>
+
+</div>
+
+</section>
+
+<hr class="tool-divider"
+  
+<!-- =====================================================
+     PATH AUTHORITY
+===================================================== -->
+
+<section
+    class="tool-section"
+    id="path-authority">
+
+<div class="tool-layout">
+
+<div class="tool-stamp-column">
+
+<img
+    src="images/terrainvale/tvs-path.PNG"
+    alt="Path Authority"
+    class="tool-stamp">
+
+<a
+    href="toolbox.html?select=path-authority"
+    class="tool-save-button">
+
+Save to Toolbox
+
+</a>
+
+</div>
+
+<article class="tool-document">
+
+<h2>Path Authority</h2>
+
+<p>
+Path Authority is a reusable path authoring system designed to establish
+meaningful movement throughout a world. Rather than painting roads directly
+onto terrain, it records intentional routes that can be preserved, extended,
+reused, and interpreted by other systems.
+</p>
+
+<h3>Problem Solved</h3>
+
+<p>
+Many worldbuilding workflows bind movement and appearance together,
+making routes difficult to revise or extend. Path Authority separates
+route definition from visual expression, preserving the truth of movement
+while allowing appearance to evolve independently.
+</p>
+
+<h3>Primary Features</h3>
+
+<ul>
+
+<li>Reusable path assets</li>
+
+<li>Persistent path data storage</li>
+
+<li>Support for branching and extending existing routes</li>
+
+<li>Precise distance measurement</li>
+
+<li>Author-defined route placement</li>
+
+<li>Grade-aware path construction options</li>
+
+<li>Designed for integration with Ribbon Authority</li>
+
+<li>Supports meaningful travel calculations</li>
+
+</ul>
+
+<h3>Requirements</h3>
+
+<ul>
+
+<li>Unity Editor</li>
+
+<li>Unity Terrain System</li>
+
+<li>Recommended for use with Ribbon Authority</li>
+
+</ul>
+
+<h3>Part of the VALE Workflow</h3>
+
+<p>
+Path Authority establishes meaningful movement throughout the world.
+Terrain Authority creates the land, Territory Authority organizes it,
+and Path Authority defines how that world is traveled before Ribbon
+Authority gives those routes visible expression.
+</p>
+
+<div class="tool-media">
+
+<h3>Screenshots</h3>
+
+<div class="media-grid">
+
+<div class="media-placeholder">
+Path Authority screenshot coming soon
+</div>
+
+<div class="media-placeholder">
+Path Authority screenshot coming soon
+</div>
+
+</div>
+
+<h3>Demonstration Video</h3>
+
+<div class="media-placeholder video-placeholder">
+Path Authority demonstration video coming soon
+</div>
+
+</div>
+
+<p class="tool-note">
+Complete documentation and the Unity package become available after purchase.
+</p>
+
+</article>
+
+</div>
+
+</section>
+
+<hr class="tool-divider">
+
+<!-- =====================================================
+     RIBBON AUTHORITY
+===================================================== -->
+
+<section
+    class="tool-section"
+    id="ribbon-authority">
+
+<div class="tool-layout">
+
+<div class="tool-stamp-column">
+
+<img
+    src="images/terrainvale/tvs-ribbon.PNG"
+    alt="Ribbon Authority"
+    class="tool-stamp">
+
+<a
+    href="toolbox.html?select=ribbon-authority"
+    class="tool-save-button">
+
+Save to Toolbox
+
+</a>
+
+</div>
+
+<article class="tool-document">
+
+<h2>Ribbon Authority</h2>
+
+<p>
+Ribbon Authority transforms Path Authority data into visible environmental
+features. Rather than redefining routes, it expresses them. A single path
+may become a road, river, bridge, trench, aqueduct, lava flow, leyline,
+or any other linear feature that gives visual form to movement and
+connection.
+</p>
+
+<h3>Problem Solved</h3>
+
+<p>
+Many worldbuilding tools combine route creation and visual representation
+into a single step, making routes difficult to revise and experimentation
+costly. Ribbon Authority separates expression from intent, allowing the
+appearance to change while preserving the underlying path.
+</p>
+
+<h3>Primary Features</h3>
+
+<ul>
+
+<li>Generates visual features from existing Path Authority assets</li>
+
+<li>Supports roads, rivers, bridges, trails, trenches, and other ribbon features</li>
+
+<li>Preserves the original path data</li>
+
+<li>Allows rapid visual experimentation</li>
+
+<li>Grade-aware material support</li>
+
+<li>Dynamic material assignment</li>
+
+<li>Variable width controls</li>
+
+<li>Supports animated materials and directional effects</li>
+
+</ul>
+
+<h3>Requirements</h3>
+
+<ul>
+
+<li>Unity Editor</li>
+
+<li>Unity Terrain System</li>
+
+<li>Existing Path Authority data</li>
+
+</ul>
+
+<h3>Part of the VALE Workflow</h3>
+
+<p>
+Ribbon Authority provides the visible expression of movement established
+by Path Authority. It transforms logical routes into believable
+environmental features while preserving the original path information for
+future revisions.
+</p>
+
+<div class="tool-media">
+
+<h3>Screenshots</h3>
+
+<div class="media-grid">
+
+<div class="media-placeholder">
+Ribbon Authority screenshot coming soon
+</div>
+
+<div class="media-placeholder">
+Ribbon Authority screenshot coming soon
+</div>
+
+</div>
+
+<h3>Demonstration Video</h3>
+
+<div class="media-placeholder video-placeholder">
+Ribbon Authority demonstration video coming soon
+</div>
+
+</div>
+
+<p class="tool-note">
+Complete documentation and the Unity package become available after purchase.
+</p>
+
+</article>
+
+</div>
+
+</section>
+
+<hr class="tool-divider">
+
+<!-- =====================================================
+     GRADE AUTHORITY
+===================================================== -->
+
+<section
+    class="tool-section"
+    id="grade-authority">
+
+<div class="tool-layout">
+
+<div class="tool-stamp-column">
+
+<img
+    src="images/terrainvale/tvs-grade.PNG"
+    alt="Grade Authority"
+    class="tool-stamp">
+
+<a
+    href="toolbox.html?select=grade-authority"
+    class="tool-save-button">
+
+Save to Toolbox
+
+</a>
+
+</div>
+
+<article class="tool-document">
+
+<h2>Grade Authority</h2>
+
+<p>
+Grade Authority is a terrain behavior authoring tool designed to establish
+meaningful environmental constraints through slope relationships rather than
+artificial restrictions. Instead of relying on invisible walls or guesswork,
+it allows designers to define the grades that govern possibility within
+their worlds.
+</p>
+
+<h3>Problem Solved</h3>
+
+<p>
+Modern games often rely on invisible barriers and inconsistent terrain
+sculpting to guide players. Grade Authority establishes believable
+environmental constraints through meaningful slope relationships, allowing
+the terrain itself to communicate what is possible.
+</p>
+
+<h3>Primary Features</h3>
+
+<ul>
+
+<li>Target grade authoring using meaningful slope values</li>
+
+<li>Adjustable grade variance for natural results</li>
+
+<li>Convergence-based terrain modification</li>
+
+<li>Average grade measurement and feedback</li>
+
+<li>Controlled approach toward desired outcomes</li>
+
+<li>Support for traversal design and environmental storytelling</li>
+
+<li>Reduces reliance on invisible barriers</li>
+
+<li>Encourages natural environmental readability</li>
+
+</ul>
+
+<h3>Requirements</h3>
+
+<ul>
+
+<li>Unity Editor</li>
+
+<li>Unity Terrain System</li>
+
+<li>Existing Unity Terrain</li>
+
+</ul>
+
+<h3>Part of the VALE Workflow</h3>
+
+<p>
+Grade Authority teaches the environment what possibilities exist within
+the world. Following Terrain, Territory, Path, and Ribbon Authority,
+it establishes believable traversal before Paint Authority completes
+the world's visual identity.
+</p>
+
+<div class="tool-media">
+
+<h3>Screenshots</h3>
+
+<div class="media-grid">
+
+<div class="media-placeholder">
+Grade Authority screenshot coming soon
+</div>
+
+<div class="media-placeholder">
+Grade Authority screenshot coming soon
+</div>
+
+</div>
+
+<h3>Demonstration Video</h3>
+
+<div class="media-placeholder video-placeholder">
+Grade Authority demonstration video coming soon
+</div>
+
+</div>
+
+<p class="tool-note">
+Complete documentation and the Unity package become available after purchase.
+</p>
+
+</article>
+
+</div>
+
+</section>
+
+<hr class="tool-divider">
+
+<!-- =====================================================
+     PAINT AUTHORITY
+===================================================== -->
+
+<section
+    class="tool-section"
+    id="paint-authority">
+
+<div class="tool-layout">
+
+<div class="tool-stamp-column">
+
+<img
+    src="images/terrainvale/tvs-paint.PNG"
+    alt="Paint Authority"
+    class="tool-stamp">
+
+<a
+    href="toolbox.html?select=paint-authority"
+    class="tool-save-button">
+
+Save to Toolbox
+
+</a>
+
+</div>
+
+<article class="tool-document">
+
+<h2>Paint Authority</h2>
+
+<p>
+Paint Authority is a rule-based terrain texturing system designed to give
+environments visual voice through environmental relationships rather than
+repetitive manual painting. By combining height, slope, and painterly
+dry-brush techniques, it creates believable terrain transitions while
+preserving artistic intent.
+</p>
+
+<h3>Problem Solved</h3>
+
+<p>
+Manual terrain painting quickly becomes repetitive and inconsistent,
+especially across large worlds. Paint Authority applies textures through
+meaningful environmental rules, dramatically reducing repetitive work
+while preserving the artist's creative control.
+</p>
+
+<h3>Primary Features</h3>
+
+<ul>
+
+<li>Height-based texture rules</li>
+
+<li>Slope-based texture rules</li>
+
+<li>Painterly outer dry-brush placement</li>
+
+<li>Painterly inner dry-brush placement</li>
+
+<li>Natural transition generation</li>
+
+<li>Rule-driven material distribution</li>
+
+<li>World-wide terrain application</li>
+
+<li>Reduced repetitive painting requirements</li>
+
+<li>Preserves environmental readability</li>
+
+</ul>
+
+<h3>Requirements</h3>
+
+<ul>
+
+<li>Unity Editor</li>
+
+<li>Unity Terrain System</li>
+
+<li>Configured Terrain Layers</li>
+
+<li>Existing Unity Terrain</li>
+
+</ul>
+
+<h3>Part of the VALE Workflow</h3>
+
+<p>
+Paint Authority is the final stage of the VALE Terrain workflow. After the
+land has been created, organized, connected, expressed, and refined through
+terrain grades, Paint Authority gives the completed world its visual voice
+through intelligent, rule-based terrain texturing.
+</p>
+
+<div class="tool-media">
+
+<h3>Screenshots</h3>
+
+<div class="media-grid">
+
+<div class="media-placeholder">
+Paint Authority screenshot coming soon
+</div>
+
+<div class="media-placeholder">
+Paint Authority screenshot coming soon
+</div>
+
+</div>
+
+<h3>Demonstration Video</h3>
+
+<div class="media-placeholder video-placeholder">
+Paint Authority demonstration video coming soon
+</div>
+
+</div>
+
+<p class="tool-note">
+Complete documentation and the Unity package become available after purchase.
+</p>
+
+</article>
+
+</div>
+
+</section>
+  
