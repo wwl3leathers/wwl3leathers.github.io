@@ -1,1 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Toolbox | Talvaren Studios</title>
+
+<link rel="icon" type="image/png" href="images/Logo-min.PNG">
+<link rel="stylesheet" href="style.css">
+
+<style>
+
+/* ===========================
+   TOOLBOX CAROUSEL
+=========================== */
+
+.toolbox-carousel{
+
+    display:flex;
+    align-items:center;
+    gap:18px;
+
+    margin:30px auto 45px;
+
+}
+
+.toolbox-arrow{
+
+    width:48px;
+    height:48px;
+
+    flex:0 0 48px;
+
+    border:none;
+    border-radius:50%;
+
+    background:#4b3a22;
+    color:#f5ead4;
+
+    font-size:28px;
+    cursor:pointer;
+
+}
+
+.toolbox-arrow:disabled{
+
+    opacity:.35;
+    cursor:default;
+
+}
+
+.toolbox-grid{
+
+    display:grid;
+    grid-template-columns:repeat(6,1fr);
+    gap:18px;
+
+    width:100%;
+
+}
+
+.toolbox-tool{
+
+    text-align:center;
+
+}
+
+.toolbox-stamp-button{
+
+    width:100%;
+
+    padding:0;
+
+    border:none;
+    background:transparent;
+
+    cursor:pointer;
+
+}
+
+.toolbox-stamp{
+
+    display:block;
+
+    width:100%;
+    height:auto;
+
+    aspect-ratio:2 / 3;
+    object-fit:cover;
+
+    border-radius:8px;
+
+    box-shadow:
+        0 8px 18px rgba(0,0,0,.35);
+
+}
+
+.toolbox-placeholder{
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+
+    width:100%;
+
+    aspect-ratio:2 / 3;
+
+    padding:16px;
+
+    color:#3a3125;
+
+    border:2px solid rgba(75,58,34,.45);
+    border-radius:8px;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(231,216,179,.98),
+            rgba(198,178,136,.98)
+        );
+
+    box-shadow:
+        0 8px 18px rgba(0,0,0,.28);
+
+}
+
+.toolbox-placeholder strong{
+
+    margin-bottom:8px;
+
+}
+
+.toolbox-select{
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:7px;
+
+    margin-top:12px;
+
+    color:#3a3125;
+
+    font-weight:bold;
+
+}
+
+.toolbox-select input{
+
+    width:18px;
+    height:18px;
+
+}
+
+.toolbox-status{
+
+    margin-top:8px;
+
+    color:#6d5324;
+
+    font-size:.85rem;
+    font-weight:bold;
+
+}
+
+/* ===========================
+   TOOL INFORMATION WALL
+=========================== */
+
+.toolbox-information h3{
+
+    margin:32px 0 12px;
+
+    color:#2c2419;
+
+}
+
+.toolbox-information ul{
+
+    margin:0 0 24px 24px;
+
+}
+
+.toolbox-information li{
+
+    margin-bottom:9px;
+
+}
+
+.toolbox-note{
+
+    margin-top:35px;
+    padding-top:20px;
+
+    border-top:1px solid rgba(58,49,37,.30);
+
+    font-style:italic;
+
+}
+
+/* ===========================
+   TOOLBOX SUMMARY
+=========================== */
+
+.toolbox-summary{
+
+    width:min(900px,96%);
+
+    margin:0 auto 80px;
+    padding:35px;
+
+    color:#3a3125;
+
+    background:rgba(214,198,160,.94);
+
+    border:2px solid rgba(75,58,34,.35);
+    border-radius:12px;
+
+    box-shadow:
+        0 10px 30px rgba(0,0,0,.35);
+
+}
+.toolbox-summary h2{
+
+    margin-bottom:20px;
+
+    color:#2c2419;
+
+}
+
+.toolbox-summary button{
+
+    margin-top:20px;
+    padding:12px 22px;
+
+    border:none;
+    border-radius:8px;
+
+    background:#4b3a22;
+    color:#f5ead4;
+
+    font-family:Georgia,serif;
+    font-size:1rem;
+
+}
+
+.toolbox-summary button:disabled{
+
+    opacity:.55;
+
+}
+
+/* ===========================
+   MOBILE
+=========================== */
+
+@media(max-width:768px){
+
+    .toolbox-carousel{
+
+        gap:8px;
+
+    }
+
+    .toolbox-arrow{
+
+        width:40px;
+        height:40px;
+
+        flex-basis:40px;
+
+        font-size:22px;
+
+    }
+
+    .toolbox-grid{
+
+        grid-template-columns:repeat(3,1fr);
+        gap:10px;
+
+    }
+
+    .toolbox-select{
+
+        font-size:.78rem;
+
+    }
+
+    .toolbox-status{
+
+        font-size:.72rem;
+
+    }
+
+    .toolbox-summary{
+
+        padding:25px 18px;
+
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="wallpaper"></div>
+
+<header class="site-header">
+
+    <img
+        src="images/TerrainVale_Banner.PNG"
+        alt="TerrainVale Suite"
+        class="banner">
+
+</header>
+
+<main class="page">
+
+<h1 class="page-title">
+Toolbox
+</h1>
+
+<p class="page-intro">
+Every TerrainVale tool is available for review inside the Toolbox.
+Select individual tools for future purchase or download, examine their
+curated information, and build a collection suited to your workflow.
+Tools saved while browsing TerrainVale will be selected here automatically
+once the universal Toolbox script is connected.
+</p>
+
+<div class="toolbox-carousel">
+
+<button
+    id="toolboxPrevious"
+    class="toolbox-arrow"
+    type="button"
+    aria-label="Previous tools"
+    disabled>
+
+    &#10094;
+
+</button>
+
+<div id="toolboxGrid" class="toolbox-grid">
+
+<article
+    class="toolbox-tool"
+    data-tool-id="terrain-authority"
+    data-collection-code="VALE">
+
+    <button
+        class="toolbox-stamp-button"
+        type="button"
+        data-tool-id="terrain-authority"
+        aria-label="View Terrain Authority information">
+
+        <img
+            src="images/terrainvale/tvs-terrain.PNG"
+            alt="Terrain Authority"
+            class="toolbox-stamp">
+
+    </button>
+
+    <label class="toolbox-select">
+
+        <input
+            type="checkbox"
+            data-tool-id="terrain-authority">
+
+        <span>Select</span>
+
+    </label>
+
+    <p class="toolbox-status">
+        COMING SOON
+    </p>
+
+</article>
+
+<article
+    class="toolbox-tool"
+    data-tool-id="territory-authority"
+    data-collection-code="VALE">
+
+    <button
+        class="toolbox-stamp-button"
+        type="button"
+        data-tool-id="territory-authority"
+        aria-label="View Territory Authority information">
+
+        <div class="toolbox-placeholder">
+
+            <strong>VALE</strong>
+
+            <span>Territory Authority</span>
+
+            <small>Stamp Coming Soon</small>
+
+        </div>
+
+    </button>
+
+    <label class="toolbox-select">
+
+        <input
+            type="checkbox"
+            data-tool-id="territory-authority">
+
+        <span>Select</span>
+
+    </label>
+
+    <p class="toolbox-status">
+        COMING SOON
+    </p>
+
+</article>
+
+<article
+    class="toolbox-tool"
+    data-tool-id="path-authority"
+    data-collection-code="VALE">
+
+    <button
+        class="toolbox-stamp-button"
+        type="button"
+        data-tool-id="path-authority"
+        aria-label="View Path Authority information">
+
+        <div class="toolbox-placeholder">
+
+            <strong>VALE</strong>
+
+            <span>Path Authority</span>
+
+            <small>Stamp Coming Soon</small>
+
+        </div>
+
+    </button>
+
+    <label class="toolbox-select">
+
+        <input
+            type="checkbox"
+            data-tool-id="path-authority">
+
+        <span>Select</span>
+
+    </label>
+
+    <p class="toolbox-status">
+        COMING SOON
+    </p>
+
+</article>
+
+<article
+    class="toolbox-tool"
+    data-tool-id="ribbon-authority"
+    data-collection-code="VALE">
+
+    <button
+        class="toolbox-stamp-button"
+        type="button"
+        data-tool-id="ribbon-authority"
+        aria-label="View Ribbon Authority information">
+
+        <div class="toolbox-placeholder">
+
+            <strong>VALE</strong>
+
+            <span>Ribbon Authority</span>
+
+            <small>Stamp Coming Soon</small>
+
+        </div>
+
+    </button>
+
+    <label class="toolbox-select">
+
+        <input
+            type="checkbox"
+            data-tool-id="ribbon-authority">
+
+        <span>Select</span>
+
+    </label>
+
+    <p class="toolbox-status">
+        COMING SOON
+    </p>
+
+</article>
+
+<article
+    class="toolbox-tool"
+    data-tool-id="grade-authority"
+    data-collection-code="VALE">
+
+    <button
+        class="toolbox-stamp-button"
+        type="button"
+        data-tool-id="grade-authority"
+        aria-label="View Grade Authority information">
+
+        <div class="toolbox-placeholder">
+
+            <strong>VALE</strong>
+
+            <span>Grade Authority</span>
+
+            <small>Stamp Coming Soon</small>
+
+        </div>
+
+    </button>
+
+    <label class="toolbox-select">
+
+        <input
+            type="checkbox"
+            data-tool-id="grade-authority">
+
+        <span>Select</span>
+
+    </label>
+
+    <p class="toolbox-status">
+        COMING SOON
+    </p>
+
+</article>
+
+<article
+    class="toolbox-tool"
+    data-tool-id="paint-authority"
+    data-collection-code="VALE">
+
+    <button
+        class="toolbox-stamp-button"
+        type="button"
+        data-tool-id="paint-authority"
+        aria-label="View Paint Authority information">
+
+        <div class="toolbox-placeholder">
+
+            <strong>VALE</strong>
+
+            <span>Paint Authority</span>
+
+            <small>Stamp Coming Soon</small>
+
+        </div>
+
+    </button>
+
+    <label class="toolbox-select">
+
+        <input
+            type="checkbox"
+            data-tool-id="paint-authority">
+
+        <span>Select</span>
+
+    </label>
+
+    <p class="toolbox-status">
+        COMING SOON
+    </p>
+
+</article>
+
+</div>
+
+<button
+    id="toolboxNext"
+    class="toolbox-arrow"
+    type="button"
+    aria-label="Next tools"
+    disabled>
+
+    &#10095;
+
+</button>
+
+</div>
+
+<section
+    id="toolboxInformationWall"
+    class="document toolbox-information">
+
+<h2>Terrain Authority</h2>
+
+<p>
+Terrain Authority is the foundational terrain generation tool of the
+Vale Terrain Suite. Rather than attempting to simulate real-world geology,
+it creates believable environmental forms through artistic composition
+and controlled procedural generation.
+</p>
+
+<h3>Problem Solved</h3>
+
+<p>
+Many terrain generators overwhelm developers with complex simulations
+and extensive parameter systems. Terrain Authority focuses instead on
+the desired result: compelling terrain foundations created quickly while
+preserving artistic control.
+</p>
+
+<h3>Primary Features</h3>
+
+<ul>
+
+<li>Pressure-field based terrain generation</li>
+
+<li>Parent and child regional terrain inheritance</li>
+
+<li>Directional shelving for plateaus and stepped formations</li>
+
+<li>Controlled ruggedness for natural visual breakup</li>
+
+<li>Standardized Vale territory cadence</li>
+
+<li>Rapid iteration with minimal setup</li>
+
+</ul>
+
+<h3>Requirements</h3>
+
+<ul>
+
+<li>Unity Editor</li>
+
+<li>Unity Terrain System</li>
+
+</ul>
+
+<h3>Part of the VALE Workflow</h3>
+
+<p>
+Terrain Authority establishes the land upon which the remaining VALE
+tools operate.
+</p>
+
+<ul>
+
+<li>Territory Authority</li>
+
+<li>Path Authority</li>
+
+<li>Ribbon Authority</li>
+
+<li>Grade Authority</li>
+
+<li>Paint Authority</li>
+
+</ul>
+
+<p class="toolbox-note">
+Complete documentation will be included with the acquired download package.
+</p>
+
+</section>
+
+<section
+    id="toolboxSummary"
+    class="toolbox-summary">
+
+<h2>Selected Tools</h2>
+
+<p>
+No tools are currently selected.
+</p>
+
+<p>
+<strong>Collection pricing:</strong>
+Discounts based on matching collection codes will appear here once
+pricing is finalized.
+</p>
+
+<button type="button" disabled>
+Checkout Coming Soon
+</button>
+
+</section>
+
+<p style="margin-top:50px;text-align:center;">
+
+<a
+    href="unity-tools.html"
+    style="color:#e6e6e6;">
+
+← Return to TerrainVale Suite
+
+</a>
+
+</p>
+
+</main>
+
+<footer>
+© 2026 Talvaren Studios
+</footer>
+
+</body>
+
+</html>
