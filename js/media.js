@@ -159,7 +159,7 @@ document.addEventListener("DOMContentLoaded", () => {
            z-index: 1;
            width: 75%;
            aspect-ratio: 16 / 9;
-           transform: translate(-50%, calc(-50% - 12px));
+           transform: translate(-50%, calc(-50% - 32px));
            display: flex;
            align-items: center;
            justify-content: center;
