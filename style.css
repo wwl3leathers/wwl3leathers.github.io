@@ -463,3 +463,186 @@ footer{
     border-color:rgba(216,197,162,.65);
 
 }
+
+/* ==========================================================
+   TALVAREN MEDIA
+========================================================== */
+
+.media-viewer{
+
+    text-align:center;
+
+}
+
+.media-viewer .document{
+
+    position:relative;
+
+}
+
+#heroMirror{
+
+    display:block;
+
+    width:min(100%,1100px);
+
+    height:auto;
+
+    margin:0 auto;
+
+}
+
+#heroContent{
+
+    position:absolute;
+
+    top:50%;
+    left:50%;
+
+    transform:translate(-50%,-50%);
+
+    width:75%;
+
+    aspect-ratio:16/9;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    overflow:hidden;
+
+    border-radius:4px;
+
+}
+
+#heroContent iframe,
+#heroContent img{
+
+    width:100%;
+    height:100%;
+
+    border:none;
+
+    object-fit:contain;
+
+}
+
+.media-row{
+
+    display:grid;
+
+    grid-template-columns:
+        50px
+        repeat(3,1fr)
+        50px;
+
+    gap:20px;
+
+    align-items:start;
+
+    margin-top:30px;
+
+}
+
+.media-card{
+
+    background:
+        rgba(58,67,80,.85);
+
+    border:1px solid rgba(216,197,162,.25);
+
+    border-radius:10px;
+
+    padding:16px;
+
+    text-align:center;
+
+    color:#e6e6e6;
+
+    transition:
+        transform .2s ease,
+        border-color .2s ease;
+
+}
+
+.media-card:hover{
+
+    transform:translateY(-4px);
+
+    border-color:#d8c5a2;
+
+}
+
+.media-card img{
+
+    width:100%;
+
+    border-radius:6px;
+
+    margin-bottom:12px;
+
+    display:block;
+
+}
+
+.media-card h3{
+
+    color:#d8c5a2;
+
+    margin-bottom:10px;
+
+    font-size:1.2rem;
+
+}
+
+.media-card p{
+
+    font-size:.95rem;
+
+    line-height:1.5;
+
+}
+
+.media-arrow{
+
+    font-size:2rem;
+
+    color:#d8c5a2;
+
+    background:none;
+
+    border:none;
+
+    cursor:pointer;
+
+    align-self:center;
+
+    transition:
+        transform .2s ease,
+        color .2s ease;
+
+}
+
+.media-arrow:hover{
+
+    transform:scale(1.15);
+
+    color:#ffffff;
+
+}
+
+@media (max-width:900px){
+
+    .media-row{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .media-arrow{
+
+        display:none;
+
+    }
+
+}
