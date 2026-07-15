@@ -32,4 +32,5 @@ window.artwork = [
     "images/artwork/a-u-cook.PNG",
     "images/artwork/a-wolter.PNG",
     "images/artwork/a-writ.PNG"
+    "images/artwork/a-breath-of-talvaren.PNG"
 ];
