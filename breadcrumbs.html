@@ -11,6 +11,115 @@
 <link rel="icon" type="image/png" href="images/Logo-min.PNG">
 <link rel="stylesheet" href="style.css">
 
+<style>
+
+.breadcrumb-page {
+    width: min(1200px, 92%);
+    margin: auto;
+    padding: 20px;
+}
+
+.breadcrumb-title {
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 3rem;
+}
+
+.breadcrumb-intro {
+    max-width: 850px;
+    margin: 0 auto 40px;
+    text-align: center;
+    font-size: 1.2rem;
+    line-height: 1.8;
+}
+
+.breadcrumb-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 22px;
+}
+
+.breadcrumb-card {
+    display: flex;
+    min-height: 310px;
+    padding: 26px 20px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    color: inherit;
+    text-align: center;
+    text-decoration: none;
+
+    background: rgba(24, 29, 38, 0.82);
+    border: 1px solid rgba(216, 197, 162, 0.55);
+    border-radius: 14px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.28);
+
+    transition:
+        transform 0.2s ease,
+        border-color 0.2s ease,
+        background 0.2s ease;
+}
+
+.breadcrumb-card:hover,
+.breadcrumb-card:focus {
+    transform: translateY(-4px);
+    background: rgba(35, 42, 54, 0.94);
+    border-color: #d8c5a2;
+}
+
+.breadcrumb-card h2 {
+    margin: 0 0 20px;
+    color: #f0dfbd;
+    font-size: 1.7rem;
+    line-height: 1.2;
+}
+
+.breadcrumb-names {
+    margin: 0;
+    color: #eee5d5;
+    font-size: 1rem;
+    line-height: 1.75;
+}
+
+.breadcrumb-names span {
+    display: block;
+}
+
+.breadcrumb-back {
+    margin-top: 50px;
+    text-align: center;
+}
+
+.breadcrumb-back a {
+    color: #d8c5a2;
+}
+
+@media (max-width: 800px) {
+
+    .breadcrumb-page {
+        width: min(600px, 92%);
+        padding: 18px 0;
+    }
+
+    .breadcrumb-title {
+        font-size: 2.25rem;
+    }
+
+    .breadcrumb-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .breadcrumb-card {
+        min-height: 0;
+        padding: 30px 20px;
+    }
+
+}
+
+</style>
+
 </head>
 
 <body>
@@ -24,93 +133,259 @@
         class="banner">
 </header>
 
-<main style="width:min(900px,92%);margin:auto;padding:20px;">
+<main class="breadcrumb-page">
 
-<h1 style="font-size:3rem;margin-bottom:20px;">
+<h1 class="breadcrumb-title">
 Historical Breadcrumbs
 </h1>
 
-<p style="font-size:1.2rem;line-height:1.8;margin-bottom:40px;">
-These are the historical accounts, folklore, myths, legends, and traditions that
-helped inspire Talvaren. Select any entry below to open the archive.
+<p class="breadcrumb-intro">
+These are the historical accounts, folklore, myths, legends, and traditions
+that helped inspire Talvaren. Select any entry below to open the archive.
 </p>
 
-<div class="portal-grid">
+<div class="breadcrumb-grid">
 
-<a class="portal" href="viewer.html?image=brownies.PNG">
-<h2>Brownies</h2>
+<a class="breadcrumb-card" href="viewer.html?image=brownies.PNG">
+    <h2>Brownies</h2>
+
+    <p class="breadcrumb-names">
+        <span>Broonie — Scotland</span>
+        <span>Brùnaidh — Scottish Highlands</span>
+        <span>Gruagach — Scottish Highlands</span>
+        <span>Hob — Northern England</span>
+        <span>Bwbach — Wales</span>
+        <span>Fenodyree — Isle of Man</span>
+        <span>Nisse — Norway and Denmark</span>
+        <span>Tomte — Sweden</span>
+    </p>
 </a>
 
-<a class="portal" href="viewer.html?image=church-grimm.PNG">
-<h2>Church Grimm</h2>
+<a class="breadcrumb-card" href="viewer.html?image=church-grimm.PNG">
+    <h2>Church Grimm</h2>
+
+    <p class="breadcrumb-names">
+        <span>Church Grim — England</span>
+        <span>Kirk Grim — Scotland</span>
+        <span>Kyrkogrim — Sweden</span>
+        <span>Kirkegrim — Denmark and Norway</span>
+    </p>
 </a>
 
-<a class="portal" href="viewer.html?image=domovoi.PNG">
-<h2>Domovoi</h2>
+<a class="breadcrumb-card" href="viewer.html?image=domovoi.PNG">
+    <h2>Domovoi</h2>
+
+    <p class="breadcrumb-names">
+        <span>Domovoy — Russia</span>
+        <span>Domovyk — Ukraine</span>
+        <span>Damavik — Belarus</span>
+        <span>Stopan — Bulgaria</span>
+    </p>
 </a>
 
-<a class="portal" href="viewer.html?image=dryads.PNG">
-<h2>Dryads</h2>
+<a class="breadcrumb-card" href="viewer.html?image=dryads.PNG">
+    <h2>Dryads</h2>
+
+    <p class="breadcrumb-names">
+        <span>Hamadryads — Ancient Greece</span>
+        <span>Meliae — Ancient Greece</span>
+        <span>Oreads — Ancient Greece</span>
+        <span>Napaeae — Ancient Greece</span>
+        <span>Alseids — Ancient Greece</span>
+        <span>Auloniads — Ancient Greece</span>
+        <span>Daphnaie — Ancient Greece</span>
+        <span>Dryades — Ancient Greece</span>
+    </p>
 </a>
 
-<a class="portal" href="viewer.html?image=elves.PNG">
-<h2>Elves</h2>
+<a class="breadcrumb-card" href="viewer.html?image=elves.PNG">
+    <h2>Elves</h2>
+
+    <p class="breadcrumb-names">
+        <span>Álfar — Iceland and Old Norse tradition</span>
+        <span>Alfar — Scandinavia</span>
+        <span>Ljósálfar — Norse tradition</span>
+        <span>Dökkálfar — Norse tradition</span>
+        <span>Elben — Germany</span>
+        <span>Aos Sí — Ireland</span>
+        <span>Tylwyth Teg — Wales</span>
+        <span>Huldufólk — Iceland and the Faroe Islands</span>
+    </p>
 </a>
 
-<a class="portal" href="viewer.html?image=fairy-rings.PNG">
-<h2>Fairy Rings</h2>
+<a class="breadcrumb-card" href="viewer.html?image=fairy-rings.PNG">
+    <h2>Fairy Rings</h2>
+
+    <p class="breadcrumb-names">
+        <span>Fairy Ring — England</span>
+        <span>Elf Circle — Scandinavia</span>
+        <span>Hexenring — Germany</span>
+        <span>Rond de Sorcière — France</span>
+        <span>Cylch y Tylwyth Teg — Wales</span>
+    </p>
 </a>
 
-<a class="portal" href="viewer.html?image=green-lights.PNG">
-<h2>Green Lights</h2>
+<a class="breadcrumb-card" href="viewer.html?image=green-lights.PNG">
+    <h2>Green Lights</h2>
+
+    <p class="breadcrumb-names">
+        <span>Will-o'-the-Wisp — England</span>
+        <span>Ignis Fatuus — Medieval Europe</span>
+        <span>Jack-o'-Lantern — England</span>
+        <span>Spunkie — Scotland</span>
+        <span>Corpse Candle — Wales</span>
+        <span>Feu Follet — France</span>
+        <span>Irrlicht — Germany</span>
+        <span>Aleya — Bangladesh</span>
+    </p>
 </a>
 
-<a class="portal" href="viewer.html?image=kobolds.PNG">
-<h2>Kobolds</h2>
+<a class="breadcrumb-card" href="viewer.html?image=kobolds.PNG">
+    <h2>Kobolds</h2>
+
+    <p class="breadcrumb-names">
+        <span>Kobold — Germany</span>
+        <span>Hauskobold — Germany</span>
+        <span>Klabautermann — Northern Germany</span>
+        <span>Heinzelmännchen — Cologne, Germany</span>
+        <span>Berggeist — German mining regions</span>
+        <span>Coblynau — Wales</span>
+        <span>Knocker — Cornwall and Devon</span>
+        <span>Tommyknocker — American mining regions</span>
+    </p>
 </a>
 
-<a class="portal" href="viewer.html?image=old-man-winter.PNG">
-<h2>Old Man Winter</h2>
+<a class="breadcrumb-card" href="viewer.html?image=old-man-winter.PNG">
+    <h2>Old Man Winter</h2>
+
+    <p class="breadcrumb-names">
+        <span>Jack Frost — England</span>
+        <span>Ded Moroz — Russia</span>
+        <span>Morozko — Russia</span>
+        <span>Kung Bore — Sweden</span>
+        <span>Frau Holle — Germany</span>
+        <span>Cailleach — Ireland and Scotland</span>
+        <span>Boreas — Ancient Greece</span>
+        <span>Yuki-onna — Japan</span>
+    </p>
 </a>
 
-<a class="portal" href="viewer.html?image=phantom-roads.PNG">
-<h2>Phantom Roads</h2>
+<a class="breadcrumb-card" href="viewer.html?image=phantom-roads.PNG">
+    <h2>Phantom Roads</h2>
+
+    <p class="breadcrumb-names">
+        <span>Corpse Road — England</span>
+        <span>Coffin Road — Scotland</span>
+        <span>Fairy Path — Ireland</span>
+        <span>Fairy Trod — Orkney and Shetland</span>
+    </p>
 </a>
 
-<a class="portal" href="viewer.html?image=selkies.PNG">
-<h2>Selkies</h2>
+<a class="breadcrumb-card" href="viewer.html?image=selkies.PNG">
+    <h2>Selkies</h2>
+
+    <p class="breadcrumb-names">
+        <span>Selkie — Scotland</span>
+        <span>Selchie — Scotland</span>
+        <span>Silkie — Orkney and Shetland</span>
+        <span>Roane — Ireland and Scotland</span>
+    </p>
 </a>
 
-<a class="portal" href="viewer.html?image=strange-gifts-part-1.PNG">
-<h2>Strange Gifts – Part I</h2>
+<a class="breadcrumb-card" href="viewer.html?image=strange-gifts-part-1.PNG">
+    <h2>Strange Gifts – Part I</h2>
+
+    <p class="breadcrumb-names">
+        <span>Talisman — Mediterranean and European traditions</span>
+        <span>Amulet — Ancient Egypt and the Mediterranean</span>
+        <span>Charm — Britain and Europe</span>
+        <span>Relic — European and Asian religious traditions</span>
+        <span>Artifact — Global traditions</span>
+        <span>Token — Britain and Europe</span>
+        <span>Palladium — Ancient Greece and Rome</span>
+        <span>Enchanted Object — European folklore</span>
+    </p>
 </a>
 
-<a class="portal" href="viewer.html?image=strange-gifts-part-2.PNG">
-<h2>Strange Gifts – Part II</h2>
+<a class="breadcrumb-card" href="viewer.html?image=strange-gifts-part-2.PNG">
+    <h2>Strange Gifts – Part II</h2>
+
+    <p class="breadcrumb-names">
+        <span>Talisman — Mediterranean and European traditions</span>
+        <span>Amulet — Ancient Egypt and the Mediterranean</span>
+        <span>Charm — Britain and Europe</span>
+        <span>Relic — European and Asian religious traditions</span>
+        <span>Artifact — Global traditions</span>
+        <span>Token — Britain and Europe</span>
+        <span>Palladium — Ancient Greece and Rome</span>
+        <span>Enchanted Object — European folklore</span>
+    </p>
 </a>
 
-<a class="portal" href="viewer.html?image=strange-gifts-part-3.PNG">
-<h2>Strange Gifts – Part III</h2>
+<a class="breadcrumb-card" href="viewer.html?image=strange-gifts-part-3.PNG">
+    <h2>Strange Gifts – Part III</h2>
+
+    <p class="breadcrumb-names">
+        <span>Talisman — Mediterranean and European traditions</span>
+        <span>Amulet — Ancient Egypt and the Mediterranean</span>
+        <span>Charm — Britain and Europe</span>
+        <span>Relic — European and Asian religious traditions</span>
+        <span>Artifact — Global traditions</span>
+        <span>Token — Britain and Europe</span>
+        <span>Palladium — Ancient Greece and Rome</span>
+        <span>Enchanted Object — European folklore</span>
+    </p>
 </a>
 
-<a class="portal" href="viewer.html?image=the-guiding-hand.PNG">
-<h2>The Guiding Hand</h2>
+<a class="breadcrumb-card" href="viewer.html?image=the-guiding-hand.PNG">
+    <h2>The Guiding Hand</h2>
+
+    <p class="breadcrumb-names">
+        <span>Guardian Angel — Christian traditions</span>
+        <span>Fylgja — Norse and Icelandic traditions</span>
+        <span>Daimon — Ancient Greece</span>
+        <span>Genius — Ancient Rome</span>
+        <span>Tutelary Spirit — Global traditions</span>
+        <span>Spirit Guide — Spiritualist traditions</span>
+        <span>Ancestral Guide — Global ancestor traditions</span>
+        <span>Psychopomp — Ancient Greece and Europe</span>
+    </p>
 </a>
 
-<a class="portal" href="viewer.html?image=the-hidden-hearth.PNG">
-<h2>The Hidden Hearth</h2>
+<a class="breadcrumb-card" href="viewer.html?image=the-hidden-hearth.PNG">
+    <h2>The Hidden Hearth</h2>
+
+    <p class="breadcrumb-names">
+        <span>Baba Yaga — Slavic tradition</span>
+        <span>Hecate — Ancient Greece</span>
+        <span>Traveler III — Talvaren</span>
+        <span>Maiden — Triple Goddess tradition</span>
+        <span>Mother — Triple Goddess tradition</span>
+        <span>Crone — Triple Goddess tradition</span>
+    </p>
 </a>
 
-<a class="portal" href="viewer.html?image=tommyknockers.PNG">
-<h2>Tommyknockers</h2>
+<a class="breadcrumb-card" href="viewer.html?image=tommyknockers.PNG">
+    <h2>Tommyknockers</h2>
+
+    <p class="breadcrumb-names">
+        <span>Tommyknocker — American mining regions</span>
+        <span>Knocker — Cornwall and Devon</span>
+        <span>Knacker — Cornwall</span>
+        <span>Coblynau — Wales</span>
+        <span>Kobold — Germany</span>
+        <span>Berggeist — German mining regions</span>
+        <span>Bluecap — Northern England and Scotland</span>
+        <span>Muki — Andes mining regions</span>
+    </p>
 </a>
 
 </div>
 
-<p style="margin-top:50px;">
-<a href="archives.html" style="color:#d8c5a2;">
-← Back to Fantastical Archives
-</a>
+<p class="breadcrumb-back">
+    <a href="archives.html">
+        ← Back to Fantastical Archives
+    </a>
 </p>
 
 </main>
