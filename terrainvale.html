@@ -117,7 +117,11 @@
     border:2px solid rgba(245,234,212,.35);
     border-radius:8px;
 
+    font-family:inherit;
+    font-size:1rem;
     font-weight:bold;
+
+    cursor:pointer;
 
     box-shadow:
         0 8px 18px rgba(0,0,0,.30);
@@ -127,6 +131,12 @@
 .tool-save-button:hover{
 
     background:#654c2c;
+
+}
+
+.tool-save-button.saved{
+
+    background:#6d5324;
 
 }
 
@@ -425,13 +435,14 @@ screenshots, and save any tool directly to your Toolbox.
     alt="Terrain Authority"
     class="tool-stamp">
 
-<a
-    href="toolbox.html?select=terrain-authority"
-    class="tool-save-button">
+<button
+    type="button"
+    class="tool-save-button"
+    data-tool-id="terrain-authority">
 
 Save to Toolbox
 
-</a>
+</button>
 
 </div>
 
@@ -541,16 +552,16 @@ Complete documentation and the Unity package become available after purchase.
 <img
     src="images/terrainvale/tvs-territory.PNG"
     alt="Territory Authority"
-   
     class="tool-stamp">
 
-<a
-    href="toolbox.html?select=territory-authority"
-    class="tool-save-button">
+<button
+    type="button"
+    class="tool-save-button"
+    data-tool-id="territory-authority">
 
 Save to Toolbox
 
-</a>
+</button>
 
 </div>
 
@@ -579,15 +590,10 @@ to understand, expand, and manage.
 <ul>
 
 <li>Converts large terrains into standardized territory grids</li>
-
 <li>Multiple territory subdivision configurations</li>
-
 <li>Preserves terrain continuity through height reconstruction</li>
-
 <li>Automatically establishes neighboring terrain relationships</li>
-
 <li>Maintains visual cohesion across territory boundaries</li>
-
 <li>Preserves the original terrain by disabling rather than destroying it</li>
 
 </ul>
@@ -597,9 +603,7 @@ to understand, expand, and manage.
 <ul>
 
 <li>Unity Editor</li>
-
 <li>Unity Terrain System</li>
-
 <li>Existing Unity Terrain</li>
 
 </ul>
@@ -647,7 +651,7 @@ Complete documentation and the Unity package become available after purchase.
 </section>
 
 <hr class="tool-divider">
-  
+
 <!-- =====================================================
      PATH AUTHORITY
 ===================================================== -->
@@ -665,13 +669,14 @@ Complete documentation and the Unity package become available after purchase.
     alt="Path Authority"
     class="tool-stamp">
 
-<a
-    href="toolbox.html?select=path-authority"
-    class="tool-save-button">
+<button
+    type="button"
+    class="tool-save-button"
+    data-tool-id="path-authority">
 
 Save to Toolbox
 
-</a>
+</button>
 
 </div>
 
@@ -700,19 +705,12 @@ while allowing appearance to evolve independently.
 <ul>
 
 <li>Reusable path assets</li>
-
 <li>Persistent path data storage</li>
-
 <li>Support for branching and extending existing routes</li>
-
 <li>Precise distance measurement</li>
-
 <li>Author-defined route placement</li>
-
 <li>Grade-aware path construction options</li>
-
 <li>Designed for integration with Ribbon Authority</li>
-
 <li>Supports meaningful travel calculations</li>
 
 </ul>
@@ -722,9 +720,7 @@ while allowing appearance to evolve independently.
 <ul>
 
 <li>Unity Editor</li>
-
 <li>Unity Terrain System</li>
-
 <li>Recommended for use with Ribbon Authority</li>
 
 </ul>
@@ -791,13 +787,14 @@ Complete documentation and the Unity package become available after purchase.
     alt="Ribbon Authority"
     class="tool-stamp">
 
-<a
-    href="toolbox.html?select=ribbon-authority"
-    class="tool-save-button">
+<button
+    type="button"
+    class="tool-save-button"
+    data-tool-id="ribbon-authority">
 
 Save to Toolbox
 
-</a>
+</button>
 
 </div>
 
@@ -827,19 +824,12 @@ appearance to change while preserving the underlying path.
 <ul>
 
 <li>Generates visual features from existing Path Authority assets</li>
-
 <li>Supports roads, rivers, bridges, trails, trenches, and other ribbon features</li>
-
 <li>Preserves the original path data</li>
-
 <li>Allows rapid visual experimentation</li>
-
 <li>Grade-aware material support</li>
-
 <li>Dynamic material assignment</li>
-
 <li>Variable width controls</li>
-
 <li>Supports animated materials and directional effects</li>
 
 </ul>
@@ -849,9 +839,7 @@ appearance to change while preserving the underlying path.
 <ul>
 
 <li>Unity Editor</li>
-
 <li>Unity Terrain System</li>
-
 <li>Existing Path Authority data</li>
 
 </ul>
@@ -918,13 +906,14 @@ Complete documentation and the Unity package become available after purchase.
     alt="Grade Authority"
     class="tool-stamp">
 
-<a
-    href="toolbox.html?select=grade-authority"
-    class="tool-save-button">
+<button
+    type="button"
+    class="tool-save-button"
+    data-tool-id="grade-authority">
 
 Save to Toolbox
 
-</a>
+</button>
 
 </div>
 
@@ -954,19 +943,12 @@ the terrain itself to communicate what is possible.
 <ul>
 
 <li>Target grade authoring using meaningful slope values</li>
-
 <li>Adjustable grade variance for natural results</li>
-
 <li>Convergence-based terrain modification</li>
-
 <li>Average grade measurement and feedback</li>
-
 <li>Controlled approach toward desired outcomes</li>
-
 <li>Support for traversal design and environmental storytelling</li>
-
 <li>Reduces reliance on invisible barriers</li>
-
 <li>Encourages natural environmental readability</li>
 
 </ul>
@@ -976,9 +958,7 @@ the terrain itself to communicate what is possible.
 <ul>
 
 <li>Unity Editor</li>
-
 <li>Unity Terrain System</li>
-
 <li>Existing Unity Terrain</li>
 
 </ul>
@@ -1045,13 +1025,14 @@ Complete documentation and the Unity package become available after purchase.
     alt="Paint Authority"
     class="tool-stamp">
 
-<a
-    href="toolbox.html?select=paint-authority"
-    class="tool-save-button">
+<button
+    type="button"
+    class="tool-save-button"
+    data-tool-id="paint-authority">
 
 Save to Toolbox
 
-</a>
+</button>
 
 </div>
 
@@ -1081,21 +1062,13 @@ while preserving the artist's creative control.
 <ul>
 
 <li>Height-based texture rules</li>
-
 <li>Slope-based texture rules</li>
-
 <li>Painterly outer dry-brush placement</li>
-
 <li>Painterly inner dry-brush placement</li>
-
 <li>Natural transition generation</li>
-
 <li>Rule-driven material distribution</li>
-
 <li>World-wide terrain application</li>
-
 <li>Reduced repetitive painting requirements</li>
-
 <li>Preserves environmental readability</li>
 
 </ul>
@@ -1105,11 +1078,8 @@ while preserving the artist's creative control.
 <ul>
 
 <li>Unity Editor</li>
-
 <li>Unity Terrain System</li>
-
 <li>Configured Terrain Layers</li>
-
 <li>Existing Unity Terrain</li>
 
 </ul>
@@ -1156,7 +1126,7 @@ Complete documentation and the Unity package become available after purchase.
 </div>
 
 </section>
-  
+
 <p style="margin-top:60px;text-align:center;">
 
 <a
@@ -1176,6 +1146,82 @@ Complete documentation and the Unity package become available after purchase.
 </footer>
 
 <script src="js/terrainvale-media.js"></script>
+
+<script>
+
+const TOOLBOX_STORAGE_KEY = "terrainvale-toolbox";
+
+function getSavedToolboxSelections(){
+
+    try{
+
+        return JSON.parse(
+            localStorage.getItem(TOOLBOX_STORAGE_KEY)
+        ) || [];
+
+    }catch(error){
+
+        return [];
+
+    }
+
+}
+
+function saveToolToToolbox(toolId){
+
+    const saved = getSavedToolboxSelections();
+
+    if(!saved.includes(toolId)){
+
+        saved.push(toolId);
+
+        localStorage.setItem(
+            TOOLBOX_STORAGE_KEY,
+            JSON.stringify(saved)
+        );
+
+    }
+
+}
+
+function updateSaveButton(button){
+
+    const saved = getSavedToolboxSelections();
+    const toolId = button.dataset.toolId;
+
+    if(saved.includes(toolId)){
+
+        button.textContent = "✓ Saved to Toolbox";
+        button.classList.add("saved");
+
+    }else{
+
+        button.textContent = "Save to Toolbox";
+        button.classList.remove("saved");
+
+    }
+
+}
+
+document
+    .querySelectorAll(".tool-save-button[data-tool-id]")
+    .forEach(button => {
+
+        updateSaveButton(button);
+
+        button.addEventListener("click", () => {
+
+            saveToolToToolbox(
+                button.dataset.toolId
+            );
+
+            updateSaveButton(button);
+
+        });
+
+    });
+
+</script>
 
 </body>
 
