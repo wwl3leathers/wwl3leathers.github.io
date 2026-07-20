@@ -214,6 +214,47 @@ padding:30px 22px;
 
 }
 
+   /* ======================================
+   SAVE TO TOOLBOX BUTTON
+====================================== */
+
+.tool-save-button{
+
+    width:100%;
+
+    margin-top:18px;
+    padding:14px 18px;
+
+    border:none;
+    border-radius:8px;
+
+    cursor:pointer;
+
+    font-family:Georgia,serif;
+    font-size:1rem;
+    font-weight:bold;
+
+    color:#f5ead4;
+    background:#4b3a22;
+
+    transition:
+        background .2s,
+        transform .15s;
+
+}
+
+.tool-save-button:hover{
+
+    background:#654c2c;
+
+}
+
+.tool-save-button.saved{
+
+    background:#2f6b39;
+
+}
+   
 </style>
 
 </head>
@@ -273,7 +314,8 @@ class="asset-stamp">
 type="button"
 class="tool-save-button"
 data-tool-id="carriage-collection"
-data-collection-code="STUDIO"
+data-collection-code="STUDIO">
+   
 Save to Toolbox
 
 </button>
