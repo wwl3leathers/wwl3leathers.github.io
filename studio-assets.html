@@ -1,3 +1,4 @@
+<!-- PART 1 OF 3 -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,14 +15,14 @@
 
 <style>
 
-/* ===========================
-   STUDIO ASSETS PAGE
-=========================== */
+/* ======================================
+   STUDIO ASSETS
+====================================== */
 
 .assets-intro{
 
     width:min(1000px,94%);
-    margin:35px auto 55px;
+    margin:40px auto 55px;
     padding:35px;
 
     color:#2c2419;
@@ -39,43 +40,16 @@
 .assets-intro h1{
 
     margin-bottom:20px;
-    font-size:clamp(2.2rem,6vw,4.5rem);
+    font-size:clamp(2.2rem,6vw,4.4rem);
 
 }
 
 .assets-intro p{
 
+    line-height:1.8;
     margin-bottom:18px;
-    line-height:1.75;
 
 }
-
-.section-title{
-
-    width:min(1100px,94%);
-    margin:0 auto 30px;
-
-    color:#f5ead4;
-
-}
-
-.section-title h2{
-
-    font-size:clamp(2rem,4vw,3.2rem);
-    margin-bottom:12px;
-
-}
-
-.section-title p{
-
-    max-width:900px;
-    line-height:1.7;
-
-}
-
-/* ===========================
-   ASSET LAYOUT
-=========================== */
 
 .asset-section{
 
@@ -87,22 +61,33 @@
 .asset-layout{
 
     display:grid;
-
-    grid-template-columns:1fr;
-
+    grid-template-columns:minmax(220px,330px) 1fr;
     gap:35px;
+
+    align-items:start;
 
 }
 
-.asset-hero{
+.asset-column{
+
+    position:sticky;
+    top:20px;
+
+}
+
+.asset-stamp{
 
     width:100%;
     display:block;
 
-    border-radius:10px;
+    aspect-ratio:2/3;
+
+    object-fit:cover;
+
+    border-radius:8px;
 
     box-shadow:
-        0 12px 32px rgba(0,0,0,.45);
+        0 12px 32px rgba(0,0,0,.42);
 
 }
 
@@ -115,6 +100,7 @@
     background:rgba(222,207,171,.94);
 
     border:2px solid rgba(75,58,34,.35);
+
     border-radius:12px;
 
     box-shadow:
@@ -124,20 +110,9 @@
 
 .asset-document h2{
 
-    margin-bottom:10px;
+    margin-bottom:20px;
 
     font-size:clamp(2rem,4vw,3rem);
-
-}
-
-.asset-price{
-
-    margin-bottom:25px;
-
-    font-size:1.5rem;
-    font-weight:bold;
-
-    color:#4b3a22;
 
 }
 
@@ -155,211 +130,87 @@
 
 .asset-document ul{
 
-    margin:0 0 24px 24px;
+    margin:0 0 25px 24px;
 
 }
 
 .asset-document li{
 
-    margin-bottom:9px;
-    line-height:1.6;
+    margin-bottom:8px;
 
 }
 
-.toolbox-button{
+.asset-price{
 
-    display:inline-block;
+    margin:22px 0;
 
-    margin-top:25px;
-    padding:14px 24px;
-
-    background:#4b3a22;
-
-    color:#f5ead4;
-
-    text-decoration:none;
-
-    border-radius:8px;
-
-    border:2px solid rgba(245,234,212,.35);
-
+    font-size:1.35rem;
     font-weight:bold;
 
-}
-
-.toolbox-button:hover{
-
-    background:#654c2c;
+    color:#5d3f14;
 
 }
 
-/* ===========================
-   MEDIA
-=========================== */
+.asset-note{
 
-.asset-media{
+    margin-top:30px;
 
-    margin-top:40px;
+    padding-top:18px;
 
-}
+    border-top:1px solid rgba(58,49,37,.30);
 
-.asset-media h3{
-
-    margin-bottom:16px;
+    font-style:italic;
 
 }
 
-.media-grid{
-
-    display:grid;
-
-    grid-template-columns:repeat(2,1fr);
-
-    gap:18px;
-
-}
-
-.tool-screenshot{
-
-    display:block;
-
-    width:100%;
-
-    height:auto;
-
-    border-radius:8px;
-
-    box-shadow:
-        0 8px 20px rgba(0,0,0,.30);
-
-}
-
-.video-placeholder{
-
-    display:flex;
-
-    justify-content:center;
-    align-items:center;
-
-    min-height:260px;
-
-    border:2px dashed rgba(75,58,34,.35);
-
-    border-radius:8px;
-
-    background:rgba(255,255,255,.18);
-
-}
-
-.section-divider{
+.asset-divider{
 
     width:min(850px,75%);
 
-    margin:70px auto;
+    margin:0 auto 80px;
 
     border:none;
-
     border-top:2px solid rgba(230,210,165,.45);
 
 }
 
-/* ===========================
-   STUDIO TOOLS
-=========================== */
+.asset-placeholder{
 
-.tools-heading{
+    padding:45px;
 
-    width:min(1100px,94%);
-    margin:0 auto 35px;
+    text-align:center;
 
-    color:#f5ead4;
+    color:#4b3a22;
 
-}
+    background:rgba(222,207,171,.94);
 
-.tools-heading h2{
+    border:2px dashed rgba(75,58,34,.35);
 
-    font-size:clamp(2rem,4vw,3rem);
+    border-radius:12px;
 
 }
-
-  .tools-heading p{
-
-    max-width:900px;
-    line-height:1.7;
-
-}
-
-/* ===========================
-   STICKY PAGE NAVIGATION
-=========================== */
-
-.page-nav{
-
-    position:sticky;
-    top:0;
-    z-index:1000;
-
-    display:flex;
-    justify-content:center;
-    gap:16px;
-
-    padding:14px 20px;
-
-    background:rgba(32,27,21,.88);
-
-    backdrop-filter:blur(8px);
-
-    border-bottom:1px solid rgba(230,210,165,.25);
-
-}
-
-.page-nav a{
-
-    display:inline-block;
-
-    padding:10px 18px;
-
-    color:#f5ead4;
-    text-decoration:none;
-
-    background:#4b3a22;
-
-    border:1px solid rgba(245,234,212,.25);
-    border-radius:8px;
-
-    font-weight:bold;
-
-}
-
-.page-nav a:hover{
-
-    background:#654c2c;
-
-}
-
-/* ===========================
-   MOBILE
-=========================== */
 
 @media(max-width:768px){
 
-    .assets-intro{
+.asset-layout{
 
-        padding:28px 22px;
+grid-template-columns:1fr;
 
-    }
+}
 
-    .asset-document{
+.asset-column{
 
-        padding:30px 22px;
+position:static;
+width:min(340px,88%);
+margin:0 auto;
 
-    }
+}
 
-    .media-grid{
+.asset-document{
 
-        grid-template-columns:1fr;
+padding:30px 22px;
 
-    }
+}
 
 }
 
@@ -373,24 +224,15 @@
 
 <nav class="page-nav">
 
-    <a href="index.html">
-        ← Homepage
-    </a>
+<a href="index.html">
+← Homepage
+</a>
 
-    <a href="unity-tools.html">
-        ← Unity Tools
-    </a>
+<a href="unity-tools.html">
+← Unity Tools
+</a>
 
 </nav>
-
-<header class="site-header">
-
-    <img
-        src="images/StudioAssets_Banner.PNG"
-        alt="Talvaren Studios Studio Assets"
-        class="banner">
-
-</header>
 
 <main class="page">
 
@@ -400,293 +242,154 @@
 
 <p>
 
-Studio Assets is a growing collection of production-ready Unity content
-created for developers who value clean workflows, modular design, and
-professional presentation. Every asset is built for practical use while
-remaining flexible enough to fit projects of every scale.
+Explore a growing collection of production-ready prefabs, environment assets,
+and development resources created for Unity developers. Every asset is built
+with the same philosophy that guides TerrainVale—clean workflows, reusable
+construction, and practical production value.
 
 </p>
 
 <p>
 
-Explore handcrafted prefab collections, modular environment assets,
-production utilities, and future development tools designed to accelerate
-your workflow without sacrificing creative control.
+Each Studio Asset is sold individually and includes the complete Unity package
+along with documentation designed to get you working immediately.
 
 </p>
 
 </section>
 
-<section class="section-title">
-
-<h2>Production Assets</h2>
-
-<p>
-
-Professional modular assets, prefabs, and environment components ready
-for immediate use in Unity projects.
-
-</p>
-
-</section>
-
-<!-- =====================================================
-     CARRIAGE COLLECTION
-===================================================== -->
-
-<section
-    class="asset-section"
-    id="carriage-collection">
+<section class="asset-section">
 
 <div class="asset-layout">
 
+<div class="asset-column">
+
 <img
-    src="images/terrainvale/carriages-hero.png"
-    alt="Carriage Collection"
-    class="asset-hero">
+src="images/terrainvale/carriages-hero.png"
+alt="Carriage Collection"
+class="asset-stamp">
+
+<button
+type="button"
+class="tool-save-button"
+data-tool-id="carriage-collection"
+data-collection-code="STUDIO"
+Save to Toolbox
+
+</button>
+
+</div>
 
 <article class="asset-document">
 
 <h2>Carriage Collection</h2>
 
-<div class="asset-price">
-
-$16.00
-
-</div>
-
-  <p>
-
-The Carriage Collection contains two fully assembled carriage prefabs—a
-traditional horse-drawn coach and a funeral hearse—along with the
-individual modular components used to construct them. Build complete
-vehicles in minutes or create your own custom variations by mixing
-and matching parts.
-
-</p>
-
 <p>
 
-Every wheel, axle, body section, and decorative component has been
-designed for modular assembly. The included axles are prepared for
-wheel rotation scripts, making the collection suitable for both static
-scenes and moving vehicles.
+A production-ready collection of modular horse-drawn vehicles suitable for
+fantasy worlds, historical settings, RPGs, adventure games, and cinematic
+environments.
 
 </p>
 
-<h3>Included Assets</h3>
+<p class="asset-price">
+
+Price: $16.00
+
+</p>
+
+<h3>Included</h3>
 
 <ul>
 
-<li>Traditional horse-drawn carriage prefab</li>
-<li>Funeral hearse prefab</li>
-<li>Fully modular carriage components</li>
-<li>Prepared wheel axles for animation scripts</li>
-<li>Production-ready prefabs</li>
-<li>Clean hierarchy organization</li>
+<li>Luxury passenger carriage</li>
+
+<li>Funeral hearse</li>
+
+<li>Modular construction</li>
+
+<li>Completed Unity prefabs</li>
+
+<li>Prepared wheel axle hierarchy</li>
+
+<li>Game-ready organization</li>
 
 </ul>
 
-<h3>Requirements</h3>
+   <h3>Features</h3>
 
 <ul>
 
-<li>Unity Editor</li>
-<li>No additional packages required</li>
+<li>Production-ready meshes</li>
+
+<li>Clean prefab hierarchy</li>
+
+<li>Modular construction for customization</li>
+
+<li>Ready for animation and wheel scripts</li>
+
+<li>Optimized for fantasy, RPG, and historical environments</li>
+
+<li>Ideal for towns, villages, roads, and world landmarks</li>
 
 </ul>
-
-<div class="toolbox-button">
-
-Add to Toolbox
-
-</div>
-
-<div class="asset-media">
 
 <h3>Screenshots</h3>
 
 <div class="media-grid">
 
 <img
-    src="images/terrainvale/coach-front.png"
-    alt="Coach Front"
-    class="tool-screenshot">
+src="images/terrainvale/coach-front.png"
+alt="Coach Front"
+class="tool-screenshot">
 
 <img
-    src="images/terrainvale/coach-rear.png"
-    alt="Coach Rear"
-    class="tool-screenshot">
+src="images/terrainvale/coach-rear.png"
+alt="Coach Rear"
+class="tool-screenshot">
 
 <img
-    src="images/terrainvale/hearse-side.png"
-    alt="Hearse Side"
-    class="tool-screenshot">
+src="images/terrainvale/hearse-side.png"
+alt="Hearse Side"
+class="tool-screenshot">
 
 <img
-    src="images/terrainvale/hearse-rear.png"
-    alt="Hearse Rear"
-    class="tool-screenshot">
+src="images/terrainvale/hearse-rear.png"
+alt="Hearse Rear"
+class="tool-screenshot">
 
 </div>
 
 <h3>Demonstration Video</h3>
 
-<div class="video-placeholder">
+<div class="media-viewer">
 
-WagonAssetClip
-
-</div>
-
-</div>
-
-<p class="tool-note">
-
-Complete documentation and the Unity package become available after
-purchase.
-
-</p>
-
-</article>
-
-</div>
-
-</section>
-
-<hr class="section-divider">
-
-<!-- =====================================================
-     FUTURE PRODUCTION ASSET
-===================================================== -->
-
-<section
-    class="asset-section">
-
-<div class="asset-layout">
-
-<div class="video-placeholder">
-
-Future Production Asset
-
-</div>
-
-<article class="asset-document">
-
-<h2>Coming Soon</h2>
-
-<p>
-
-Additional production-ready Unity asset collections will be released
-here as the Studio Assets library continues to grow.
-
-</p>
-
-</article>
-
-</div>
-
-</section>
-
-<hr class="section-divider">
-
-<section class="tools-heading">
-
-<h2>Studio Tools</h2>
-
-<p>
-
-Standalone Unity development tools created to solve specific production
-problems while integrating naturally into professional workflows.
-
-</p>
-
-</section>
-
-  <!-- =====================================================
-     STUDIO TOOL PLACEHOLDER #1
-===================================================== -->
-
-<section
-    class="tool-section"
-    id="future-tool-1">
-
-<div class="tool-layout">
-
-<div class="tool-stamp-column">
+<div class="document">
 
 <img
-    src="images/terrainvale/tvs-placeholder.PNG"
-    alt="Future Studio Tool"
-    class="tool-stamp">
+id="heroMirror"
+src="images/terrainvale/carriages-hero.png"
+alt="Carriage Collection">
 
-<button
-    type="button"
-    class="tool-save-button"
-    disabled>
+<div id="heroContent">
 
-Coming Soon
+<iframe
+src="https://www.youtube.com/embed/xB0r8Zy2A8Q"
+title="Carriage Collection Demonstration"
+allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+allowfullscreen>
 
-</button>
-
-</div>
-
-<article class="tool-document">
-
-<h2>Coming Soon</h2>
-
-<p>
-
-Additional standalone Unity tools are currently in active development.
-Each tool is designed to solve a single production problem while fitting
-naturally into existing Unity workflows.
-
-</p>
-
-<h3>Planned Features</h3>
-
-<ul>
-
-<li>Professional editor extensions</li>
-<li>Focused production workflows</li>
-<li>Modular design philosophy</li>
-<li>Production-ready documentation</li>
-
-</ul>
-
-<div class="tool-media">
-
-<h3>Screenshots</h3>
-
-<div class="media-grid">
-
-<div class="media-placeholder">
-
-Preview Coming Soon
-
-</div>
-
-<div class="media-placeholder">
-
-Preview Coming Soon
+</iframe>
 
 </div>
 
 </div>
 
-<h3>Demonstration Video</h3>
-
-<div class="media-placeholder video-placeholder">
-
-Video Coming Soon
-
 </div>
 
-</div>
+<p class="asset-note">
 
-<p class="tool-note">
-
-Documentation and Unity packages become available when this product
-releases.
+Complete documentation is included with the Unity package after purchase.
 
 </p>
 
@@ -696,122 +399,194 @@ releases.
 
 </section>
 
-<hr class="tool-divider">
+<hr class="asset-divider">
 
-<!-- =====================================================
-     STUDIO TOOL PLACEHOLDER #2
-===================================================== -->
+<section class="asset-section">
 
-<section
-    class="tool-section"
-    id="future-tool-2">
+<div class="asset-placeholder">
 
-<div class="tool-layout">
-
-<div class="tool-stamp-column">
-
-<img
-    src="images/terrainvale/tvs-placeholder.PNG"
-    alt="Future Studio Tool"
-    class="tool-stamp">
-
-<button
-    type="button"
-    class="tool-save-button"
-    disabled>
-
-Coming Soon
-
-</button>
-
-</div>
-
-<article class="tool-document">
-
-<h2>Coming Soon</h2>
+<h2>Production Asset</h2>
 
 <p>
 
-Future Talvaren Studios tools will continue expanding the collection with
-focused solutions for world building, environment creation, and production
-workflow improvements.
+Additional production-ready Unity assets are currently in development.
 
 </p>
-
-<h3>More Information</h3>
-
-<p>
-
-As new tools become available, complete documentation, demonstration
-videos, screenshots, and downloadable Unity packages will appear here.
-
-</p>
-
-  <div class="tool-media">
-
-<h3>Screenshots</h3>
-
-<div class="media-grid">
-
-<div class="media-placeholder">
-
-Preview Coming Soon
-
-</div>
-
-<div class="media-placeholder">
-
-Preview Coming Soon
-
-</div>
-
-</div>
-
-<h3>Demonstration Video</h3>
-
-<div class="media-placeholder video-placeholder">
-
-Video Coming Soon
-
-</div>
-
-</div>
-
-<p class="tool-note">
-
-Documentation and Unity packages become available when this product
-releases.
-
-</p>
-
-</article>
 
 </div>
 
 </section>
 
-</main>
+<hr class="asset-divider">
 
-<footer class="site-footer">
+<section class="asset-section">
+
+<div class="asset-placeholder">
+
+<h2>Production Asset</h2>
 
 <p>
 
-© 2026 Talvaren Studios. All Rights Reserved.
+Additional production-ready Unity assets are currently in development.
 
 </p>
 
+</div>
+
+</section>
+
+<hr class="asset-divider">
+
+<section class="asset-section">
+
+<div class="asset-placeholder">
+
+<h2>Studio Tool</h2>
+
 <p>
 
-<a href="index.html">
+Professional standalone Unity development utilities coming soon.
 
-Return to Homepage
+</p>
+
+</div>
+
+</section>
+
+<hr class="asset-divider">
+
+<section class="asset-section">
+
+<div class="asset-placeholder">
+
+<h2>Studio Tool</h2>
+
+<p>
+
+Professional standalone Unity development utilities coming soon.
+
+</p>
+
+</div>
+
+</section>
+
+<hr class="asset-divider">
+
+<section class="asset-section">
+
+<div class="asset-placeholder">
+
+<h2>Studio Tool</h2>
+
+<p>
+
+Professional standalone Unity development utilities coming soon.
+
+</p>
+
+</div>
+
+</section>
+   
+<p style="margin-top:60px;text-align:center;">
+
+<a
+href="unity-tools.html"
+style="color:#e6e6e6;">
+
+← Return to Unity Tools
 
 </a>
 
 </p>
 
+</main>
+
+<footer>
+
+© 2026 Talvaren Studios
+
 </footer>
+
+<script>
+
+const TOOLBOX_STORAGE_KEY="terrainvale-toolbox";
+
+function getSavedToolboxSelections(){
+
+try{
+
+return JSON.parse(
+localStorage.getItem(
+TOOLBOX_STORAGE_KEY
+)
+)||[];
+
+}catch{
+
+return[];
+
+}
+
+}
+
+function saveToolToToolbox(toolId){
+
+const saved=getSavedToolboxSelections();
+
+if(!saved.includes(toolId)){
+
+saved.push(toolId);
+
+localStorage.setItem(
+TOOLBOX_STORAGE_KEY,
+JSON.stringify(saved)
+);
+
+}
+
+}
+
+function updateSaveButton(button){
+
+const saved=getSavedToolboxSelections();
+
+if(saved.includes(button.dataset.toolId)){
+
+button.textContent="✓ Saved to Toolbox";
+button.classList.add("saved");
+
+}else{
+
+button.textContent="Save to Toolbox";
+button.classList.remove("saved");
+
+}
+
+}
+
+document
+.querySelectorAll(".tool-save-button[data-tool-id]")
+.forEach(button=>{
+
+updateSaveButton(button);
+
+button.addEventListener("click",()=>{
+
+saveToolToToolbox(
+button.dataset.toolId
+);
+
+updateSaveButton(button);
+
+});
+
+});
+
+</script>
 
 </body>
 
 </html>
+   
