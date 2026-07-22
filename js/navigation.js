@@ -220,6 +220,7 @@
   async function loadItem(item) {
     document.body.classList.remove("portal-landing-active");
     document.body.classList.toggle("talvaren-section-active", item.id.startsWith("talvaren-"));
+    elements.content.classList.remove("viewer-stage-active");
     document.body.classList.add("shell-loading");
     try {
       const response = await fetch(item.path, { cache: "no-store" });
@@ -246,6 +247,7 @@
   function clearContent() {
     document.body.classList.remove("portal-landing-active");
     document.body.classList.remove("talvaren-section-active");
+    elements.content.classList.remove("viewer-stage-active");
     elements.content.innerHTML = "";
     delete elements.content.dataset.currentItem;
   }
@@ -253,6 +255,7 @@
   function renderPortalLanding(portal) {
     document.body.classList.add("portal-landing-active");
     document.body.classList.remove("talvaren-section-active");
+    elements.content.classList.remove("viewer-stage-active");
     elements.content.innerHTML = `
       <section class="portal-landing" aria-label="${portal.label}">
         <img class="portal-landing-banner" src="images/branding/Talvaren_Banner.PNG" alt="Talvaren Studios — Forging Reality One Tool at a Time">

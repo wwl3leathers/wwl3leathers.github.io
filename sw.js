@@ -2,7 +2,7 @@
 const BASE_URL = new URL("./", self.location.href);
 const SCOPE_KEY = new URL(self.registration.scope).pathname.replace(/[^a-z0-9]+/gi, "-").replace(/^-|-$/g, "") || "root";
 const CACHE_PREFIX = `talvaren-studios-${SCOPE_KEY}-`;
-const CACHE_NAME = `${CACHE_PREFIX}r35`;
+const CACHE_NAME = `${CACHE_PREFIX}r36`;
 const scopedUrl = path => new URL(path, BASE_URL).href;
 const CORE = [
   "", "index.html", "404.html", "manifest.webmanifest",

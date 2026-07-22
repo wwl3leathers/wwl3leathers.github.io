@@ -118,7 +118,7 @@
 
   function initializeMediaControls() {
     document.querySelectorAll("[data-viewer-src]").forEach(button => {
-      button.setAttribute("aria-haspopup", "dialog");
+      button.removeAttribute("aria-haspopup");
     });
   }
 
@@ -167,7 +167,7 @@
   }
 
   window.Talvaren = Object.assign(window.Talvaren || {}, {
-    version: "2.0-r20",
+    version: "2.0-r21",
     shellReady: true,
     initializeCurrentPage
   });
