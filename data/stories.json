@@ -1,0 +1,56 @@
+[
+  {
+    "id": "amber",
+    "title": "Amber",
+    "description": "Collected tales of Amber.",
+    "path": "html/archives/stories/amber.html"
+  },
+  {
+    "id": "bill",
+    "title": "Bill",
+    "description": "Collected tales of Bill.",
+    "path": "html/archives/stories/bill.html"
+  },
+  {
+    "id": "braska",
+    "title": "Braska",
+    "description": "Collected tales of Braska.",
+    "path": "html/archives/stories/braska.html"
+  },
+  {
+    "id": "brin",
+    "title": "Brin",
+    "description": "Collected tales of Brin.",
+    "path": "html/archives/stories/brin.html"
+  },
+  {
+    "id": "brix",
+    "title": "Stories of Brix Sparkspill",
+    "description": "Collected tales of Brix Sparkspill, Alchemist, explorer, entrepreneur, and occasional survivor of his own ideas.",
+    "path": "html/archives/stories/brix.html"
+  },
+  {
+    "id": "brynnhilde",
+    "title": "Brynnhilde",
+    "description": "Collected tales of Brynnhilde.",
+    "path": "html/archives/stories/brynnhilde.html"
+  },
+  {
+    "id": "elrono",
+    "title": "Elrono",
+    "description": "Collected tales of Elrono.",
+    "path": "html/archives/stories/elrono.html"
+  },
+  {
+    "id": "marra",
+    "title": "Marra",
+    "description": "Collected tales of Marra.",
+    "path": "html/archives/stories/marra.html"
+  },
+  {
+    "id": "wolter",
+    "title": "Wolter",
+    "description": "Collected tales of Wolter.",
+    "path": "html/archives/stories/wolter.html"
+  }
+]

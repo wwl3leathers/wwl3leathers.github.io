@@ -1,0 +1,688 @@
+/* =========================================================
+   TALVAREN STUDIOS V2
+   APPLICATION SHELL
+========================================================= */
+
+.site-shell{
+
+    min-height:100vh;
+    min-height:100dvh;
+
+}
+
+/* =========================================================
+   DESKTOP PRIMARY NAVIGATION RAIL
+========================================================= */
+
+.primary-rail{
+
+    position:fixed;
+    inset:
+        0
+        auto
+        0
+        0;
+
+    z-index:1200;
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+
+    width:var(--primary-rail-width);
+
+    padding:
+        16px
+        10px;
+
+    background:
+        linear-gradient(rgba(255,255,255,.06),rgba(80,52,28,.10)),
+        #c4a56f;
+
+    border-right:
+        1px solid
+        #66492d;
+
+    box-shadow:
+        8px
+        0
+        24px
+        rgba(0,0,0,.24);
+
+    backdrop-filter:
+        blur(12px);
+
+}
+
+.primary-nav{
+
+    display:flex;
+    flex-direction:column;
+
+    width:100%;
+
+    gap:10px;
+
+}
+
+.primary-nav-button{
+
+    position:relative;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    width:100%;
+    min-height:58px;
+
+    padding:8px 10px;
+
+    color:
+        #302015;
+
+    background:
+        transparent;
+
+    border:
+        1px solid
+        transparent;
+
+    border-radius:12px;
+
+    cursor:pointer;
+
+    transition:
+        color .18s ease,
+        background .18s ease,
+        border-color .18s ease;
+
+}
+
+.primary-nav-button:hover{
+
+    color:
+        #302015;
+
+    background:
+        rgba(255,244,211,.42);
+
+    border-color:
+        rgba(83,57,32,.38);
+
+}
+
+.primary-nav-button.active{
+
+    color:
+        var(--talvaren-parchment-light);
+
+    background:
+        #553a22;
+
+    border-color:
+        #3e2a19;
+
+}
+
+.primary-nav-button::after{
+
+    content:"";
+
+    position:absolute;
+    top:50%;
+    right:-11px;
+
+    width:4px;
+    height:30px;
+
+    background:
+        transparent;
+
+    border-radius:
+        4px;
+
+    transform:
+        translateY(-50%);
+
+}
+
+.primary-nav-button.active::after{
+
+    background:
+        var(--talvaren-gold);
+
+}
+
+.primary-nav-label{
+    color:inherit;
+    font-size:.9rem;
+    font-weight:700;
+    white-space:
+        nowrap;
+}
+
+/* =========================================================
+   DESKTOP SECONDARY NAVIGATION
+========================================================= */
+
+.secondary-rail{
+
+    position:fixed;
+    inset:
+        0
+        auto
+        0
+        var(--primary-rail-width);
+
+    z-index:1100;
+
+    display:flex;
+    flex-direction:column;
+
+    width:var(--secondary-rail-width);
+
+    padding:
+        22px
+        18px;
+
+    background:
+        linear-gradient(rgba(255,255,255,.08),rgba(91,61,31,.08)),
+        #dec79a;
+
+    border-right:
+        1px solid
+        #725536;
+
+    box-shadow:
+        10px
+        0
+        30px
+        rgba(0,0,0,.18);
+
+    backdrop-filter:
+        blur(14px);
+
+    overflow-y:auto;
+
+}
+
+.secondary-rail-header{
+
+    margin-bottom:
+        22px;
+
+    padding-bottom:
+        18px;
+
+    border-bottom:
+        1px solid
+        rgba(92,66,39,.34);
+
+}
+
+.secondary-rail-eyebrow{
+
+    margin-bottom:
+        6px;
+
+    color:
+        #684820;
+
+    font-size:
+        .78rem;
+
+    font-weight:
+        bold;
+
+    letter-spacing:
+        .12em;
+
+    text-transform:
+        uppercase;
+
+}
+
+.secondary-rail-title{
+
+    margin:0;
+
+    color:
+        #302015;
+
+    font-size:
+        1.55rem;
+
+}
+
+.secondary-nav{
+
+    display:flex;
+    flex-direction:column;
+
+    gap:
+        8px;
+
+}
+
+.secondary-nav-link{
+
+    display:flex;
+    align-items:center;
+
+    min-height:
+        46px;
+
+    padding:
+        10px
+        12px;
+
+    color:
+        #352416;
+
+    background:
+        transparent;
+
+    border:
+        1px solid
+        transparent;
+
+    border-radius:
+        9px;
+
+    text-decoration:
+        none;
+
+    transition:
+        color .18s ease,
+        background .18s ease,
+        border-color .18s ease,
+        padding-left .18s ease;
+
+}
+
+.secondary-nav-link:hover{
+
+    color:
+        #302015;
+
+    background:
+        rgba(255,248,224,.34);
+
+    border-color:
+        rgba(92,66,39,.30);
+
+    padding-left:
+        16px;
+
+}
+
+.secondary-nav-link.active{
+
+    color:
+        var(--talvaren-parchment-light);
+
+    background:
+        rgba(75,58,34,.72);
+
+    border-color:
+        rgba(229,207,160,.38);
+
+}
+
+.secondary-rail-footer{
+
+    margin-top:auto;
+    padding-top:24px;
+
+    color:
+        #4a321f;
+
+    font-size:
+        .82rem;
+
+}
+
+/* =========================================================
+   MAIN VIEW
+========================================================= */
+
+.site-main{
+
+    min-height:100vh;
+    min-height:100dvh;
+
+    margin-left:
+        calc(
+            var(--primary-rail-width)
+            +
+            var(--secondary-rail-width)
+        );
+
+}
+
+body.no-secondary-navigation .site-main{
+    margin-left:var(--primary-rail-width);
+}
+
+.site-view{
+
+    min-height:100vh;
+    min-height:100dvh;
+
+    padding:
+        clamp(
+            24px,
+            4vw,
+            54px
+        );
+
+}
+
+.site-view-inner{
+
+    width:
+        min(
+            var(--talvaren-content-width),
+            100%
+        );
+
+    margin:
+        0
+        auto;
+
+}
+
+.portal-landing{
+    width:min(1100px,100%);
+    margin:0 auto;
+}
+
+.portal-landing-banner{
+    width:100%;
+    max-height:calc(100dvh - 120px);
+    object-fit:contain;
+    border-radius:18px;
+    filter:drop-shadow(0 18px 38px rgba(0,0,0,.42));
+}
+
+.talvaren-section-banner{
+    display:none;
+}
+
+@media (min-width:901px){
+    .site-wallpaper{
+        left:calc(var(--primary-rail-width) + var(--secondary-rail-width));
+        width:calc(100% - var(--primary-rail-width) - var(--secondary-rail-width));
+    }
+
+    body.no-secondary-navigation .site-wallpaper{
+        left:var(--primary-rail-width);
+        width:calc(100% - var(--primary-rail-width));
+    }
+
+    body.portal-landing-active .site-view{
+        padding:0;
+    }
+
+    body.talvaren-section-active .site-view{
+        padding-top:max(0px,calc(clamp(24px,4vw,54px) - 40px));
+    }
+
+    body.portal-landing-active .site-view-inner{
+        width:100%;
+        max-width:none;
+    }
+
+    .portal-landing{
+        position:relative;
+        width:100%;
+        min-height:100vh;
+        min-height:100dvh;
+        margin:0;
+    }
+
+    .portal-landing-banner{
+        display:none;
+    }
+
+    .talvaren-section-banner{
+        display:flex;
+        justify-content:center;
+        width:100%;
+        margin:0 auto;
+        position:relative;
+        z-index:1;
+    }
+
+    .talvaren-section-banner img{
+        display:block;
+        width:min(880px,80%);
+        max-height:calc(100dvh - 108px);
+        object-fit:contain;
+        border-radius:18px;
+        filter:drop-shadow(0 18px 38px rgba(0,0,0,.42));
+    }
+
+    .talvaren-section-banner + *{
+        position:relative;
+        z-index:2;
+        margin-top:-52px;
+    }
+}
+
+.site-view-hero{
+
+    min-height:
+        42vh;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-end;
+
+    padding:
+        clamp(
+            26px,
+            5vw,
+            58px
+        );
+
+    margin-bottom:
+        34px;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(10,14,18,.06),
+            rgba(10,14,18,.68)
+        );
+
+    border:
+        1px solid
+        rgba(229,207,160,.18);
+
+    border-radius:
+        18px;
+
+    box-shadow:
+        0
+        16px
+        40px
+        rgba(0,0,0,.34);
+
+    overflow:hidden;
+
+}
+
+/* =========================================================
+   TOP UTILITY BAR
+========================================================= */
+
+.site-utility-bar{
+
+    display:flex;
+    justify-content:flex-end;
+    align-items:center;
+
+    min-height:
+        56px;
+
+    padding:
+        10px
+        clamp(
+            18px,
+            3vw,
+            34px
+        );
+
+    margin-left:
+        calc(
+            var(--primary-rail-width)
+            +
+            var(--secondary-rail-width)
+        );
+
+    background:
+        rgba(18,22,28,.76);
+
+    border-bottom:
+        1px solid
+        var(--talvaren-shell-border);
+
+    backdrop-filter:
+        blur(10px);
+
+}
+
+.site-utility-actions{
+
+    display:flex;
+    align-items:center;
+    gap:
+        10px;
+
+}
+
+.site-utility-link{
+
+    display:inline-flex;
+    align-items:center;
+
+    min-height:
+        36px;
+
+    padding:
+        8px
+        12px;
+
+    color:
+        var(--talvaren-muted);
+
+    border:
+        1px solid
+        transparent;
+
+    border-radius:
+        8px;
+
+    text-decoration:
+        none;
+
+}
+
+.site-utility-link:hover{
+
+    color:
+        var(--talvaren-parchment-light);
+
+    border-color:
+        rgba(229,207,160,.24);
+
+    background:
+        rgba(75,58,34,.32);
+
+}
+
+/* =========================================================
+   MOBILE NAVIGATION
+========================================================= */
+
+.mobile-secondary-nav,
+.mobile-primary-nav{
+
+    display:none;
+
+}
+
+.secondary-rail[hidden],
+.mobile-secondary-nav[hidden]{
+
+    display:none !important;
+
+}
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.site-footer{
+
+    margin-left:
+        calc(
+            var(--primary-rail-width)
+            +
+            var(--secondary-rail-width)
+        );
+
+    padding:
+        24px
+        clamp(
+            20px,
+            4vw,
+            46px
+        );
+
+    color:
+        var(--talvaren-muted);
+
+    background:
+        rgba(18,22,28,.90);
+
+    border-top:
+        1px solid
+        var(--talvaren-shell-border);
+
+    text-align:center;
+
+}
+
+/* =========================================================
+   SHELL STATE
+========================================================= */
+
+body.shell-loading{
+
+    cursor:
+        progress;
+
+}
+
+body.shell-loading
+.site-view{
+
+    opacity:
+        .56;
+
+}
+
+.site-main,
+.site-view{
+
+    transition:
+        opacity .18s ease;
+
+}
+
+/* R3 CONTENT STAGE */
+.hero-kicker { margin-bottom: 8px; color: var(--talvaren-gold); font-weight: bold; letter-spacing: .14em; text-transform: uppercase; }
+.shell-loading .site-main { opacity: .55; }

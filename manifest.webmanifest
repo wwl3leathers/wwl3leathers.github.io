@@ -1,0 +1,11 @@
+{
+  "name": "Talvaren Studios",
+  "short_name": "Talvaren",
+  "description": "Home of the Talvaren MMORPG, TerrainVale Unity tools, and the Fantastical Archives.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#11171d",
+  "theme_color": "#11171d",
+  "icons": [{"src":"images/branding/Logo-min.PNG","sizes":"any","type":"image/png","purpose":"any maskable"}]
+}

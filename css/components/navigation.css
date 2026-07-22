@@ -1,0 +1,83 @@
+/* =========================================================
+   TALVAREN STUDIOS V2 — NAVIGATION COMPONENTS
+========================================================= */
+
+.primary-nav-button,
+.mobile-primary-link,
+.secondary-nav-link,
+.mobile-secondary-link {
+  appearance: none;
+  font-family: inherit;
+}
+
+.primary-nav-button,
+.mobile-primary-link,
+.secondary-nav-link,
+.mobile-secondary-link {
+  cursor: pointer;
+}
+
+.primary-nav-button.active,
+.mobile-primary-link.active {
+  color: var(--talvaren-parchment-light);
+}
+
+.secondary-nav-link.active {
+  color: var(--talvaren-parchment-light);
+  background: rgba(75,58,34,.72);
+  border-color: rgba(229,207,160,.38);
+}
+
+.secondary-nav-link.active::before {
+  content: "";
+  width: 5px;
+  height: 5px;
+  margin-right: 10px;
+  flex: 0 0 auto;
+  background: var(--talvaren-gold);
+  border-radius: 50%;
+  box-shadow: 0 0 0 4px rgba(214,182,111,.10);
+}
+
+.mobile-secondary-link.active {
+  color: var(--talvaren-parchment-light);
+  border-bottom-color: var(--talvaren-gold);
+}
+
+.primary-nav-button[aria-current="page"],
+.mobile-primary-link[aria-current="page"],
+.secondary-nav-link[aria-current="page"],
+.mobile-secondary-link[aria-current="page"] {
+  font-weight: bold;
+}
+
+.primary-nav-button:focus-visible,
+.secondary-nav-link:focus-visible,
+.mobile-primary-link:focus-visible,
+.mobile-secondary-link:focus-visible {
+  outline: 3px solid var(--talvaren-gold);
+  outline-offset: 2px;
+}
+
+.system-message {
+  padding: 12px 16px;
+  color: var(--talvaren-parchment-light);
+  background: rgba(81,36,36,.88);
+  border: 1px solid rgba(255,220,190,.35);
+  border-radius: 10px;
+}
+
+.navigation-status {
+  margin: 0 0 18px;
+  color: var(--talvaren-muted);
+  font-size: .9rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .primary-nav-button,
+  .secondary-nav-link,
+  .mobile-primary-link,
+  .mobile-secondary-link {
+    transition: none;
+  }
+}

@@ -1,18 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Page Not Found –Talvaren Studios</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="robots" content="noindex,follow">
+<meta name="theme-color" content="#11171d">
+<title>Page Not Found | Talvaren Studios</title>
+<link rel="icon" href="images/branding/Logo-min.PNG" type="image/png">
+<link rel="stylesheet" href="css/base.css">
+<style>
+body{display:grid;min-height:100vh;place-items:center;padding:24px;background:#0f1318}
+.error-panel{width:min(680px,100%);padding:clamp(28px,6vw,58px);text-align:center;color:#211b14;background:linear-gradient(180deg,#ebdebc,#cfbc91);border:2px solid rgba(75,58,34,.45);border-radius:16px;box-shadow:0 18px 48px rgba(0,0,0,.45)}
+.error-code{margin:0;color:#6d5324;font-size:clamp(4rem,18vw,9rem);line-height:.9}
+.error-panel h1{font-size:clamp(2rem,6vw,3.7rem)}
+.error-panel p{font-size:1.08rem}
+.error-panel a{margin-top:14px}
+</style>
+<script>
+(function(){
+  var path=location.pathname.replace(/^\/+/,"").replace(/\/+$/,"");
+  var routes={"talvaren.html":"#portal=talvaren","unity-tools.html":"#portal=tools&section=tools-terrainvale","terrainvale.html":"#portal=tools&section=tools-terrainvale","terrain-authority.html":"#portal=tools&section=tools-terrainvale","toolbox.html":"#portal=tools&section=tools-toolbox","archives.html":"#portal=archives&section=archives-stories","breadcrumbs.html":"#portal=archives&section=archives-breadcrumbs","media.html":"#portal=talvaren&section=talvaren-media","privacy.html":"#portal=community&section=community-portfolio","terms.html":"#portal=community&section=community-portfolio"};
+  if(routes[path]){location.replace("/"+routes[path]);return;}
+  if(/^stories\/[^/]+\.html$/.test(path)){location.replace("/#portal=archives&section=archives-stories");}
+})();
+</script>
 </head>
 <body>
-  <header><nav class="navbar"><a href="index.html" class="logo"Talvaren Studios</a></nav></header>
-  <section class="hero small-hero" style="background-image:url('images/workshop-background.jpg');">
-    <div class="hero-text">
-      <h1>That page slipped off the workbench.</h1>
-      <a href="index.html" class="btn">Return Home</a>
-    </div>
-  </section>
+<main class="error-panel">
+<p class="error-code">404</p>
+<h1>This path has not been charted.</h1>
+<p>The requested page may have moved, changed names, or not yet exist within Talvaren Studios.</p>
+<a class="talvaren-button" href="/">Return to Talvaren Studios</a>
+</main>
 </body>
 </html>

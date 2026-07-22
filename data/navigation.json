@@ -1,0 +1,122 @@
+{
+  "defaultPortal": "",
+  "portals": [
+    {
+      "id": "talvaren",
+      "label": "Talvaren",
+      "shortLabel": "Talvaren",
+      "title": "Talvaren",
+      "items": [
+        {
+          "id": "talvaren-history",
+          "label": "History",
+          "path": "html/talvaren/history.html"
+        },
+        {
+          "id": "talvaren-places",
+          "label": "Places",
+          "path": "html/talvaren/places.html"
+        },
+        {
+          "id": "talvaren-peoples",
+          "label": "Peoples",
+          "path": "html/talvaren/peoples.html"
+        },
+        {
+          "id": "talvaren-about",
+          "label": "About Talvaren",
+          "path": "html/talvaren/about.html"
+        },
+        {
+          "id": "talvaren-classes",
+          "label": "Classes & Races",
+          "path": "html/talvaren/classes-races.html"
+        },
+        {
+          "id": "talvaren-founders-hall",
+          "label": "Founder's Hall",
+          "path": "html/talvaren/founders-hall.html"
+        },
+        {
+          "id": "talvaren-media",
+          "label": "Media",
+          "path": "html/talvaren/media.html"
+        },
+        {
+          "id": "talvaren-enter",
+          "label": "Enter Talvaren",
+          "path": "html/talvaren/enter-talvaren.html"
+        }
+      ]
+    },
+    {
+      "id": "tools",
+      "label": "Unity Tools",
+      "shortLabel": "Tools",
+      "title": "Unity Tools",
+      "items": [
+        {
+          "id": "tools-terrainvale",
+          "label": "TerrainVale Suite",
+          "path": "html/tools/terrainvale.html"
+        },
+        {
+          "id": "tools-studio-assets",
+          "label": "Studio Assets",
+          "path": "html/tools/studio-assets.html"
+        },
+        {
+          "id": "tools-toolbox",
+          "label": "Toolbox",
+          "path": "html/tools/toolbox.html"
+        }
+      ]
+    },
+    {
+      "id": "archives",
+      "label": "Fantastical Archives",
+      "shortLabel": "Archives",
+      "title": "Fantastical Archives",
+      "items": [
+        {
+          "id": "archives-stories",
+          "label": "Stories",
+          "path": "html/archives/stories.html"
+        },
+        {
+          "id": "archives-artwork",
+          "label": "Artwork",
+          "path": "html/archives/artwork.html"
+        },
+        {
+          "id": "archives-breadcrumbs",
+          "label": "Historical Breadcrumbs",
+          "path": "html/archives/breadcrumbs.html"
+        }
+      ]
+    },
+    {
+      "id": "community",
+      "label": "Community",
+      "shortLabel": "Community",
+      "title": "Community",
+      "items": [
+        {
+          "id": "community-portfolio",
+          "label": "Technical Portfolio",
+          "path": "html/community/portfolio.html"
+        },
+        {
+          "id": "community-feedback",
+          "label": "Feedback",
+          "path": "html/community/feedback.html"
+        },
+        {
+          "id": "community-contact",
+          "label": "Contact",
+          "path": "html/community/contact.html"
+        }
+      ]
+    }
+  ]
+}

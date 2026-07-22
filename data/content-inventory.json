@@ -1,0 +1,103 @@
+{
+  "stories": [
+    "amber",
+    "bill",
+    "braska",
+    "brin",
+    "brix",
+    "brynnhilde",
+    "elrono",
+    "marra",
+    "wolter"
+  ],
+  "artwork": [
+    "a-amber.PNG",
+    "a-bard.PNG",
+    "a-bill-1.PNG",
+    "a-breath-of-talvaren.PNG",
+    "a-brin-hollow.PNG",
+    "a-brix.PNG",
+    "a-cletus.PNG",
+    "a-d-trio.PNG",
+    "a-elrono.PNG",
+    "a-f-jeweler.PNG",
+    "a-hilde-1.PNG",
+    "a-hilde-2.PNG",
+    "a-hilde-3.PNG",
+    "a-k-cup.PNG",
+    "a-k-fish.PNG",
+    "a-ledger.PNG",
+    "a-map.PNG",
+    "a-marra.PNG",
+    "a-me.PNG",
+    "a-sisters.PNG",
+    "a-stitchling.PNG",
+    "a-story.PNG",
+    "a-t-child.PNG",
+    "a-t-desert.PNG",
+    "a-tailor.PNG",
+    "a-tgl.PNG",
+    "a-trio.PNG",
+    "a-u-clinic.PNG",
+    "a-u-cook.PNG",
+    "a-wolter.PNG",
+    "a-writ.PNG"
+  ],
+  "historicalBreadcrumbs": [
+    "brownies.PNG",
+    "church-grimm.PNG",
+    "domovoi.PNG",
+    "dryads.PNG",
+    "elves.PNG",
+    "fairy-rings.PNG",
+    "green-lights.PNG",
+    "kobolds.PNG",
+    "old-man-winter.PNG",
+    "phantom-roads.PNG",
+    "selkies.PNG",
+    "strange-gifts-part-1.PNG",
+    "strange-gifts-part-2.PNG",
+    "strange-gifts-part-3.PNG",
+    "the-guiding-hand.PNG",
+    "the-hidden-hearth.PNG",
+    "tommyknockers.PNG"
+  ],
+  "unityPackages": [
+    "ValeGradeAuthority.unitypackage",
+    "ValePaintAuthority.unitypackage",
+    "ValePathAuthority.unitypackage",
+    "ValeRibbonAuthority.unitypackage",
+    "ValeTerrainAuthority.unitypackage",
+    "ValeTerritoryAuthority.unitypackage"
+  ],
+  "preservedBranding": [
+    "Logo-min.PNG",
+    "Talvaren_Banner.PNG",
+    "Talvaren_Mirror.PNG",
+    "TerrainVale_Banner.PNG",
+    "StudioAssets_Banner.PNG",
+    "tv-book.PNG",
+    "tv-studio.PNG"
+  ],
+  "portfolioMedia": [
+    "Technical_Portfolio.PNG"
+  ],
+  "studioAssetImages": [
+    "carriages-hero.png",
+    "coach-front.png",
+    "coach-rear.png",
+    "hearse-rear.png",
+    "hearse-side.png"
+  ],
+  "videoFiles": [
+    "terrain-authority-demonstration.mp4"
+  ],
+  "toolDocumentation": [
+    "TerrainAuthority.txt",
+    "TerritoryAuthority.txt",
+    "PathAuthority.txt",
+    "RibbonAuthority.txt",
+    "GradeAuthority.txt",
+    "PaintAuthority.txt"
+  ]
+}

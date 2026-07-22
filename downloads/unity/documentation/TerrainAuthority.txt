@@ -1,0 +1,65 @@
+TALVAREN STUDIOS
+TERRAIN AUTHORITY
+INSTALLATION, MANUAL, LICENSE, AND SUPPORT
+
+OVERVIEW
+Terrain Authority is part of the TerrainVale Suite for the Unity Editor.
+
+Terrain Authority is the foundational terrain generation tool of the Vale Terrain Suite. Rather than attempting to simulate real-world geology, it creates believable environmental forms through artistic composition and controlled procedural generation.
+
+PROBLEM SOLVED
+Many terrain generators overwhelm developers with complex simulations and extensive parameter systems. Terrain Authority focuses instead on the desired result: compelling terrain foundations created quickly while preserving artistic control.
+
+REQUIREMENTS
+- Unity Editor
+- Unity Terrain System
+
+INSTALLATION
+1. Back up the Unity project before importing any editor extension.
+2. Open the target project in a supported Unity Editor installation.
+3. Import the supplied .unitypackage through Assets > Import Package > Custom Package.
+4. Review the package contents, then complete the import.
+5. Allow Unity to compile before opening the tool.
+6. Use the tool's own creation commands to establish any required project folders or data structures.
+
+PRIMARY FEATURES
+- Pressure-field based terrain generation
+- Parent and child regional terrain inheritance
+- Directional shelving for plateaus and stepped formations
+- Controlled ruggedness for natural visual breakup
+- Standardized Vale territory cadence
+- Rapid iteration with minimal setup
+
+WORKFLOW ROLE
+Terrain Authority establishes the land itself. It creates the foundational terrain forms that every later stage of the VALE workflow organizes, traverses, expresses, grades, and paints.
+
+PACKAGE CONTENTS
+- One self-contained Unity .unitypackage containing the tool code.
+- This single plain-text documentation file.
+- No sample scenes, sample terrains, screenshots, bundled videos, changelogs, version folders, or unrelated assets.
+
+USE AND PROJECT SAFETY
+- Test the tool in a duplicate project or source-controlled branch before applying changes to production content.
+- Save the project before terrain generation, conversion, painting, or destructive editor operations.
+- Confirm terrain resolution, dimensions, layers, neighboring terrain relationships, and project settings before processing.
+- Large terrains and high resolutions may require additional processing time and memory.
+- Results depend on project configuration, Unity version, terrain data, and author-selected settings.
+
+LIMITATIONS
+- The tool is intended for use inside the Unity Editor and is not a runtime gameplay system unless explicitly stated in the tool interface.
+- Talvaren Studios does not guarantee compatibility with every third-party terrain, rendering, or editor extension.
+- No tool can replace project backups, version control, testing, or professional judgment.
+- Features and interface details may be refined before public release.
+
+LICENSE
+Copyright (c) 2026 Talvaren Studios. All rights reserved.
+
+The package is licensed to the purchaser for use in their own Unity projects, including commercial projects, subject to the final license presented at purchase. Redistribution, resale, sublicensing, public sharing, repackaging, or publishing the tool code or documentation as a competing product is prohibited.
+
+Assets created by the licensed user with the tool remain the user's project content. The tool code, documentation, branding, and original package remain the intellectual property of Talvaren Studios.
+
+SUPPORT
+Use the Contact section at talvarenstudios.com for support, compatibility questions, and verified release information. Include the tool name, Unity version, render pipeline, operating system, and a concise description of the issue.
+
+RELEASE AUTHORITY
+The website and the documentation distributed with the purchased package are the authoritative sources for current requirements, limitations, license terms, and support information.

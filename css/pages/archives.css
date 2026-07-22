@@ -1,0 +1,12 @@
+/* Page module: archives */
+
+
+/* R8 preserved archive content */
+.story-library-card { display:flex; flex-direction:column; }
+.story-library-card .talvaren-button { margin-top:auto; align-self:flex-start; }
+.story-reader-stage[hidden] { display:none; }
+.story-reader { max-width:78ch; margin:0 auto; line-height:1.75; white-space:normal; }
+.story-reader .story { white-space:pre-wrap; font-family:Georgia,serif; }
+.story-reader h1 { line-height:1.1; }
+.collection-count { opacity:.78; }
+@media (max-width:700px){ .story-reader { font-size:1rem; } }

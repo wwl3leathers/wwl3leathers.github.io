@@ -1,0 +1,227 @@
+[
+  {
+    "id": "terrain-authority",
+    "name": "Terrain Authority",
+    "collection": "VALE",
+    "status": "Release Preparation",
+    "price": "Coming Soon",
+    "stamp": "images/terrainvale/tvs-terrain.PNG",
+    "packageFile": "ValeTerrainAuthority.unitypackage",
+    "documentationFile": "TerrainAuthority.txt",
+    "description": "Terrain Authority is the foundational terrain generation tool of the Vale Terrain Suite. Rather than attempting to simulate real-world geology, it creates believable environmental forms through artistic composition and controlled procedural generation.",
+    "problem": "Many terrain generators overwhelm developers with complex simulations and extensive parameter systems. Terrain Authority focuses instead on the desired result: compelling terrain foundations created quickly while preserving artistic control.",
+    "features": [
+      "Pressure-field based terrain generation",
+      "Parent and child regional terrain inheritance",
+      "Directional shelving for plateaus and stepped formations",
+      "Controlled ruggedness for natural visual breakup",
+      "Standardized Vale territory cadence",
+      "Rapid iteration with minimal setup"
+    ],
+    "requirements": [
+      "Unity Editor",
+      "Unity Terrain System"
+    ],
+    "screenshots": [
+      "images/terrainvale/TerrainAuthority_A.PNG",
+      "images/terrainvale/TerrainAuthority_B.PNG"
+    ],
+    "workflowRole": "Terrain Authority establishes the land itself. It creates the foundational terrain forms that every later stage of the VALE workflow organizes, traverses, expresses, grades, and paints.",
+    "packagePath": "downloads/unity/tools/ValeTerrainAuthority.unitypackage",
+    "releaseState": "Package and consolidated release documentation are prepared; public sales activation remains pending.",
+    "packageContents": [
+      "Self-contained Unity tool package",
+      "Single plain-text manual at release"
+    ],
+    "video": {
+      "src": "videos/terrain-authority-demonstration.mp4",
+      "title": "Terrain Authority Demonstration"
+    },
+    "documentationPath": "downloads/unity/documentation/TerrainAuthority.txt"
+  },
+  {
+    "id": "territory-authority",
+    "name": "Territory Authority",
+    "collection": "VALE",
+    "status": "Release Preparation",
+    "price": "Coming Soon",
+    "stamp": "images/terrainvale/tvs-territory.PNG",
+    "packageFile": "ValeTerritoryAuthority.unitypackage",
+    "documentationFile": "TerritoryAuthority.txt",
+    "description": "Territory Authority transforms large Unity terrains into standardized, interconnected territories designed for scalable world construction.",
+    "problem": "Large terrains become increasingly difficult to organize and maintain. Territory Authority converts existing Unity terrains into standardized territory grids while preserving visual continuity.",
+    "features": [
+      "Converts large terrains into standardized territory grids",
+      "Multiple territory subdivision configurations",
+      "Preserves terrain continuity through height reconstruction",
+      "Automatically establishes neighboring terrain relationships",
+      "Maintains visual cohesion across territory boundaries",
+      "Preserves the original terrain by disabling rather than destroying it"
+    ],
+    "requirements": [
+      "Unity Editor",
+      "Unity Terrain System",
+      "Existing Unity Terrain"
+    ],
+    "screenshots": [],
+    "workflowRole": "Territory Authority is the organizational foundation of the VALE workflow. It divides large terrains into standardized, connected territories and prepares the world for Path, Ribbon, Grade, and Paint Authority.",
+    "packagePath": "downloads/unity/tools/ValeTerritoryAuthority.unitypackage",
+    "releaseState": "Package and consolidated release documentation are prepared; public sales activation remains pending.",
+    "packageContents": [
+      "Self-contained Unity tool package",
+      "Single plain-text manual at release"
+    ],
+    "video": null,
+    "documentationPath": "downloads/unity/documentation/TerritoryAuthority.txt"
+  },
+  {
+    "id": "path-authority",
+    "name": "Path Authority",
+    "collection": "VALE",
+    "status": "Release Preparation",
+    "price": "Coming Soon",
+    "stamp": "images/terrainvale/tvs-path.PNG",
+    "packageFile": "ValePathAuthority.unitypackage",
+    "documentationFile": "PathAuthority.txt",
+    "description": "Path Authority is a reusable path authoring system designed to establish meaningful movement throughout a world.",
+    "problem": "Many worldbuilding workflows bind movement and appearance together, making routes difficult to revise or extend. Path Authority separates route definition from visual expression.",
+    "features": [
+      "Reusable path assets",
+      "Persistent path data storage",
+      "Support for branching and extending existing routes",
+      "Precise distance measurement",
+      "Author-defined route placement",
+      "Grade-aware path construction options",
+      "Designed for integration with Ribbon Authority",
+      "Supports meaningful travel calculations"
+    ],
+    "requirements": [
+      "Unity Editor",
+      "Unity Terrain System",
+      "Recommended for use with Ribbon Authority"
+    ],
+    "screenshots": [],
+    "workflowRole": "Path Authority establishes meaningful movement throughout the world. Terrain Authority creates the land, Territory Authority organizes it, and Path Authority defines how that world is traveled before Ribbon Authority gives those routes visible form.",
+    "packagePath": "downloads/unity/tools/ValePathAuthority.unitypackage",
+    "releaseState": "Package and consolidated release documentation are prepared; public sales activation remains pending.",
+    "packageContents": [
+      "Self-contained Unity tool package",
+      "Single plain-text manual at release"
+    ],
+    "video": null,
+    "documentationPath": "downloads/unity/documentation/PathAuthority.txt"
+  },
+  {
+    "id": "ribbon-authority",
+    "name": "Ribbon Authority",
+    "collection": "VALE",
+    "status": "Release Preparation",
+    "price": "Coming Soon",
+    "stamp": "images/terrainvale/tvs-ribbon.PNG",
+    "packageFile": "ValeRibbonAuthority.unitypackage",
+    "documentationFile": "RibbonAuthority.txt",
+    "description": "Ribbon Authority transforms Path Authority data into visible environmental features.",
+    "problem": "Many worldbuilding tools combine route creation and visual representation into a single step, making routes difficult to revise and experimentation costly.",
+    "features": [
+      "Generates visual features from existing Path Authority assets",
+      "Supports roads, rivers, bridges, trails, trenches, and other ribbon features",
+      "Preserves the original path data",
+      "Allows rapid visual experimentation",
+      "Grade-aware material support",
+      "Dynamic material assignment",
+      "Variable width controls",
+      "Supports animated materials and directional effects"
+    ],
+    "requirements": [
+      "Unity Editor",
+      "Unity Terrain System",
+      "Existing Path Authority data"
+    ],
+    "screenshots": [],
+    "workflowRole": "Ribbon Authority provides the visible expression of movement established by Path Authority. It transforms reusable logical routes into roads, rivers, bridges, trails, trenches, and other environmental features without altering the original path data.",
+    "packagePath": "downloads/unity/tools/ValeRibbonAuthority.unitypackage",
+    "releaseState": "Package and consolidated release documentation are prepared; public sales activation remains pending.",
+    "packageContents": [
+      "Self-contained Unity tool package",
+      "Single plain-text manual at release"
+    ],
+    "video": null,
+    "documentationPath": "downloads/unity/documentation/RibbonAuthority.txt"
+  },
+  {
+    "id": "grade-authority",
+    "name": "Grade Authority",
+    "collection": "VALE",
+    "status": "Release Preparation",
+    "price": "Coming Soon",
+    "stamp": "images/terrainvale/tvs-grade.PNG",
+    "packageFile": "ValeGradeAuthority.unitypackage",
+    "documentationFile": "GradeAuthority.txt",
+    "description": "Grade Authority is a terrain behavior authoring tool designed to establish meaningful environmental constraints through slope relationships rather than artificial restrictions.",
+    "problem": "Modern games often rely on invisible barriers and inconsistent terrain sculpting to guide players. Grade Authority establishes believable environmental constraints through meaningful slope relationships.",
+    "features": [
+      "Target grade authoring using meaningful slope values",
+      "Adjustable grade variance for natural results",
+      "Convergence-based terrain modification",
+      "Average grade measurement and feedback",
+      "Controlled approach toward desired outcomes",
+      "Support for traversal design and environmental storytelling",
+      "Reduces reliance on invisible barriers",
+      "Encourages natural environmental readability"
+    ],
+    "requirements": [
+      "Unity Editor",
+      "Unity Terrain System",
+      "Existing Unity Terrain"
+    ],
+    "screenshots": [],
+    "workflowRole": "Grade Authority teaches the environment what traversal possibilities exist. Following Terrain, Territory, Path, and Ribbon Authority, it establishes believable slopes and environmental constraints before Paint Authority completes the visual language.",
+    "packagePath": "downloads/unity/tools/ValeGradeAuthority.unitypackage",
+    "releaseState": "Package and consolidated release documentation are prepared; public sales activation remains pending.",
+    "packageContents": [
+      "Self-contained Unity tool package",
+      "Single plain-text manual at release"
+    ],
+    "video": null,
+    "documentationPath": "downloads/unity/documentation/GradeAuthority.txt"
+  },
+  {
+    "id": "paint-authority",
+    "name": "Paint Authority",
+    "collection": "VALE",
+    "status": "Release Preparation",
+    "price": "Coming Soon",
+    "stamp": "images/terrainvale/tvs-paint.PNG",
+    "packageFile": "ValePaintAuthority.unitypackage",
+    "documentationFile": "PaintAuthority.txt",
+    "description": "Paint Authority is a rule-based terrain texturing system designed to give environments visual voice through environmental relationships rather than repetitive manual painting.",
+    "problem": "Manual terrain painting quickly becomes repetitive and inconsistent, especially across large worlds. Paint Authority applies textures through meaningful environmental rules.",
+    "features": [
+      "Height-based texture rules",
+      "Slope-based texture rules",
+      "Painterly outer dry-brush placement",
+      "Painterly inner dry-brush placement",
+      "Natural transition generation",
+      "Rule-driven material distribution",
+      "World-wide terrain application",
+      "Reduced repetitive painting requirements",
+      "Preserves environmental readability"
+    ],
+    "requirements": [
+      "Unity Editor",
+      "Unity Terrain System",
+      "Configured Terrain Layers",
+      "Existing Unity Terrain"
+    ],
+    "screenshots": [],
+    "workflowRole": "Paint Authority is the final stage of the VALE terrain workflow. After the suite establishes land, territories, routes, visible features, and grades, Paint Authority gives the completed world its visual voice through rule-driven terrain texturing.",
+    "packagePath": "downloads/unity/tools/ValePaintAuthority.unitypackage",
+    "releaseState": "Package and consolidated release documentation are prepared; public sales activation remains pending.",
+    "packageContents": [
+      "Self-contained Unity tool package",
+      "Single plain-text manual at release"
+    ],
+    "video": null,
+    "documentationPath": "downloads/unity/documentation/PaintAuthority.txt"
+  }
+]
