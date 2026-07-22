@@ -68,6 +68,10 @@
     background:#000;
 }
 
+.viewer-framed-content--video{
+    transform:translate(-50%,calc(-50% + 40px));
+}
+
 .viewer-framed-content iframe,
 .viewer-framed-content video,
 .viewer-framed-content>img{

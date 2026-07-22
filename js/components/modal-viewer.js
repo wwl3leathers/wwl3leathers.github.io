@@ -25,7 +25,7 @@
         : `<img src="${escapeAttribute(src)}" alt="${escapeAttribute(title)}">`;
 
     const displayedMedia = frame
-      ? `<div class="viewer-framed-media"><div class="viewer-framed-stage"><div class="viewer-framed-content">${mediaMarkup}</div><img class="viewer-media-frame" src="${escapeAttribute(frame)}" alt="" aria-hidden="true"></div></div>`
+      ? `<div class="viewer-framed-media"><div class="viewer-framed-stage"><div class="viewer-framed-content${type === "youtube" || type === "video" ? " viewer-framed-content--video" : ""}">${mediaMarkup}</div><img class="viewer-media-frame" src="${escapeAttribute(frame)}" alt="" aria-hidden="true"></div></div>`
       : mediaMarkup;
 
     stage.innerHTML = `
