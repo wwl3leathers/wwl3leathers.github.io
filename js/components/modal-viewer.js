@@ -280,6 +280,8 @@
   }
 
   function clearViewerState() {
+    artworkCarouselState.items = [];
+    artworkCarouselState.index = -1;
     document.querySelector("#dynamicContent")?.classList.remove("viewer-stage-active");
   }
 
