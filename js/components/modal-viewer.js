@@ -1,7 +1,16 @@
 "use strict";
 
 (() => {
+  const artworkCarouselState = { items: [], index: -1 };
+
   document.addEventListener("click", event => {
+    const navigation = event.target.closest("[data-viewer-prev], [data-viewer-next]");
+    if (navigation && artworkCarouselState.items.length > 1) {
+      event.preventDefault();
+      navigateArtwork(navigation.dataset.viewerNext ? 1 : -1);
+      return;
+    }
+
     const trigger = event.target.closest("[data-viewer-src], [data-viewer-youtube]");
     if (!trigger) return;
 
@@ -13,25 +22,73 @@
     if (!src && !youtubeId) return;
 
     event.preventDefault();
+    openViewer(trigger, stage);
+  });
 
-    const type = youtubeId ? "youtube" : (trigger.dataset.viewerType || inferType(src));
-    const title = trigger.dataset.viewerTitle || trigger.getAttribute("aria-label") || "Expanded media";
-    const frame = trigger.dataset.viewerFrame;
+  document.addEventListener("keydown", event => {
+    if (artworkCarouselState.items.length < 2) return;
+    if (event.key === "ArrowLeft") {
+      event.preventDefault();
+      navigateArtwork(-1);
+    }
+    if (event.key === "ArrowRight") {
+      event.preventDefault();
+      navigateArtwork(1);
+    }
+  });
 
-    const mediaMarkup = type === "youtube"
-      ? `<iframe src="https://www.youtube-nocookie.com/embed/${escapeAttribute(youtubeId)}?autoplay=1" title="${escapeAttribute(title)}" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>`
-      : type === "video"
-        ? `<video src="${escapeAttribute(src)}" controls autoplay playsinline></video>`
-        : createZoomImageMarkup(src, title);
+  document.addEventListener("talvaren:contentloaded", clearViewerState);
 
-    const displayedMedia = frame
-      ? `<div class="viewer-framed-media"><div class="viewer-framed-stage"><div class="viewer-framed-content${type === "youtube" || type === "video" ? " viewer-framed-content--video" : ""}">${mediaMarkup}</div><img class="viewer-media-frame" src="${escapeAttribute(frame)}" alt="" aria-hidden="true"></div></div>`
+  function openViewer(trigger, stage) {
+    const gallery = trigger.closest(".artwork-grid");
+    artworkCarouselState.items = gallery
+      ? [...gallery.querySelectorAll("[data-viewer-src], [data-viewer-youtube]")].map(describeViewerItem)
+      : [];
+    artworkCarouselState.index = artworkCarouselState.items.findIndex(item => item.node === trigger);
+    if (artworkCarouselState.index < 0) artworkCarouselState.index = 0;
+    renderViewer(stage, describeViewerItem(trigger));
+  }
+
+  function describeViewerItem(node) {
+    const youtubeId = node.dataset.viewerYoutube || "";
+    const src = node.dataset.viewerSrc || "";
+    return {
+      node,
+      src,
+      youtubeId,
+      type: youtubeId ? "youtube" : (node.dataset.viewerType || inferType(src)),
+      title: node.dataset.viewerTitle || node.getAttribute("aria-label") || "Expanded media",
+      frame: node.dataset.viewerFrame || ""
+    };
+  }
+
+  function navigateArtwork(direction) {
+    const stage = document.querySelector("#dynamicContent");
+    if (!stage || artworkCarouselState.items.length < 2) return;
+    const total = artworkCarouselState.items.length;
+    artworkCarouselState.index = (artworkCarouselState.index + direction + total) % total;
+    renderViewer(stage, artworkCarouselState.items[artworkCarouselState.index]);
+  }
+
+  function renderViewer(stage, item) {
+    const mediaMarkup = item.type === "youtube"
+      ? "<iframe src=\"https://www.youtube-nocookie.com/embed/" + escapeAttribute(item.youtubeId) + "?autoplay=1\" title=\"" + escapeAttribute(item.title) + "\" allow=\"autoplay; encrypted-media; picture-in-picture\" allowfullscreen></iframe>"
+      : item.type === "video"
+        ? "<video src=\"" + escapeAttribute(item.src) + "\" controls autoplay playsinline></video>"
+        : createZoomImageMarkup(item.src, item.title);
+
+    const displayedMedia = item.frame
+      ? "<div class=\"viewer-framed-media\"><div class=\"viewer-framed-stage\"><div class=\"viewer-framed-content" + (item.type === "youtube" || item.type === "video" ? " viewer-framed-content--video" : "") + "\">" + mediaMarkup + "</div><img class=\"viewer-media-frame\" src=\"" + escapeAttribute(item.frame) + "\" alt=\"\" aria-hidden=\"true\"></div></div>"
       : mediaMarkup;
 
-    stage.innerHTML = `
-      <section class="viewer-stage" aria-label="${escapeAttribute(title)}">
-        <div class="viewer-content">${displayedMedia}</div>
-      </section>`;
+    const hasCarousel = artworkCarouselState.items.length > 1;
+    const previousButton = hasCarousel ? "<button class=\"viewer-carousel-button viewer-carousel-button--prev\" type=\"button\" data-viewer-prev aria-label=\"Previous artwork\">‹</button>" : "";
+    const nextButton = hasCarousel ? "<button class=\"viewer-carousel-button viewer-carousel-button--next\" type=\"button\" data-viewer-next aria-label=\"Next artwork\">›</button>" : "";
+    const viewerBody = hasCarousel
+      ? "<div class=\"viewer-carousel\">" + previousButton + "<div class=\"viewer-content\">" + displayedMedia + "</div>" + nextButton + "</div>"
+      : "<div class=\"viewer-content\">" + displayedMedia + "</div>";
+
+    stage.innerHTML = "<section class=\"viewer-stage\" aria-label=\"" + escapeAttribute(item.title) + "\">" + viewerBody + "</section>";
     stage.classList.add("viewer-stage-active");
     document.body.classList.remove("portal-landing-active", "talvaren-section-active");
     document.querySelector("#contentStage")?.focus({ preventScroll: true });
@@ -39,10 +96,7 @@
 
     const zoomViewport = stage.querySelector("[data-zoom-viewport]");
     if (zoomViewport) initializeImageZoom(zoomViewport);
-  });
-
-  document.addEventListener("talvaren:contentloaded", clearViewerState);
-
+  }
   function createZoomImageMarkup(src, title) {
     return `
       <div class="viewer-zoom-viewport" data-zoom-viewport tabindex="0" aria-label="${escapeAttribute(title)}">
