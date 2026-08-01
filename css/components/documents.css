@@ -135,7 +135,120 @@
 .library-card p{margin-bottom:0;}
 .library-card .card-action{margin-top:auto;padding-top:18px;font-weight:bold;}
 
+
+/* =========================================================
+   CLASS AND RACE PROFILES
+========================================================= */
+
+.profile-roster{
+    margin-left:0 !important;
+    padding-left:0;
+    list-style:none;
+}
+
+.profile-roster > li{
+    padding:22px 0 10px;
+    scroll-margin-top:24px;
+    border-top:1px solid rgba(75,58,34,.24);
+}
+
+.profile-roster > li:first-child{
+    padding-top:8px;
+    border-top:0;
+}
+
+.profile-roster > li > strong{
+    display:block;
+    font-size:1.3rem;
+}
+
+.profile-facts{
+    margin:12px 0 22px;
+    padding:14px 16px;
+    background:rgba(75,58,34,.08);
+    border:1px solid rgba(75,58,34,.22);
+    border-radius:9px;
+}
+
+.profile-facts-summary{
+    margin-bottom:12px !important;
+    font-style:italic;
+}
+
+.profile-facts dl{
+    display:grid;
+    grid-template-columns:repeat(4,minmax(0,1fr));
+    gap:10px;
+    margin:0;
+}
+
+.profile-facts dl > div{
+    min-width:0;
+}
+
+.profile-facts dt{
+    font-size:.78rem;
+    font-weight:bold;
+    letter-spacing:.04em;
+    text-transform:uppercase;
+}
+
+.profile-facts dd{
+    margin:2px 0 0;
+    line-height:1.35;
+}
+
+.mobile-jump-index{
+    display:none;
+}
+
 @media(max-width:700px){
     .page-document{padding:24px 18px;border-radius:12px;}
     .library-grid{grid-template-columns:1fr;}
+
+    .profile-facts dl{
+        grid-template-columns:repeat(2,minmax(0,1fr));
+    }
+
+    .mobile-jump-index{
+        display:block;
+        margin:22px 0 28px;
+        padding:14px;
+        background:rgba(75,58,34,.08);
+        border:1px solid rgba(75,58,34,.22);
+        border-radius:9px;
+    }
+
+    .mobile-jump-index > strong,
+    .mobile-jump-group > span{
+        display:block;
+    }
+
+    .mobile-jump-group{
+        margin-top:10px;
+    }
+
+    .mobile-jump-group > span{
+        margin-bottom:6px;
+        font-size:.78rem;
+        font-weight:bold;
+        letter-spacing:.04em;
+        text-transform:uppercase;
+    }
+
+    .mobile-jump-links{
+        display:flex;
+        flex-wrap:wrap;
+        gap:6px;
+    }
+
+    .mobile-jump-links button{
+        min-height:38px;
+        padding:7px 9px;
+        color:var(--talvaren-ink);
+        background:rgba(255,255,255,.24);
+        border:1px solid rgba(75,58,34,.28);
+        border-radius:6px;
+        cursor:pointer;
+    }
 }

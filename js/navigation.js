@@ -141,6 +141,16 @@
 
   function bindGlobalNavigation() {
     document.addEventListener("click", event => {
+      const jumpControl = event.target.closest("[data-jump-target]");
+      if (jumpControl) {
+        const jumpTarget = document.getElementById(jumpControl.dataset.jumpTarget);
+        if (jumpTarget) {
+          const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+          jumpTarget.scrollIntoView({ behavior: reducedMotion ? "auto" : "smooth", block: "start" });
+        }
+        return;
+      }
+
       const portalControl = event.target.closest("[data-portal], [data-open-portal]");
       if (portalControl) {
         openPortal(portalControl.dataset.portal || portalControl.dataset.openPortal, true);
