@@ -1,0 +1,246 @@
+/* =========================================================
+   ABOUT TALVAREN — IMMERSIVE READING WALLPAPER
+========================================================= */
+
+body.talvaren-about-active{
+    overflow:hidden;
+}
+
+body.talvaren-about-active .site-wallpaper{
+    background:
+        linear-gradient(rgba(8,5,3,.05),rgba(8,5,3,.12)),
+        url("../../images/talvaren/Talvaren-About.png")
+        top center / cover
+        no-repeat;
+}
+
+body.talvaren-about-active .site-wallpaper::after{
+    background:
+        radial-gradient(
+            ellipse at 50% 62%,
+            transparent 12%,
+            rgba(5,3,2,.16) 100%
+        );
+}
+
+body.talvaren-about-active .site-view{
+    height:100vh;
+    height:100dvh;
+    min-height:0;
+    padding:0;
+}
+
+body.talvaren-about-active .site-view-inner{
+    width:100%;
+    max-width:none;
+    height:100%;
+}
+
+.about-talvaren{
+    height:100%;
+    overflow-x:hidden;
+    overflow-y:auto;
+    overscroll-behavior:contain;
+    scrollbar-color:rgba(214,182,111,.62) rgba(13,9,6,.35);
+    scrollbar-width:thin;
+    -webkit-overflow-scrolling:touch;
+    -webkit-mask-image:linear-gradient(
+        to bottom,
+        transparent 0,
+        transparent 27%,
+        #000 43%,
+        #000 91%,
+        transparent 100%
+    );
+    mask-image:linear-gradient(
+        to bottom,
+        transparent 0,
+        transparent 27%,
+        #000 43%,
+        #000 91%,
+        transparent 100%
+    );
+}
+
+.about-talvaren-copy{
+    width:min(780px,calc(100% - 48px));
+    margin:0 auto;
+    padding:clamp(480px,62dvh,700px) 0 34vh;
+    color:#f5ead4;
+    font-size:clamp(1.03rem,1.35vw,1.18rem);
+    line-height:1.78;
+    text-shadow:0 2px 7px rgba(0,0,0,.94),0 0 18px rgba(0,0,0,.72);
+}
+
+.about-talvaren-opening{
+    margin-bottom:clamp(80px,12vh,140px);
+    text-align:center;
+}
+
+.about-talvaren-opening h1{
+    margin:0 0 24px;
+    color:#f1d899;
+    font-size:clamp(3.2rem,8vw,6.2rem);
+    font-weight:500;
+    letter-spacing:.13em;
+    text-indent:.13em;
+    text-transform:uppercase;
+}
+
+.about-talvaren-meaning{
+    margin-bottom:26px;
+    font-size:clamp(1rem,1.8vw,1.3rem);
+    letter-spacing:.04em;
+}
+
+.about-talvaren-declaration{
+    margin:0;
+    color:#f1d899;
+    font-size:clamp(1.35rem,2.4vw,1.85rem);
+    font-style:italic;
+    line-height:1.5;
+}
+
+.about-talvaren section{
+    margin-top:clamp(82px,13vh,150px);
+    padding-top:clamp(34px,5vh,58px);
+    border-top:1px solid rgba(214,182,111,.32);
+}
+
+.about-talvaren h2{
+    margin:0 0 34px;
+    color:#f1d899;
+    font-size:clamp(1.85rem,4vw,3rem);
+    font-weight:500;
+    letter-spacing:.045em;
+    line-height:1.18;
+    text-align:center;
+    text-transform:uppercase;
+}
+
+.about-talvaren h3{
+    margin:36px 0 14px;
+    color:#e8cc8c;
+    font-size:clamp(1.08rem,2vw,1.35rem);
+    letter-spacing:.06em;
+    text-transform:uppercase;
+}
+
+.about-talvaren h3 span{
+    font-size:.78em;
+    font-weight:400;
+    letter-spacing:.04em;
+}
+
+.about-talvaren p{
+    margin-bottom:22px;
+}
+
+.about-talvaren ul{
+    margin:0 0 28px;
+    padding-left:1.35rem;
+}
+
+.about-talvaren li{
+    margin-bottom:9px;
+    padding-left:.25rem;
+}
+
+.about-talvaren li::marker{
+    color:#d6b66f;
+}
+
+.about-talvaren blockquote{
+    margin:30px auto;
+    color:#f1d899;
+    font-size:clamp(1.35rem,2.8vw,2rem);
+    font-style:italic;
+    line-height:1.5;
+    text-align:center;
+}
+
+.about-talvaren-maxim{
+    margin:38px 0 0;
+    color:#f1d899;
+    font-size:clamp(1.18rem,2vw,1.48rem);
+    font-style:italic;
+    line-height:1.7;
+    text-align:center;
+}
+
+.about-talvaren-memories{
+    margin:34px 0;
+    padding-left:22px;
+    color:#f1d899;
+    border-left:2px solid rgba(214,182,111,.58);
+    font-style:italic;
+}
+
+.about-talvaren-memories p:last-child{
+    margin-bottom:0;
+}
+
+.about-talvaren-columns{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:clamp(28px,6vw,58px);
+    margin:30px 0 38px;
+}
+
+.about-talvaren-columns h3{
+    margin-top:0;
+}
+
+.about-talvaren-class-list{
+    padding:28px;
+    background:rgba(10,7,4,.28);
+    border:1px solid rgba(214,182,111,.22);
+    border-radius:12px;
+    box-shadow:0 12px 30px rgba(0,0,0,.18);
+}
+
+@media(max-width:900px){
+    body.talvaren-about-active .site-view{
+        height:calc(100dvh - var(--mobile-primary-height) - var(--mobile-secondary-height));
+    }
+
+    .about-talvaren-copy{
+        width:min(720px,calc(100% - 30px));
+        padding-top:max(430px,59dvh);
+        padding-bottom:30vh;
+    }
+
+    .about-talvaren{
+        -webkit-mask-image:linear-gradient(to bottom,transparent 0,transparent 25%,#000 41%,#000 90%,transparent 100%);
+        mask-image:linear-gradient(to bottom,transparent 0,transparent 25%,#000 41%,#000 90%,transparent 100%);
+    }
+}
+
+@media(max-width:560px){
+    .about-talvaren-copy{
+        width:calc(100% - 26px);
+        font-size:1rem;
+        line-height:1.72;
+    }
+
+    .about-talvaren-opening h1{
+        font-size:clamp(2.4rem,14vw,3.8rem);
+        letter-spacing:.08em;
+        text-indent:.08em;
+    }
+
+    .about-talvaren-columns{
+        grid-template-columns:1fr;
+        gap:26px;
+    }
+
+    .about-talvaren-class-list{
+        padding:22px 20px;
+    }
+}
+
+@media(prefers-reduced-motion:reduce){
+    .about-talvaren{
+        scroll-behavior:auto;
+    }
+}
