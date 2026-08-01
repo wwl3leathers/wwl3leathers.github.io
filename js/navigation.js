@@ -21,7 +21,7 @@
     },
     "talvaren-about": {
       title: "About Talvaren | Talvaren Studios",
-      description: "View the illustrated introduction to the Talvaren fantasy MMORPG.",
+      description: "Learn why Talvaren exists and how its choices, friction, classes, and character systems shape the world.",
       schemaType: "CreativeWork"
     },
     "talvaren-classes": {
@@ -230,13 +230,14 @@
   async function loadItem(item) {
     document.body.classList.remove("portal-landing-active");
     document.body.classList.toggle("talvaren-section-active", item.id.startsWith("talvaren-"));
+    document.body.classList.toggle("talvaren-about-active", item.id === "talvaren-about");
     elements.content.classList.remove("viewer-stage-active");
     document.body.classList.add("shell-loading");
     try {
       const response = await fetch(item.path, { cache: "no-store" });
       if (!response.ok) throw new Error(`Content failed: ${response.status}`);
       const text = await response.text();
-      const sectionBanner = item.id.startsWith("talvaren-")
+      const sectionBanner = item.id.startsWith("talvaren-") && item.id !== "talvaren-about"
         ? `<div class="talvaren-section-banner"><img src="images/branding/Talvaren_Banner.PNG" alt="Talvaren Studios — Forging Reality One Tool at a Time"></div>`
         : "";
       elements.content.innerHTML = sectionBanner + extractMainContent(text);
@@ -257,6 +258,7 @@
   function clearContent() {
     document.body.classList.remove("portal-landing-active");
     document.body.classList.remove("talvaren-section-active");
+    document.body.classList.remove("talvaren-about-active");
     elements.content.classList.remove("viewer-stage-active");
     elements.content.innerHTML = "";
     delete elements.content.dataset.currentItem;
@@ -265,6 +267,7 @@
   function renderPortalLanding(portal) {
     document.body.classList.add("portal-landing-active");
     document.body.classList.remove("talvaren-section-active");
+    document.body.classList.remove("talvaren-about-active");
     elements.content.classList.remove("viewer-stage-active");
     elements.content.innerHTML = `
       <section class="portal-landing" aria-label="${portal.label}">
