@@ -3,12 +3,19 @@
 <main data-page-content="">
 <section class="page-document">
 <div class="page-section-header"><h1>Feedback</h1><span class="status-chip">Community</span></div>
-<p class="page-lede">A dedicated place for feedback, discussion, and participation.</p>
-<form class="community-form" data-feedback-form="">
-<div class="form-field"><label for="feedbackSubject">Subject</label><select id="feedbackSubject" name="subject"><option>General feedback</option><option>Talvaren MMORPG</option><option>Unity tools</option><option>Fantastical Archives</option><option>Website issue</option></select></div>
-<div class="form-field"><label for="feedbackText">Feedback</label><textarea aria-required="true" id="feedbackText" name="feedback" placeholder="Write your feedback here." required=""></textarea></div>
-<div class="cluster"><button class="talvaren-button" type="submit">Prepare Email</button><p aria-live="polite" class="form-message" data-form-message=""></p></div>
+<p class="page-lede">Send comments, ideas, bug reports, or questions directly to Talvaren Studios.</p>
+<form class="community-form" action="https://formsubmit.co/walter@talvarenstudios.com" method="POST" data-feedback-form="">
+<input type="hidden" name="_subject" value="New Talvaren Studios community feedback"/>
+<input type="hidden" name="_template" value="table"/>
+<input type="hidden" name="_captcha" value="true"/>
+<input type="hidden" name="_next" value="https://talvarenstudios.com/#portal=community&amp;section=community-feedback"/>
+<input type="text" name="_honey" tabindex="-1" autocomplete="off" style="display:none" aria-hidden="true"/>
+<div class="form-field"><label for="feedbackName">Name</label><input id="feedbackName" name="name" type="text" autocomplete="name" placeholder="Your name"/></div>
+<div class="form-field"><label for="feedbackEmail">Email</label><input id="feedbackEmail" name="email" type="email" autocomplete="email" placeholder="you@example.com"/></div>
+<div class="form-field"><label for="feedbackSubject">Subject</label><select id="feedbackSubject" name="category"><option>General feedback</option><option>Talvaren MMORPG</option><option>Unity tools</option><option>Fantastical Archives</option><option>Website issue</option></select></div>
+<div class="form-field"><label for="feedbackText">Feedback</label><textarea aria-required="true" id="feedbackText" name="message" placeholder="Write your feedback here." required=""></textarea></div>
+<div class="cluster"><button class="talvaren-button" type="submit">Send Feedback</button><button class="talvaren-button" data-share-button type="button" data-share-title="Talvaren Studios" data-share-text="Explore the developing world of Talvaren.">Share Talvaren</button><p aria-live="polite" class="form-message" data-form-message=""></p></div>
 </form>
-<div class="notice-panel"><p>This form prepares the message in the visitor's email application. No information is stored by this website.</p></div>
+<div class="notice-panel"><p>Feedback is delivered to Walter at Talvaren Studios. Your email address is used only when a reply is needed.</p></div>
 </section>
 </main></body></html>
