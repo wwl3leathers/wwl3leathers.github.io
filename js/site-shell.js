@@ -45,11 +45,12 @@
     const initializer = pageInitializers[itemId];
     if (initializer) initializer();
 
+    initializeShareButtons();
+
     document.querySelectorAll("[data-current-year]").forEach(node => {
       node.textContent = String(new Date().getFullYear());
     });
   }
-
 
   function initializeBreadcrumbLibrary() {
     initializeLibraryControls();
@@ -89,7 +90,6 @@
         if (trigger.textContent === "Opening…") trigger.textContent = "Read collection";
       }
     });
-
   }
 
   function initializeLibraryControls() {
@@ -128,22 +128,38 @@
     form.dataset.bound = "true";
 
     const message = form.querySelector("[data-form-message]");
-    form.addEventListener("submit", event => {
-      event.preventDefault();
-      const formData = new FormData(form);
-      const subject = String(formData.get("subject") || "General feedback");
-      const feedback = String(formData.get("feedback") || "").trim();
-      if (!feedback) {
-        if (message) message.textContent = "Please enter your feedback before continuing.";
-        form.querySelector("[name='feedback']")?.focus();
-        return;
-      }
+    form.addEventListener("submit", () => {
+      if (message) message.textContent = "Sending your feedback to Talvaren Studios…";
+    });
+  }
 
-      const mailto = new URL("mailto:");
-      mailto.searchParams.set("subject", `Talvaren Studios feedback: ${subject}`);
-      mailto.searchParams.set("body", feedback);
-      if (message) message.textContent = "Your email application is opening with the feedback prepared.";
-      window.location.href = mailto.toString();
+  function initializeShareButtons() {
+    document.querySelectorAll("[data-share-button]").forEach(button => {
+      if (button.dataset.shareBound === "true") return;
+      button.dataset.shareBound = "true";
+
+      button.addEventListener("click", async () => {
+        const shareData = {
+          title: button.dataset.shareTitle || document.title || "Talvaren Studios",
+          text: button.dataset.shareText || "Explore Talvaren Studios.",
+          url: window.location.href
+        };
+
+        try {
+          if (navigator.share) {
+            await navigator.share(shareData);
+            return;
+          }
+
+          await navigator.clipboard.writeText(shareData.url);
+          const original = button.textContent;
+          button.textContent = "Link Copied";
+          window.setTimeout(() => { button.textContent = original; }, 1600);
+        } catch (error) {
+          if (error?.name === "AbortError") return;
+          window.prompt("Copy this link:", shareData.url);
+        }
+      });
     });
   }
 
@@ -167,7 +183,7 @@
   }
 
   window.Talvaren = Object.assign(window.Talvaren || {}, {
-    version: "2.0-r21",
+    version: "2.0-r22",
     shellReady: true,
     initializeCurrentPage
   });
