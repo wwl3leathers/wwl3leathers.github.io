@@ -6,6 +6,10 @@
       "label": "Talvaren",
       "shortLabel": "Talvaren",
       "title": "Talvaren",
+      "landing": {
+        "id": "talvaren-about",
+        "path": "html/talvaren/about.html"
+      },
       "items": [
         {
           "id": "talvaren-history",
@@ -21,11 +25,6 @@
           "id": "talvaren-peoples",
           "label": "Peoples",
           "path": "html/talvaren/peoples.html"
-        },
-        {
-          "id": "talvaren-about",
-          "label": "About Talvaren",
-          "path": "html/talvaren/about.html"
         },
         {
           "id": "talvaren-classes",
@@ -112,9 +111,9 @@
           "path": "html/community/feedback.html"
         },
         {
-          "id": "community-contact",
-          "label": "Contact",
-          "path": "html/community/contact.html"
+          "id": "community-friends",
+          "label": "Friends",
+          "path": "html/community/friends.html"
         }
       ]
     }

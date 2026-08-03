@@ -6,8 +6,7 @@
     "archives-stories": initializeStoryLibrary,
     "archives-breadcrumbs": initializeBreadcrumbLibrary,
     "talvaren-media": initializeMediaControls,
-    "community-feedback": initializeFeedbackForm,
-    "community-contact": initializeContactPanel
+    "community-feedback": initializeFeedbackForm
   };
 
   document.addEventListener("DOMContentLoaded", () => {
@@ -163,27 +162,8 @@
     });
   }
 
-  function initializeContactPanel() {
-    const copyButtons = document.querySelectorAll("[data-copy-value]");
-    copyButtons.forEach(button => {
-      if (button.dataset.bound === "true") return;
-      button.dataset.bound = "true";
-      button.addEventListener("click", async () => {
-        const value = button.dataset.copyValue || "";
-        try {
-          await navigator.clipboard.writeText(value);
-          const original = button.textContent;
-          button.textContent = "Copied";
-          window.setTimeout(() => { button.textContent = original; }, 1400);
-        } catch {
-          window.prompt("Copy this value:", value);
-        }
-      });
-    });
-  }
-
   window.Talvaren = Object.assign(window.Talvaren || {}, {
-    version: "2.0-r22",
+    version: "2.0-r23",
     shellReady: true,
     initializeCurrentPage
   });

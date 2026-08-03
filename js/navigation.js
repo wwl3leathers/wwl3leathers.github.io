@@ -84,10 +84,10 @@
       description: "Share feedback about Talvaren Studios and its projects.",
       schemaType: "WebPage"
     },
-    "community-contact": {
-      title: "Contact Talvaren Studios",
-      description: "Contact Talvaren Studios.",
-      schemaType: "Organization"
+    "community-friends": {
+      title: "Friends of Talvaren | Talvaren Studios",
+      description: "Discover independent developers, creators, and small businesses supported by Talvaren Studios.",
+      schemaType: "CollectionPage"
     }
   };
 
@@ -140,7 +140,7 @@
   }
 
   function bindGlobalNavigation() {
-    document.addEventListener("click", event => {
+    document.addEventListener("click", async event => {
       const jumpControl = event.target.closest("[data-jump-target]");
       if (jumpControl) {
         const jumpTarget = document.getElementById(jumpControl.dataset.jumpTarget);
@@ -153,40 +153,44 @@
 
       const portalControl = event.target.closest("[data-portal], [data-open-portal]");
       if (portalControl) {
-        openPortal(portalControl.dataset.portal || portalControl.dataset.openPortal, true);
+        await openPortal(portalControl.dataset.portal || portalControl.dataset.openPortal, true);
         return;
       }
 
       const targetControl = event.target.closest("[data-nav-target]");
       if (targetControl) {
         const [portalId, itemId] = targetControl.dataset.navTarget.split(":");
-        openPortalItem(portalId, itemId, true);
+        await openPortalItem(portalId, itemId, true);
         return;
       }
 
       const sectionControl = event.target.closest("[data-nav-item]");
       if (sectionControl) {
-        openItem(sectionControl.dataset.navItem, true);
+        await openItem(sectionControl.dataset.navItem, true);
         return;
       }
 
       const retryControl = event.target.closest("[data-retry-item]");
-      if (retryControl) openItem(retryControl.dataset.retryItem, false);
+      if (retryControl) await openItem(retryControl.dataset.retryItem, false);
     });
 
     window.addEventListener("popstate", restoreRoute);
   }
 
-  function openPortal(portalId, updateHistory = false) {
+  async function openPortal(portalId, updateHistory = false) {
     const portal = getPortal(portalId);
     if (!portal) return;
 
     state.portalId = portal.id;
     state.itemId = "";
     renderSecondaryNavigation(portal, portal.items, portal.title);
-    renderPortalLanding(portal);
     updateActiveStates();
-    setMetadata("");
+    if (portal.landing) {
+      await loadPortalLanding(portal);
+    } else {
+      renderPortalLanding(portal);
+      setMetadata("");
+    }
     if (updateHistory) writeRoute();
   }
 
@@ -211,7 +215,14 @@
   async function openPortalItem(portalId, itemId, updateHistory = false) {
     const portal = getPortal(portalId);
     if (!portal) return;
-    openPortal(portalId, false);
+    if (!findItem(portal, itemId)) {
+      await openPortal(portalId, updateHistory);
+      return;
+    }
+    state.portalId = portal.id;
+    state.itemId = "";
+    renderSecondaryNavigation(portal, portal.items, portal.title);
+    updateActiveStates();
     await openItem(itemId, false);
     if (updateHistory) writeRoute();
   }
@@ -250,6 +261,32 @@
     } catch (error) {
       console.error(error);
       elements.content.innerHTML = `<section class="content-panel"><h1>Page unavailable</h1><p>This section could not be loaded.</p><button class="talvaren-button" type="button" data-retry-item="${item.id}">Try again</button></section>`;
+    } finally {
+      document.body.classList.remove("shell-loading");
+    }
+  }
+
+  async function loadPortalLanding(portal) {
+    const landing = portal.landing;
+    document.body.classList.remove("portal-landing-active");
+    document.body.classList.toggle("talvaren-section-active", landing.id.startsWith("talvaren-"));
+    document.body.classList.toggle("talvaren-about-active", landing.id === "talvaren-about");
+    elements.content.classList.remove("viewer-stage-active");
+    document.body.classList.add("shell-loading");
+    try {
+      const response = await fetch(landing.path, { cache: "no-store" });
+      if (!response.ok) throw new Error(`Content failed: ${response.status}`);
+      const text = await response.text();
+      elements.content.innerHTML = extractMainContent(text);
+      elements.content.dataset.currentItem = landing.id;
+      bindContentActions();
+      announceContentLoaded(landing.id);
+      elements.stage?.focus({ preventScroll: true });
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      setMetadata(landing.id, false);
+    } catch (error) {
+      console.error(error);
+      elements.content.innerHTML = `<section class="content-panel"><h1>Page unavailable</h1><p>This section could not be loaded.</p><button class="talvaren-button" type="button" data-open-portal="${portal.id}">Try again</button></section>`;
     } finally {
       document.body.classList.remove("shell-loading");
     }
@@ -309,9 +346,12 @@
       clearNavigation();
       return;
     }
-    openPortal(portal.id, false);
     const requestedItem = route.get("section");
-    if (requestedItem) await openItem(requestedItem, false);
+    if (requestedItem) {
+      await openPortalItem(portal.id, requestedItem, false);
+    } else {
+      await openPortal(portal.id, false);
+    }
   }
 
   function clearNavigation() {
@@ -348,14 +388,14 @@
     return item ? { item } : null;
   }
 
-  function setMetadata(itemId) {
+  function setMetadata(itemId, includeSection = true) {
     const fallbackDescription = document.querySelector("#dynamicContent .page-lede, #dynamicContent .page-subtitle, #dynamicContent header p")?.textContent?.trim();
     const metadata = routeMetadata[itemId] || {};
     const title = metadata.title || "Talvaren Studios";
     const description = (metadata.description || fallbackDescription || "Talvaren Studios").slice(0, 200);
     const params = new URLSearchParams();
     if (state.portalId) params.set("portal", state.portalId);
-    if (itemId) params.set("section", itemId);
+    if (includeSection && itemId) params.set("section", itemId);
     const canonicalUrl = `${location.origin}${location.pathname}${params.toString() ? `#${params.toString()}` : ""}`;
     document.title = title;
     updateMeta("name", "description", description.slice(0, 160));
