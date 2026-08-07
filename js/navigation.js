@@ -384,8 +384,8 @@
   }
 
   function resetHomeMetadata() {
-    const title = "Talvaren Studios | MMORPG, Unity Tools & Fantasy Archives";
-    const description = "Explore Talvaren Studios, home of the Talvaren fantasy MMORPG, TerrainVale Unity tools, original stories, artwork, and worldbuilding.";
+    const title = "Talvaren Studios | Talvaren Fantasy MMORPG";
+    const description = "Talvaren Studios is an independent game studio and the home of Talvaren, a fantasy MMORPG currently in development.";
     document.title = title;
     updateMeta("name", "description", description);
     updateMeta("property", "og:title", title);
