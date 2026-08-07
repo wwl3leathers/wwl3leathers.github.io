@@ -367,6 +367,8 @@ body.no-secondary-navigation .site-main{
 
 .site-view{
 
+    position:relative;
+
     min-height:100vh;
     min-height:100dvh;
 
@@ -390,6 +392,77 @@ body.no-secondary-navigation .site-main{
     margin:
         0
         auto;
+
+}
+
+/* =========================================================
+   HOME INTRODUCTION
+========================================================= */
+
+.home-introduction{
+
+    position:absolute;
+    top:clamp(54px,10vh,96px);
+    left:clamp(38px,5vw,86px);
+
+    width:min(
+        740px,
+        calc(100% - clamp(76px,10vw,172px))
+    );
+
+    color:var(--talvaren-parchment-light);
+
+    text-shadow:
+        0 2px 5px rgba(0,0,0,.98),
+        0 0 20px rgba(0,0,0,.78);
+
+}
+
+.home-introduction h1{
+
+    max-width:740px;
+
+    margin:0 0 20px;
+
+    font-size:clamp(2rem,3vw,3rem);
+    line-height:1.14;
+
+}
+
+.home-introduction p{
+
+    max-width:690px;
+
+    margin:0;
+
+    font-size:clamp(1.12rem,1.55vw,1.42rem);
+    font-weight:600;
+    line-height:1.5;
+
+}
+
+@media (max-width:900px){
+
+    .home-introduction{
+
+        top:clamp(30px,8vh,64px);
+        left:18px;
+
+        width:calc(100% - 36px);
+
+    }
+
+    .home-introduction h1{
+
+        font-size:clamp(1.65rem,6vw,2.5rem);
+
+    }
+
+    .home-introduction p{
+
+        font-size:clamp(1rem,4vw,1.25rem);
+
+    }
 
 }
 
