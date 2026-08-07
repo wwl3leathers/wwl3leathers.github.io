@@ -1,7 +1,7 @@
 "use strict";
 
 (() => {
-  const state = { model: null, portalId: "", itemId: "" };
+  const state = { model: null, portalId: "", itemId: "", homeContent: "" };
   const elements = {};
   const routeMetadata = {
     "talvaren-history": {
@@ -124,6 +124,7 @@
     elements.content = document.querySelector("#dynamicContent");
     elements.stage = document.querySelector("#contentStage");
     elements.secondaryRail = document.querySelector(".secondary-rail");
+    state.homeContent = elements.content?.innerHTML || "";
   }
 
   function renderPrimaryNavigation() {
@@ -131,12 +132,22 @@
     elements.mobilePrimary.innerHTML = state.model.portals.map(mobilePrimaryButton).join("");
   }
 
+  function portalHref(portalId) {
+    const hrefs = {
+      talvaren: "talvaren.html",
+      tools: "unity-tools.html",
+      archives: "archives.html",
+      community: "#portal=community"
+    };
+    return hrefs[portalId] || "#";
+  }
+
   function primaryButton(portal) {
-    return `<button class="primary-nav-button" type="button" data-portal="${portal.id}" aria-label="${portal.label}"><span class="primary-nav-label">${portal.shortLabel}</span></button>`;
+    return `<a class="primary-nav-button" href="${portalHref(portal.id)}" data-portal="${portal.id}" aria-label="${portal.label}"><span class="primary-nav-label">${portal.shortLabel}</span></a>`;
   }
 
   function mobilePrimaryButton(portal) {
-    return `<button class="mobile-primary-link" type="button" data-portal="${portal.id}"><span>${portal.shortLabel}</span></button>`;
+    return `<a class="mobile-primary-link" href="${portalHref(portal.id)}" data-portal="${portal.id}"><span>${portal.shortLabel}</span></a>`;
   }
 
   function bindGlobalNavigation() {
@@ -153,12 +164,14 @@
 
       const portalControl = event.target.closest("[data-portal], [data-open-portal]");
       if (portalControl) {
+        event.preventDefault();
         await openPortal(portalControl.dataset.portal || portalControl.dataset.openPortal, true);
         return;
       }
 
       const targetControl = event.target.closest("[data-nav-target]");
       if (targetControl) {
+        event.preventDefault();
         const [portalId, itemId] = targetControl.dataset.navTarget.split(":");
         await openPortalItem(portalId, itemId, true);
         return;
@@ -166,6 +179,7 @@
 
       const sectionControl = event.target.closest("[data-nav-item]");
       if (sectionControl) {
+        event.preventDefault();
         await openItem(sectionControl.dataset.navItem, true);
         return;
       }
@@ -201,7 +215,7 @@
     document.body.classList.remove("no-secondary-navigation");
     elements.secondaryRail.setAttribute("data-active-portal", portal.id);
     elements.secondary.innerHTML = items.map(secondaryButton).join("");
-    elements.mobileSecondary.innerHTML = items.map(item => `<button class="mobile-secondary-link" type="button" data-nav-item="${item.id}">${item.label}</button>`).join("");
+    elements.mobileSecondary.innerHTML = items.map(item => `<a class="mobile-secondary-link" href="${item.path}" data-nav-item="${item.id}">${item.label}</a>`).join("");
     elements.mobileSecondary.style.setProperty("--mobile-secondary-columns", String(Math.min(items.length, 4)));
     document.body.classList.toggle("mobile-secondary-expanded", items.length > 4);
     elements.mobileSecondary.scrollLeft = 0;
@@ -209,7 +223,7 @@
   }
 
   function secondaryButton(item) {
-    return `<button class="secondary-nav-link" type="button" data-nav-item="${item.id}">${item.label}</button>`;
+    return `<a class="secondary-nav-link" href="${item.path}" data-nav-item="${item.id}">${item.label}</a>`;
   }
 
   async function openPortalItem(portalId, itemId, updateHistory = false) {
@@ -297,7 +311,7 @@
     document.body.classList.remove("talvaren-section-active");
     document.body.classList.remove("talvaren-about-active");
     elements.content.classList.remove("viewer-stage-active");
-    elements.content.innerHTML = "";
+    elements.content.innerHTML = state.homeContent;
     delete elements.content.dataset.currentItem;
   }
 
@@ -366,6 +380,19 @@
     document.body.classList.add("no-secondary-navigation");
     clearContent();
     updateActiveStates();
+    resetHomeMetadata();
+  }
+
+  function resetHomeMetadata() {
+    const title = "Talvaren Studios | MMORPG, Unity Tools & Fantasy Archives";
+    const description = "Explore Talvaren Studios, home of the Talvaren fantasy MMORPG, TerrainVale Unity tools, original stories, artwork, and worldbuilding.";
+    document.title = title;
+    updateMeta("name", "description", description);
+    updateMeta("property", "og:title", title);
+    updateMeta("property", "og:description", description);
+    updateMeta("property", "og:url", `${location.origin}${location.pathname}`);
+    updateMeta("name", "twitter:title", title);
+    updateMeta("name", "twitter:description", description);
   }
 
   function writeRoute() {
