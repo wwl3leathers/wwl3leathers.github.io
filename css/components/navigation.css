@@ -8,6 +8,7 @@
 .mobile-secondary-link {
   appearance: none;
   font-family: inherit;
+  text-decoration: none;
 }
 
 .primary-nav-button,
