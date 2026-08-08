@@ -219,6 +219,7 @@ body.talvaren-about-active .site-view-inner{
 @media(max-width:560px){
     .about-talvaren-copy{
         width:calc(100% - 26px);
+        padding-top:max(330px,calc(59dvh - 100px));
         font-size:1rem;
         line-height:1.72;
     }
