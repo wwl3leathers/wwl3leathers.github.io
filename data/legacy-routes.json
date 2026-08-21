@@ -1,0 +1,25 @@
+{
+  "routes": {
+    "talvaren.html": "#portal=talvaren",
+    "unity-tools.html": "#portal=tools&section=tools-terrainvale",
+    "terrainvale.html": "#portal=tools&section=tools-terrainvale",
+    "terrain-authority.html": "#portal=tools&section=tools-terrainvale",
+    "toolbox.html": "#portal=tools&section=tools-toolbox",
+    "archives.html": "#portal=archives&section=archives-stories",
+    "breadcrumbs.html": "#portal=archives&section=archives-breadcrumbs",
+    "media.html": "#portal=talvaren&section=talvaren-media",
+    "privacy.html": "#portal=community&section=community-portfolio",
+    "terms.html": "#portal=community&section=community-portfolio"
+  },
+  "storyRoutes": [
+    "stories/amber.html",
+    "stories/bill.html",
+    "stories/braska.html",
+    "stories/brin.html",
+    "stories/brix.html",
+    "stories/brynnhilde.html",
+    "stories/elrono.html",
+    "stories/marra.html",
+    "stories/wolter.html"
+  ]
+}

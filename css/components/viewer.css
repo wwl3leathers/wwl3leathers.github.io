@@ -1,0 +1,206 @@
+/* =========================================================
+   TALVAREN STUDIOS V2
+   IN-SHELL MEDIA VIEWER
+========================================================= */
+
+.viewer-stage-active{
+    width:100%;
+    max-width:none;
+}
+
+.viewer-stage{
+    box-sizing:border-box;
+    width:100%;
+    min-height:calc(100dvh - 2 * clamp(24px,4vw,54px));
+    padding-top:20px;
+    overflow:auto;
+    overscroll-behavior:contain;
+    -webkit-overflow-scrolling:touch;
+}
+
+.viewer-content{
+    width:100%;
+    min-height:100%;
+}
+
+.viewer-zoom-viewport{
+    position:relative;
+    width:100%;
+    max-width:100%;
+    overflow:hidden;
+    background:#000;
+    outline:none;
+    touch-action:pan-y;
+    overscroll-behavior:contain;
+    -webkit-user-select:none;
+    user-select:none;
+}
+
+.viewer-zoom-image{
+    display:block;
+    width:100%;
+    max-width:none;
+    height:auto;
+    margin:0 auto;
+    transform-origin:0 0;
+    will-change:transform;
+    -webkit-user-drag:none;
+    user-select:none;
+}
+
+.viewer-zoom-image.is-zoomed{
+    cursor:grab;
+}
+
+.viewer-zoom-image.is-zoomed:active{
+    cursor:grabbing;
+}
+
+.viewer-zoom-hint{
+    position:absolute;
+    right:12px;
+    bottom:12px;
+    z-index:2;
+    margin:0;
+    padding:7px 10px;
+    color:#fff0cf;
+    background:rgba(20,15,10,.72);
+    border:1px solid rgba(240,207,139,.42);
+    border-radius:999px;
+    font-size:.72rem;
+    pointer-events:none;
+}
+
+.viewer-content>video,
+.viewer-content>iframe{
+    display:block;
+    width:100%;
+    max-width:1400px;
+    margin:0 auto;
+    background:#000;
+    border:0;
+}
+
+.viewer-content>video{max-height:calc(100dvh - 2 * clamp(24px,4vw,54px));}
+.viewer-content>iframe{aspect-ratio:16/9;}
+
+.viewer-framed-media{
+    width:100%;
+}
+
+.viewer-framed-stage{
+    position:relative;
+    width:min(100%,1152px);
+    margin:0 auto;
+}
+
+.viewer-framed-content{
+    position:absolute;
+    top:50%;
+    left:50%;
+    z-index:1;
+    width:75%;
+    aspect-ratio:16/9;
+    overflow:hidden;
+    transform:translate(-50%,-50%);
+    background:#000;
+}
+
+.viewer-framed-content--video{
+    transform:translate(-50%,calc(-50% + 40px));
+}
+
+.viewer-framed-content iframe,
+.viewer-framed-content video,
+.viewer-framed-content>img{
+    display:block;
+    width:100%;
+    height:100%;
+    max-width:none;
+    max-height:none;
+    border:0;
+    object-fit:cover;
+    object-position:center;
+}
+
+.viewer-media-frame{
+    position:relative;
+    z-index:2;
+    display:block;
+    width:100%;
+    max-width:100%;
+    height:auto;
+    pointer-events:none;
+}
+
+@media (max-width:900px){
+    .viewer-stage{
+        min-height:calc(100dvh - var(--mobile-primary-height) - var(--mobile-secondary-height) - 42px);
+        overflow:visible;
+    }
+
+    .viewer-zoom-viewport{
+        width:100%;
+        max-width:100%;
+    }
+
+    .viewer-content>video,
+    .viewer-content>iframe{
+        width:100%;
+        max-width:100%;
+    }
+
+    .viewer-framed-stage{width:100%;}
+    .viewer-content>video{max-height:calc(100dvh - var(--mobile-primary-height) - var(--mobile-secondary-height) - 42px);}
+}
+
+
+/* Artwork carousel controls */
+.viewer-carousel{
+    position:relative;
+    width:100%;
+}
+
+.viewer-carousel-button{
+    position:fixed;
+    top:50%;
+    z-index:20;
+    display:grid;
+    place-items:center;
+    width:clamp(46px,5vw,68px);
+    height:clamp(46px,5vw,68px);
+    padding:0 0 5px;
+    color:#fff0cf;
+    background:rgba(20,15,10,.78);
+    border:1px solid rgba(240,207,139,.72);
+    border-radius:50%;
+    box-shadow:0 5px 18px rgba(0,0,0,.35);
+    font-family:Georgia,serif;
+    font-size:clamp(2rem,4vw,3.2rem);
+    line-height:1;
+    cursor:pointer;
+    transform:translateY(-50%);
+    transition:background .18s ease,transform .18s ease;
+}
+
+.viewer-carousel-button:hover,
+.viewer-carousel-button:focus-visible{
+    background:rgba(82,53,30,.96);
+    outline:2px solid #fff0cf;
+    outline-offset:3px;
+    transform:translateY(-50%) scale(1.06);
+}
+
+.viewer-carousel-button--prev{left:clamp(12px,2vw,34px);}
+.viewer-carousel-button--next{right:clamp(12px,2vw,34px);}
+
+@media (max-width:900px){
+    .viewer-carousel-button{
+        width:46px;
+        height:46px;
+        font-size:2.2rem;
+    }
+
+    .viewer-carousel-button--prev{left:6px;}
+    .viewer-carousel-button--next{right:6px;}
+}

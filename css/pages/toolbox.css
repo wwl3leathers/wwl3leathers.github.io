@@ -1,0 +1,29 @@
+/* =========================================================
+   TOOLBOX
+========================================================= */
+
+.toolbox-page{display:grid;gap:28px;}
+.toolbox-intro{width:100%;}
+.toolbox-carousel{padding:20px;background:rgba(22,27,34,.82);border:1px solid var(--talvaren-shell-border);border-radius:14px;backdrop-filter:blur(10px);}
+.toolbox-grid{display:grid;grid-template-columns:repeat(6,minmax(110px,1fr));gap:16px;}
+.toolbox-tool{padding:10px;text-align:center;border:1px solid transparent;border-radius:12px;transition:background .18s ease,border-color .18s ease,transform .18s ease;}
+.toolbox-tool.active{background:rgba(75,58,34,.34);border-color:rgba(229,207,160,.35);transform:translateY(-2px);}
+.toolbox-stamp-button{width:100%;padding:0;background:transparent;border:0;cursor:pointer;}
+.toolbox-stamp{width:100%;aspect-ratio:2/3;object-fit:cover;border-radius:8px;box-shadow:0 8px 18px rgba(0,0,0,.35);}
+.toolbox-select{display:flex;justify-content:center;align-items:center;gap:7px;margin-top:11px;color:var(--talvaren-parchment-light);font-weight:bold;}
+.toolbox-select input{width:18px;height:18px;}
+.toolbox-status{margin:7px 0 0;color:var(--talvaren-gold);font-size:.72rem;font-weight:bold;}
+.toolbox-information{width:100%;}
+.toolbox-information-heading{display:flex;align-items:center;gap:18px;margin-bottom:24px;}
+.toolbox-information-heading h2{margin:0;}
+.toolbox-information-stamp{width:84px;aspect-ratio:2/3;object-fit:cover;border-radius:7px;box-shadow:0 6px 16px rgba(0,0,0,.24);}
+.toolbox-information h3{margin:28px 0 10px;}
+.toolbox-information li{margin-bottom:8px;}
+.toolbox-note{margin-top:30px;padding-top:18px;border-top:1px solid rgba(58,49,37,.28);font-style:italic;}
+.toolbox-summary{padding:clamp(22px,4vw,36px);color:var(--talvaren-ink);background:rgba(214,198,160,.95);border:2px solid rgba(75,58,34,.35);border-radius:14px;box-shadow:0 12px 30px rgba(0,0,0,.32);}
+.toolbox-summary h2{margin-bottom:18px;}
+.selected-tools-list{display:grid;gap:8px;margin-bottom:18px;}
+.selected-tool{display:flex;justify-content:space-between;gap:16px;padding:10px 12px;background:rgba(255,255,255,.22);border-radius:8px;}
+
+@media(max-width:1050px){.toolbox-grid{grid-template-columns:repeat(3,minmax(110px,1fr));}}
+@media(max-width:560px){.toolbox-carousel{padding:12px}.toolbox-grid{gap:8px}.toolbox-tool{padding:5px}.toolbox-select{font-size:.78rem}.toolbox-information-heading{align-items:flex-start}.toolbox-information-stamp{width:64px}}
