@@ -120,6 +120,7 @@
   function portalHref(portalId) {
     const hrefs = {
       talvaren: "talvaren.html",
+      gateway: "#portal=gateway",
       archives: "archives.html",
       community: "#portal=community"
     };
@@ -339,13 +340,15 @@
 
   async function restoreRoute() {
     const route = new URLSearchParams(window.location.hash.replace(/^#/, ""));
-    const requestedPortal = route.get("portal");
-    const portal = getPortal(requestedPortal);
+    const requestedPortal = getPortal(route.get("portal"));
+    const requestedItem = route.get("section");
+    const portal = requestedItem
+      ? state.model.portals.find(candidate => findItem(candidate, requestedItem)) || requestedPortal
+      : requestedPortal;
     if (!portal) {
       clearNavigation();
       return;
     }
-    const requestedItem = route.get("section");
     if (requestedItem) {
       await openPortalItem(portal.id, requestedItem, false);
     } else {

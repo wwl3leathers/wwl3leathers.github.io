@@ -19,7 +19,7 @@ body{display:grid;min-height:100vh;place-items:center;padding:24px;background:#0
 <script>
 (function(){
   var path=location.pathname.replace(/^\/+/,"").replace(/\/+$/,"");
-  var routes={"talvaren.html":"#portal=talvaren","archives.html":"#portal=archives&section=archives-stories","breadcrumbs.html":"#portal=archives&section=archives-breadcrumbs","media.html":"#portal=talvaren&section=talvaren-media","privacy.html":"#portal=community&section=community-portfolio","terms.html":"#portal=community&section=community-portfolio"};
+  var routes={"talvaren.html":"#portal=talvaren","archives.html":"#portal=archives&section=archives-stories","breadcrumbs.html":"#portal=archives&section=archives-breadcrumbs","media.html":"#portal=gateway&section=talvaren-media","privacy.html":"#portal=community&section=community-portfolio","terms.html":"#portal=community&section=community-portfolio"};
   if(routes[path]){location.replace("/"+routes[path]);return;}
   if(/^stories\/[^/]+\.html$/.test(path)){location.replace("/#portal=archives&section=archives-stories");}
 })();
