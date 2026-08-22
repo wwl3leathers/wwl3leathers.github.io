@@ -3,6 +3,7 @@
 (() => {
   const state = { model: null, portalId: "", itemId: "", homeContent: "" };
   const elements = {};
+  const routeAliases = { "talvaren-peoples": "talvaren-classes" };
   const routeMetadata = {
     "talvaren-history": {
       title: "Talvaren History | Talvaren Studios",
@@ -14,19 +15,14 @@
       description: "Explore the settlements, wilderness, underground regions, and forgotten sites of Talvaren.",
       schemaType: "CreativeWork"
     },
-    "talvaren-peoples": {
-      title: "Peoples of Talvaren | Talvaren Studios",
-      description: "Explore the distinct peoples, professions, loyalties, and histories of Talvaren.",
-      schemaType: "CreativeWork"
-    },
     "talvaren-about": {
       title: "About Talvaren | Talvaren Studios",
       description: "Learn why Talvaren exists and how its choices, friction, classes, and character systems shape the world.",
       schemaType: "CreativeWork"
     },
     "talvaren-classes": {
-      title: "Talvaren Classes & Races | Fantasy RPG Systems",
-      description: "Explore the classes, races, progression concepts, and character systems planned for the Talvaren fantasy MMORPG.",
+      title: "Talvaren Classes & Peoples | Fantasy RPG Systems",
+      description: "Explore the classes, peoples, cultures, and character systems planned for the Talvaren fantasy MMORPG.",
       schemaType: "VideoGame"
     },
     "talvaren-founders-hall": {
@@ -341,7 +337,7 @@
   async function restoreRoute() {
     const route = new URLSearchParams(window.location.hash.replace(/^#/, ""));
     const requestedPortal = getPortal(route.get("portal"));
-    const requestedItem = route.get("section");
+    const requestedItem = routeAliases[route.get("section")] || route.get("section");
     const portal = requestedItem
       ? state.model.portals.find(candidate => findItem(candidate, requestedItem)) || requestedPortal
       : requestedPortal;
