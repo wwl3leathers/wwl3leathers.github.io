@@ -58,6 +58,9 @@
     if (!itemId || !window.matchMedia("(max-width: 900px)").matches) return;
     const mobileSecondary = document.querySelector("#mobileSecondaryNavigation");
     if (!mobileSecondary) return;
+    const isSubmenuItem = Array.from(mobileSecondary.querySelectorAll("[data-nav-item]"))
+      .some(control => control.dataset.navItem === itemId);
+    if (!isSubmenuItem) return;
     mobileSecondary.hidden = true;
     document.body.classList.add("mobile-secondary-collapsed");
     document.body.classList.remove("mobile-secondary-expanded");
