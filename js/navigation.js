@@ -44,21 +44,6 @@
       description: "Find Talvaren availability, download access, system requirements, installation guidance, and server information when released.",
       schemaType: "VideoGame"
     },
-    "tools-terrainvale": {
-      title: "TerrainVale Suite | Unity Terrain Tools",
-      description: "TerrainVale is a modular suite of six professional Unity terrain and worldbuilding tools for generation, territories, paths, ribbons, grades, and terrain painting.",
-      schemaType: "SoftwareApplication"
-    },
-    "tools-studio-assets": {
-      title: "Studio Assets | Unity Tools & Prefabs",
-      description: "Explore focused Unity development tools and reusable prefabs from Talvaren Studios.",
-      schemaType: "CollectionPage"
-    },
-    "tools-toolbox": {
-      title: "TerrainVale Toolbox | Build a Unity Tool Collection",
-      description: "Select TerrainVale Unity terrain tools, compare the connected workflow, and build a custom development toolbox.",
-      schemaType: "SoftwareApplication"
-    },
     "archives-stories": {
       title: "Fantasy Stories | Fantastical Archives",
       description: "Read original fantasy stories from the Talvaren Studios Fantastical Archives.",
@@ -75,8 +60,8 @@
       schemaType: "CollectionPage"
     },
     "community-portfolio": {
-      title: "Unity Developer Technical Portfolio | Talvaren Studios",
-      description: "Professional Unity systems, editor tooling, technical design, gameplay systems, and TerrainVale worldbuilding-tool portfolio.",
+      title: "Technical Portfolio | Talvaren Studios",
+      description: "View Walter Lewis's technical portfolio.",
       schemaType: "Person"
     },
     "community-feedback": {
@@ -135,7 +120,6 @@
   function portalHref(portalId) {
     const hrefs = {
       talvaren: "talvaren.html",
-      tools: "unity-tools.html",
       archives: "archives.html",
       community: "#portal=community"
     };
