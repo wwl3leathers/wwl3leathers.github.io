@@ -3,7 +3,7 @@
     "talvaren.html": "#portal=talvaren",
     "archives.html": "#portal=archives&section=archives-stories",
     "breadcrumbs.html": "#portal=archives&section=archives-breadcrumbs",
-    "media.html": "#portal=talvaren&section=talvaren-media",
+    "media.html": "#portal=gateway&section=talvaren-media",
     "privacy.html": "#portal=community&section=community-portfolio",
     "terms.html": "#portal=community&section=community-portfolio"
   },
