@@ -12,10 +12,32 @@
   document.addEventListener("DOMContentLoaded", () => {
     document.querySelector(".site-wallpaper")?.setAttribute("aria-hidden", "true");
     initializeMobileViewport();
+    initializeReturnToTop();
     initializeCurrentPage();
   });
 
   document.addEventListener("talvaren:contentloaded", initializeCurrentPage);
+
+  function initializeReturnToTop() {
+    const control = document.querySelector("#returnToTop");
+    if (!control) return;
+
+    const updateVisibility = () => {
+      control.hidden = window.scrollY <= Math.max(600, window.innerHeight * 0.75);
+    };
+
+    control.addEventListener("click", () => {
+      const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      window.scrollTo({ top: 0, behavior: reducedMotion ? "auto" : "smooth" });
+      document.querySelector("#contentStage")?.focus({ preventScroll: true });
+    });
+
+    window.addEventListener("scroll", updateVisibility, { passive: true });
+    window.addEventListener("resize", updateVisibility, { passive: true });
+    window.addEventListener("pageshow", updateVisibility, { passive: true });
+    document.addEventListener("talvaren:contentloaded", updateVisibility);
+    updateVisibility();
+  }
 
   function initializeMobileViewport() {
     const viewport = window.visualViewport;
