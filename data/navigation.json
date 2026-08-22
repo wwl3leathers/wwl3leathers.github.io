@@ -49,29 +49,6 @@
       ]
     },
     {
-      "id": "tools",
-      "label": "Unity Tools",
-      "shortLabel": "Tools",
-      "title": "Unity Tools",
-      "items": [
-        {
-          "id": "tools-terrainvale",
-          "label": "TerrainVale Suite",
-          "path": "html/tools/terrainvale.html"
-        },
-        {
-          "id": "tools-studio-assets",
-          "label": "Studio Assets",
-          "path": "html/tools/studio-assets.html"
-        },
-        {
-          "id": "tools-toolbox",
-          "label": "Toolbox",
-          "path": "html/tools/toolbox.html"
-        }
-      ]
-    },
-    {
       "id": "archives",
       "label": "Fantastical Archives",
       "shortLabel": "Archives",
