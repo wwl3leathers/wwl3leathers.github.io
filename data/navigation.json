@@ -22,13 +22,8 @@
           "path": "html/talvaren/places.html"
         },
         {
-          "id": "talvaren-peoples",
-          "label": "Peoples",
-          "path": "html/talvaren/peoples.html"
-        },
-        {
           "id": "talvaren-classes",
-          "label": "Classes & Races",
+          "label": "Classes & Peoples",
           "path": "html/talvaren/classes-races.html"
         }
       ]
