@@ -8,7 +8,16 @@
     "youtubeId": "Y4BLEG5Ce8Y",
     "thumbnail": "https://img.youtube.com/vi/Y4BLEG5Ce8Y/hqdefault.jpg"
   },
-  { "id": "future-video-2", "group": "video", "slot": 2, "type": "empty" },
+  {
+    "id": "at-the-threshold",
+    "group": "video",
+    "slot": 2,
+    "type": "video",
+    "title": "At the Threshold",
+    "description": "A company gathers before the gateway into Talvaren.",
+    "src": "videos/at-the-threshold.mp4",
+    "thumbnail": "images/talvaren/at-the-threshold-thumbnail.jpg"
+  },
   { "id": "future-video-3", "group": "video", "slot": 3, "type": "empty" },
   { "id": "future-image-1", "group": "image", "slot": 1, "type": "empty" },
   { "id": "future-image-2", "group": "image", "slot": 2, "type": "empty" },
