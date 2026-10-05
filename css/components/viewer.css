@@ -106,8 +106,13 @@
     background:#000;
 }
 
+/* Match the mirror opening proportionally at every screen size. */
 .viewer-framed-content--video{
-    transform:translate(-50%,calc(-50% + 40px));
+    inset:20% 12.5% 15%;
+    width:auto;
+    height:auto;
+    aspect-ratio:auto;
+    transform:none;
 }
 
 .viewer-framed-content iframe,
