@@ -9,14 +9,14 @@
     "thumbnail": "https://img.youtube.com/vi/Y4BLEG5Ce8Y/hqdefault.jpg"
   },
   {
-    "id": "at-the-threshold",
+    "id": "fire-on-the-open-sea",
     "group": "video",
     "slot": 2,
     "type": "video",
-    "title": "At the Threshold",
-    "description": "A company gathers before the gateway into Talvaren.",
-    "src": "videos/at-the-threshold.mp4",
-    "thumbnail": "images/talvaren/at-the-threshold-thumbnail.jpg"
+    "title": "Fire on the Open Sea",
+    "description": "Schooners clash with cannon fire, grappling hooks, and boarding on Talvaren’s open sea.",
+    "src": "videos/fire-on-the-open-sea.mp4",
+    "thumbnail": "images/talvaren/fire-on-the-open-sea-thumbnail.jpg"
   },
   { "id": "future-video-3", "group": "video", "slot": 3, "type": "empty" },
   { "id": "future-image-1", "group": "image", "slot": 1, "type": "empty" },
