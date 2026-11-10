@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex,follow">
-<meta name="description" content="Talvaren's current keyboard and mouse controls, fixed keys and remappable defaults.">
+<meta name="description" content="A player guide to Talvaren's planned keyboard and mouse controls, fixed keys and remappable defaults.">
 <title>Controls &amp; Key Bindings | Talvaren</title>
 <link rel="icon" href="images/branding/Logo-min.PNG" type="image/png">
 <link rel="stylesheet" href="css/base.css?v=20260821-1">
@@ -19,16 +19,16 @@
 <main id="controls-content" class="release-document-main controls-main" tabindex="-1">
 <p class="release-back-link"><a href="index.html#portal=gateway&amp;section=talvaren-enter">← Enter Talvaren</a></p>
 <article class="page-document release-document controls-document">
-<div class="page-section-header"><h1>Controls &amp; Key Bindings</h1><span class="status-chip">In development</span></div>
+<div class="page-section-header"><h1>Controls &amp; Key Bindings</h1><span class="status-chip">Player guide</span></div>
 <p class="page-lede">Find your footing before you set out.</p>
-<p>Use this guide for Talvaren's current keyboard and mouse controls. The bindings below describe the development build and may change before release.</p>
+<p>This guide introduces the keyboard and mouse controls planned for Talvaren, from your first steps to combat, conversation and life at sea.</p>
 <figure class="controls-art">
 <a href="images/branding/Talvaren_Keyboard.PNG" aria-label="Open the Talvaren keyboard and mouse illustration at full size">
 <img src="images/branding/Talvaren_Keyboard.PNG" width="1774" height="887" fetchpriority="high" decoding="async" alt="Talvaren keyboard and mouse with three Stitchlings and a Breath of Talvaren. W, A, S, D, the top-row keys 1 through 6, H, Enter and Esc glow gold. The mouse labels LMB, RMB, MMB, scroll and four optional side buttons.">
 </a>
-<figcaption>The highlights help you find the keys. Read the text below for their current actions and whether they can be changed. Select the image to view it at full size.</figcaption>
+<figcaption>The highlights help you find the keys. Use the guide below to learn each action and customize your controls. Select the image to view it at full size.</figcaption>
 </figure>
-<p class="controls-updated">Last checked: <time datetime="2026-11-10">November 10, 2026</time>.</p>
+<p class="controls-updated">Last updated: <time datetime="2026-11-10">November 10, 2026</time>.</p>
 <nav class="controls-jump-links" aria-label="Controls sections">
 <a href="html/talvaren/controls.html#fixed-keys">Fixed keys</a>
 <a href="html/talvaren/controls.html#movement-camera">Movement &amp; camera</a>
@@ -41,25 +41,25 @@
 <h2 id="fixed-title">Fixed keys</h2>
 <p>Only <kbd>H</kbd>, <kbd>Enter</kbd> and <kbd>Esc</kbd> are fixed. These keys cannot be reassigned.</p>
 <dl class="controls-list">
-<div><dt><kbd>H</kbd></dt><dd><strong>Hello.</strong> Greet a selected trainer within 2 m and open the supported dialogue. General greetings to players and other creatures are still in development.</dd></div>
-<div><dt><kbd>Enter</kbd> / <kbd>Numpad Enter</kbd></dt><dd><strong>Chat.</strong> Focus the selected chat channel, then attempt to send the draft. <small>Chat delivery is not available in the current build. Enter or Send keeps your unsent text and reports that delivery is unavailable.</small></dd></div>
+<div><dt><kbd>H</kbd></dt><dd><strong>Hello.</strong> Say Hello, adding your selected target's name when you have one. For NPC conversation or shopping, greet the NPC from within 2 m.</dd></div>
+<div><dt><kbd>Enter</kbd> / <kbd>Numpad Enter</kbd></dt><dd><strong>Chat.</strong> Press Enter to type in the selected chat channel. Press Enter again or choose Send to send your message.</dd></div>
 <div><dt><kbd>Esc</kbd></dt><dd><strong>Menu and cancel.</strong> Open the menu, release the pointer or cancel the current interaction, depending on context.</dd></div>
 </dl>
 </section>
 <section class="controls-section" id="movement-camera" aria-labelledby="movement-title">
 <h2 id="movement-title">Movement &amp; camera</h2>
-<p>These are the current defaults, not fixed bindings. Your applied keybinding profile may be different.</p>
+<p>Make these controls your own. The movement and camera buttons below use the default bindings, which you can change in Keybindings.</p>
 <dl class="controls-list">
 <div><dt><kbd>W</kbd> / <kbd>S</kbd></dt><dd>Move forward / backward.</dd></div>
 <div><dt><kbd>A</kbd> / <kbd>D</kbd></dt><dd>Strafe left / right.</dd></div>
-<div><dt><kbd>Q</kbd> / <kbd>Right Arrow</kbd></dt><dd>Turn left / right on foot. These are configurable development defaults.</dd></div>
+<div><dt><kbd>Q</kbd> / <kbd>Right Arrow</kbd></dt><dd>Turn left / right on foot.</dd></div>
 <div><dt><kbd>Left Shift</kbd> / <kbd>Right Shift</kbd></dt><dd>Hold to sprint. Right Shift is an alternate binding.</dd></div>
 <div><dt><kbd>Space</kbd></dt><dd>Jump / swim up.</dd></div>
 <div><dt><kbd>Left Ctrl</kbd></dt><dd>Descend / swim down.</dd></div>
 <div><dt>Hold / drag <kbd>LMB</kbd></dt><dd>Orbit the camera without turning your character. Also orbits the view while at the helm.</dd></div>
-<div><dt>Hold <kbd>RMB</kbd></dt><dd>Steer your character and view. Right mouse alone does not move you forward. At a cannon, it controls aiming.</dd></div>
+<div><dt>Hold <kbd>RMB</kbd></dt><dd>Steer your character and view. At a cannon, aim with the right mouse button.</dd></div>
 <div><dt>Hold <kbd>LMB</kbd> + <kbd>RMB</kbd></dt><dd>Move forward while steering.</dd></div>
-<div><dt>Wheel scroll</dt><dd>Zoom the camera. Mouse movement and scrolling are camera controls, separate from button rebinding.</dd></div>
+<div><dt>Wheel scroll</dt><dd>Zoom the camera.</dd></div>
 </dl>
 <p><strong>Mouse labels:</strong> LMB is the left mouse button, RMB is the right mouse button, and MMB is pressing the scroll wheel.</p>
 </section>
@@ -67,7 +67,7 @@
 <h2 id="actions-title">Actions &amp; combat</h2>
 <p>These defaults can be reassigned. Numbered keys use the top number row shown in the illustration.</p>
 <dl class="controls-list">
-<div><dt><kbd>E</kbd></dt><dd>Interact / leave a cannon. General world interaction is still being developed.</dd></div>
+<div><dt><kbd>E</kbd></dt><dd>Interact with the world / leave a cannon.</dd></div>
 <div><dt><kbd>F</kbd></dt><dd>Helm interaction / leave the helm.</dd></div>
 <div><dt><kbd>Tab</kbd></dt><dd>Select a combat target.</dd></div>
 <div><dt><kbd>1</kbd></dt><dd>Primary action slot 1, normally Auto Attack.</dd></div>
@@ -75,32 +75,30 @@
 <div><dt><kbd>6</kbd></dt><dd>Primary action slot 6, used for the ranged-action position.</dd></div>
 <div><dt>Release <kbd>LMB</kbd></dt><dd>World-click interaction. A click is different from holding and dragging to orbit the camera.</dd></div>
 <div><dt>Hold <kbd>MMB</kbd></dt><dd>Block.</dd></div>
-<div><dt><kbd>Left Alt</kbd> + direction</dt><dd>Dodge while holding a movement direction. <strong>Temporary review binding:</strong> the final default has not been chosen.</dd></div>
+<div><dt>Your Dodge binding + direction</dt><dd>Hold a movement direction and use your Dodge binding to evade.</dd></div>
 </dl>
 <div class="controls-note">
-<p><strong>Follow the action shown on your hotbar.</strong> Slot availability depends on your class, equipment and the current implementation. Unavailable actions do not execute.</p>
-<p><strong>At the helm:</strong> W / S / A / D control forward / reverse / port / starboard. Hold S to slow through a stop into reverse. Space is not a ship-stop key, and Shift does not activate With The Wind. Station hotbars show their own contextual actions.</p>
+<p><strong>Follow the action shown on your hotbar.</strong> Your class, equipment and activity shape the actions on your hotbar.</p>
+<p><strong>At the helm:</strong> W / S / A / D control forward / reverse / port / starboard. Hold S to slow through a stop into reverse. Use the station hotbar for its contextual actions.</p>
 </div>
 </section>
 <section class="controls-section" id="windows" aria-labelledby="windows-title">
 <h2 id="windows-title">Windows</h2>
 <dl class="controls-list">
-<div><dt><kbd>J</kbd></dt><dd>Open / close the Journal. Remappable default.</dd></div>
-<div><dt><kbd>I</kbd></dt><dd>Inventory. Configurable development default.</dd></div>
+<div><dt><kbd>J</kbd></dt><dd>Open / close the Journal.</dd></div>
+<div><dt><kbd>I</kbd></dt><dd>Open / close your Inventory.</dd></div>
 </dl>
 </section>
 <section class="controls-section" id="customize" aria-labelledby="customize-title">
 <h2 id="customize-title">Change your bindings</h2>
 <p>Open <strong>Esc → Interface → Keybindings</strong>. Make your changes, then choose <strong>Apply</strong> to save them. <strong>Cancel</strong> leaves your current controls unchanged.</p>
 <ul>
-<li>WASD and the top-row 1–6 keys are remappable defaults even though they are highlighted in the image.</li>
+<li>WASD and the top-row 1–6 keys are remappable defaults.</li>
 <li>H, Enter, Numpad Enter and Esc remain reserved.</li>
-<li>If a change displaces another action, assign that action a replacement before applying. Conflicting or incomplete bindings cannot be applied.</li>
-<li>Profiles are saved locally on the device, not to an account server.</li>
-<li>The current editor supports left, right and middle mouse buttons, plus Mouse Back and Mouse Forward. Back and Forward have no default action. The illustration's four optional side-button labels do not mean four additional buttons have assigned or supported actions.</li>
+<li>Keep every action within reach. If you move a binding to another action, give the displaced action a new binding before choosing Apply.</li>
+<li>Your keybinding profile is saved on this device.</li>
+<li>You can assign actions to the left, right and middle mouse buttons, plus Mouse Back and Mouse Forward.</li>
 </ul>
-<h3>Still being decided</h3>
-<p>Final bindings for general world interaction, auxiliary-hotbar slots and cycling, fishing reactions and loot-specific interaction are not yet confirmed. No final defaults are listed here for those actions.</p>
 </section>
 <p><a href="html/talvaren/player-information.html">Continue to Player Information</a> for availability, computer requirements and content information.</p>
 </article>
