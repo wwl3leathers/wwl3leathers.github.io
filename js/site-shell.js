@@ -209,6 +209,8 @@
     document.querySelectorAll("[data-share-button]").forEach(button => {
       if (button.dataset.shareBound === "true") return;
       button.dataset.shareBound = "true";
+      const label = button.textContent;
+      let resetLabelTimer;
 
       button.addEventListener("click", async () => {
         const shareData = {
@@ -224,9 +226,9 @@
           }
 
           await navigator.clipboard.writeText(shareData.url);
-          const original = button.textContent;
           button.textContent = "Link Copied";
-          window.setTimeout(() => { button.textContent = original; }, 1600);
+          window.clearTimeout(resetLabelTimer);
+          resetLabelTimer = window.setTimeout(() => { button.textContent = label; }, 1600);
         } catch (error) {
           if (error?.name === "AbortError") return;
           window.prompt("Copy this link:", shareData.url);
@@ -241,3 +243,4 @@
     initializeCurrentPage
   });
 })();
+
