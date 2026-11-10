@@ -2,7 +2,7 @@
 const BASE_URL = new URL("./", self.location.href);
 const SCOPE_KEY = new URL(self.registration.scope).pathname.replace(/[^a-z0-9]+/gi, "-").replace(/^-|-$/g, "") || "root";
 const CACHE_PREFIX = `talvaren-studios-${SCOPE_KEY}-`;
-const CACHE_NAME = `${CACHE_PREFIX}r48`;
+const CACHE_NAME = `${CACHE_PREFIX}r49`;
 const scopedUrl = path => new URL(path, BASE_URL).href;
 const CORE = [
   "", "index.html", "404.html", "manifest.webmanifest",
@@ -10,6 +10,7 @@ const CORE = [
   "css/components/navigation.css", "css/components/documents.css?v=20260814-1", "css/components/media.css", "css/components/viewer.css",
   "js/navigation.js?v=20260821-3", "js/site-shell.js?v=20261110-1", "js/components/modal-viewer.js",
   "data/navigation.json", "css/pages/enter-talvaren.css?v=20261110-1", "js/pages/enter-talvaren.js?v=20261110-1",
+  "html/talvaren/controls.html", "css/pages/controls.css?v=20261110-1",
   "html/talvaren/enter-talvaren.html", "html/talvaren/player-information.html", "html/talvaren/download-install.html", "privacy.html", "terms.html",
   "images/branding/Logo-min.PNG", "images/branding/Talvaren_Banner.PNG", "images/wallpaper/Talvaren_Wallpaper.PNG"
 ].map(scopedUrl);

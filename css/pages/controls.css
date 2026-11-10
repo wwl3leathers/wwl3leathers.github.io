@@ -1,0 +1,28 @@
+/* Controls stay as editable text beneath the approved keyboard artwork. */
+.controls-main{width:min(1180px,100%);}
+.controls-document{width:100%;}
+.controls-art{margin:26px 0 30px;}
+.controls-art a{display:block;border:2px solid #705021;border-radius:12px;overflow:hidden;background:#211b14;}
+.controls-art img{width:100%;height:auto;}
+.controls-art figcaption{margin-top:10px;font-size:.9rem;line-height:1.6;}
+.controls-updated{font-size:.86rem;color:#59462d;}
+.controls-jump-links{display:flex;flex-wrap:wrap;gap:8px;margin:24px 0;}
+.controls-jump-links a{display:inline-flex;align-items:center;min-height:44px;padding:8px 13px;border:1px solid rgba(75,58,34,.38);border-radius:7px;background:rgba(255,255,255,.2);text-underline-offset:3px;}
+.controls-document a:focus-visible{outline:3px solid #5b3f16;outline-offset:4px;}
+.controls-section{scroll-margin-top:24px;}
+.controls-list{margin:18px 0 26px;}
+.controls-list > div{display:grid;grid-template-columns:minmax(155px,.85fr) minmax(0,2fr);gap:12px 24px;padding:14px 0;border-bottom:1px solid rgba(75,58,34,.23);}
+.controls-list dt{font-weight:bold;}
+.controls-list dd{margin:0;line-height:1.65;}
+.controls-list small{display:block;margin-top:4px;font-size:.88em;}
+.controls-document kbd{display:inline-block;margin:2px 2px 2px 0;padding:2px 7px;border:1px solid #786344;border-bottom-width:3px;border-radius:5px;background:#f6ecd5;color:#211b14;font-family:inherit;font-size:.94em;line-height:1.35;white-space:nowrap;}
+.controls-note{padding:16px 20px;border-left:4px solid #795724;border-radius:6px;background:rgba(75,58,34,.09);}
+.controls-note p:last-child{margin-bottom:0;}
+@media(max-width:600px){
+    .controls-list > div{grid-template-columns:1fr;gap:6px;padding:13px 0;}
+    .controls-jump-links{gap:6px;}
+    .controls-jump-links a{flex-grow:1;justify-content:center;}
+    .controls-art{margin:20px 0 24px;}
+    .controls-note{padding:14px;}
+}
+@media(prefers-reduced-motion:reduce){html:has(.controls-document){scroll-behavior:auto;}}
